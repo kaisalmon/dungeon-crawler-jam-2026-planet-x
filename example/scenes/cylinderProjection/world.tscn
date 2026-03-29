@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://2l4jo033f3d6" path="res://example/scenes/cylinderProjection/sun.gd" id="13_26ilf"]
 [ext_resource type="ArrayMesh" uid="uid://bjdbunan62jx4" path="res://meshes/raygun.obj" id="13_eh4v3"]
 [ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="14_4psk5"]
+[ext_resource type="AudioStream" uid="uid://bbgww1wfna51h" path="res://audio/sfx/player/player_gun.ogg" id="14_b4s3o"]
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="15_4psk5"]
 [ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="15_v7km3"]
 [ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://example/scenes/enemy.tscn" id="17_4psk5"]
@@ -214,6 +215,11 @@ use_z_clip_scale = true
 z_clip_scale = 0.01
 use_fov_override = true
 fov_override = 80.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b4s3o"]
+random_pitch = 1.0233738
+streams_count = 1
+stream_0/stream = ExtResource("14_b4s3o")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4psk5"]
 load_path = "res://.godot/imported/blurred_circle.png-c68db9095193df3ee5463d298e4a94ca.s3tc.ctex"
@@ -765,8 +771,12 @@ mesh = ExtResource("13_eh4v3")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_b4s3o")
 
+[node name="PlayerShootSFX" type="AudioStreamPlayer" parent="Player/Camera3D/Raygun" unique_id=2038916393]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_b4s3o")
+
 [node name="LaserParticle" type="GPUParticles3D" parent="Player/Camera3D/Raygun" unique_id=220920037]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017479494, 1.5556834, 1.3380024)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 7.1054274e-15, 0, 1, -0.017478943, 1.5556841, 1.3380127)
 material_override = SubResource("ShaderMaterial_b4s3o")
 emitting = false
 amount = 100
