@@ -63,6 +63,25 @@ func get_hit_chance(distance_to_player: float) -> float:
 		return 1
 
 func process_wander(_delta: float) -> void:
+	var player = Globals.getPlayer()
+	var directions = [
+		Vector3(1, 0, 0),
+		Vector3(-1, 0, 0),
+		Vector3(0, 0, 1),
+		Vector3(0, 0, -1)
+	]
+	for dir in directions:
+		var check_position = self.global_transform.origin + dir * GRID_SIZE
+		if has_line_of_sight(player.global_transform.origin, check_position):
+			if not is_facing(player.global_transform.origin):
+				print("Would strafe, but not facing player")
+				rotate_towards(player.global_transform.origin)
+				wait_time = 0.1
+			else:
+				self.try_move_dir(dir)
+				wait_time = 0.1
+				return
+
 	var rotate_chance = 0.1
 	var forward = -transform.basis.z.normalized()
 	var forward_position = self.target_position + forward * GRID_SIZE
@@ -173,7 +192,10 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 	var differentZ = abs(deltaZ) > GRID_SIZE * .1
 	if differentX and differentZ:
 		return false
-	
+
+	if max(abs(deltaX), abs(deltaZ)) > 5 * GRID_SIZE:
+		return false
+
 	var raygun_ray = PhysicsRayQueryParameters3D.new()
 	var gun_node: EnemySpring = get_node(gun)
 	raygun_ray.from = gun_node.global_transform.origin
@@ -185,7 +207,7 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 	if ragun_col and ragun_col.collider:
 		if ragun_col.position.distance_to(target_position) < GRID_SIZE * .5:
 			return true
-			
+
 	return false
 		
 
