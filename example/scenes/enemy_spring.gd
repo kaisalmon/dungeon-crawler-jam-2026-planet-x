@@ -9,8 +9,8 @@ var rotational_velocity: Quaternion = Quaternion.IDENTITY
 var offset = Vector3.ZERO
 
 func _ready():
-	self.top_level = true
 	var target_position = self.get_parent().global_transform.origin
+	self.top_level = true
 	offset =  target_position - self.global_transform.origin
 
 func _process(delta: float) -> void:

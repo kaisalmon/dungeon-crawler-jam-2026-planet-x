@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bimhc2b46g3yx" path="res://example/scenes/enemy.gd" id="1_njio4"]
 [ext_resource type="ArrayMesh" uid="uid://cor6yb44sn6vh" path="res://meshes/enemies/enemy_tracks.obj" id="1_qfjya"]
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_8267b"]
+[ext_resource type="PackedScene" uid="uid://btpp3i38noku2" path="res://example/scenes/dead_enemy.tscn" id="2_he0sj"]
 [ext_resource type="Texture2D" uid="uid://ca6xwm48soqdt" path="res://meshes/enemies/enemy.png" id="3_l8ubh"]
 [ext_resource type="ArrayMesh" uid="uid://xm1pxudfrtyv" path="res://meshes/enemies/enemy_head.obj" id="4_l8ubh"]
 [ext_resource type="Script" uid="uid://b2saxqbhexvxk" path="res://example/scenes/enemy_spring.gd" id="6_k27km"]
@@ -11,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dvpuff8fxty0j" path="res://meshes/enemies/enemy_gun.obj" id="9_4dqw5"]
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="10_4dqw5"]
 [ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="11_7u6xr"]
+[ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="12_q4113"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_njio4"]
 render_priority = 0
@@ -67,10 +69,14 @@ scale_curve = SubResource("CurveTexture_7u6xr")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4dqw5"]
 
-[node name="Node3D" type="Node3D" unique_id=172750197]
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4113"]
+size = Vector3(1.237793, 1.6901855, 1)
+
+[node name="Enemy" type="Node3D" unique_id=172750197]
 script = ExtResource("1_njio4")
 gun = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser")
-laserParticles = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser/GPUParticles3D")
+laserParticles = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser/LaserParticle")
+dead_scene = ExtResource("2_he0sj")
 
 [node name="EnemyTracks" type="MeshInstance3D" parent="." unique_id=407316839]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -105,7 +111,7 @@ mesh = ExtResource("9_4dqw5")
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_njio4")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="EnemyTorso/EnemyHead/EnemyShoulder/Laser" unique_id=661985874]
+[node name="LaserParticle" type="GPUParticles3D" parent="EnemyTorso/EnemyHead/EnemyShoulder/Laser" unique_id=661985874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5367217)
 material_override = SubResource("ShaderMaterial_7u6xr")
 emitting = false
@@ -115,3 +121,12 @@ one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_hx76c")
 draw_pass_1 = SubResource("QuadMesh_4dqw5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1647604907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)
+script = ExtResource("12_q4113")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=930477591]
+shape = SubResource("BoxShape3D_q4113")
+
+[connection signal="shot" from="StaticBody3D" to="." method="_on_static_body_3d_shot"]

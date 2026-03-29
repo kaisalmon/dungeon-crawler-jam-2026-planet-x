@@ -7,6 +7,7 @@ const inputQueueTimeTurn: float = 0.1
 @export var height: float = 0.7
 @export var camera_offset: Vector3 = Vector3(0, 0, 0)
 @export var bob_size: float = -0.01
+@export var laser: NodePath
 
 var last_input: String = ""
 var last_input_time: float = -1.0
@@ -59,6 +60,9 @@ func handle_input():
 		queue_input("strafe_left", now)
 	elif Input.is_action_pressed("strafe_right"):
 		queue_input("strafe_right", now)
+	elif Input.is_action_pressed("shoot"):
+		queue_input("shoot", now)
+
 
 func queue_input(action: String, time: float):
 	if can_move():
@@ -79,6 +83,7 @@ func execute_input(action: String):
 		"strafe_right": try_move_dir(-global_transform.basis.x)
 		"turn_left": start_turn(1)
 		"turn_right": start_turn(-1)
+		"shoot": shoot()
 
 func on_move_success():
 	pass
@@ -118,3 +123,39 @@ func load(json: Dictionary):
 
 func activate():
 	in_cutscene = false
+
+func shoot():
+	var particles_nodes = get_node(laser)
+	if particles_nodes:
+		var particles = particles_nodes as GPUParticles3D
+		particles.emitting = true
+		particles.restart()
+
+		var target = global_transform.origin + global_transform.basis.z * 10
+
+		var raygun_ray = PhysicsRayQueryParameters3D.new()
+		raygun_ray.from = particles.global_transform.origin
+		raygun_ray.to = target
+		raygun_ray.exclude = [self]
+
+		var hit_pos = target
+		var ragun_col = get_world_3d().direct_space_state.intersect_ray(raygun_ray)
+		if ragun_col and ragun_col.collider:
+			hit_pos = ragun_col.position
+			var shootable = ragun_col.collider as Shootable
+			print("Hit: ", shootable)
+			if shootable and shootable.has_method("on_shot"):
+				shootable.on_shot()
+				print("Called on_shot on ", shootable)
+
+		var length = global_transform.origin.distance_to(hit_pos)
+		var process_material: ParticleProcessMaterial = particles.process_material
+		process_material.emission_shape_scale = Vector3(0.05, 0.05, length)
+		process_material.emission_shape_offset = Vector3(0, 0, -length)
+		particles.amount = int(length * 100)
+
+
+		var screen_pos = Vector2(90, 85)
+		var proj_pos = $Camera3D.project_position(screen_pos, 0.3)
+		particles.global_position = proj_pos
+		particles.look_at(hit_pos, Vector3.UP)

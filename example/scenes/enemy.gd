@@ -6,6 +6,9 @@ var max_distance = 5.0
 
 @export var gun: NodePath
 @export var laserParticles: NodePath
+@export var dead_scene: PackedScene
+
+var decaying_shot_count = 0 # Decreases over time, increases with each attack. 
 
 var state = "wander"
 func _ready():
@@ -15,11 +18,15 @@ func _ready():
 	laser_particles_node.process_material = laser_particles_node.process_material.duplicate()
 
 func _process(delta: float) -> void:
+	decaying_shot_count = max(0, decaying_shot_count - delta * 0.3)
 	if wait_time > 0:
 		wait_time -= delta
 		return
 
-	if has_line_of_sight(Globals.getPlayer().global_transform.origin):
+	var player = Globals.getPlayer()
+	var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
+
+	if has_line_of_sight(Globals.getPlayer().global_transform.origin) and distance_to_player < GRID_SIZE * 6:
 		state = "attack"
 	else:
 		state = "wander"
@@ -29,9 +36,33 @@ func _process(delta: float) -> void:
 	elif state == "attack":
 		process_attack(delta)
 
-func process_wander(_delta: float) -> void:
+func get_hit_chance(distance_to_player: float) -> float:
+	var distance_tiles = distance_to_player / GRID_SIZE
+	if distance_tiles < 1.5:
+		if decaying_shot_count < 0.5:
+			return 0.2
+		return 1 # After the first shot, enemies always hit at point blank
+	if distance_tiles < 2.5:
+		if decaying_shot_count < 0.5:
+			return 0.05
+		elif decaying_shot_count < 1.5:
+			return 0.5
+		elif decaying_shot_count < 2.5:
+			return 0.8
+		else:
+			return 1
+	if decaying_shot_count < 0.5:
+		return 0 # Always miss on first shot if distance is 3 or more
+	elif decaying_shot_count < 1.5:
+		return 0.3
+	elif decaying_shot_count < 2.5:
+		return 0.5
+	elif decaying_shot_count < 3.5:
+		return 0.9
+	else:
+		return 1
 
-	# Move in random direction
+func process_wander(_delta: float) -> void:
 	var rotate_chance = 0.1
 	var forward = -transform.basis.z.normalized()
 	var forward_position = self.target_position + forward * GRID_SIZE
@@ -54,8 +85,12 @@ func process_attack(_delta: float) -> void:
 		return
 
 	if is_facing(player.target_position):
-		# attack(player)
-		miss(player.global_transform.origin)
+		var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
+		var hit_chance = get_hit_chance(distance_to_player)
+		if randf() < hit_chance:
+			attack(player)
+		else:
+			miss(player.global_transform.origin)
 	else:
 		rotate_towards(player.target_position)
 
@@ -89,6 +124,7 @@ func miss(target_position: Vector3):
 
 func shoot_at(target_position: Vector3):
 	wait_time = .8
+	decaying_shot_count += 1
 
 	var gun_node: EnemySpring = get_node(gun)
 	target_position += Vector3(0, 0.25, 0)
@@ -124,3 +160,12 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 		return false
 	
 	return true
+
+
+
+func _on_static_body_3d_shot() -> void:
+		self.queue_free()
+		var shard: DeadEnemy = dead_scene.instantiate()
+		get_parent().add_child(shard)
+		shard.global_transform = self.global_transform
+		shard.knockback((Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized(), -4)

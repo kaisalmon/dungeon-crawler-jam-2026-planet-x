@@ -10,10 +10,13 @@
 [ext_resource type="ArrayMesh" uid="uid://jqxvx13o3vhx" path="res://meshes/stairs.obj" id="7_tfjgg"]
 [ext_resource type="Script" uid="uid://cbx3p8ubogwkk" path="res://scripts/dungeon_crawler/Stairs.gd" id="8_gj6o2"]
 [ext_resource type="ArrayMesh" uid="uid://ecrm5v8qy8f5" path="res://meshes/cube.obj" id="9_26ilf"]
-[ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://example/scenes/enemy.tscn" id="11_eh4v3"]
 [ext_resource type="CompositorEffect" uid="uid://d3nm0nkuwlnhf" path="res://example/lens_flare/flair_compositor_effect.tres" id="12_e84e6"]
 [ext_resource type="Script" uid="uid://2l4jo033f3d6" path="res://example/scenes/cylinderProjection/sun.gd" id="13_26ilf"]
+[ext_resource type="ArrayMesh" uid="uid://bjdbunan62jx4" path="res://meshes/raygun.obj" id="13_eh4v3"]
+[ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="14_4psk5"]
+[ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="15_4psk5"]
 [ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="15_v7km3"]
+[ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://example/scenes/enemy.tscn" id="17_4psk5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8yg1d"]
 lightmap_size_hint = Vector2i(172, 172)
@@ -200,6 +203,59 @@ fog_depth_end = 35.0
 
 [sub_resource type="Compositor" id="Compositor_26ilf"]
 compositor_effects = Array[CompositorEffect]([ExtResource("12_e84e6")])
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4s3o"]
+render_priority = 4
+albedo_texture = ExtResource("14_4psk5")
+metallic_specular = 1.0
+roughness = 0.0
+texture_filter = 0
+use_z_clip_scale = true
+z_clip_scale = 0.01
+use_fov_override = true
+fov_override = 80.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4psk5"]
+load_path = "res://.godot/imported/blurred_circle.png-c68db9095193df3ee5463d298e4a94ca.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4s3o"]
+render_priority = 0
+shader = ExtResource("15_4psk5")
+shader_parameter/albedo = Color(0.8627451, 0.21568628, 0.07450981, 1)
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_4psk5")
+shader_parameter/albedo_texture_size = Vector2i(256, 256)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_m5cn7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.057377055, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7u6xr"]
+curve = SubResource("Curve_m5cn7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n35xl"]
+emission_shape_offset = Vector3(0, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(0.02, 0.02, 1)
+spread = 180.0
+initial_velocity_max = 0.29999998
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_7u6xr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cgus4"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_eh4v3"]
 size = Vector2(25, 25)
@@ -537,9 +593,6 @@ shape = SubResource("ConvexPolygonShape3D_v7km3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
 shape = SubResource("BoxShape3D_tfjgg")
 
-[node name="Enemy" parent="ProjectedWorld/Terrain" unique_id=391225056 instance=ExtResource("11_eh4v3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, 7.5)
-
 [node name="Terrain2" type="MeshInstance3D" parent="ProjectedWorld" unique_id=1458928999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 0)
 mesh = SubResource("PlaneMesh_8yg1d")
@@ -699,11 +752,30 @@ compositor = SubResource("Compositor_26ilf")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21, 1.08, 8)
 script = ExtResource("6_8yg1d")
 height = 0.2
+laser = NodePath("Camera3D/Raygun/LaserParticle")
 max_step_height = 50.0
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=332192797]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
 fov = 90.0
+
+[node name="Raygun" type="MeshInstance3D" parent="Player/Camera3D" unique_id=1256827511]
+transform = Transform3D(0.10000002, 0, 0, 0, 0.09999999, 0, 0, 0, 0.099999964, 0.13005018, -0.22791135, -0.19763565)
+mesh = ExtResource("13_eh4v3")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_b4s3o")
+
+[node name="LaserParticle" type="GPUParticles3D" parent="Player/Camera3D/Raygun" unique_id=220920037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017479494, 1.5556834, 1.3380024)
+material_override = SubResource("ShaderMaterial_b4s3o")
+emitting = false
+amount = 100
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.9
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_n35xl")
+draw_pass_1 = SubResource("QuadMesh_cgus4")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=449505407]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -33, 28, 13)
@@ -719,3 +791,15 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -1, 
 cast_shadow = 0
 mesh = SubResource("QuadMesh_eh4v3")
 surface_material_override/0 = SubResource("StandardMaterial3D_26ilf")
+
+[node name="Enemy" parent="." unique_id=172750197 instance=ExtResource("17_4psk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, 8)
+
+[node name="Enemy2" parent="." unique_id=1335575546 instance=ExtResource("17_4psk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 13)
+
+[node name="Enemy3" parent="." unique_id=615920030 instance=ExtResource("17_4psk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, -1)
+
+[node name="Enemy4" parent="." unique_id=1716627389 instance=ExtResource("17_4psk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1, -1)
