@@ -15,3 +15,13 @@ func _process(delta):
     var scale = min(lifetime, 1.0)  # Scale down as it gets closer to disappearing
     for child in get_children():
         child.scale = Vector3(scale, scale, scale)
+
+func _integrate_forces(state):
+    # Check if we have contacts
+    if state.get_contact_count() > 0:
+        # Get the impulse of the first contact point
+        var impulse = state.get_contact_impulse(0)
+        var force = impulse / state.step # Estimate force
+        var magnitude = force.length()
+        if magnitude > 100:
+            print("Sound here pls")

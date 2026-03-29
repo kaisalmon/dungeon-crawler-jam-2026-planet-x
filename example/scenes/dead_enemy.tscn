@@ -96,6 +96,8 @@ script = ExtResource("1_784wb")
 
 [node name="HeadRigidBody" type="RigidBody3D" parent="." unique_id=598938574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_kl3o5")
 
 [node name="EnemyHead" type="MeshInstance3D" parent="HeadRigidBody" unique_id=997777983]
@@ -119,6 +121,8 @@ shape = SubResource("ConvexPolygonShape3D_kl3o5")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2131986977]
 collision_mask = 0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_kl3o5")
 
 [node name="EnemyTorso" type="MeshInstance3D" parent="RigidBody3D" unique_id=250211190]
@@ -132,6 +136,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("ConvexPolygonShape3D_784wb")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=191468588]
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_kl3o5")
 
 [node name="EnemyGun" type="MeshInstance3D" parent="RigidBody3D3" unique_id=897803577]
@@ -145,6 +151,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0.04307723)
 shape = SubResource("ConvexPolygonShape3D_xofla")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="." unique_id=270117295]
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_kl3o5")
 
 [node name="EnemyShoulder" type="MeshInstance3D" parent="RigidBody3D4" unique_id=614474720]
@@ -158,6 +166,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("ConvexPolygonShape3D_skknk")
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="." unique_id=266931291]
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_kl3o5")
 
 [node name="EnemyTracks" type="MeshInstance3D" parent="RigidBody3D5" unique_id=407316839]
@@ -175,3 +185,5 @@ unique_name_in_owner = true
 stream = ExtResource("10_784wb")
 volume_db = -6.074
 max_distance = 15.0
+
+[connection signal="body_entered" from="HeadRigidBody" to="." method="_on_head_rigid_body_body_entered"]

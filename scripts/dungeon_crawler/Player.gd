@@ -128,7 +128,8 @@ func activate():
 	in_cutscene = false
 
 func shoot():
-	player_shoot_sfx.play()
+	if player_shoot_sfx:
+		player_shoot_sfx.play()
 	var particles_nodes = get_node(laser)
 	if particles_nodes:
 		var particles = particles_nodes as GPUParticles3D

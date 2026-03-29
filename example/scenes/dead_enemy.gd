@@ -12,3 +12,5 @@ func knockback(direction: Vector3, force: float):
 		if child is RigidBody3D:
 			var body = child as RigidBody3D
 			body.linear_velocity += direction * force
+
+
