@@ -22,7 +22,7 @@ func _process(delta):
 
 func _integrate_forces(state):
 	# Check if we have contacts
-	if state.get_contact_count() > 0:
+	if state.get_contact_count() > 0 and lifetime > 1.0:
 		# Get the impulse of the first contact point
 		var impulse = state.get_contact_impulse(0)
 		var force = impulse / state.step # Estimate force
@@ -31,5 +31,4 @@ func _integrate_forces(state):
 			bounce_early_sfx.play()
 		elif magnitude > 50:
 			bounce_late_sfx.play()
-			print("Sound here pls")
 		
