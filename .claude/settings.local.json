@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"c:\\\\Users\\\\kaisa\\\\OneDrive\\\\Documents\\\\jam-toolbox\\\\example\\\\scenes\\\\shooty_gameplay\"\" -type f -name \"* \")",
+      "Bash(python3 -c \":*)"
+    ]
+  }
+}

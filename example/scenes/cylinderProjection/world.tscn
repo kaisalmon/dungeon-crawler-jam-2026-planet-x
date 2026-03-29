@@ -1,0 +1,721 @@
+[gd_scene format=4 uid="uid://bpwoqok6phmu6"]
+
+[ext_resource type="Script" uid="uid://ckwvv8afckqsl" path="res://example/scenes/cylinderProjection/world.gd" id="1_8yg1d"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="1_swh0p"]
+[ext_resource type="Texture2D" uid="uid://deninnoinhuol" path="res://example/images/FNTSY_TX__19.png" id="2_h0t7t"]
+[ext_resource type="MeshLibrary" uid="uid://cdlob4ligualp" path="res://example/scenes/cylinderProjection/meshLibrary.tres" id="3_pqaej"]
+[ext_resource type="Texture2D" uid="uid://dxtem7bl8n51w" path="res://example/images/FNTSY_TX__27.png" id="5_rx8ut"]
+[ext_resource type="Script" uid="uid://dqycrtgsm83gq" path="res://scripts/dungeon_crawler/Player.gd" id="6_8yg1d"]
+[ext_resource type="Script" uid="uid://dl7avq7lsd8rh" path="res://example/scenes/cylinderProjection/projected_world.gd" id="6_gj6o2"]
+[ext_resource type="ArrayMesh" uid="uid://jqxvx13o3vhx" path="res://meshes/stairs.obj" id="7_tfjgg"]
+[ext_resource type="Script" uid="uid://cbx3p8ubogwkk" path="res://scripts/dungeon_crawler/Stairs.gd" id="8_gj6o2"]
+[ext_resource type="ArrayMesh" uid="uid://ecrm5v8qy8f5" path="res://meshes/cube.obj" id="9_26ilf"]
+[ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://example/scenes/enemy.tscn" id="11_eh4v3"]
+[ext_resource type="CompositorEffect" uid="uid://d3nm0nkuwlnhf" path="res://example/lens_flare/flair_compositor_effect.tres" id="12_e84e6"]
+[ext_resource type="Script" uid="uid://2l4jo033f3d6" path="res://example/scenes/cylinderProjection/sun.gd" id="13_26ilf"]
+[ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="15_v7km3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8yg1d"]
+lightmap_size_hint = Vector2i(172, 172)
+add_uv2 = true
+size = Vector2(34, 34)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uaf0a"]
+render_priority = 0
+shader = ExtResource("1_swh0p")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_h0t7t")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(35, 35, 35)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_swh0p"]
+points = PackedVector3Array(-17.500006, 0, -17.500006, -17.500006, 0, 17.500002, 17.500002, 0, -17.500006, 17.500002, 0, 17.500002)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e84e6"]
+render_priority = 0
+shader = ExtResource("1_swh0p")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_rx8ut")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v7km3"]
+points = PackedVector3Array(1, 2, 1, 1, 2, -1, 0.77760375, 2, 1, 1, 0, 1, 1, 0, -1, 0.77760375, 2, -1, -1, 0.22220047, 1, -1, 0, 1, -1, 0, -1, -1, 0.22220047, -1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eh4v3"]
+render_priority = 0
+shader = ExtResource("1_swh0p")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_rx8ut")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4psk5"]
+points = PackedVector3Array(1, 2, 1, 1, 2, -1, -1, 2, 1, 1, 0, 1, 1, 0, -1, -1, 2, -1, -1, 0, 1, -1, 0, -1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfjgg"]
+size = Vector3(1.355957, 1, 1.7596436)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u74k"]
+resource_name = "Material.001"
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_reayl"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAgABAAQAAAADAAUAAAAFAAEAAgAGAAMABgAFAAMABAAGAAIAAQAFAAcAAQAHAAQABwAFAAYABAAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD//wAAAAD/////AAAAAAAA/////wAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAP//AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tfjgg"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("StandardMaterial3D_6u74k"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_reayl")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gj6o2"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("StandardMaterial3D_6u74k"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_reayl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gj6o2"]
+render_priority = 0
+shader = ExtResource("1_swh0p")
+shader_parameter/albedo = Color(0.50981295, 0.5065133, 0.3189077, 1)
+shader_parameter/texture_albedo = ExtResource("2_h0t7t")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(35, 35, 35)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7km3"]
+render_priority = 0
+shader = ExtResource("1_swh0p")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_rx8ut")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26ilf"]
+render_priority = 0
+shader = ExtResource("1_swh0p")
+shader_parameter/albedo = Color(1, 0.32999998, 0.32999998, 1)
+shader_parameter/texture_albedo = ExtResource("2_h0t7t")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(34, 34, 34)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Sky" id="Sky_e84e6"]
+
+[sub_resource type="Environment" id="Environment_v7km3"]
+background_mode = 2
+sky = SubResource("Sky_e84e6")
+ambient_light_source = 2
+ambient_light_color = Color(0.58466, 0.3844, 0.62, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 3.03
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_begin = 5.0
+fog_depth_end = 35.0
+
+[sub_resource type="Compositor" id="Compositor_26ilf"]
+compositor_effects = Array[CompositorEffect]([ExtResource("12_e84e6")])
+
+[sub_resource type="QuadMesh" id="QuadMesh_eh4v3"]
+size = Vector2(25, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26ilf"]
+transparency = 1
+depth_draw_mode = 2
+shading_mode = 0
+albedo_color = Color(1.353256, 1.353256, 1.353256, 1)
+albedo_texture = ExtResource("15_v7km3")
+billboard_mode = 1
+
+[node name="World" type="Node3D" unique_id=367970002]
+script = ExtResource("1_8yg1d")
+
+[node name="ProjectedWorld" type="Node3D" parent="." unique_id=544789238 node_paths=PackedStringArray("world_nodes", "celestial_body_nodes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+script = ExtResource("6_gj6o2")
+world_nodes = [NodePath("Terrain"), NodePath("Terrain2"), NodePath("Terrain3"), NodePath("Terrain4"), NodePath("Terrain5"), NodePath("Terrain6"), NodePath("Terrain7"), NodePath("Terrain8"), NodePath("Terrain9")]
+celestial_body_nodes = [null, NodePath("../Sun")]
+celestial_body_positions = Array[Vector3]([Vector3(49.65, 41.25, 0), Vector3(-98.07, 38.6, 22.57)])
+
+[node name="Terrain" type="MeshInstance3D" parent="ProjectedWorld" unique_id=751120596]
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_uaf0a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain" unique_id=162257326]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/StaticBody3D" unique_id=948484607]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="GridMap" type="GridMap" parent="ProjectedWorld/Terrain" unique_id=1135481491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.5)
+mesh_library = ExtResource("3_pqaej")
+data = {
+"cells": PackedInt32Array(65535, 65535, 0, 65535, 0, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 65534, 0, 65534, 65533, 0, 65534, 65532, 0, 65534, 65531, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 1, 65534, 4, 0, 65534, 5, 0, 65534, 6, 0, 65535, 6, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 2, 5, 0, 2, 4, 0, 2, 3, 0, 2, 2, 0, 2, 1, 0, 2, 0, 1, 2, 65535, 0, 2, 65534, 0, 2, 65533, 0, 2, 65532, 0, 2, 65531, 0, 1, 65531, 0, 0, 65531, 0, 65535, 65531, 0, 65538, 65532, 655362, 65538, 65533, 2, 65538, 1, 2, 65538, 65535, 655362, 131070, 2, 655362, 131070, 4, 2, 131070, 3, 0, 65538, 0, 0, 65536, 6, 1441794, 65537, 6, 1048578, 6, 0, 0, 7, 0, 0, 5, 0, 0, 4, 6, 0, 5, 6, 0, 6, 6, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Tower" type="Node3D" parent="ProjectedWorld/Terrain" unique_id=1794913218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.4103723)
+
+[node name="ConcreteStairs" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=2079718612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs" unique_id=363064281]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs/StaticBody3D" unique_id=949668163]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="ConcreteStairs2" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1165537328]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 2, 2)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs2" unique_id=1127352092]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs2/StaticBody3D" unique_id=2019077437]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="Wall" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=785825926]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1, 2, 2)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall" unique_id=901750660]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall/StaticBody3D" unique_id=2004182934]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall2" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=296639489]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1, 2, 4)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall2" unique_id=1881484858]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall2/StaticBody3D" unique_id=976612474]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="ConcreteStairs3" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=966321565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 4)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs3" unique_id=1081147817]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs3/StaticBody3D" unique_id=753322283]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs3/StaticBody3D" unique_id=1705501155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
+shape = SubResource("BoxShape3D_tfjgg")
+
+[node name="ConcreteStairs4" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=838959776]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 6, 2)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs4" unique_id=38527644]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs4/StaticBody3D" unique_id=1219045143]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs4/StaticBody3D" unique_id=1921027259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
+shape = SubResource("BoxShape3D_tfjgg")
+
+[node name="Wall3" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1780293618]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.0364419, 5.999834, 2)
+mesh = SubResource("ArrayMesh_tfjgg")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall3" unique_id=381663632]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall3/StaticBody3D" unique_id=595227117]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall4" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=754827566]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.0364419, 5.999834, 4)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall4" unique_id=1645640498]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall4/StaticBody3D" unique_id=2144165100]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall5" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=2115023064]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 5.018055, 3.9634752, 2)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall5" unique_id=1058315920]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall5/StaticBody3D" unique_id=1434925466]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall6" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=245483026]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 5.018055, 3.9634752, 4)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall6" unique_id=317197908]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall6/StaticBody3D" unique_id=1610277528]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall7" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=931756919]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 2.981696, -0.018137932, 2)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall7" unique_id=1664733493]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall7/StaticBody3D" unique_id=2033264271]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="ConcreteStairs5" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1141565679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8, 4)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs5" unique_id=528153695]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs5/StaticBody3D" unique_id=992118906]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs5/StaticBody3D" unique_id=1903150145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
+shape = SubResource("BoxShape3D_tfjgg")
+
+[node name="ConcreteStairs6" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=762642107]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 10, 2)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs6" unique_id=1129006659]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs6/StaticBody3D" unique_id=650537654]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs6/StaticBody3D" unique_id=1929306618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
+shape = SubResource("BoxShape3D_tfjgg")
+
+[node name="Wall8" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1751569077]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.0728838, 9.999668, 2)
+mesh = ExtResource("9_26ilf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall8" unique_id=1082803052]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall8/StaticBody3D" unique_id=1918523471]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall9" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1141869291]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.0728838, 9.999668, 4)
+mesh = ExtResource("9_26ilf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall9" unique_id=1837242641]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall9/StaticBody3D" unique_id=249818846]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall10" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=694074921]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 5.054497, 7.9633093, 2)
+mesh = ExtResource("9_26ilf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall10" unique_id=434566715]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall10/StaticBody3D" unique_id=317045669]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall11" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1603318302]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 5.054497, 7.9633093, 4)
+mesh = ExtResource("9_26ilf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall11" unique_id=1418355141]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall11/StaticBody3D" unique_id=106805129]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="ConcreteStairs7" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1410861455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 12, 4)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs7" unique_id=31167295]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs7/StaticBody3D" unique_id=992566223]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs7/StaticBody3D" unique_id=1524560206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
+shape = SubResource("BoxShape3D_tfjgg")
+
+[node name="ConcreteStairs8" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1508938657]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 14, 2)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs8" unique_id=393395698]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs8/StaticBody3D" unique_id=286314613]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs8/StaticBody3D" unique_id=1251106207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
+shape = SubResource("BoxShape3D_tfjgg")
+
+[node name="Wall12" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=846076102]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.1093259, 13.999502, 2)
+mesh = ExtResource("9_26ilf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall12" unique_id=1458380244]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall12/StaticBody3D" unique_id=1807119527]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall13" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=409315310]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.1093259, 13.999502, 4)
+mesh = ExtResource("9_26ilf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall13" unique_id=1597371961]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall13/StaticBody3D" unique_id=2132160109]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall14" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1396991796]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 5.090939, 11.963143, 2)
+mesh = SubResource("ArrayMesh_gj6o2")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall14" unique_id=1249575274]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall14/StaticBody3D" unique_id=84527890]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="Wall15" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=1581322864]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 5.090939, 11.963143, 4)
+mesh = ExtResource("9_26ilf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_eh4v3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/Wall15" unique_id=616348441]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/Wall15/StaticBody3D" unique_id=622383567]
+shape = SubResource("ConvexPolygonShape3D_4psk5")
+
+[node name="ConcreteStairs9" type="MeshInstance3D" parent="ProjectedWorld/Terrain/Tower" unique_id=697205186]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.9999996, 0, -4.0000005)
+mesh = ExtResource("7_tfjgg")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_e84e6")
+script = ExtResource("8_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs9" unique_id=920234326]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs9/StaticBody3D" unique_id=861353403]
+shape = SubResource("ConvexPolygonShape3D_v7km3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ProjectedWorld/Terrain/Tower/ConcreteStairs9/StaticBody3D" unique_id=1516967107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17797852, 0, 0.027282715)
+shape = SubResource("BoxShape3D_tfjgg")
+
+[node name="Enemy" parent="ProjectedWorld/Terrain" unique_id=391225056 instance=ExtResource("11_eh4v3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, 7.5)
+
+[node name="Terrain2" type="MeshInstance3D" parent="ProjectedWorld" unique_id=1458928999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 0)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_uaf0a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain2" unique_id=52350254]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain2/StaticBody3D" unique_id=1194659308]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="Terrain3" type="MeshInstance3D" parent="ProjectedWorld" unique_id=515121600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, 0)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_uaf0a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain3" unique_id=1246696109]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain3/StaticBody3D" unique_id=1224417688]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="GridMap" type="GridMap" parent="ProjectedWorld/Terrain3" unique_id=1064891243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.5)
+mesh_library = ExtResource("3_pqaej")
+data = {
+"cells": PackedInt32Array(3, 65528, 0, 3, 65529, 0, 3, 65530, 0, 3, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 3, 5, 0, 3, 6, 0, 3, 7, 0, 3, 8, 0, 2, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 6, 2, 0, 6, 1, 0, 7, 1, 0, 7, 0, 0, 7, 65535, 0, 7, 65534, 0, 8, 65534, 0, 8, 65533, 0, 7, 65533, 0, 7, 65532, 0, 6, 65532, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Terrain4" type="MeshInstance3D" parent="ProjectedWorld" unique_id=690702402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain4" unique_id=959984396]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain4/StaticBody3D" unique_id=1075025882]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="Terrain5" type="MeshInstance3D" parent="ProjectedWorld" unique_id=58002221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -34)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain5" unique_id=1891414238]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain5/StaticBody3D" unique_id=1366495281]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="Terrain6" type="MeshInstance3D" parent="ProjectedWorld" unique_id=557935735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -34)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_gj6o2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain6" unique_id=1834444202]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain6/StaticBody3D" unique_id=1951271052]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="GridMap" type="GridMap" parent="ProjectedWorld/Terrain6" unique_id=201093661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.5)
+mesh_library = ExtResource("3_pqaej")
+data = {
+"cells": PackedInt32Array(3, 65528, 0, 3, 65529, 0, 3, 65530, 0, 3, 65531, 0, 3, 65532, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 3, 5, 0, 3, 6, 0, 3, 7, 0, 3, 8, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Rubble" type="MeshInstance3D" parent="ProjectedWorld/Terrain6" unique_id=491581701]
+transform = Transform3D(0.34216535, 0.0032125753, -0.21653925, -0.003625009, 0.41002145, -9.7064065e-11, 0.20304987, 0.001906426, 0.3648967, 5.6748047, 0, -5.821533)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_v7km3")
+
+[node name="Rubble2" type="MeshInstance3D" parent="ProjectedWorld/Terrain6" unique_id=889004078]
+transform = Transform3D(0.46732825, 0.0039556352, 0.17707759, -0.0046726926, 0.47647673, 1.7213371e-10, -0.2112818, -0.0017883657, 0.391673, 7.444729, 0, -5.9897766)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_v7km3")
+
+[node name="Rubble3" type="MeshInstance3D" parent="ProjectedWorld/Terrain6" unique_id=617856746]
+transform = Transform3D(0.24532042, 0.0021513703, 0.13133049, -0.0024528946, 0.25914368, 1.2766384e-10, -0.11091079, -0.00097264705, 0.29048625, 8.275057, 0, -6.404129)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_v7km3")
+
+[node name="Rubble4" type="MeshInstance3D" parent="ProjectedWorld/Terrain6" unique_id=1688533234]
+transform = Transform3D(0.27955967, 0.002547032, 0.22750947, -0.0032838322, 0.36043012, 1.3574528e-10, -0.2275, -0.0020727231, 0.27957126, 7.444729, 0, -1.1774864)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_v7km3")
+
+[node name="Rubble5" type="MeshInstance3D" parent="ProjectedWorld/Terrain6" unique_id=1571633625]
+transform = Transform3D(0.2540919, 0.002314998, 0.114881165, -0.0025405982, 0.2788535, 1.1167377e-10, -0.11487641, -0.0010466242, 0.25410244, 6.0680714, 0, -0.8134651)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_v7km3")
+
+[node name="Rubble6" type="MeshInstance3D" parent="ProjectedWorld/Terrain6" unique_id=1986696629]
+transform = Transform3D(0.26858768, 0.0024470675, 0.12143507, -0.0026855378, 0.29476193, 1.1804469e-10, -0.12143005, -0.0011063335, 0.26859882, 8.487379, 0, -1.026947)
+mesh = ExtResource("9_26ilf")
+surface_material_override/0 = SubResource("ShaderMaterial_v7km3")
+
+[node name="Terrain7" type="MeshInstance3D" parent="ProjectedWorld" unique_id=1988243768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_26ilf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain7" unique_id=1125581369]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain7/StaticBody3D" unique_id=352221082]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="Terrain8" type="MeshInstance3D" parent="ProjectedWorld" unique_id=1272915725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 34)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_26ilf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain8" unique_id=1566942740]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain8/StaticBody3D" unique_id=1713500508]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="GridMap" type="GridMap" parent="ProjectedWorld/Terrain8" unique_id=242314928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.5)
+mesh_library = ExtResource("3_pqaej")
+data = {
+"cells": PackedInt32Array(1, 0, 1, 2, 1, 1441793, 2, 65535, 1441793, 3, 0, 655361, 3, 1, 655360, 3, 65535, 655360, 1, 65535, 655360, 1, 1, 655360, 5, 0, 655361, 65535, 0, 655361, 2, 65533, 1048577, 2, 3, 1048577, 3, 3, 1048576, 4, 3, 1048576, 5, 1, 1048576, 5, 2, 1048576, 5, 65534, 1048576, 5, 65535, 1048576, 4, 65533, 1048576, 3, 65533, 1048576, 65535, 65535, 1048576, 65535, 65534, 1048576, 1, 65533, 1048576, 0, 65533, 1048576, 65535, 1, 1048576, 65535, 2, 1048576, 1, 3, 1048576, 0, 3, 1048576, 65538, 0, 1048576, 131074, 0, 1048576, 196610, 0, 1048576, 262146, 0, 1048576, 327682, 0, 1048576, 393218, 0, 1048576, 458754, 0, 1048576, 524290, 0, 1048576, 589826, 0, 1048576, 655362, 0, 1048576, 65536, 2, 1048576, 65536, 3, 1048576, 65537, 3, 1048576, 65538, 3, 1048576, 65539, 3, 1048576, 65540, 3, 1048576, 65541, 2, 1048576, 65541, 1, 1048576, 65541, 0, 1048576, 65541, 65535, 1048576, 65541, 65534, 1048576, 65536, 65533, 1048576, 65537, 65533, 1048576, 65538, 65533, 1048576, 65539, 65533, 1048576, 65540, 65533, 1048576, 131071, 65534, 1048576, 131071, 2, 1048576, 131071, 1, 1048576, 131071, 0, 1048576, 131071, 65535, 1048576, 65536, 65534, 1048576, 65540, 2, 1048576, 65540, 65534, 1048576, 655364, 0, 1048576, 655364, 65535, 1048576, 655364, 1, 1048576, 655363, 65534, 1048576, 655362, 65534, 1048576, 655361, 65535, 1048576, 655361, 65534, 1048576, 655360, 65535, 1048576, 655360, 0, 1048576, 655360, 1, 1048576, 655361, 2, 1048576, 655362, 2, 1048576, 655363, 2, 1048576, 655363, 1, 1048576, 655363, 0, 1048576, 655362, 1, 1048576, 655363, 65535, 1048576, 655362, 65535, 1048576, 655361, 0, 1048576, 655361, 1, 1048576)
+}
+metadata/_editor_floor_ = Vector3(0, 10, 0)
+
+[node name="Terrain9" type="MeshInstance3D" parent="ProjectedWorld" unique_id=373194582]
+transform = Transform3D(0.9999995, 0.00065128296, 0.00066843006, -0.0006512004, 0.99999976, -0.00013171851, -0.0006685105, 0.00013130954, 0.99999976, -34, 0, 34)
+mesh = SubResource("PlaneMesh_8yg1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_26ilf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProjectedWorld/Terrain9" unique_id=496969530]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectedWorld/Terrain9/StaticBody3D" unique_id=1866699853]
+shape = SubResource("ConvexPolygonShape3D_swh0p")
+
+[node name="GridMap" type="GridMap" parent="ProjectedWorld/Terrain9" unique_id=1887601462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.5)
+mesh_library = ExtResource("3_pqaej")
+data = {
+"cells": PackedInt32Array(3, 65528, 0, 3, 65529, 0, 3, 65530, 0, 3, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 3, 5, 0, 3, 6, 0, 3, 7, 0, 3, 8, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=112715725]
+unique_name_in_owner = true
+environment = SubResource("Environment_v7km3")
+compositor = SubResource("Compositor_26ilf")
+
+[node name="Player" type="Node3D" parent="." unique_id=1851818039]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21, 1.08, 8)
+script = ExtResource("6_8yg1d")
+height = 0.2
+max_step_height = 50.0
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=332192797]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+fov = 90.0
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=449505407]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -33, 28, 13)
+light_color = Color(0.8682513, 0.7456234, 0.64336824, 1)
+light_energy = 4.164
+light_angular_distance = 31.53
+shadow_enabled = true
+shadow_blur = 0.057
+script = ExtResource("13_26ilf")
+
+[node name="Sphere" type="MeshInstance3D" parent="Sun" unique_id=1727959587]
+transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -1, 0, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_eh4v3")
+surface_material_override/0 = SubResource("StandardMaterial3D_26ilf")

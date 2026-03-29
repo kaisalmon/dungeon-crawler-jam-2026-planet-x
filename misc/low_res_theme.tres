@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://csli33hlsyqxo"]
+
+[ext_resource type="FontFile" uid="uid://nec6dey88nlq" path="res://misc/Tiny5-Regular.ttf" id="1_ee4ji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dwk54"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vah2p"]
+
+[resource]
+default_font = ExtResource("1_ee4ji")
+default_font_size = 8
+Button/colors/font_color = Color(0.8176256, 0.84008014, 0.7951325, 1)
+Button/colors/font_focus_color = Color(0.7841147, 0.7174791, 0.45179498, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/constants/outline_size = 5
+Button/styles/disabled = SubResource("StyleBoxEmpty_dwk54")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_dwk54")
+Button/styles/focus = SubResource("StyleBoxEmpty_dwk54")
+Button/styles/hover = SubResource("StyleBoxEmpty_dwk54")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_dwk54")
+Button/styles/normal = SubResource("StyleBoxEmpty_dwk54")
+Button/styles/pressed = SubResource("StyleBoxEmpty_dwk54")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_vah2p")
