@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dlh5j88jxu8g1"
+path="res://.godot/imported/bounce late.ogg-86d96421c4942080dc98154a036c677e.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/enemy/bounce late.ogg"
+dest_files=["res://.godot/imported/bounce late.ogg-86d96421c4942080dc98154a036c677e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

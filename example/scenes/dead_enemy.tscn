@@ -12,6 +12,8 @@
 [ext_resource type="ArrayMesh" uid="uid://np4qlyftt8gr" path="res://meshes/enemies/enemy_shoulder.obj" id="8_2p0gt"]
 [ext_resource type="ArrayMesh" uid="uid://dvpuff8fxty0j" path="res://meshes/enemies/enemy_gun.obj" id="9_r3bsu"]
 [ext_resource type="AudioStream" uid="uid://bogbhsrukr3dm" path="res://audio/sfx/enemy/enemy_death.ogg" id="10_784wb"]
+[ext_resource type="AudioStream" uid="uid://kslvnggkul67" path="res://audio/sfx/enemy/enemy_death_bounce_early.ogg" id="13_cnxol"]
+[ext_resource type="AudioStream" uid="uid://dlh5j88jxu8g1" path="res://audio/sfx/enemy/bounce late.ogg" id="14_7kkqv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_njio4"]
 render_priority = 0
@@ -90,6 +92,16 @@ points = PackedVector3Array(0.77385694, 1.062451, -0.30774248, 0.77385694, 1.218
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cnxol"]
 points = PackedVector3Array(0.5625, 0.3749763, 0.5624784, 0.499951, 0.6202425, 0.5863565, 0.499951, 0.39889443, 0.8077425, 0.5625, 0.24996345, 0.5624784, 0.5625, 0.3749763, -0.5626366, -0.50006115, 0.6202425, 0.5863565, 0.499951, 0.6202425, -0.58651465, -0.50006115, 0.39889443, 0.8077425, 0.499951, 0.22604533, 0.8077425, 0.499951, 0.004757529, 0.5863565, 0.5625, 0.24996345, -0.5626366, 0.499951, 0.39889443, -0.8077425, -0.5625, 0.3749763, 0.5624784, -0.50006115, 0.6202425, -0.58651465, -0.50006115, 0.22604533, 0.8077425, -0.50006115, 0.004757529, 0.5863565, 0.499951, 0.004757529, -0.58651465, 0.499951, 0.22604533, -0.8077425, -0.50006115, 0.39889443, -0.8077425, -0.5625, 0.24996345, 0.5624784, -0.5625, 0.3749763, -0.5626366, -0.50006115, 0.004757529, -0.58651465, -0.50006115, 0.22604533, -0.8077425, -0.5625, 0.24996345, -0.5626366)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7kkqv"]
+random_pitch = 1.2438679
+streams_count = 1
+stream_0/stream = ExtResource("13_cnxol")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hesrl"]
+random_pitch = 1.1632544
+streams_count = 1
+stream_0/stream = ExtResource("14_7kkqv")
 
 [node name="DeadEnemy" type="Node3D" unique_id=172750197]
 script = ExtResource("1_784wb")
@@ -185,5 +197,16 @@ unique_name_in_owner = true
 stream = ExtResource("10_784wb")
 volume_db = -6.074
 max_distance = 15.0
+
+[node name="BounceEarlySFX" type="AudioStreamPlayer3D" parent="." unique_id=581720089]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_7kkqv")
+max_distance = 14.0
+max_polyphony = 6
+
+[node name="BounceLateSFX" type="AudioStreamPlayer3D" parent="." unique_id=1287209647]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_hesrl")
+max_distance = 9.0
 
 [connection signal="body_entered" from="HeadRigidBody" to="." method="_on_head_rigid_body_body_entered"]
