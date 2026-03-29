@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca6xwm48soqdt"
-path.s3tc="res://.godot/imported/enemy.png-66b4ecf30af3576607322974cb1c64e4.s3tc.ctex"
-path.etc2="res://.godot/imported/enemy.png-66b4ecf30af3576607322974cb1c64e4.etc2.ctex"
+path="res://.godot/imported/enemy.png-66b4ecf30af3576607322974cb1c64e4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://meshes/enemies/enemy.png"
-dest_files=["res://.godot/imported/enemy.png-66b4ecf30af3576607322974cb1c64e4.s3tc.ctex", "res://.godot/imported/enemy.png-66b4ecf30af3576607322974cb1c64e4.etc2.ctex"]
+dest_files=["res://.godot/imported/enemy.png-66b4ecf30af3576607322974cb1c64e4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

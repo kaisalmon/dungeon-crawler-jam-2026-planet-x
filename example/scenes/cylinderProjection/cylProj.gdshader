@@ -13,6 +13,8 @@ uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest_mipmap, r
 
 uniform float specular : hint_range(0.0, 1.0, 0.01);
 uniform float metallic : hint_range(0.0, 1.0, 0.01);
+uniform float alpha_scissor_threshold : hint_range(0.0, 1.0, 0.01) = 0.5;
+uniform bool no_shading = false;
 
 
 uniform vec3 uv1_scale;
@@ -83,6 +85,8 @@ void fragment() {
 
     vec4 albedo_tex = texture(texture_albedo, base_uv);
     ALBEDO = albedo.rgb * albedo_tex.rgb;
+    ALPHA = albedo.a * albedo_tex.a;
+    ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
 
     float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
     METALLIC = metallic_tex * metallic;
@@ -91,4 +95,9 @@ void fragment() {
     vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
     float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
     ROUGHNESS = roughness_tex * roughness;
+
+    if (no_shading) {
+        EMISSION = ALBEDO;
+        ALBEDO = vec3(0.0);
+    }
 }

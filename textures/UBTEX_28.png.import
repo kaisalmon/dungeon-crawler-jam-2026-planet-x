@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn2qpfj6rvf54"
-path.s3tc="res://.godot/imported/Canopy_inside_corner.png-ce76db20c051f65817021b3ee41708da.s3tc.ctex"
-path.etc2="res://.godot/imported/Canopy_inside_corner.png-ce76db20c051f65817021b3ee41708da.etc2.ctex"
+uid="uid://cygxhrmlrkjd1"
+path.s3tc="res://.godot/imported/UBTEX_28.png-9caa139f260591b09341858681579005.s3tc.ctex"
+path.etc2="res://.godot/imported/UBTEX_28.png-9caa139f260591b09341858681579005.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/Canopy_inside_corner.png"
-dest_files=["res://.godot/imported/Canopy_inside_corner.png-ce76db20c051f65817021b3ee41708da.s3tc.ctex", "res://.godot/imported/Canopy_inside_corner.png-ce76db20c051f65817021b3ee41708da.etc2.ctex"]
+source_file="res://textures/UBTEX_28.png"
+dest_files=["res://.godot/imported/UBTEX_28.png-9caa139f260591b09341858681579005.s3tc.ctex", "res://.godot/imported/UBTEX_28.png-9caa139f260591b09341858681579005.etc2.ctex"]
 
 [params]
 

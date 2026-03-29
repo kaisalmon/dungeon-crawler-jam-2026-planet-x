@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://chvold3slnqsx"]
+
+[ext_resource type="Script" uid="uid://dqycrtgsm83gq" path="res://scripts/dungeon_crawler/Player.gd" id="1_5odhx"]
+[ext_resource type="ArrayMesh" uid="uid://bjdbunan62jx4" path="res://meshes/raygun.obj" id="2_1kub6"]
+[ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="3_kuobi"]
+[ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="4_0lm1f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4s3o"]
+render_priority = 4
+albedo_texture = ExtResource("3_kuobi")
+metallic_specular = 1.0
+roughness = 0.0
+texture_filter = 0
+use_z_clip_scale = true
+z_clip_scale = 0.01
+use_fov_override = true
+fov_override = 80.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4psk5"]
+load_path = "res://.godot/imported/blurred_circle.png-c68db9095193df3ee5463d298e4a94ca.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4s3o"]
+render_priority = 0
+shader = ExtResource("4_0lm1f")
+shader_parameter/albedo = Color(0.8627451, 0.21568628, 0.07450981, 1)
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_4psk5")
+shader_parameter/albedo_texture_size = Vector2i(256, 256)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_m5cn7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.057377055, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7u6xr"]
+curve = SubResource("Curve_m5cn7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n35xl"]
+emission_shape_offset = Vector3(0, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(0.02, 0.02, 1)
+spread = 180.0
+initial_velocity_max = 0.29999998
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_7u6xr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cgus4"]
+
+[node name="Player" type="Node3D" unique_id=1136786299]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_5odhx")
+height = 0.2
+laser = NodePath("Camera3D/Raygun/LaserParticle")
+max_step_height = 50.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=910667121]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
+fov = 90.0
+
+[node name="Raygun" type="MeshInstance3D" parent="Camera3D" unique_id=2101920254]
+transform = Transform3D(0.10000002, 0, 0, 0, 0.09999999, 0, 0, 0, 0.099999964, 0.13005018, -0.22791135, -0.19763565)
+mesh = ExtResource("2_1kub6")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_b4s3o")
+
+[node name="LaserParticle" type="GPUParticles3D" parent="Camera3D/Raygun" unique_id=1982828545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017479494, 1.5556834, 1.3380024)
+material_override = SubResource("ShaderMaterial_b4s3o")
+emitting = false
+amount = 100
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.9
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_n35xl")
+draw_pass_1 = SubResource("QuadMesh_cgus4")

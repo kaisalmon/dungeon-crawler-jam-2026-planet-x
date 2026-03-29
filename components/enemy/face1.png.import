@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0mmngo585b1y"
-path.s3tc="res://.godot/imported/ExplosionSprites.png-1584ef1bbc799ca56218eb6ddc5ae0d4.s3tc.ctex"
-path.etc2="res://.godot/imported/ExplosionSprites.png-1584ef1bbc799ca56218eb6ddc5ae0d4.etc2.ctex"
+uid="uid://dpec7l0waro0v"
+path="res://.godot/imported/face1.png-c5c020c27a6da3b1eb0a831cb129e6ad.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ExplosionSprites.png"
-dest_files=["res://.godot/imported/ExplosionSprites.png-1584ef1bbc799ca56218eb6ddc5ae0d4.s3tc.ctex", "res://.godot/imported/ExplosionSprites.png-1584ef1bbc799ca56218eb6ddc5ae0d4.etc2.ctex"]
+source_file="res://components/enemy/face1.png"
+dest_files=["res://.godot/imported/face1.png-c5c020c27a6da3b1eb0a831cb129e6ad.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

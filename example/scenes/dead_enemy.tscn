@@ -6,7 +6,9 @@
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="3_7kkqv"]
 [ext_resource type="Texture2D" uid="uid://ca6xwm48soqdt" path="res://meshes/enemies/enemy.png" id="4_hesrl"]
 [ext_resource type="ArrayMesh" uid="uid://ci5nfu7f5r1c" path="res://meshes/enemies/enemy_torso.obj" id="5_dnfd0"]
+[ext_resource type="Texture2D" uid="uid://dpdp25msv8k85" path="res://components/enemy/smashedFace.png" id="6_784wb"]
 [ext_resource type="ArrayMesh" uid="uid://xm1pxudfrtyv" path="res://meshes/enemies/enemy_head.obj" id="7_lhy2u"]
+[ext_resource type="Texture2D" uid="uid://btv8ydr6iscnh" path="res://textures/UBTEX_50.png" id="7_xofla"]
 [ext_resource type="ArrayMesh" uid="uid://np4qlyftt8gr" path="res://meshes/enemies/enemy_shoulder.obj" id="8_2p0gt"]
 [ext_resource type="ArrayMesh" uid="uid://dvpuff8fxty0j" path="res://meshes/enemies/enemy_gun.obj" id="9_r3bsu"]
 
@@ -21,6 +23,53 @@ shader_parameter/roughness = 0.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.37999999150624
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xofla"]
+flip_faces = true
+size = Vector2(0.965, 0.9)
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skknk"]
+render_priority = 0
+shader = ExtResource("3_7kkqv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_784wb")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_784wb"]
+flip_faces = true
+size = Vector3(0.885, 0.835, 0.38)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnxol"]
+render_priority = 0
+shader = ExtResource("3_7kkqv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("7_xofla")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
@@ -53,10 +102,22 @@ mesh = ExtResource("7_lhy2u")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_njio4")
 
+[node name="Face" type="MeshInstance3D" parent="HeadRigidBody/EnemyHead" unique_id=1504419933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3956697, -0.3040465)
+mesh = SubResource("PlaneMesh_xofla")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_skknk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HeadRigidBody/EnemyHead/Face" unique_id=604830041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15129456)
+mesh = SubResource("BoxMesh_784wb")
+surface_material_override/0 = SubResource("ShaderMaterial_cnxol")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadRigidBody" unique_id=613160447]
 shape = SubResource("ConvexPolygonShape3D_kl3o5")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2131986977]
+collision_mask = 0
 script = ExtResource("1_kl3o5")
 
 [node name="EnemyTorso" type="MeshInstance3D" parent="RigidBody3D" unique_id=250211190]

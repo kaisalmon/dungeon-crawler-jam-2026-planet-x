@@ -13,6 +13,7 @@
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="10_4dqw5"]
 [ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="11_7u6xr"]
 [ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="12_q4113"]
+[ext_resource type="Texture2D" uid="uid://dpec7l0waro0v" path="res://components/enemy/face1.png" id="13_003yv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_njio4"]
 render_priority = 0
@@ -25,6 +26,8 @@ shader_parameter/roughness = 0.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
@@ -68,6 +71,29 @@ scale_max = 0.29999998
 scale_curve = SubResource("CurveTexture_7u6xr")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4dqw5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_he0sj"]
+flip_faces = true
+size = Vector2(0.965, 0.9)
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hmy3"]
+render_priority = 0
+shader = ExtResource("2_8267b")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("13_003yv")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = true
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4113"]
 size = Vector3(1.237793, 1.6901855, 1)
@@ -121,6 +147,11 @@ one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_hx76c")
 draw_pass_1 = SubResource("QuadMesh_4dqw5")
+
+[node name="Face" type="MeshInstance3D" parent="EnemyTorso/EnemyHead" unique_id=1126464413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3956697, -0.3040465)
+mesh = SubResource("PlaneMesh_he0sj")
+surface_material_override/0 = SubResource("ShaderMaterial_5hmy3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1647604907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)

@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0n2arrodq3yt"
-path.s3tc="res://.godot/imported/Canopy.png-aa410b515f8f8f1cb6102c71390864d6.s3tc.ctex"
-path.etc2="res://.godot/imported/Canopy.png-aa410b515f8f8f1cb6102c71390864d6.etc2.ctex"
+uid="uid://btv8ydr6iscnh"
+path.s3tc="res://.godot/imported/UBTEX_50.png-b2b305474b9fb2f2d3473c1725a75874.s3tc.ctex"
+path.etc2="res://.godot/imported/UBTEX_50.png-b2b305474b9fb2f2d3473c1725a75874.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/Canopy.png"
-dest_files=["res://.godot/imported/Canopy.png-aa410b515f8f8f1cb6102c71390864d6.s3tc.ctex", "res://.godot/imported/Canopy.png-aa410b515f8f8f1cb6102c71390864d6.etc2.ctex"]
+source_file="res://textures/UBTEX_50.png"
+dest_files=["res://.godot/imported/UBTEX_50.png-b2b305474b9fb2f2d3473c1725a75874.s3tc.ctex", "res://.godot/imported/UBTEX_50.png-b2b305474b9fb2f2d3473c1725a75874.etc2.ctex"]
 
 [params]
 
