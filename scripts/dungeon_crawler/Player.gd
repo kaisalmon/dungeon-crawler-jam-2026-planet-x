@@ -18,6 +18,9 @@ var move_delay: float = 0.0
 
 var boomer_mode: bool = false
 
+@onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
+
+
 func _ready():
 	super._ready()
 	add_to_group("player")
@@ -125,6 +128,7 @@ func activate():
 	in_cutscene = false
 
 func shoot():
+	player_shoot_sfx.play()
 	var particles_nodes = get_node(laser)
 	if particles_nodes:
 		var particles = particles_nodes as GPUParticles3D
