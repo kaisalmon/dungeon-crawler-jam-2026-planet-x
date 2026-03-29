@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="3_kuobi"]
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="4_0lm1f"]
 [ext_resource type="Texture2D" uid="uid://ijgt8g24te5m" path="res://ui/mockup.png" id="5_1kub6"]
+[ext_resource type="Script" uid="uid://dpkqwsbo3bcn5" path="res://components/player_ui.gd" id="6_couud"]
+[ext_resource type="PackedScene" uid="uid://cns1id5yggv2l" path="res://ui/heart.tscn" id="7_0lm1f"]
+[ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="8_couud"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4s3o"]
 render_priority = 4
@@ -76,7 +79,9 @@ streams_count = 1
 stream_0/stream = SubResource("AudioStreamOggVorbis_5odhx")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1kub6"]
-blend_mode = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pir3r"]
+size = Vector3(1.237793, 1.6901855, 1)
 
 [node name="Player" type="Node3D" unique_id=1136786299]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -91,6 +96,7 @@ fov = 90.0
 
 [node name="Raygun" type="MeshInstance3D" parent="Camera3D" unique_id=2101920254]
 transform = Transform3D(0.10000002, 0, 0, 0, 0.09999999, 0, 0, 0, 0.099999964, 0.13005018, -0.22791135, -0.19763565)
+cast_shadow = 0
 mesh = ExtResource("2_1kub6")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_b4s3o")
@@ -113,9 +119,18 @@ stream = SubResource("AudioStreamRandomizer_1kub6")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1726065683]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=776230579]
-
-[node name="Mockup" type="Sprite2D" parent="CanvasLayer" unique_id=1467251640]
+[node name="PlayerUI" type="Sprite2D" parent="." unique_id=1467251640]
 material = SubResource("CanvasItemMaterial_1kub6")
-position = Vector2(64, 64)
+position = Vector2(64.5, 64)
 texture = ExtResource("5_1kub6")
+script = ExtResource("6_couud")
+heart_scene = ExtResource("7_0lm1f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1606381836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)
+script = ExtResource("8_couud")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=152312094]
+shape = SubResource("BoxShape3D_pir3r")
+
+[connection signal="shot" from="StaticBody3D" to="." method="_on_static_body_3d_shot"]

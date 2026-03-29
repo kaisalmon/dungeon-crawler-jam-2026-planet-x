@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cns1id5yggv2l"]
+
+[ext_resource type="Texture2D" uid="uid://bejrnruh5oan2" path="res://ui/healthfull.png" id="1_j2oec"]
+[ext_resource type="Script" uid="uid://2fgdjdtlvfb0" path="res://ui/heart.gd" id="2_e44o4"]
+
+[node name="HealthBar" type="Sprite2D" unique_id=401141390]
+texture_filter = 5
+texture = ExtResource("1_j2oec")
+script = ExtResource("2_e44o4")

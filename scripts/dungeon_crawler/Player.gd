@@ -18,6 +18,9 @@ var move_delay: float = 0.0
 
 var boomer_mode: bool = false
 
+var health = 4
+var max_health = 4
+
 @onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
 
 
@@ -97,11 +100,13 @@ func check_input_queue():
 	if last_input != "" and last_input_time > 0 and (now - last_input_time) < tolerance:
 		execute_input(last_input)
 
-func apply_bobbing(_delta):
+func apply_bobbing(delta):
 	var camera = $Camera3D
 	camera.global_position = global_position
 	camera.global_position -= (height + abs(velocity.length()) * bob_size) * visual_gravity
 	camera.position += self.camera_offset # Using local positioning
+	if health <= 0:
+		self.camera_offset += Vector3(0, -0.25, 0) * delta
 
 func apply_fake_world_rotation(_delta):
 	var camera = $Camera3D
@@ -159,8 +164,24 @@ func shoot():
 		process_material.emission_shape_offset = Vector3(0, 0, -length)
 		particles.amount = int(length * 100)
 
-
 		var screen_pos = Vector2(90, 85)
 		var proj_pos = $Camera3D.project_position(screen_pos, 0.3)
 		particles.global_position = proj_pos
 		particles.look_at(hit_pos, Vector3.UP)
+
+func damage(amount: int = 1):
+	if iframes > 0:
+		return
+	iframes = .8
+	health -= amount
+	if health <= 0:
+		die()
+
+func die():
+	in_cutscene = true
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()
+
+
+func _on_static_body_3d_shot() -> void:
+	damage()

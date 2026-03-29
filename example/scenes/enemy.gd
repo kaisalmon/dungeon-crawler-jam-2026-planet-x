@@ -73,11 +73,10 @@ func process_wander(_delta: float) -> void:
 		if randf() < 0.5:
 			rotation_amount = -rotation_amount    
 		self.target_rotation = self.target_rotation.rotated(Vector3.UP, rotation_amount)
-		wait_time = 0.5
+		wait_time = 0.25
 	else:
 		self.try_move_dir(forward)
-		wait_time = 1.0
-
+		wait_time = 0.3
 
 func process_attack(_delta: float) -> void:
 	var player = Globals.getPlayer()
@@ -102,7 +101,7 @@ func rotate_towards(target_position: Vector3):
 	if not go_left:
 		rotation_amount = -rotation_amount
 	self.target_rotation = self.target_rotation.rotated(Vector3.UP, rotation_amount)
-	wait_time = 0.5
+	wait_time = 0.1
 
 func is_facing(target_position: Vector3) -> bool:
 	var direction_to_target = (target_position - self.global_transform.origin).normalized()
@@ -111,7 +110,7 @@ func is_facing(target_position: Vector3) -> bool:
 	return abs(angle_to_target) < PI / 8  # Consider facing if within 22.5 degrees
 
 func attack(player: Player):
-	shoot_at(player.global_transform.origin)
+	shoot_at(player.global_transform.origin, player.damage)
 
 func miss(target_position: Vector3):
 	var delta = target_position - self.global_transform.origin
@@ -122,7 +121,7 @@ func miss(target_position: Vector3):
 	shoot_at(target_position + miss_direction * GRID_SIZE * .5)
 		
 
-func shoot_at(target_position: Vector3):
+func shoot_at(target_position: Vector3, on_hit = null):
 	wait_time = .8
 	decaying_shot_count += 1
 
@@ -136,13 +135,29 @@ func shoot_at(target_position: Vector3):
 	await get_tree().create_timer(.3).timeout
 	laser_particles_node.emitting = true
 	gun_node.knockback(-looking_at_player_from_gun_node, 50)
-	var length = 10 # TODO make this a raycast
+
+	
+	var raygun_ray = PhysicsRayQueryParameters3D.new()
+	raygun_ray.from = gun_node.global_transform.origin
+	raygun_ray.to = target_position
+	raygun_ray.exclude = [self, $StaticBody3D]
+	
+
+	var hit_pos = target_position
+	var ragun_col = get_world_3d().direct_space_state.intersect_ray(raygun_ray)
+	if ragun_col and ragun_col.collider:
+		hit_pos = ragun_col.position
+		var shootable = ragun_col.collider as Shootable
+		print("Hit: ", shootable)
+		if shootable and shootable.has_method("on_shot"):
+			shootable.on_shot()
+			print("Called on_shot on ", shootable)
+
+	var length = global_transform.origin.distance_to(hit_pos)
 	var process_material: ParticleProcessMaterial = laser_particles_node.process_material
 	process_material.emission_shape_scale = Vector3(0.05, 0.05, length)
 	process_material.emission_shape_offset = Vector3(0, 0, -length)
-	laser_particles_node.amount = int(length * 300)
-
-
+	laser_particles_node.amount = int(length * 100)
 	await get_tree().create_timer(.1).timeout
 	gun_node.override_rotation = false
 
@@ -159,7 +174,20 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 	if differentX and differentZ:
 		return false
 	
-	return true
+	var raygun_ray = PhysicsRayQueryParameters3D.new()
+	var gun_node: EnemySpring = get_node(gun)
+	raygun_ray.from = gun_node.global_transform.origin
+	raygun_ray.to = target_position
+	raygun_ray.exclude = [self, $StaticBody3D]
+	
+
+	var ragun_col = get_world_3d().direct_space_state.intersect_ray(raygun_ray)
+	if ragun_col and ragun_col.collider:
+		if ragun_col.position.distance_to(target_position) < GRID_SIZE * .5:
+			return true
+			
+	return false
+		
 
 
 
