@@ -11,6 +11,8 @@ var state = "wander"
 func _ready():
 	super._ready()
 	starting_position = self.global_transform.origin
+	var laser_particles_node: GPUParticles3D = get_node(laserParticles)
+	laser_particles_node.process_material = laser_particles_node.process_material.duplicate()
 
 func _process(delta: float) -> void:
 	if wait_time > 0:
@@ -52,7 +54,8 @@ func process_attack(_delta: float) -> void:
 		return
 
 	if is_facing(player.target_position):
-		attack(player)
+		# attack(player)
+		miss(player.global_transform.origin)
 	else:
 		rotate_towards(player.target_position)
 
@@ -78,8 +81,9 @@ func attack(player: Player):
 func miss(target_position: Vector3):
 	var delta = target_position - self.global_transform.origin
 	var miss_direction = delta.cross(
-		Vector3(randf_range(-1, 1), randf_range(-1, 1), 0).normalized()
+		Vector3.UP
 	).normalized()
+	miss_direction = miss_direction.rotated(delta.normalized(), PI*2 * randf_range(-1, 1))  # Add some random spread
 	shoot_at(target_position + miss_direction * GRID_SIZE * .5)
 		
 
@@ -96,6 +100,13 @@ func shoot_at(target_position: Vector3):
 	await get_tree().create_timer(.3).timeout
 	laser_particles_node.emitting = true
 	gun_node.knockback(-looking_at_player_from_gun_node, 50)
+	var length = 10 # TODO make this a raycast
+	var process_material: ParticleProcessMaterial = laser_particles_node.process_material
+	process_material.emission_shape_scale = Vector3(0.05, 0.05, length)
+	process_material.emission_shape_offset = Vector3(0, 0, -length)
+	laser_particles_node.amount = int(length * 300)
+
+
 	await get_tree().create_timer(.1).timeout
 	gun_node.override_rotation = false
 

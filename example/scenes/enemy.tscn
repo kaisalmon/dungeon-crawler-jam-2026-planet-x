@@ -9,7 +9,8 @@
 [ext_resource type="ArrayMesh" uid="uid://ci5nfu7f5r1c" path="res://meshes/enemies/enemy_torso.obj" id="7_fvyrr"]
 [ext_resource type="ArrayMesh" uid="uid://np4qlyftt8gr" path="res://meshes/enemies/enemy_shoulder.obj" id="8_hx76c"]
 [ext_resource type="ArrayMesh" uid="uid://dvpuff8fxty0j" path="res://meshes/enemies/enemy_gun.obj" id="9_4dqw5"]
-[ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="10_4dqw5"]
+[ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="10_4dqw5"]
+[ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="11_7u6xr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_njio4"]
 render_priority = 0
@@ -27,17 +28,24 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx76c"]
-transparency = 1
-blend_mode = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.8627451, 0.21568628, 0.07450981, 1)
-albedo_texture = ExtResource("10_4dqw5")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7u6xr"]
+render_priority = 0
+shader = ExtResource("10_4dqw5")
+shader_parameter/albedo = Color(0.8627451, 0.21568628, 0.07450981, 1)
+shader_parameter/texture_albedo = ExtResource("11_7u6xr")
+shader_parameter/albedo_texture_size = Vector2i(256, 256)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Curve" id="Curve_4dqw5"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.057377055, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -99,7 +107,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_njio4")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="EnemyTorso/EnemyHead/EnemyShoulder/Laser" unique_id=661985874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5367217)
-material_override = SubResource("StandardMaterial3D_hx76c")
+material_override = SubResource("ShaderMaterial_7u6xr")
 emitting = false
 amount = 300
 lifetime = 0.3
