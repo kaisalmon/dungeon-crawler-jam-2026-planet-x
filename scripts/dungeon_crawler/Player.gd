@@ -33,7 +33,12 @@ var raygun_overheated = false
 @onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
 @onready var player_move_sfx: AudioStreamPlayer = %PlayerMoveSFX
 @onready var player_hit_sfx: AudioStreamPlayer = %PlayerHitSFX
-@onready var player_move_obstacle: AudioStreamPlayer = %PlayerMoveObstacle
+@onready var gun_online_sfx: AudioStreamPlayer = %GunOnlineSFX
+@onready var shields_recharged_sfx: AudioStreamPlayer = %ShieldsRechargedSFX
+@onready var shield_hit_sfx: AudioStreamPlayer = %ShieldHitSFX
+@onready var gun_click_sfx: AudioStreamPlayer = %GunClickSFX
+@onready var gun_overheat_sfx: AudioStreamPlayer = %GunOverheatSFX
+
 
 
 func _ready():
@@ -48,14 +53,14 @@ func _physics_process(delta):
 	shoot_delay -= delta
 	raygun_heat = max(0, raygun_heat - delta * 20)
 	if raygun_overheated and raygun_heat <= 50:
-		# SFX(Gun back online)
+		gun_online_sfx.play()
 		raygun_overheated = false
 
 	if shield_cooldown > 0:
 		shield_cooldown -= delta
 		if shield_cooldown <= 0 and shields < max_shields:
 			shields += 1
-			# SFX(Shield recharged)
+			shields_recharged_sfx.play()
 			shield_cooldown = 0.5
 
 	if frozen:
@@ -166,7 +171,7 @@ func activate():
 
 func shoot():
 	if raygun_overheated:
-		# SFX(Click)
+		gun_click_sfx.play()
 		return
 	
 
@@ -210,6 +215,7 @@ func shoot():
 	raygun_heat += 40
 	if raygun_heat >= 100:
 		raygun_overheated = true
+		gun_overheat_sfx.play()
 		# SFX(Gun overheated) Instead of the normal 
 		raygun_heat = 100
 
@@ -221,8 +227,8 @@ func damage(amount: int = 1):
 	shield_cooldown = 5.0
 	iframes = .8
 	if shields > 0:
+		shield_hit_sfx.play()
 		shields -= 1
-		# SFX(Shield hit)
 		return
 	health -= amount
 	if health <= 0:

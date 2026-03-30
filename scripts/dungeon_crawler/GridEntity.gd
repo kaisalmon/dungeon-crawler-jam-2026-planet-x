@@ -43,6 +43,7 @@ var fall_height = 0.0
 var bump_at = 0
 
 @onready var player_turn_sfx: AudioStreamPlayer = %PlayerTurnSFX
+@onready var player_move_obstacle: AudioStreamPlayer = %PlayerMoveObstacle
 
 func _ready():
 	target_position = snap_to_grid(global_transform.origin)
@@ -229,6 +230,8 @@ func on_move_fail(dir: Vector3):
 		return
 	bump_at = t
 	velocity += dir * 6
+	if player_move_obstacle:
+		player_move_obstacle.play()
 	
 func start_turn(direction: int):
 	player_turn_sfx.play()
