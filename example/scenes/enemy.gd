@@ -100,12 +100,10 @@ func process_wander(_delta: float) -> void:
 		var move_validity: MoveResult = self.is_valid_move(check_position, dir)
 		if has_line_of_sight(player.target_position, check_position) and move_validity.is_allowed:
 			if not is_facing(player.target_position, check_position):
-				print("Would strafe, but not facing player")
 				rotate_towards(player.target_position, check_position)
 				wait_time = 0.1
 				return
 			else:
-				print("Strafing")
 				self.try_move_dir(dir)
 				wait_time = 0.5
 				return
@@ -197,10 +195,8 @@ func shoot_at(target_position: Vector3, on_hit = null):
 	if ragun_col and ragun_col.collider:
 		hit_pos = ragun_col.position
 		var shootable = ragun_col.collider as Shootable
-		print("Hit: ", shootable)
 		if shootable and shootable.has_method("on_shot"):
 			shootable.on_shot()
-			print("Called on_shot on ", shootable)
 
 	var length = global_transform.origin.distance_to(hit_pos)
 	var process_material: ParticleProcessMaterial = laser_particles_node.process_material

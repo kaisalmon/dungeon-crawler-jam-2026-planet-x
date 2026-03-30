@@ -190,10 +190,8 @@ func shoot():
 		if ragun_col and ragun_col.collider:
 			hit_pos = ragun_col.position
 			var shootable = ragun_col.collider as Shootable
-			print("Hit: ", shootable)
 			if shootable and shootable.has_method("on_shot"):
 				shootable.on_shot()
-				print("Called on_shot on ", shootable)
 
 		var length = global_transform.origin.distance_to(hit_pos)
 		var process_material: ParticleProcessMaterial = particles.process_material

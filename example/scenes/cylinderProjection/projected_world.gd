@@ -10,7 +10,7 @@ var world_grid = [
 		[], # X+
 	]
 
-var grid_spacing: float
+var grid_spacing: float = 90
 
 func _ready():
 	if world_nodes.size() != 9:
@@ -142,6 +142,9 @@ func update_celestial_bodies():
 			node.global_transform.origin = player_pos + rotated_pos
 
 func update_grid():
+	if world_nodes.size() != 9:
+		return
+
 	var player = Globals.getPlayer()
 	if not player:
 		return

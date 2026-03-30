@@ -145,6 +145,7 @@ mesh = ExtResource("4_l8ubh")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_njio4")
 script = ExtResource("6_k27km")
+metadata/_edit_group_ = true
 
 [node name="EnemyShoulder" type="MeshInstance3D" parent="EnemyTorso/EnemyHead" unique_id=614474720]
 mesh = ExtResource("8_hx76c")
