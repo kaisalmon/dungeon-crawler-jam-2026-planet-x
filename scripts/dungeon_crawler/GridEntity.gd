@@ -42,6 +42,8 @@ var velocity: Vector3 = Vector3.ZERO
 var fall_height = 0.0
 var bump_at = 0
 
+@onready var player_turn_sfx: AudioStreamPlayer = %PlayerTurnSFX
+
 func _ready():
 	target_position = snap_to_grid(global_transform.origin)
 	target_rotation = global_transform.basis
@@ -229,6 +231,7 @@ func on_move_fail(dir: Vector3):
 	velocity += dir * 6
 	
 func start_turn(direction: int):
+	player_turn_sfx.play()
 	target_rotation = target_rotation.rotated(-gravity, deg_to_rad(direction * TURN_ANGLE))
 	is_turning = true
 

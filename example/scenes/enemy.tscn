@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="12_q4113"]
 [ext_resource type="Texture2D" uid="uid://dpec7l0waro0v" path="res://components/enemy/face1.png" id="13_003yv"]
 [ext_resource type="AudioStream" uid="uid://gcm17ue6qb0p" path="res://audio/sfx/enemy/enemy_move.ogg" id="15_5hmy3"]
+[ext_resource type="AudioStream" uid="uid://b3jks170p8itx" path="res://audio/sfx/enemy/enemyhit_sfx.ogg" id="17_g68rj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_njio4"]
 render_priority = 0
@@ -121,6 +122,12 @@ random_pitch = 1.0741906
 streams_count = 1
 stream_0/stream = ExtResource("15_5hmy3")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_toqs4"]
+playback_mode = 1
+random_pitch = 1.0817246
+streams_count = 1
+stream_0/stream = ExtResource("17_g68rj")
+
 [node name="Enemy" type="Node3D" unique_id=172750197 node_paths=PackedStringArray("face")]
 script = ExtResource("1_njio4")
 gun = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser")
@@ -186,15 +193,27 @@ script = ExtResource("12_q4113")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=930477591]
 shape = SubResource("BoxShape3D_q4113")
 
-[node name="EnemyShootSFX" type="AudioStreamPlayer3D" parent="." unique_id=349140815]
+[node name="AudioStreamPlayers" type="Node" parent="." unique_id=984194501]
+
+[node name="EnemyShootSFX" type="AudioStreamPlayer3D" parent="AudioStreamPlayers" unique_id=349140815]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_n46sw")
+volume_db = -5.614
 max_distance = 15.0
 max_polyphony = 5
+bus = &"SFX"
 
-[node name="EnemyMoveSFX" type="AudioStreamPlayer3D" parent="." unique_id=1992815649]
+[node name="EnemyMoveSFX" type="AudioStreamPlayer3D" parent="AudioStreamPlayers" unique_id=1992815649]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_g68rj")
 max_distance = 10.0
+bus = &"SFX"
+
+[node name="EnemyHitSFX" type="AudioStreamPlayer3D" parent="AudioStreamPlayers" unique_id=2060952530]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_toqs4")
+volume_db = 29.561
+max_distance = 40.38
+bus = &"SFX"
 
 [connection signal="shot" from="StaticBody3D" to="." method="_on_static_body_3d_shot"]

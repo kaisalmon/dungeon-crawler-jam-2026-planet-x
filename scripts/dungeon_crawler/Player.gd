@@ -32,6 +32,8 @@ var raygun_overheated = false
 
 @onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
 @onready var player_move_sfx: AudioStreamPlayer = %PlayerMoveSFX
+@onready var player_hit_sfx: AudioStreamPlayer = %PlayerHitSFX
+@onready var player_move_obstacle: AudioStreamPlayer = %PlayerMoveObstacle
 
 
 func _ready():
@@ -227,6 +229,7 @@ func damage(amount: int = 1):
 		# SFX(Death)
 		die()
 	else:
+		player_hit_sfx.play()
 		# SFX(hurt)
 		pass
 

@@ -17,6 +17,8 @@ var health = 2
 var iframes = 0.0
 @onready var enemy_shoot_sfx: AudioStreamPlayer3D = %EnemyShootSFX
 @onready var enemy_move_sfx: AudioStreamPlayer3D = %EnemyMoveSFX
+@onready var enemy_hit_sfx: AudioStreamPlayer3D = %EnemyHitSFX
+
 
 var decaying_shot_count = 0 # Decreases over time, increases with each attack. 
 
@@ -246,6 +248,7 @@ func _on_static_body_3d_shot() -> void:
 	iframes = 0.8
 	static_change_cooldown = 0.05
 	if health <= 0:
+		enemy_hit_sfx.play()
 		self.queue_free()
 		var shard: DeadEnemy = dead_scene.instantiate()
 		get_parent().add_child(shard)
@@ -256,4 +259,4 @@ func _on_static_body_3d_shot() -> void:
 		var knockbackDir = (Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized()
 		headNode.knockback(knockbackDir, -65)
 		self.velocity += knockbackDir * -15
-		# SFX(Enemy hit no kill)
+		enemy_hit_sfx.play()
