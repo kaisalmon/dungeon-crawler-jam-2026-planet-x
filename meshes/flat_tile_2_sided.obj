@@ -1,0 +1,25 @@
+# Made in Blockbench 5.1.1
+mtllib flat_tile_2_sided.mtl
+
+o mesh
+v 1 0.0625 1
+v 1 0.0625 -1
+v 1 0 1
+v 1 0 -1
+v -1 0.0625 1
+v -1 0.0625 -1
+v -1 0 1
+v -1 0 -1
+vt 0 0
+vt 1 0
+vt 1 1
+vt 0 1
+vt 1 0
+vt 1 1
+vt 0 1
+vt 0 0
+vn 0 1 0
+vn 0 -1 0
+usemtl m_3ed578d5-fe66-e786-cb8a-489ac24beb0f
+f 5/1/1 1/2/1 2/3/1 6/4/1
+f 4/5/2 3/6/2 7/7/2 8/8/2
