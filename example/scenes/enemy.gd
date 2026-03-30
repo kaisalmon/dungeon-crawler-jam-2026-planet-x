@@ -10,6 +10,8 @@ var max_distance = 5.0
 
 var health = 2
 var iframes = 0.0
+@onready var enemy_shoot_sfx: AudioStreamPlayer3D = %EnemyShootSFX
+@onready var enemy_move_sfx: AudioStreamPlayer3D = %EnemyMoveSFX
 
 var decaying_shot_count = 0 # Decreases over time, increases with each attack. 
 
@@ -101,10 +103,12 @@ func process_wander(_delta: float) -> void:
 		self.target_rotation = self.target_rotation.rotated(Vector3.UP, rotation_amount)
 		wait_time = 0.25
 	else:
+		enemy_move_sfx.play()
 		self.try_move_dir(forward)
 		wait_time = 0.3
 
 func process_attack(_delta: float) -> void:
+	enemy_shoot_sfx.play()
 	var player = Globals.getPlayer()
 	if player == null:
 		return

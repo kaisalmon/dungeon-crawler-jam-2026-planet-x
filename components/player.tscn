@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1k255juljylc" path="res://ui/heatbar.png" id="9_pir3r"]
 [ext_resource type="Texture2D" uid="uid://87gfwxnoya6c" path="res://ui/ui_bottom.png" id="10_mm1xv"]
 [ext_resource type="Script" uid="uid://fmn2hcwbj3f5" path="res://components/ray_gun_ui.gd" id="10_qe8hj"]
+[ext_resource type="AudioStream" uid="uid://d4djy3qyslnev" path="res://audio/sfx/player/player_move.ogg" id="12_eju5v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4s3o"]
 render_priority = 4
@@ -94,6 +95,11 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.9843137, 0.9490196, 0.211764
 offsets = PackedFloat32Array(0, 0.5, 0.55, 0.6)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.9843137, 0.9490196, 0.21176471, 1, 0.6745098, 0.19607843, 0.19607843, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mm1xv"]
+random_pitch = 1.0819746
+streams_count = 1
+stream_0/stream = ExtResource("12_eju5v")
+
 [node name="Player" type="Node3D" unique_id=1136786299]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_5odhx")
@@ -165,5 +171,9 @@ offset_bottom = 120.0
 texture = ExtResource("9_pir3r")
 expand_mode = 1
 stretch_mode = 1
+
+[node name="PlayerMoveSFX" type="AudioStreamPlayer" parent="." unique_id=1614985134]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_mm1xv")
 
 [connection signal="shot" from="StaticBody3D" to="." method="_on_static_body_3d_shot"]

@@ -31,6 +31,7 @@ var raygun_heat = 0.0
 var raygun_overheated = false
 
 @onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
+@onready var player_move_sfx: AudioStreamPlayer = %PlayerMoveSFX
 
 
 func _ready():
@@ -120,7 +121,7 @@ func execute_input(action: String):
 		"shoot": shoot()
 
 func on_move_success():
-	#sfx(footstep)
+	player_move_sfx.play()
 	pass
 
 func check_input_queue():
