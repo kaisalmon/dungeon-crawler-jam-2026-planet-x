@@ -24,6 +24,9 @@ var boomer_mode: bool = false
 var health = 4
 var max_health = 4
 
+var raygun_heat = 0.0
+var raygun_overheated = false
+
 @onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
 
 
@@ -37,6 +40,10 @@ func can_move() -> bool:
 func _physics_process(delta):
 	move_delay -= delta
 	shoot_delay -= delta
+	raygun_heat = max(0, raygun_heat - delta * 20)
+	if raygun_overheated and raygun_heat <= 50:
+		# SFX(Gun back online)
+		raygun_overheated = false
 	if frozen:
 		return
 
@@ -102,6 +109,7 @@ func execute_input(action: String):
 		"shoot": shoot()
 
 func on_move_success():
+	#sfx(footstep)
 	pass
 
 func check_input_queue():
@@ -143,6 +151,13 @@ func activate():
 	in_cutscene = false
 
 func shoot():
+	if raygun_overheated:
+		# SFX(Click)
+		return
+	
+
+	
+
 	if player_shoot_sfx:
 		player_shoot_sfx.play()
 	var particles_nodes = get_node(laser)
@@ -179,6 +194,12 @@ func shoot():
 		var proj_pos = $Camera3D.project_position(screen_pos, 0.3)
 		particles.global_position = proj_pos
 		particles.look_at(hit_pos, Vector3.UP)
+	
+	raygun_heat += 40
+	if raygun_heat >= 100:
+		raygun_overheated = true
+		# SFX(Gun overheated) Instead of the normal 
+		raygun_heat = 100
 
 func damage(amount: int = 1):
 	if invincible:
