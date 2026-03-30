@@ -11,6 +11,12 @@ background_color = Color(0.4849202, 0.4849202, 0.4849202, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.40518534, 0.9999997, 0.9974949, 1)
 ambient_light_energy = 0.3
+fog_enabled = true
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_begin = 6.0
+fog_depth_end = 16.0
 
 [node name="Gym" type="Node3D" unique_id=1184156799]
 script = ExtResource("1_v3cg3")

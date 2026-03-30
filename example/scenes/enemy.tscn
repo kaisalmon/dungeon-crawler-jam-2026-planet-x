@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_8267b"]
 [ext_resource type="PackedScene" uid="uid://btpp3i38noku2" path="res://example/scenes/dead_enemy.tscn" id="2_he0sj"]
 [ext_resource type="Texture2D" uid="uid://ca6xwm48soqdt" path="res://meshes/enemies/enemy.png" id="3_l8ubh"]
+[ext_resource type="Texture2D" uid="uid://c664il4o8ingq" path="res://meshes/enemies/noise.png" id="3_n46sw"]
 [ext_resource type="ArrayMesh" uid="uid://xm1pxudfrtyv" path="res://meshes/enemies/enemy_head.obj" id="4_l8ubh"]
 [ext_resource type="Script" uid="uid://b2saxqbhexvxk" path="res://example/scenes/enemy_spring.gd" id="6_k27km"]
 [ext_resource type="ArrayMesh" uid="uid://ci5nfu7f5r1c" path="res://meshes/enemies/enemy_torso.obj" id="7_fvyrr"]
@@ -73,11 +74,6 @@ scale_curve = SubResource("CurveTexture_7u6xr")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4dqw5"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_he0sj"]
-flip_faces = true
-size = Vector2(0.965, 0.9)
-orientation = 2
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hmy3"]
 render_priority = 0
 shader = ExtResource("2_8267b")
@@ -95,6 +91,11 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_he0sj"]
+flip_faces = true
+size = Vector2(0.965, 0.9)
+orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4113"]
 size = Vector3(1.237793, 1.6901855, 1)
@@ -120,11 +121,13 @@ random_pitch = 1.0741906
 streams_count = 1
 stream_0/stream = ExtResource("15_5hmy3")
 
-[node name="Enemy" type="Node3D" unique_id=172750197]
+[node name="Enemy" type="Node3D" unique_id=172750197 node_paths=PackedStringArray("face")]
 script = ExtResource("1_njio4")
 gun = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser")
 laserParticles = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser/LaserParticle")
 dead_scene = ExtResource("2_he0sj")
+staticTexture = ExtResource("3_n46sw")
+face = NodePath("EnemyTorso/EnemyHead/Face")
 
 [node name="EnemyTracks" type="MeshInstance3D" parent="." unique_id=407316839]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -172,8 +175,8 @@ draw_pass_1 = SubResource("QuadMesh_4dqw5")
 
 [node name="Face" type="MeshInstance3D" parent="EnemyTorso/EnemyHead" unique_id=1126464413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3956697, -0.3040465)
+material_override = SubResource("ShaderMaterial_5hmy3")
 mesh = SubResource("PlaneMesh_he0sj")
-surface_material_override/0 = SubResource("ShaderMaterial_5hmy3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1647604907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)

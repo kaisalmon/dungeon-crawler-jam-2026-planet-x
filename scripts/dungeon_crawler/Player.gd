@@ -218,7 +218,7 @@ func damage(amount: int = 1):
 		return
 	if iframes > 0:
 		return
-	shield_cooldown = 3.0
+	shield_cooldown = 5.0
 	iframes = .8
 	if shields > 0:
 		shields -= 1

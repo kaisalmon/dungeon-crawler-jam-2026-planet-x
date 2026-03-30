@@ -7,6 +7,11 @@ var max_distance = 5.0
 @export var gun: NodePath
 @export var laserParticles: NodePath
 @export var dead_scene: PackedScene
+@export var staticTexture: Texture2D
+var faceTexture: Texture2D
+@export var face: MeshInstance3D
+
+var static_change_cooldown = 0.0
 
 var health = 2
 var iframes = 0.0
@@ -21,10 +26,24 @@ func _ready():
 	starting_position = self.global_transform.origin
 	var laser_particles_node: GPUParticles3D = get_node(laserParticles)
 	laser_particles_node.process_material = laser_particles_node.process_material.duplicate()
+	face.material_override = face.material_override.duplicate()
+	faceTexture = face.material_override.get_shader_parameter("texture_albedo")
 
 func _process(delta: float) -> void:
 	decaying_shot_count = max(0, decaying_shot_count - delta * 0.3)
 	self.iframes = max(0, self.iframes - delta)
+
+	if self.iframes > 0:
+		face.material_override.set("shader_parameter/texture_albedo", staticTexture)
+		static_change_cooldown -= delta
+		if static_change_cooldown <= 0:
+			static_change_cooldown = 0.05
+			face.material_override.set("shader_parameter/uv1_offset", Vector3(randf(), randf(), 0))
+
+	else:
+		face.material_override.set("shader_parameter/texture_albedo", faceTexture)
+		face.material_override.set("shader_parameter/uv1_offset", Vector3(0, 0, 0))
+
 	if wait_time > 0:
 		wait_time -= delta
 		return
@@ -228,7 +247,8 @@ func _on_static_body_3d_shot() -> void:
 	if iframes > 0:
 		return
 	health -= 1
-	iframes = 0.5
+	iframes = 0.8
+	static_change_cooldown = 0.05
 	if health <= 0:
 		self.queue_free()
 		var shard: DeadEnemy = dead_scene.instantiate()
@@ -238,5 +258,6 @@ func _on_static_body_3d_shot() -> void:
 	else:
 		var headNode: EnemySpring = $EnemyTorso/EnemyHead
 		var knockbackDir = (Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized()
-		headNode.knockback(knockbackDir, -35)
+		headNode.knockback(knockbackDir, -65)
 		self.velocity += knockbackDir * -15
+		# SFX(Enemy hit no kill)
