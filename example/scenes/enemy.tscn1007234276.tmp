@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://b6uciaqci53kb"]
+
+[ext_resource type="Script" uid="uid://bimhc2b46g3yx" path="res://example/scenes/enemy.gd" id="1_njio4"]
+[ext_resource type="ArrayMesh" uid="uid://cor6yb44sn6vh" path="res://meshes/enemies/enemy_tracks.obj" id="1_qfjya"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_8267b"]
+[ext_resource type="PackedScene" uid="uid://btpp3i38noku2" path="res://example/scenes/dead_enemy.tscn" id="2_he0sj"]
+[ext_resource type="Texture2D" uid="uid://ca6xwm48soqdt" path="res://meshes/enemies/enemy.png" id="3_l8ubh"]
+[ext_resource type="ArrayMesh" uid="uid://xm1pxudfrtyv" path="res://meshes/enemies/enemy_head.obj" id="4_l8ubh"]
+[ext_resource type="Script" uid="uid://b2saxqbhexvxk" path="res://example/scenes/enemy_spring.gd" id="6_k27km"]
+[ext_resource type="ArrayMesh" uid="uid://ci5nfu7f5r1c" path="res://meshes/enemies/enemy_torso.obj" id="7_fvyrr"]
+[ext_resource type="ArrayMesh" uid="uid://np4qlyftt8gr" path="res://meshes/enemies/enemy_shoulder.obj" id="8_hx76c"]
+[ext_resource type="ArrayMesh" uid="uid://dvpuff8fxty0j" path="res://meshes/enemies/enemy_gun.obj" id="9_4dqw5"]
+[ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="10_4dqw5"]
+[ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="11_7u6xr"]
+[ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="12_q4113"]
+[ext_resource type="Texture2D" uid="uid://dpec7l0waro0v" path="res://components/enemy/face1.png" id="13_003yv"]
+[ext_resource type="AudioStream" uid="uid://dgk7xwo4gl1s" path="res://audio/sfx/enemy/enemy_shoot.ogg" id="15_5hmy3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njio4"]
+render_priority = 0
+shader = ExtResource("2_8267b")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_l8ubh")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7u6xr"]
+render_priority = 0
+shader = ExtResource("10_4dqw5")
+shader_parameter/albedo = Color(0.8627451, 0.21568628, 0.07450981, 1)
+shader_parameter/texture_albedo = ExtResource("11_7u6xr")
+shader_parameter/albedo_texture_size = Vector2i(256, 256)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_4dqw5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.057377055, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7u6xr"]
+curve = SubResource("Curve_4dqw5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hx76c"]
+emission_shape_offset = Vector3(0, 0, -1)
+emission_shape = 3
+emission_box_extents = Vector3(0.02, 0.02, 1)
+spread = 180.0
+initial_velocity_max = 0.29999998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_7u6xr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4dqw5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_he0sj"]
+flip_faces = true
+size = Vector2(0.965, 0.9)
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hmy3"]
+render_priority = 0
+shader = ExtResource("2_8267b")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("13_003yv")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = true
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4113"]
+size = Vector3(1.237793, 1.6901855, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n46sw"]
+random_pitch = 1.0180676
+streams_count = 1
+stream_0/stream = ExtResource("15_5hmy3")
+
+[node name="Enemy" type="Node3D" unique_id=172750197]
+script = ExtResource("1_njio4")
+gun = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser")
+laserParticles = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser/LaserParticle")
+dead_scene = ExtResource("2_he0sj")
+
+[node name="EnemyTracks" type="MeshInstance3D" parent="." unique_id=407316839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = ExtResource("1_qfjya")
+surface_material_override/0 = SubResource("ShaderMaterial_njio4")
+
+[node name="EnemyTorso" type="MeshInstance3D" parent="." unique_id=250211190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = ExtResource("7_fvyrr")
+surface_material_override/0 = SubResource("ShaderMaterial_njio4")
+script = ExtResource("6_k27km")
+
+[node name="EnemyHead" type="MeshInstance3D" parent="EnemyTorso" unique_id=997777983]
+mesh = ExtResource("4_l8ubh")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_njio4")
+script = ExtResource("6_k27km")
+
+[node name="EnemyShoulder" type="MeshInstance3D" parent="EnemyTorso/EnemyHead" unique_id=614474720]
+mesh = ExtResource("8_hx76c")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_njio4")
+script = ExtResource("6_k27km")
+
+[node name="Laser" type="Node3D" parent="EnemyTorso/EnemyHead/EnemyShoulder" unique_id=1490349529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69917464, 0.86207634, 0.017685652)
+script = ExtResource("6_k27km")
+
+[node name="EnemyGun" type="MeshInstance3D" parent="EnemyTorso/EnemyHead/EnemyShoulder/Laser" unique_id=897803577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69917464, -0.86207634, 0.025391579)
+mesh = ExtResource("9_4dqw5")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_njio4")
+
+[node name="LaserParticle" type="GPUParticles3D" parent="EnemyTorso/EnemyHead/EnemyShoulder/Laser" unique_id=661985874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5367217)
+material_override = SubResource("ShaderMaterial_7u6xr")
+emitting = false
+amount = 300
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_hx76c")
+draw_pass_1 = SubResource("QuadMesh_4dqw5")
+
+[node name="Face" type="MeshInstance3D" parent="EnemyTorso/EnemyHead" unique_id=1126464413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3956697, -0.3040465)
+mesh = SubResource("PlaneMesh_he0sj")
+surface_material_override/0 = SubResource("ShaderMaterial_5hmy3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1647604907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)
+script = ExtResource("12_q4113")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=930477591]
+shape = SubResource("BoxShape3D_q4113")
+
+[node name="EnemyShootSFX" type="AudioStreamPlayer3D" parent="." unique_id=349140815]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_n46sw")
+max_distance = 20.0
+
+[connection signal="shot" from="StaticBody3D" to="." method="_on_static_body_3d_shot"]
