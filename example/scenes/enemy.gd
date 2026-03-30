@@ -8,6 +8,9 @@ var max_distance = 5.0
 @export var laserParticles: NodePath
 @export var dead_scene: PackedScene
 
+var health = 2
+var iframes = 0.0
+
 var decaying_shot_count = 0 # Decreases over time, increases with each attack. 
 
 var state = "wander"
@@ -19,6 +22,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	decaying_shot_count = max(0, decaying_shot_count - delta * 0.3)
+	self.iframes = max(0, self.iframes - delta)
 	if wait_time > 0:
 		wait_time -= delta
 		return
@@ -71,17 +75,20 @@ func process_wander(_delta: float) -> void:
 		Vector3(0, 0, -1)
 	]
 	for dir in directions:
-		var check_position = self.global_transform.origin + dir * GRID_SIZE
-		if has_line_of_sight(player.global_transform.origin, check_position):
-			if not is_facing(player.global_transform.origin):
+		var check_position = self.target_position + dir * GRID_SIZE
+		var move_validity: MoveResult = self.is_valid_move(check_position, dir)
+		if has_line_of_sight(player.target_position, check_position) and move_validity.is_allowed:
+			if not is_facing(player.target_position, check_position):
 				print("Would strafe, but not facing player")
-				rotate_towards(player.global_transform.origin)
-				wait_time = 0.1
-			else:
-				self.try_move_dir(dir)
+				rotate_towards(player.target_position, check_position)
 				wait_time = 0.1
 				return
-
+			else:
+				print("Strafing")
+				self.try_move_dir(dir)
+				wait_time = 0.5
+				return
+	
 	var rotate_chance = 0.1
 	var forward = -transform.basis.z.normalized()
 	var forward_position = self.target_position + forward * GRID_SIZE
@@ -112,9 +119,9 @@ func process_attack(_delta: float) -> void:
 	else:
 		rotate_towards(player.target_position)
 
-func rotate_towards(target_position: Vector3):
-	var direction_to_target = (target_position - self.global_transform.origin).normalized()
-	var current_forward = -transform.basis.z.normalized()
+func rotate_towards(point: Vector3, origin = self.target_position):
+	var direction_to_target = (point - origin).normalized()
+	var current_forward = self.target_rotation.z
 	var go_left = current_forward.cross(direction_to_target).y > 0
 	var rotation_amount = PI / 2
 	if not go_left:
@@ -122,9 +129,9 @@ func rotate_towards(target_position: Vector3):
 	self.target_rotation = self.target_rotation.rotated(Vector3.UP, rotation_amount)
 	wait_time = 0.1
 
-func is_facing(target_position: Vector3) -> bool:
-	var direction_to_target = (target_position - self.global_transform.origin).normalized()
-	var current_forward = -transform.basis.z.normalized()
+func is_facing(point: Vector3, origin = self.target_position) -> bool:
+	var direction_to_target = (point - origin).normalized()
+	var current_forward = self.target_rotation.z
 	var angle_to_target = current_forward.angle_to(direction_to_target)
 	return abs(angle_to_target) < PI / 8  # Consider facing if within 22.5 degrees
 
@@ -193,12 +200,12 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 	if differentX and differentZ:
 		return false
 
-	if max(abs(deltaX), abs(deltaZ)) > 5 * GRID_SIZE:
+	if max(abs(deltaX), abs(deltaZ)) > 6 * GRID_SIZE:
 		return false
-
+	
 	var raygun_ray = PhysicsRayQueryParameters3D.new()
 	var gun_node: EnemySpring = get_node(gun)
-	raygun_ray.from = gun_node.global_transform.origin
+	raygun_ray.from = origin
 	raygun_ray.to = target_position
 	raygun_ray.exclude = [self, $StaticBody3D]
 	
@@ -214,8 +221,18 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 
 
 func _on_static_body_3d_shot() -> void:
+	if iframes > 0:
+		return
+	health -= 1
+	iframes = 0.5
+	if health <= 0:
 		self.queue_free()
 		var shard: DeadEnemy = dead_scene.instantiate()
 		get_parent().add_child(shard)
 		shard.global_transform = self.global_transform
 		shard.knockback((Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized(), -4)
+	else:
+		var headNode: EnemySpring = $EnemyTorso/EnemyHead
+		var knockbackDir = (Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized()
+		headNode.knockback(knockbackDir, -35)
+		self.velocity += knockbackDir * -15

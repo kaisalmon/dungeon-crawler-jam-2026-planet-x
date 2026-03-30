@@ -4,10 +4,12 @@
 [ext_resource type="ArrayMesh" uid="uid://bjdbunan62jx4" path="res://meshes/raygun.obj" id="2_1kub6"]
 [ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="3_kuobi"]
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="4_0lm1f"]
-[ext_resource type="Texture2D" uid="uid://ijgt8g24te5m" path="res://ui/mockup.png" id="5_1kub6"]
 [ext_resource type="Script" uid="uid://dpkqwsbo3bcn5" path="res://components/player_ui.gd" id="6_couud"]
+[ext_resource type="Texture2D" uid="uid://dhyyl0r2g63m" path="res://ui/ui_top.png" id="6_pir3r"]
 [ext_resource type="PackedScene" uid="uid://cns1id5yggv2l" path="res://ui/heart.tscn" id="7_0lm1f"]
 [ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="8_couud"]
+[ext_resource type="Texture2D" uid="uid://1k255juljylc" path="res://ui/heatbar.png" id="9_pir3r"]
+[ext_resource type="Texture2D" uid="uid://87gfwxnoya6c" path="res://ui/ui_bottom.png" id="10_mm1xv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4s3o"]
 render_priority = 4
@@ -78,10 +80,10 @@ random_pitch = 1.0233738
 streams_count = 1
 stream_0/stream = SubResource("AudioStreamOggVorbis_5odhx")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1kub6"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_pir3r"]
 size = Vector3(1.237793, 1.6901855, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1kub6"]
 
 [node name="Player" type="Node3D" unique_id=1136786299]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -117,20 +119,33 @@ draw_pass_1 = SubResource("QuadMesh_cgus4")
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_1kub6")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1726065683]
-
-[node name="PlayerUI" type="Sprite2D" parent="." unique_id=1467251640]
-material = SubResource("CanvasItemMaterial_1kub6")
-position = Vector2(64.5, 64)
-texture = ExtResource("5_1kub6")
-script = ExtResource("6_couud")
-heart_scene = ExtResource("7_0lm1f")
-
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1606381836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)
 script = ExtResource("8_couud")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=152312094]
 shape = SubResource("BoxShape3D_pir3r")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1726065683]
+
+[node name="PlayerUI" type="Sprite2D" parent="." unique_id=1467251640]
+material = SubResource("CanvasItemMaterial_1kub6")
+position = Vector2(64.5, 64)
+texture = ExtResource("6_pir3r")
+script = ExtResource("6_couud")
+heart_scene = ExtResource("7_0lm1f")
+
+[node name="RayGunUI" type="TextureRect" parent="." unique_id=432038947]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+texture = ExtResource("10_mm1xv")
+
+[node name="Heatbar" type="Sprite2D" parent="RayGunUI" unique_id=68898411]
+position = Vector2(40, 117)
+texture = ExtResource("9_pir3r")
 
 [connection signal="shot" from="StaticBody3D" to="." method="_on_static_body_3d_shot"]
