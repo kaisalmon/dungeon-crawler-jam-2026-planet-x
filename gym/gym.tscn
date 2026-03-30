@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://gjlq1ug3srg8" path="res://scripts/dungeon_crawler/Ladder.gd" id="7_imehn"]
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="7_yd6cv"]
 [ext_resource type="Texture2D" uid="uid://ctv0hbyy6og84" path="res://meshes/ladder.png" id="8_yd6cv"]
+[ext_resource type="PackedScene" uid="uid://bqliev4xmebk3" path="res://components/healspot.tscn" id="14_js86f"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("2_meyph")
@@ -160,3 +161,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -9)
 
 [node name="Enemy9" parent="." unique_id=1005381244 instance=ExtResource("4_v3cg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 4, -15)
+
+[node name="Healspot" parent="." unique_id=302290435 instance=ExtResource("14_js86f")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15, 3, 3)

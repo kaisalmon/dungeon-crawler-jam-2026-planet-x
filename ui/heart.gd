@@ -10,7 +10,8 @@ func _process(_delta):
             self.texture = load("res://ui/healthshield.png")
         else:
             self.texture = load("res://ui/healthshieldempty.png")
-    elif vis_full:
-        self.texture = load("res://ui/healthfull.png")
     else:
-        self.texture = load("res://ui/healthempty.png")
+        if vis_full:
+            self.texture = load("res://ui/healthfull.png")
+        else:
+            self.texture = load("res://ui/healthempty.png")

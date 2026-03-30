@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bqliev4xmebk3"]
+
+[ext_resource type="ArrayMesh" uid="uid://x1ekp8fuqrh5" path="res://meshes/healspot.obj" id="1_3ilc2"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_7wdat"]
+[ext_resource type="Texture2D" uid="uid://c7u0o2ksymnkw" path="res://meshes/healthpad.png" id="3_2bipq"]
+[ext_resource type="Script" uid="uid://bg34buwtyadup" path="res://components/healspot.gd" id="4_7wdat"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6m6oy"]
+render_priority = 0
+shader = ExtResource("2_7wdat")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_2bipq")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[node name="Healspot" type="MeshInstance3D" unique_id=302290435]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_3ilc2")
+surface_material_override/0 = SubResource("ShaderMaterial_6m6oy")
+script = ExtResource("4_7wdat")
