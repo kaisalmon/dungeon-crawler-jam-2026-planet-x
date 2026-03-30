@@ -23,6 +23,9 @@ var boomer_mode: bool = false
 
 var health = 4
 var max_health = 4
+var shields = 2
+var max_shields = 2
+var shield_cooldown = 0.0
 
 var raygun_heat = 0.0
 var raygun_overheated = false
@@ -44,6 +47,14 @@ func _physics_process(delta):
 	if raygun_overheated and raygun_heat <= 50:
 		# SFX(Gun back online)
 		raygun_overheated = false
+
+	if shield_cooldown > 0:
+		shield_cooldown -= delta
+		if shield_cooldown <= 0 and shields < max_shields:
+			shields += 1
+			# SFX(Shield recharged)
+			shield_cooldown = 0.5
+
 	if frozen:
 		return
 
@@ -206,10 +217,19 @@ func damage(amount: int = 1):
 		return
 	if iframes > 0:
 		return
+	shield_cooldown = 3.0
 	iframes = .8
+	if shields > 0:
+		shields -= 1
+		# SFX(Shield hit)
+		return
 	health -= amount
 	if health <= 0:
+		# SFX(Death)
 		die()
+	else:
+		# SFX(hurt)
+		pass
 
 func die():
 	in_cutscene = true

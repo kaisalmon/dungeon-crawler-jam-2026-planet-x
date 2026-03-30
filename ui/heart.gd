@@ -2,9 +2,12 @@ extends Sprite2D
 
 class_name PlayerUiHeart
 var vis_full = true
+var vis_shield = false
 
 func _process(_delta):
-    if vis_full:
+    if vis_shield:
+        self.texture = load("res://ui/healthshield.png")
+    elif vis_full:
         self.texture = load("res://ui/healthfull.png")
     else:
         self.texture = load("res://ui/healthempty.png")
