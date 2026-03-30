@@ -242,8 +242,6 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 
 
 func _on_static_body_3d_shot() -> void:
-	if iframes > 0:
-		return
 	health -= 1
 	iframes = 0.8
 	static_change_cooldown = 0.05
