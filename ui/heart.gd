@@ -6,7 +6,10 @@ var vis_shield = false
 
 func _process(_delta):
     if vis_shield:
-        self.texture = load("res://ui/healthshield.png")
+        if vis_full:
+            self.texture = load("res://ui/healthshield.png")
+        else:
+            self.texture = load("res://ui/healthshieldempty.png")
     elif vis_full:
         self.texture = load("res://ui/healthfull.png")
     else:
