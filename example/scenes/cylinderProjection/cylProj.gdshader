@@ -101,7 +101,7 @@ void fragment() {
         EMISSION = ALBEDO;
         ALBEDO = vec3(0.0);
     }else{
-        EMISSION = texture(texture_emission, base_uv).rgb * albedo.rgb;
+        EMISSION = texture(texture_emission, base_uv).rgb;
         if (length(EMISSION) > 0.0) {
             EMISSION *= 2.0; // Boost emission for visibility
         }
