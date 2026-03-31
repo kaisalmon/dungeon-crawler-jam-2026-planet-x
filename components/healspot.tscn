@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://x1ekp8fuqrh5" path="res://meshes/healspot.obj" id="1_3ilc2"]
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_7wdat"]
 [ext_resource type="Texture2D" uid="uid://c7u0o2ksymnkw" path="res://meshes/healthpad.png" id="3_2bipq"]
+[ext_resource type="Texture2D" uid="uid://em7xje7gr7wk" path="res://meshes/healthpad-emission.png" id="4_2bipq"]
 [ext_resource type="Script" uid="uid://bg34buwtyadup" path="res://components/healspot.gd" id="4_7wdat"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6m6oy"]
@@ -14,6 +15,7 @@ shader_parameter/albedo_texture_size = Vector2i(32, 32)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 0.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_emission = ExtResource("4_2bipq")
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/alpha_scissor_threshold = 0.5

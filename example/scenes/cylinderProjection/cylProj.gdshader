@@ -10,6 +10,7 @@ uniform float roughness : hint_range(0.0, 1.0);
 uniform sampler2D texture_metallic : hint_default_white, filter_nearest, repeat_enable;
 uniform vec4 metallic_texture_channel;
 uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest, repeat_enable;
+uniform sampler2D texture_emission : hint_default_black, filter_nearest, repeat_enable;
 
 uniform float specular : hint_range(0.0, 1.0, 0.01);
 uniform float metallic : hint_range(0.0, 1.0, 0.01);
@@ -99,5 +100,10 @@ void fragment() {
     if (no_shading) {
         EMISSION = ALBEDO;
         ALBEDO = vec3(0.0);
+    }else{
+        EMISSION = texture(texture_emission, base_uv).rgb * albedo.rgb;
+        if (length(EMISSION) > 0.0) {
+            EMISSION *= 2.0; // Boost emission for visibility
+        }
     }
 }
