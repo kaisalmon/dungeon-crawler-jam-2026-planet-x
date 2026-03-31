@@ -12,11 +12,16 @@ var settings_button: Button
 var quit_button: Button
 
 var done: bool = false
+var overlay_target: float = 0.0
 
 
 const SAVE_FILE_PATH = "user://save_game.dat"
 
 func _ready():
+	var player = Globals.getPlayer()
+	player.in_cutscene = true
+	RenderingServer.global_shader_parameter_set("use_camera_as_curve_origin", true)
+
 	# Step 1: Create buttons for "New Game", "Continue", and "Settings"
 	new_game_button = Button.new()
 	new_game_button.text = "New Game"
@@ -30,7 +35,6 @@ func _ready():
 	settings_button.text = "Settings"
 	main_menu_container.add_child(settings_button)
 
-	# Step 2: Check if save file exists and enable/focus appropriate button
 	if FileAccess.file_exists(SAVE_FILE_PATH):
 		continue_button.disabled = false
 		continue_button.focus_mode = Control.FOCUS_ALL
@@ -40,34 +44,44 @@ func _ready():
 		continue_button.focus_mode = Control.FOCUS_NONE
 		new_game_button.grab_focus()
 
-	# Step 3: If not a web build, create and add "Quit" button
 	if OS.get_name() != "Web":
 		quit_button = Button.new()
 		quit_button.text = "Quit"
 		main_menu_container.add_child(quit_button)
 
-	# Step 4: Connect button signals to their respective functions
 	new_game_button.pressed.connect(_on_new_game_pressed)
 	continue_button.pressed.connect(_on_continue_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	if quit_button:
 		quit_button.pressed.connect(_on_quit_pressed)
 
-	# Step 5: Hide and disable the options container
 	options_container.visible = false
 	options_container.process_mode = Node.PROCESS_MODE_DISABLED
+
 
 func _on_new_game_pressed():
 	if done:
 		return
 	done = true
-	
+	overlay_target = 1.0
+	await get_tree().create_timer(1.0).timeout
+	overlay_target = 0.0
+	var player = Globals.getPlayer()
+	player.in_cutscene = false
+	RenderingServer.global_shader_parameter_set("use_camera_as_curve_origin", false)
+	self.get_parent().is_active = false
+	self.get_parent().transition_to_player_camera(player.camera, 0)
 	new_game_pressed.emit()
 
 func _on_continue_pressed():
 	if done:
 		return
 	done = true
+	var player = Globals.getPlayer()
+	player.in_cutscene = false
+	RenderingServer.global_shader_parameter_set("use_camera_as_curve_origin", false)
+	self.get_parent().is_active = false
+	self.get_parent().transition_to_player_camera(player.camera)
 	continue_pressed.emit()
 
 func _on_settings_pressed():
@@ -103,4 +117,6 @@ func _process(delta):
 		self.modulate.a = lerp(self.modulate.a, 0.0, delta * 3)
 		if self.modulate.a <= 0.01:
 			self.visible = false
-			set_process(false)
+	var overlay_delta = overlay_target - self.modulate.a
+	%Overlay.modulate.a += sign(overlay_delta) * delta
+	%Overlay.modulate.a = max(0.0, min(1.0, %Overlay.modulate.a))

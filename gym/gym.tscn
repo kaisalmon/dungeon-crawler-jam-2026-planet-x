@@ -9,12 +9,15 @@
 [ext_resource type="Script" uid="uid://vi3k65tpcilq" path="res://example/lens_flare/lens_flare_post_process.gd" id="3_js86f"]
 [ext_resource type="Script" uid="uid://2l4jo033f3d6" path="res://example/scenes/cylinderProjection/sun.gd" id="3_myi5c"]
 [ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://example/scenes/enemy.tscn" id="4_v3cg3"]
+[ext_resource type="Script" uid="uid://6kpbifvenv85" path="res://scripts/menu/main_menu.gd" id="5_6m6oy"]
+[ext_resource type="Theme" uid="uid://csli33hlsyqxo" path="res://misc/low_res_theme.tres" id="5_xt5xi"]
 [ext_resource type="ArrayMesh" uid="uid://emobcoo1448p" path="res://meshes/ladder.obj" id="6_rvibt"]
 [ext_resource type="Script" uid="uid://gjlq1ug3srg8" path="res://scripts/dungeon_crawler/Ladder.gd" id="7_imehn"]
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="7_yd6cv"]
 [ext_resource type="Texture2D" uid="uid://ctv0hbyy6og84" path="res://meshes/ladder.png" id="8_yd6cv"]
 [ext_resource type="PackedScene" uid="uid://bqliev4xmebk3" path="res://components/healspot.tscn" id="14_js86f"]
 [ext_resource type="PackedScene" uid="uid://c1crf3w25xfnb" path="res://components/upgradespot.tscn" id="15_34s28"]
+[ext_resource type="Script" uid="uid://d2i2wuf56hpvg" path="res://scripts/menu/fancy_cameras.gd" id="16_ri4m6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("2_meyph")
@@ -73,6 +76,14 @@ size = Vector3(2.1342163, 0.32702637, 1.7944336)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sdllh"]
 size = Vector3(1.625, 2.875, 0.25)
+
+[sub_resource type="Curve3D" id="Curve3D_ri4m6"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8, 0, -2, 0, 0, 0, 0, 0, 0, 2, 0.6621957, 1.2250557, 0, 0, 0, 0, 0, 0, -2.582817, 0.41945267, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="Gym" type="Node3D" unique_id=1184156799]
 script = ExtResource("1_v3cg3")
@@ -176,3 +187,64 @@ upgrade_type = 1
 [node name="Upgradespot3" parent="." unique_id=397664058 instance=ExtResource("15_34s28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 3)
 upgrade_type = 2
+
+[node name="Upgradespot4" parent="." unique_id=358189501 instance=ExtResource("15_34s28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 5)
+upgrade_type = 1
+
+[node name="MainMenuWrapper" type="Node3D" parent="." unique_id=1450463324 node_paths=PackedStringArray("paths", "camera_one", "camera_two", "focus_markers")]
+script = ExtResource("16_ri4m6")
+paths = [NodePath("Marker3D/Path3D"), NodePath("Marker3D2/Path3D")]
+camera_one = NodePath("Camera3D")
+camera_two = NodePath("Camera3D2")
+focus_markers = [NodePath("Marker3D"), NodePath("Marker3D2")]
+focus_screen_offset = Vector2(2.795, 0)
+
+[node name="MainMenu" type="CenterContainer" parent="MainMenuWrapper" unique_id=596712567 node_paths=PackedStringArray("main_menu_container", "options_container")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = 6.0
+offset_right = 26.0
+offset_bottom = 6.0
+grow_vertical = 2
+theme = ExtResource("5_xt5xi")
+script = ExtResource("5_6m6oy")
+main_menu_container = NodePath("VBoxContainer")
+options_container = NodePath("VBoxContainer2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuWrapper/MainMenu" unique_id=1310405151]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuWrapper/MainMenu" unique_id=1401601013]
+layout_mode = 2
+
+[node name="Overlay" type="ColorRect" parent="MainMenuWrapper" unique_id=1152685794]
+unique_name_in_owner = true
+offset_right = 192.0
+offset_bottom = 192.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Camera3D" type="Camera3D" parent="MainMenuWrapper" unique_id=1911710080]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
+fov = 90.0
+
+[node name="Camera3D2" type="Camera3D" parent="MainMenuWrapper" unique_id=2041676991]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
+fov = 90.0
+
+[node name="Marker3D" type="Marker3D" parent="MainMenuWrapper" unique_id=1307780871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -30)
+
+[node name="Path3D" type="Path3D" parent="MainMenuWrapper/Marker3D" unique_id=1574757620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+curve = SubResource("Curve3D_ri4m6")
+
+[node name="Marker3D2" type="Marker3D" parent="MainMenuWrapper" unique_id=585004100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5.624028, 3.0680141)
+
+[node name="Path3D" type="Path3D" parent="MainMenuWrapper/Marker3D2" unique_id=1435724542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5.1333666, 5.6706505)
+curve = SubResource("Curve3D_ri4m6")

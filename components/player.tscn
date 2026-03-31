@@ -9,9 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cns1id5yggv2l" path="res://ui/heart.tscn" id="7_0lm1f"]
 [ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="8_couud"]
 [ext_resource type="Texture2D" uid="uid://1k255juljylc" path="res://ui/heatbar.png" id="9_pir3r"]
+[ext_resource type="Script" uid="uid://b556lb1c1yb4s" path="res://components/text_queue.gd" id="10_6esqw"]
 [ext_resource type="Texture2D" uid="uid://87gfwxnoya6c" path="res://ui/ui_bottom.png" id="10_mm1xv"]
 [ext_resource type="Script" uid="uid://fmn2hcwbj3f5" path="res://components/ray_gun_ui.gd" id="10_qe8hj"]
 [ext_resource type="AudioStream" uid="uid://d4djy3qyslnev" path="res://audio/sfx/player/player_move.ogg" id="12_eju5v"]
+[ext_resource type="Theme" uid="uid://csli33hlsyqxo" path="res://misc/low_res_theme.tres" id="12_ntxa4"]
 [ext_resource type="AudioStream" uid="uid://bxwkmdrm4hi8u" path="res://audio/sfx/player/playehit_sfx.ogg" id="13_1wqow"]
 [ext_resource type="AudioStream" uid="uid://bghwm8ocovphm" path="res://audio/sfx/player/player_turn_sfx.ogg" id="14_6qb5m"]
 [ext_resource type="AudioStream" uid="uid://bd2pwofe2upxn" path="res://audio/sfx/player/player_move_obstacle.ogg" id="15_kn8w6"]
@@ -124,7 +126,7 @@ streams_count = 1
 stream_0/stream = SubResource("AudioStreamOggVorbis_5odhx")
 
 [node name="Player" type="Node3D" unique_id=1136786299]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -1.1215999, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_5odhx")
 height = 0.2
 laser = NodePath("Camera3D/Raygun/LaserParticle")
@@ -171,6 +173,20 @@ texture = ExtResource("6_pir3r")
 script = ExtResource("6_couud")
 heart_scene = ExtResource("7_0lm1f")
 
+[node name="TextQueue" type="Label" parent="." unique_id=155397625]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("12_ntxa4")
+text = "Fish"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_6esqw")
+
 [node name="RayGunUI" type="TextureRect" parent="." unique_id=432038947]
 anchors_preset = 2
 anchor_top = 1.0
@@ -178,6 +194,7 @@ anchor_bottom = 1.0
 offset_top = -128.0
 offset_right = 128.0
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("10_mm1xv")
 script = ExtResource("10_qe8hj")
 cool_gradient = SubResource("Gradient_qe8hj")
@@ -189,6 +206,7 @@ offset_left = 13.0
 offset_top = 114.0
 offset_right = 67.0
 offset_bottom = 120.0
+mouse_filter = 2
 texture = ExtResource("9_pir3r")
 expand_mode = 1
 stretch_mode = 1

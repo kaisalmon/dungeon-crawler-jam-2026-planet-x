@@ -43,12 +43,13 @@ var has_gun_upgrade = false
 @onready var shield_hit_sfx: AudioStreamPlayer = %ShieldHitSFX
 @onready var gun_click_sfx: AudioStreamPlayer = %GunClickSFX
 @onready var gun_overheat_sfx: AudioStreamPlayer = %GunOverheatSFX
-
+var camera: Camera3D
 
 
 func _ready():
 	super._ready()
 	add_to_group("player")
+	self.camera = $Camera3D
 
 func can_move() -> bool:
 	return (not is_moving) and (not is_turning) and not in_cutscene and not frozen
@@ -228,6 +229,7 @@ func shoot():
 		gun_overheat_sfx.play()
 		# SFX(Gun overheated) Instead of the normal 
 		raygun_heat = 100
+		Globals.tutorialize("Raygun overheated!")
 
 func damage(amount: int = 1):
 	if invincible:

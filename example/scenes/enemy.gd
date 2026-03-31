@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 	var player = Globals.getPlayer()
 	var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
 
-	if has_line_of_sight(Globals.getPlayer().global_transform.origin) and distance_to_player < GRID_SIZE * 6:
+	if not player.in_cutscene and has_line_of_sight(player.global_transform.origin) and distance_to_player < GRID_SIZE * 6:
 		state = "attack"
 	else:
 		state = "wander"
@@ -91,24 +91,25 @@ func get_hit_chance(distance_to_player: float) -> float:
 
 func process_wander(_delta: float) -> void:
 	var player = Globals.getPlayer()
-	var directions = [
-		Vector3(1, 0, 0),
-		Vector3(-1, 0, 0),
-		Vector3(0, 0, 1),
-		Vector3(0, 0, -1)
-	]
-	for dir in directions:
-		var check_position = self.target_position + dir * GRID_SIZE
-		var move_validity: MoveResult = self.is_valid_move(check_position, dir)
-		if has_line_of_sight(player.target_position, check_position) and move_validity.is_allowed:
-			if not is_facing(player.target_position, check_position):
-				rotate_towards(player.target_position, check_position)
-				wait_time = 0.1
-				return
-			else:
-				self.try_move_dir(dir)
-				wait_time = 0.5
-				return
+	if not player.in_cutscene:
+		var directions = [
+			Vector3(1, 0, 0),
+			Vector3(-1, 0, 0),
+			Vector3(0, 0, 1),
+			Vector3(0, 0, -1)
+		]
+		for dir in directions:
+			var check_position = self.target_position + dir * GRID_SIZE
+			var move_validity: MoveResult = self.is_valid_move(check_position, dir)
+			if has_line_of_sight(player.target_position, check_position) and move_validity.is_allowed:
+				if not is_facing(player.target_position, check_position):
+					rotate_towards(player.target_position, check_position)
+					wait_time = 0.1
+					return
+				else:
+					self.try_move_dir(dir)
+					wait_time = 0.5
+					return
 	
 	var rotate_chance = 0.1
 	var forward = -transform.basis.z.normalized()

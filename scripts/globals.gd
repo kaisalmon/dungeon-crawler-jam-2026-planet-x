@@ -28,3 +28,15 @@ func easeInOutCubic(x: float) -> float:
 
 func getPlayer() -> Player:
 	return get_tree().get_first_node_in_group("player")
+
+
+var queue: Array = []
+var tutorial_strings: Array = []
+func say(text: String) -> void:
+	queue.append(text)
+
+func tutorialize(text: String) -> void:
+	if text in tutorial_strings:
+		return
+	tutorial_strings.append(text)
+	say(text)

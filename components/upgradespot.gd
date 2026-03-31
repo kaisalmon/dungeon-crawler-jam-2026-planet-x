@@ -45,12 +45,20 @@ func on_upgrade():
 	var player: Player = Globals.getPlayer()
 	if upgrade_type == UpgradeType.GUN:
 		player.has_gun_upgrade = true
+		Globals.say("Trusty Raygun Mk. II acquired!")
 		#SFX (Gun Pickup)
 	if upgrade_type == UpgradeType.SHIELD:
 		player.max_shields += 1
 		player.shield_cooldown = 0.3
+		if player.max_shields == 1:
+			Globals.say("Shield Generator acquired!")
+			Globals.say("Shields will automatically recharge")
+			Globals.say("after not taking damage for a few seconds")
+		else:
+			Globals.say("Shield Generator upgraded!")
 		#SFX (Shield Pickup)
 	if upgrade_type == UpgradeType.HEALTH:
 		player.max_health += 1
 		player.health += 1
+		Globals.say("Health increased!")
 		#SFX (Health Pickup)
