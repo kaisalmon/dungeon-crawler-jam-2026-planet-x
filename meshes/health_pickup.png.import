@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3hbed3xukgfq"
-path.s3tc="res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.s3tc.ctex"
-path.etc2="res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.etc2.ctex"
+uid="uid://b0ges3p0ot5my"
+path.s3tc="res://.godot/imported/health_pickup.png-65befc8af4b8d153fb515587d75f3a8b.s3tc.ctex"
+path.etc2="res://.godot/imported/health_pickup.png-65befc8af4b8d153fb515587d75f3a8b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://meshes/texture.png"
-dest_files=["res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.s3tc.ctex", "res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.etc2.ctex"]
+source_file="res://meshes/health_pickup.png"
+dest_files=["res://.godot/imported/health_pickup.png-65befc8af4b8d153fb515587d75f3a8b.s3tc.ctex", "res://.godot/imported/health_pickup.png-65befc8af4b8d153fb515587d75f3a8b.etc2.ctex"]
 
 [params]
 

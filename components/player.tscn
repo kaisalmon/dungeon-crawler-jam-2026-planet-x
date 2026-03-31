@@ -124,10 +124,12 @@ streams_count = 1
 stream_0/stream = SubResource("AudioStreamOggVorbis_5odhx")
 
 [node name="Player" type="Node3D" unique_id=1136786299]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -1.1215999, 0)
 script = ExtResource("1_5odhx")
 height = 0.2
 laser = NodePath("Camera3D/Raygun/LaserParticle")
+equipped_gun_position = Vector3(0.13005018, -0.22791135, -0.19763565)
+unequipped_gun_position = Vector3(0.13, -2, -0.198)
 max_step_height = 50.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=910667121]

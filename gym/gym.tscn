@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="7_yd6cv"]
 [ext_resource type="Texture2D" uid="uid://ctv0hbyy6og84" path="res://meshes/ladder.png" id="8_yd6cv"]
 [ext_resource type="PackedScene" uid="uid://bqliev4xmebk3" path="res://components/healspot.tscn" id="14_js86f"]
+[ext_resource type="PackedScene" uid="uid://c1crf3w25xfnb" path="res://components/upgradespot.tscn" id="15_34s28"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("2_meyph")
@@ -164,3 +165,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 4, -15)
 
 [node name="Healspot" parent="." unique_id=302290435 instance=ExtResource("14_js86f")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15, 3, 3)
+
+[node name="Upgradespot" parent="." unique_id=896239292 instance=ExtResource("15_34s28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, 3)
+
+[node name="Upgradespot2" parent="." unique_id=569046478 instance=ExtResource("15_34s28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 5)
+upgrade_type = 1
+
+[node name="Upgradespot3" parent="." unique_id=397664058 instance=ExtResource("15_34s28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 3)
+upgrade_type = 2

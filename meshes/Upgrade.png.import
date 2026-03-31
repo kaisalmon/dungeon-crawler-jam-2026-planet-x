@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3hbed3xukgfq"
-path.s3tc="res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.s3tc.ctex"
-path.etc2="res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.etc2.ctex"
+uid="uid://dyaw2pusw7msy"
+path.s3tc="res://.godot/imported/Upgrade.png-15dd83518983e7f3e7e40cee26f62cc7.s3tc.ctex"
+path.etc2="res://.godot/imported/Upgrade.png-15dd83518983e7f3e7e40cee26f62cc7.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://meshes/texture.png"
-dest_files=["res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.s3tc.ctex", "res://.godot/imported/texture.png-7166e69ad7183bb31e9870fb9dc1f701.etc2.ctex"]
+source_file="res://meshes/Upgrade.png"
+dest_files=["res://.godot/imported/Upgrade.png-15dd83518983e7f3e7e40cee26f62cc7.s3tc.ctex", "res://.godot/imported/Upgrade.png-15dd83518983e7f3e7e40cee26f62cc7.etc2.ctex"]
 
 [params]
 

@@ -21,14 +21,19 @@ var shoot_delay: float = 0.0
 
 var boomer_mode: bool = false
 
-var health = 4
-var max_health = 4
-var shields = 2
-var max_shields = 2
+var health = 3
+var max_health = 3
+var shields = 0
+var max_shields = 0
 var shield_cooldown = 0.0
 
 var raygun_heat = 0.0
 var raygun_overheated = false
+
+var has_gun_upgrade = false
+
+@export var equipped_gun_position: Vector3 = Vector3(0,0,0)
+@export var unequipped_gun_position: Vector3 = Vector3(0,0,0)
 
 @onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
 @onready var player_move_sfx: AudioStreamPlayer = %PlayerMoveSFX
@@ -49,6 +54,9 @@ func can_move() -> bool:
 	return (not is_moving) and (not is_turning) and not in_cutscene and not frozen
 
 func _physics_process(delta):
+	var target_gun_pos = equipped_gun_position if has_gun_upgrade else unequipped_gun_position
+	$Camera3D/Raygun.position = $Camera3D/Raygun.position.lerp(target_gun_pos, 0.2)
+
 	move_delay -= delta
 	shoot_delay -= delta
 	raygun_heat = max(0, raygun_heat - delta * 20)
@@ -170,6 +178,8 @@ func activate():
 	in_cutscene = false
 
 func shoot():
+	if not has_gun_upgrade:
+		return
 	if raygun_overheated:
 		gun_click_sfx.play()
 		return

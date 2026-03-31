@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://c1crf3w25xfnb"]
+
+[ext_resource type="ArrayMesh" uid="uid://btrrjmxayud1l" path="res://meshes/upgradespot.obj" id="1_o5bpw"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_6tym6"]
+[ext_resource type="Texture2D" uid="uid://dyaw2pusw7msy" path="res://meshes/Upgrade.png" id="3_n5tjb"]
+[ext_resource type="Texture2D" uid="uid://cbjljwfidmrsv" path="res://meshes/Upgrade_Emission.png" id="4_a12qv"]
+[ext_resource type="ArrayMesh" uid="uid://bjdbunan62jx4" path="res://meshes/raygun.obj" id="5_4h35j"]
+[ext_resource type="Script" uid="uid://ds0yfxltwhtge" path="res://components/upgradespot.gd" id="5_6tym6"]
+[ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="6_3wlvf"]
+[ext_resource type="ArrayMesh" uid="uid://ddg3uvguxdr7w" path="res://meshes/shieldpickup.obj" id="8_3wlvf"]
+[ext_resource type="Texture2D" uid="uid://b0ges3p0ot5my" path="res://meshes/health_pickup.png" id="9_4h35j"]
+[ext_resource type="Texture2D" uid="uid://ciil60tyfpcwb" path="res://meshes/shieldpickup.png" id="9_pbmyw"]
+[ext_resource type="ArrayMesh" uid="uid://bgsxbw40nq6xh" path="res://meshes/healthpickup.obj" id="10_3wlvf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3jde"]
+render_priority = 0
+shader = ExtResource("2_6tym6")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_n5tjb")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_emission = ExtResource("4_a12qv")
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d3xon"]
+load_path = "res://.godot/imported/healthpad-emission.png-b05985328d82f13eb1fcc304f7c0909f.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56p1b"]
+render_priority = 0
+shader = ExtResource("2_6tym6")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_3wlvf")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_emission = SubResource("CompressedTexture2D_d3xon")
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wa4t"]
+render_priority = 0
+shader = ExtResource("2_6tym6")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("9_pbmyw")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbmyw"]
+render_priority = 0
+shader = ExtResource("2_6tym6")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("9_4h35j")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[node name="Upgradespot" type="MeshInstance3D" unique_id=896239292]
+material_override = SubResource("ShaderMaterial_m3jde")
+mesh = ExtResource("1_o5bpw")
+surface_material_override/0 = SubResource("ShaderMaterial_m3jde")
+script = ExtResource("5_6tym6")
+
+[node name="Gun" type="MeshInstance3D" parent="." unique_id=1086077415]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 0.772, 0)
+visible = false
+cast_shadow = 0
+mesh = ExtResource("5_4h35j")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_56p1b")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1547884122]
+transform = Transform3D(1.0000001, 8.881784e-16, -2.9802322e-08, -2.9802322e-08, -4.371139e-08, -1.0000001, 0, 1, -4.371139e-08, 0, 0, 0)
+light_color = Color(1, 1, 0, 1)
+spot_range = 6.0
+spot_angle = 67.95103
+
+[node name="Shield" type="MeshInstance3D" parent="." unique_id=1433053266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772, 0)
+cast_shadow = 0
+mesh = ExtResource("8_3wlvf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_4wa4t")
+
+[node name="Health" type="MeshInstance3D" parent="." unique_id=217010454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772, 0)
+material_override = SubResource("ShaderMaterial_pbmyw")
+cast_shadow = 0
+mesh = ExtResource("10_3wlvf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_56p1b")

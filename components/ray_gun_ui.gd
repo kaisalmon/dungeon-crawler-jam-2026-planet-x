@@ -2,7 +2,7 @@ extends TextureRect
 
 @export var cool_gradient: Gradient
 @export var hot_gradient: Gradient
-
+var alpha = 0.0
 func _process(_delta):
 	var player = Globals.getPlayer()
 	if player.raygun_overheated:
@@ -17,3 +17,7 @@ func _process(_delta):
 		self.modulate = hot_gradient.sample(player.raygun_heat / 100.0)
 	else:
 		self.modulate = cool_gradient.sample(player.raygun_heat / 100.0)
+
+	var target_alpha = 1.0 if player.has_gun_upgrade else 0.0
+	self.alpha = lerp(alpha, target_alpha, 0.1)
+	self.modulate.a = alpha
