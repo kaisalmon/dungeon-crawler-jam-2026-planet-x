@@ -94,6 +94,8 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 [node name="Gym" type="Node3D" unique_id=1184156799]
 script = ExtResource("1_v3cg3")
 
+[node name="MusicManager" parent="." unique_id=121765092 instance=ExtResource("20_i38dm")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1675337230]
 unique_name_in_owner = true
 environment = SubResource("Environment_i4ju6")

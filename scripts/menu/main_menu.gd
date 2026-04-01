@@ -18,6 +18,8 @@ var overlay_target: float = 0.0
 const SAVE_FILE_PATH = "user://save_game.dat"
 
 func _ready():
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.menu_music.play()
 	var player = Globals.getPlayer()
 	player.in_cutscene = true
 	RenderingServer.global_shader_parameter_set("use_camera_as_curve_origin", true)
@@ -60,6 +62,8 @@ func _ready():
 
 
 func _on_new_game_pressed():
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.play_music(music_manager.gameplay_music)
 	if done:
 		return
 	done = true
@@ -74,6 +78,8 @@ func _on_new_game_pressed():
 	new_game_pressed.emit()
 
 func _on_continue_pressed():
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.play_music(music_manager.gameplay_music)
 	if done:
 		return
 	done = true
@@ -103,10 +109,13 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 func _go_back_to_main_menu():
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.play_music(music_manager.menu_music)
 	options_container.visible = false
 	options_container.process_mode = Node.PROCESS_MODE_DISABLED
 	main_menu_container.visible = true
 	settings_button.grab_focus()
+	
 
 func _on_quit_pressed():
 	get_tree().quit()
