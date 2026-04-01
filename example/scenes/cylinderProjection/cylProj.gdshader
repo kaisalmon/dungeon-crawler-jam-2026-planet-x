@@ -78,7 +78,7 @@ void vertex() {
     }
 
     // Transform back to local space
-    NORMAL = normalize(mat3(transpose(inverse(MODEL_MATRIX))) * rotated_normal);
+    // NORMAL = normalize(mat3(transpose(inverse(MODEL_MATRIX))) * rotated_normal);
 }
 
 void fragment() {
