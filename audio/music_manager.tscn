@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://bjq1qnwhm5lon"]
 
 [ext_resource type="Script" uid="uid://c0byh2gnjccpq" path="res://music_manager.gd" id="1_ip8bo"]
+[ext_resource type="AudioStream" uid="uid://btkfsvoubn0oy" path="res://audio/music/Exploration1loop.ogg" id="2_8vo66"]
+[ext_resource type="AudioStream" uid="uid://c23212tye71uq" path="res://audio/music/Battle1loop.ogg" id="3_t7ws8"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1826a"]
 stream_count = 2
+stream_0/stream = ExtResource("2_8vo66")
 stream_0/volume = 0.0
-stream_1/volume = 0.0
+stream_1/stream = ExtResource("3_t7ws8")
+stream_1/volume = -60.0
 
 [node name="MusicManager" type="Node" unique_id=121765092]
 script = ExtResource("1_ip8bo")
@@ -17,6 +21,7 @@ bus = &"Music"
 [node name="GameplayMusic" type="AudioStreamPlayer" parent="." unique_id=851818825]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamSynchronized_1826a")
+volume_db = -10.982
 bus = &"Music"
 
 [node name="CreditsMusic" type="AudioStreamPlayer" parent="." unique_id=492567593]
