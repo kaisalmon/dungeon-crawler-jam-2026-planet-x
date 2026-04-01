@@ -13,7 +13,7 @@
 [ext_resource type="CompositorEffect" uid="uid://d3nm0nkuwlnhf" path="res://example/lens_flare/flair_compositor_effect.tres" id="12_e84e6"]
 [ext_resource type="Script" uid="uid://2l4jo033f3d6" path="res://example/scenes/cylinderProjection/sun.gd" id="13_26ilf"]
 [ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="15_v7km3"]
-[ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://example/scenes/enemy.tscn" id="17_4psk5"]
+[ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://components/enemy/enemy.tscn" id="17_4psk5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8yg1d"]
 lightmap_size_hint = Vector2i(172, 172)

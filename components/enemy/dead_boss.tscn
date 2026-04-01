@@ -1,0 +1,232 @@
+[gd_scene format=3 uid="uid://bhr7ot5xp5hwx"]
+
+[ext_resource type="Script" uid="uid://b427vrgsw0lsv" path="res://example/scenes/dead_enemy.gd" id="1_mwda6"]
+[ext_resource type="Script" uid="uid://d2552pr5sqq4y" path="res://example/scenes/dead_enemy_shard.gd" id="2_xdq70"]
+[ext_resource type="ArrayMesh" uid="uid://xm1pxudfrtyv" path="res://meshes/enemies/enemy_head.obj" id="3_sfawe"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="4_xbbsg"]
+[ext_resource type="Texture2D" uid="uid://dta3d1flxse2f" path="res://meshes/enemies/boss.png" id="5_xdq70"]
+[ext_resource type="Texture2D" uid="uid://dpdp25msv8k85" path="res://components/enemy/smashedFace.png" id="6_s85lq"]
+[ext_resource type="Texture2D" uid="uid://btv8ydr6iscnh" path="res://textures/UBTEX_50.png" id="7_w7iuy"]
+[ext_resource type="ArrayMesh" uid="uid://ci5nfu7f5r1c" path="res://meshes/enemies/enemy_torso.obj" id="8_qmkvq"]
+[ext_resource type="ArrayMesh" uid="uid://dvpuff8fxty0j" path="res://meshes/enemies/enemy_gun.obj" id="9_kdtwh"]
+[ext_resource type="ArrayMesh" uid="uid://np4qlyftt8gr" path="res://meshes/enemies/enemy_shoulder.obj" id="10_d6ei7"]
+[ext_resource type="ArrayMesh" uid="uid://cor6yb44sn6vh" path="res://meshes/enemies/enemy_tracks.obj" id="11_p1y7q"]
+[ext_resource type="AudioStream" uid="uid://bogbhsrukr3dm" path="res://audio/sfx/enemy/enemy_death.ogg" id="12_6nxb3"]
+[ext_resource type="AudioStream" uid="uid://kslvnggkul67" path="res://audio/sfx/enemy/enemy_death_bounce_early.ogg" id="13_dp4od"]
+[ext_resource type="AudioStream" uid="uid://dlh5j88jxu8g1" path="res://audio/sfx/enemy/bounce late.ogg" id="14_38qb3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sfawe"]
+render_priority = 0
+shader = ExtResource("4_xbbsg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_xdq70")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xofla"]
+flip_faces = true
+size = Vector2(0.965, 0.9)
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skknk"]
+render_priority = 0
+shader = ExtResource("4_xbbsg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_s85lq")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_784wb"]
+flip_faces = true
+size = Vector3(0.885, 0.835, 0.38)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnxol"]
+render_priority = 0
+shader = ExtResource("4_xbbsg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("7_w7iuy")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kl3o5"]
+points = PackedVector3Array(0.42176485, 1.9375, -0.4375, 0.32805157, 1.8436766, 0.4226091, 0.5625, 1.7967649, -0.4375, -0.42198512, 1.9375, -0.4375, 0.32805157, 1.7030516, 0.57435024, 0.46867657, 1.7030516, 0.4226091, -0.32816172, 1.8436766, 0.4226091, 0.5625, 0.95301485, 0.47315484, 0.5625, 0.95301485, -0.4375, -0.5625, 1.7967649, -0.4375, -0.46878672, 1.7030516, 0.4226091, 0.42176485, 0.95301485, 0.625, -0.32816172, 1.7030516, 0.57435024, 0.42176485, 0.8125, 0.47315484, 0.42176485, 0.8125, -0.4375, -0.5625, 0.95301485, -0.4375, -0.5625, 0.95301485, 0.47315484, -0.42198512, 0.95301485, 0.625, -0.42198512, 0.8125, 0.47315484, -0.42198512, 0.8125, -0.4375)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwda6"]
+render_priority = 0
+shader = ExtResource("4_xbbsg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_xdq70")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_784wb"]
+points = PackedVector3Array(-0.10356304, 0.875, -0.1875, -0.07767227, 0.40625, -0.12504894, -0.25, 0.875, -0.04106304, 0.103514105, 0.875, -0.1875, -0.18754894, 0.40625, -0.015172273, 0.07762334, 0.40625, -0.12504894, -0.25, 0.875, 0.1660141, 0.25, 0.875, -0.04106304, -0.18754894, 0.40625, 0.14012334, 0.18745106, 0.40625, -0.015172273, -0.10356304, 0.875, 0.3125, 0.25, 0.875, 0.1660141, -0.07767227, 0.40625, 0.24995106, 0.18745106, 0.40625, 0.14012334, 0.103514105, 0.875, 0.3125, 0.07762334, 0.40625, 0.24995106)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xofla"]
+points = PackedVector3Array(0.84375, 0.9396963, 0.374951, 0.7521963, 1.03125, 0.374951, 0.6874694, 0.8749694, 0.5, 0.84375, 0.8102731, 0.374951, 0.84375, 0.9396963, -0.62507343, 0.6227731, 1.03125, 0.374951, 0.7521963, 1.03125, -0.62507343, 0.53125, 0.9396963, 0.374951, 0.53125, 0.8102731, 0.374951, 0.6227731, 0.71875, 0.374951, 0.7521963, 0.71875, 0.374951, 0.84375, 0.8102731, -0.62507343, 0.7536952, 0.902408, -0.75, 0.6227731, 1.03125, -0.62507343, 0.714908, 0.9411952, -0.75, 0.53125, 0.9396963, -0.62507343, 0.53125, 0.8102731, -0.62507343, 0.6227731, 0.71875, -0.62507343, 0.7521963, 0.71875, -0.62507343, 0.714908, 0.80877423, -0.75, 0.7536952, 0.8475614, -0.75, 0.6600614, 0.9411952, -0.75, 0.62127423, 0.902408, -0.75, 0.62127423, 0.8475614, -0.75, 0.6600614, 0.80877423, -0.75)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_skknk"]
+points = PackedVector3Array(0.77385694, 1.062451, -0.30774248, 0.77385694, 1.2187256, -0.30774248, 0.9327425, 1, -0.14893098, 0.87494385, 1, -0.12501286, 0.33077458, 1.124951, -0.29424712, 0.8124703, 1.3749511, -0.12501286, 0.9327425, 1.1874511, -0.14893098, 0.33077458, 1.2499511, -0.29424712, 0.3125, 1.3749511, -0.2500257, 0.68746257, 1.3749511, -0.2500257, 0.9327425, 1, 0.1488707, 0.87494385, 1, 0.124952585, 0.3125, 1.124951, -0.12501286, 0.3125, 1.2499511, -0.2500257, 0.8124703, 1.3749511, 0.124952585, 0.68746257, 1.5, -0.12501286, 0.9327425, 1.1874511, 0.1488707, 0.3125, 1.5, -0.12501286, 0.77385694, 1.062451, 0.30774248, 0.33077458, 1.124951, 0.29418683, 0.3125, 1.124951, 0.124952585, 0.77385694, 1.2187256, 0.30774248, 0.68746257, 1.5, 0.124952585, 0.68746257, 1.3749511, 0.24996543, 0.3125, 1.5, 0.124952585, 0.33077458, 1.2499511, 0.29418683, 0.3125, 1.2499511, 0.24996543, 0.3125, 1.3749511, 0.24996543)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cnxol"]
+points = PackedVector3Array(0.5625, 0.3749763, 0.5624784, 0.499951, 0.6202425, 0.5863565, 0.499951, 0.39889443, 0.8077425, 0.5625, 0.24996345, 0.5624784, 0.5625, 0.3749763, -0.5626366, -0.50006115, 0.6202425, 0.5863565, 0.499951, 0.6202425, -0.58651465, -0.50006115, 0.39889443, 0.8077425, 0.499951, 0.22604533, 0.8077425, 0.499951, 0.004757529, 0.5863565, 0.5625, 0.24996345, -0.5626366, 0.499951, 0.39889443, -0.8077425, -0.5625, 0.3749763, 0.5624784, -0.50006115, 0.6202425, -0.58651465, -0.50006115, 0.22604533, 0.8077425, -0.50006115, 0.004757529, 0.5863565, 0.499951, 0.004757529, -0.58651465, 0.499951, 0.22604533, -0.8077425, -0.50006115, 0.39889443, -0.8077425, -0.5625, 0.24996345, 0.5624784, -0.5625, 0.3749763, -0.5626366, -0.50006115, 0.004757529, -0.58651465, -0.50006115, 0.22604533, -0.8077425, -0.5625, 0.24996345, -0.5626366)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7kkqv"]
+random_pitch = 1.2438679
+streams_count = 1
+stream_0/stream = ExtResource("13_dp4od")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hesrl"]
+random_pitch = 1.1632544
+streams_count = 1
+stream_0/stream = ExtResource("14_38qb3")
+
+[node name="DeadEnemy" type="Node3D" unique_id=172750197]
+script = ExtResource("1_mwda6")
+
+[node name="HeadRigidBody" type="RigidBody3D" parent="." unique_id=598938574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_xdq70")
+
+[node name="EnemyHead" type="MeshInstance3D" parent="HeadRigidBody" unique_id=997777983]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.2905103, 0)
+mesh = ExtResource("3_sfawe")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_sfawe")
+
+[node name="Face" type="MeshInstance3D" parent="HeadRigidBody/EnemyHead" unique_id=1504419933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3956697, -0.3040465)
+mesh = SubResource("PlaneMesh_xofla")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_skknk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HeadRigidBody/EnemyHead/Face" unique_id=604830041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15129456)
+mesh = SubResource("BoxMesh_784wb")
+surface_material_override/0 = SubResource("ShaderMaterial_cnxol")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadRigidBody" unique_id=613160447]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.2905103, 0)
+shape = SubResource("ConvexPolygonShape3D_kl3o5")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2131986977]
+collision_mask = 0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_xdq70")
+
+[node name="EnemyTorso" type="MeshInstance3D" parent="RigidBody3D" unique_id=250211190]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0)
+mesh = ExtResource("8_qmkvq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mwda6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1733901340]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0)
+shape = SubResource("ConvexPolygonShape3D_784wb")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=191468588]
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_xdq70")
+
+[node name="EnemyGun" type="MeshInstance3D" parent="RigidBody3D3" unique_id=897803577]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0.04307723)
+mesh = ExtResource("9_kdtwh")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mwda6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3" unique_id=1412973793]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0.04307723)
+shape = SubResource("ConvexPolygonShape3D_xofla")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="." unique_id=270117295]
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_xdq70")
+
+[node name="EnemyShoulder" type="MeshInstance3D" parent="RigidBody3D4" unique_id=614474720]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0)
+mesh = ExtResource("10_d6ei7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mwda6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4" unique_id=433579630]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0)
+shape = SubResource("ConvexPolygonShape3D_skknk")
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="." unique_id=266931291]
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_xdq70")
+
+[node name="EnemyTracks" type="MeshInstance3D" parent="RigidBody3D5" unique_id=407316839]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.8478281, 0)
+mesh = ExtResource("11_p1y7q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mwda6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5" unique_id=553903441]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0)
+shape = SubResource("ConvexPolygonShape3D_cnxol")
+
+[node name="EnemyDeathSFX" type="AudioStreamPlayer3D" parent="." unique_id=586556025]
+unique_name_in_owner = true
+stream = ExtResource("12_6nxb3")
+volume_db = -6.074
+max_distance = 15.0
+
+[node name="BounceEarlySFX" type="AudioStreamPlayer3D" parent="." unique_id=581720089]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_7kkqv")
+max_distance = 14.0
+max_polyphony = 6
+
+[node name="BounceLateSFX" type="AudioStreamPlayer3D" parent="." unique_id=1287209647]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_hesrl")
+max_distance = 9.0
+
+[connection signal="body_entered" from="HeadRigidBody" to="." method="_on_head_rigid_body_body_entered"]

@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dqvq7s3qulcxm" path="res://scripts/grid_map_randomizer.gd" id="3_81xce"]
 [ext_resource type="Script" uid="uid://vi3k65tpcilq" path="res://example/lens_flare/lens_flare_post_process.gd" id="3_js86f"]
 [ext_resource type="Script" uid="uid://2l4jo033f3d6" path="res://example/scenes/cylinderProjection/sun.gd" id="3_myi5c"]
-[ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://example/scenes/enemy.tscn" id="4_v3cg3"]
+[ext_resource type="PackedScene" uid="uid://b6uciaqci53kb" path="res://components/enemy/enemy.tscn" id="4_v3cg3"]
 [ext_resource type="Script" uid="uid://6kpbifvenv85" path="res://scripts/menu/main_menu.gd" id="5_6m6oy"]
 [ext_resource type="Theme" uid="uid://csli33hlsyqxo" path="res://misc/low_res_theme.tres" id="5_xt5xi"]
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="7_yd6cv"]
@@ -19,7 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://b4dxbdl3jpti5" path="res://components/slope.tscn" id="19_d3xon"]
 [ext_resource type="ArrayMesh" uid="uid://isqj2l2yc773" path="res://meshes/rocket.obj" id="19_huaye"]
 [ext_resource type="Texture2D" uid="uid://cn0lm6k4y07ro" path="res://meshes/rocket.png" id="19_i38dm"]
-[ext_resource type="PackedScene" uid="uid://bjq1qnwhm5lon" path="res://audio/music_manager.tscn" id="20_i38dm"]
+[ext_resource type="PackedScene" path="res://audio/music_manager.tscn" id="20_i38dm"]
+[ext_resource type="PackedScene" uid="uid://b0pek1qypx8hk" path="res://components/enemy/boss.tscn" id="21_m3jde"]
+[ext_resource type="PackedScene" uid="uid://btpp3i38noku2" path="res://components/enemy/dead_enemy.tscn" id="22_m3jde"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("2_meyph")
@@ -135,15 +137,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 
 [node name="Player" parent="." unique_id=1136786299 instance=ExtResource("2_i4ju6")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 8, 13)
 
-[node name="Enemy" parent="." unique_id=172750197 instance=ExtResource("4_v3cg3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 9)
-
-[node name="Enemy2" parent="." unique_id=884060554 instance=ExtResource("4_v3cg3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 1)
-
-[node name="Enemy3" parent="." unique_id=389257984 instance=ExtResource("4_v3cg3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 1)
-
 [node name="Enemy4" parent="." unique_id=1658812423 instance=ExtResource("4_v3cg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -23)
 
@@ -186,6 +179,7 @@ paths = [NodePath("Path3D"), NodePath("Path3D2"), NodePath("Path3D3")]
 camera_one = NodePath("Camera3D")
 camera_two = NodePath("Camera3D2")
 focus_markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3")]
+travel_duration = 10.0
 focus_screen_offset = Vector2(-150, 0)
 
 [node name="MainMenu" type="CenterContainer" parent="MainMenuWrapper" unique_id=596712567 node_paths=PackedStringArray("main_menu_container", "options_container")]
@@ -265,3 +259,15 @@ transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -15, 5, 
 transform = Transform3D(-1, 0, 3.1786513e-08, 0, 1, 0, -3.1786513e-08, 0, -1, -11, 3, 7)
 
 [node name="MusicManager" parent="." unique_id=121765092 instance=ExtResource("20_i38dm")]
+
+[node name="Boss" parent="." unique_id=172750197 instance=ExtResource("21_m3jde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
+
+[node name="DeadEnemy" parent="." unique_id=694765703 instance=ExtResource("22_m3jde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 2)
+
+[node name="Enemy" parent="." unique_id=1359358342 instance=ExtResource("4_v3cg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 7)
+
+[node name="Enemy2" parent="." unique_id=1851463058 instance=ExtResource("4_v3cg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 2)

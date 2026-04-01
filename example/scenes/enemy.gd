@@ -13,7 +13,8 @@ var faceTexture: Texture2D
 
 var static_change_cooldown = 0.0
 
-var health = 2
+@export var health = 2
+@export var shots_per_attack = 1
 var iframes = 0.0
 @onready var enemy_shoot_sfx: AudioStreamPlayer3D = %EnemyShootSFX
 @onready var enemy_move_sfx: AudioStreamPlayer3D = %EnemyMoveSFX
@@ -134,12 +135,20 @@ func process_attack(_delta: float) -> void:
 		return
 
 	if is_facing(player.target_position):
-		var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
-		var hit_chance = get_hit_chance(distance_to_player)
-		if randf() < hit_chance:
-			attack(player)
-		else:
-			miss(player.global_transform.origin)
+		for i in range(shots_per_attack):
+			var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
+			var hit_chance = get_hit_chance(distance_to_player)
+			var deleta_x = abs(player.global_transform.origin.x - self.global_transform.origin.x)
+			var delta_z = abs(player.global_transform.origin.z - self.global_transform.origin.z)
+			var different_x = deleta_x > GRID_SIZE * .1
+			var different_z = delta_z > GRID_SIZE * .1
+			if different_x and different_z:
+				await miss(self.global_transform.origin - self.global_basis.z * GRID_SIZE * 5)
+				print("DODGE!")
+			elif randf() < hit_chance:
+				await attack(player)
+			else:
+				await miss(player.global_transform.origin)
 	else:
 		rotate_towards(player.target_position)
 
@@ -160,7 +169,7 @@ func is_facing(point: Vector3, origin = self.target_position) -> bool:
 	return abs(angle_to_target) < PI / 8  # Consider facing if within 22.5 degrees
 
 func attack(player: Player):
-	shoot_at(player.global_transform.origin, player.damage)
+	await shoot_at(player.global_transform.origin, player.damage)
 
 func miss(target_position: Vector3):
 	var delta = target_position - self.global_transform.origin
@@ -168,7 +177,7 @@ func miss(target_position: Vector3):
 		Vector3.UP
 	).normalized()
 	miss_direction = miss_direction.rotated(delta.normalized(), PI*2 * randf_range(-1, 1))  # Add some random spread
-	shoot_at(target_position + miss_direction * GRID_SIZE * .5)
+	await shoot_at(target_position + miss_direction * GRID_SIZE * .5)
 		
 
 func shoot_at(target_position: Vector3, on_hit = null):
