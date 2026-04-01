@@ -2,16 +2,32 @@ extends Node
 
 var fovSetting: int = 100
 
+
+var in_combat = false
+var within_range_of_enemy = false
+
 func _ready() -> void:
-	pass
+	var timer = Timer.new()
+	timer.wait_time = 3
+	timer.one_shot = false
+	timer.autostart = true
+	add_child(timer)
+	timer.timeout.connect(_check_proximity_to_enemies)
+
+func _check_proximity_to_enemies() -> void:
+	var player = getPlayer()
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	within_range_of_enemy = false
+	for enemy in enemies:
+		if player.global_transform.origin.distance_to(enemy.global_transform.origin) < 10*player.GRID_SIZE:
+			within_range_of_enemy = true
+			break
+	if not within_range_of_enemy:
+		in_combat = false
 
 func _process(_delta: float) -> void:
 	pass
-	# var vp = get_viewport()
-	# if vp:
-	# 	var cam = vp.get_camera_3d()
-	# 	if cam:
-	# 		cam.fov = fovSetting
+
 
 func getAllChildren(node, results=[]):
 	for N in node.get_children():

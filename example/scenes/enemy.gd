@@ -25,6 +25,7 @@ var decaying_shot_count = 0 # Decreases over time, increases with each attack.
 var state = "wander"
 func _ready():
 	super._ready()
+	add_to_group("enemies")
 	starting_position = self.global_transform.origin
 	var laser_particles_node: GPUParticles3D = get_node(laserParticles)
 	laser_particles_node.process_material = laser_particles_node.process_material.duplicate()
@@ -128,7 +129,6 @@ func process_wander(_delta: float) -> void:
 		wait_time = 0.3
 
 func process_attack(_delta: float) -> void:
-	enemy_shoot_sfx.play()
 	var player = Globals.getPlayer()
 	if player == null:
 		return
@@ -172,6 +172,9 @@ func miss(target_position: Vector3):
 		
 
 func shoot_at(target_position: Vector3, on_hit = null):
+	enemy_shoot_sfx.play()
+	if Globals.within_range_of_enemy:
+		Globals.in_combat = true
 	wait_time = .8
 	decaying_shot_count += 1
 

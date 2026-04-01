@@ -181,6 +181,10 @@ func activate():
 func shoot():
 	if not has_gun_upgrade:
 		return
+
+	if Globals.within_range_of_enemy:
+		Globals.in_combat = true
+
 	if raygun_overheated:
 		gun_click_sfx.play()
 		return
