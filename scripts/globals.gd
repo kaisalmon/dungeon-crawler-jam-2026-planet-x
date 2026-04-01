@@ -13,6 +13,7 @@ func _ready() -> void:
 	timer.autostart = true
 	add_child(timer)
 	timer.timeout.connect(_check_proximity_to_enemies)
+	timer.timeout.connect(_print_fps)
 
 func _check_proximity_to_enemies() -> void:
 	var player = getPlayer()
@@ -24,6 +25,9 @@ func _check_proximity_to_enemies() -> void:
 			break
 	if not within_range_of_enemy:
 		in_combat = false
+
+func _print_fps() -> void:
+	print("FPS: ", Engine.get_frames_per_second())
 
 func _process(_delta: float) -> void:
 	pass

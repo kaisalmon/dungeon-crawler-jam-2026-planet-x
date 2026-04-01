@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dv6ah67bk20xy"]
+
+[ext_resource type="ArrayMesh" uid="uid://emobcoo1448p" path="res://meshes/ladder.obj" id="1_b8gkc"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_ceq3r"]
+[ext_resource type="Texture2D" uid="uid://ctv0hbyy6og84" path="res://meshes/ladder.png" id="3_kjgvq"]
+[ext_resource type="Script" uid="uid://gjlq1ug3srg8" path="res://scripts/dungeon_crawler/Ladder.gd" id="4_gg03g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rikof"]
+render_priority = 0
+shader = ExtResource("2_ceq3r")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_kjgvq")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yd6cv"]
+size = Vector3(2.1342163, 0.32702637, 1.7944336)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdllh"]
+size = Vector3(1.625, 2.875, 0.25)
+
+[node name="Ladder" type="MeshInstance3D" unique_id=953413712]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_b8gkc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_rikof")
+script = ExtResource("4_gg03g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=527478166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.4375, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=112321044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97476196, 0.62750244, -0.28832984)
+shape = SubResource("BoxShape3D_yd6cv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2093095441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.9375)
+shape = SubResource("BoxShape3D_sdllh")

@@ -159,6 +159,8 @@ draw_pass_1 = SubResource("QuadMesh_cgus4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1606381836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("8_couud")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=152312094]
@@ -166,9 +168,10 @@ shape = SubResource("BoxShape3D_pir3r")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1726065683]
 
-[node name="PlayerUI" type="Sprite2D" parent="." unique_id=1467251640]
+[node name="PlayerUI" type="TextureRect" parent="." unique_id=2054579326]
 material = SubResource("CanvasItemMaterial_1kub6")
-position = Vector2(64.5, 64)
+offset_right = 128.0
+offset_bottom = 128.0
 texture = ExtResource("6_pir3r")
 script = ExtResource("6_couud")
 heart_scene = ExtResource("7_0lm1f")

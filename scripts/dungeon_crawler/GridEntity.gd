@@ -204,7 +204,7 @@ func try_move_dir(dir: Vector3):
 				return
 		# Check if we're moving off a ground override
 		if current_ground_override and current_ground_override != move_result.ground_override:
-			var skip_normal = current_ground_override.on_entity_move_off(self, target_position, new_pos)
+			var skip_normal = await current_ground_override.on_entity_move_off(self, target_position, new_pos)
 			if skip_normal:
 				return
 		if move_result.ground_override:

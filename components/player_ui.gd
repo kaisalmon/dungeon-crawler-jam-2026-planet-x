@@ -1,4 +1,4 @@
-extends Sprite2D
+extends TextureRect
 
 var vis_health = 5
 @export var heart_scene: PackedScene
@@ -9,9 +9,9 @@ func _process(_delta):
 	while hearts.size() < player.max_health:
 		var heart = heart_scene.instantiate()
 		add_child(heart)
-		heart.position = Vector2(-45 + hearts.size() * 20, -43)
+		heart.position = Vector2(19.5 + hearts.size() * 20, 20)
 		hearts.append(heart)
-
+   
 	while hearts.size() > player.max_health:
 		var heart = hearts.pop_back()
 		heart.queue_free()
@@ -26,6 +26,9 @@ func _process(_delta):
 		self.modulate = Color(1, 1, 1, 0)
 	else:
 		self.modulate = Color(1, 1, 1, 1)
+	if player.in_cutscene:
+		self.modulate = Color(1, 1, 1, 0)
+		
 	
 
 	

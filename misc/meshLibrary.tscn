@@ -14,6 +14,10 @@
 [ext_resource type="ArrayMesh" uid="uid://dys1su7nhy2hp" path="res://meshes/platform.obj" id="12_a3ccd"]
 [ext_resource type="Texture2D" uid="uid://rqvwwexgh07e" path="res://textures/SCITX__07.png" id="13_w5qad"]
 [ext_resource type="ArrayMesh" uid="uid://dl0rniwrwyv1q" path="res://meshes/flat_tile_2_sided.obj" id="14_3fcrg"]
+[ext_resource type="ArrayMesh" uid="uid://bwupm4ekp4df1" path="res://meshes/cliff.obj" id="15_ofenm"]
+[ext_resource type="Texture2D" uid="uid://84c0tyb3gtxd" path="res://meshes/Cliff.png" id="16_gsbg6"]
+[ext_resource type="ArrayMesh" uid="uid://exojcewpm01c" path="res://meshes/cliff_corner.obj" id="17_gsbg6"]
+[ext_resource type="ArrayMesh" uid="uid://c62vlsptgxeod" path="res://meshes/cliff_end.obj" id="18_oowpc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nux8s"]
 render_priority = 0
@@ -192,6 +196,24 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6ku6"]
 size = Vector3(2, 0.0625, 2)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oowpc"]
+render_priority = 0
+shader = ExtResource("2_iqqq3")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("16_gsbg6")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
 [node name="MeshLibrary" type="Node3D" unique_id=963283353]
 
 [node name="Dirt" type="MeshInstance3D" parent="." unique_id=1111084179]
@@ -300,3 +322,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingWindows/StaticBody3D" unique_id=1394818442]
 shape = SubResource("BoxShape3D_e6ku6")
+
+[node name="Cliff" type="MeshInstance3D" parent="." unique_id=1478797594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
+mesh = ExtResource("15_ofenm")
+surface_material_override/0 = SubResource("ShaderMaterial_oowpc")
+
+[node name="CliffCorner" type="MeshInstance3D" parent="." unique_id=1304820299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -5)
+mesh = ExtResource("17_gsbg6")
+surface_material_override/0 = SubResource("ShaderMaterial_oowpc")
+surface_material_override/1 = SubResource("ShaderMaterial_oowpc")
+
+[node name="CliffEnd" type="MeshInstance3D" parent="." unique_id=1404827195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
+mesh = ExtResource("18_oowpc")
+surface_material_override/0 = SubResource("ShaderMaterial_oowpc")
+surface_material_override/1 = SubResource("ShaderMaterial_oowpc")
+surface_material_override/2 = SubResource("ShaderMaterial_oowpc")
