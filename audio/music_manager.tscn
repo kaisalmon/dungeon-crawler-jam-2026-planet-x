@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0byh2gnjccpq" path="res://music_manager.gd" id="1_ip8bo"]
 [ext_resource type="AudioStream" uid="uid://btkfsvoubn0oy" path="res://audio/music/Exploration1loop.ogg" id="2_8vo66"]
+[ext_resource type="AudioStream" uid="uid://bvwxw5w66onec" path="res://audio/music/menutest.ogg" id="2_t7ws8"]
 [ext_resource type="AudioStream" uid="uid://c23212tye71uq" path="res://audio/music/Battle1loop.ogg" id="3_t7ws8"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1826a"]
@@ -15,16 +16,19 @@ stream_1/volume = -60.0
 script = ExtResource("1_ip8bo")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=936832842]
-unique_name_in_owner = true
+stream = ExtResource("2_t7ws8")
 bus = &"Music"
 
 [node name="GameplayMusic" type="AudioStreamPlayer" parent="." unique_id=851818825]
-unique_name_in_owner = true
+stream = SubResource("AudioStreamSynchronized_1826a")
+volume_db = -10.982
+bus = &"Music"
+
+[node name="GameplayMusic2" type="AudioStreamPlayer" parent="." unique_id=717458334]
 stream = SubResource("AudioStreamSynchronized_1826a")
 volume_db = -10.982
 bus = &"Music"
 
 [node name="CreditsMusic" type="AudioStreamPlayer" parent="." unique_id=492567593]
-unique_name_in_owner = true
 stream = SubResource("AudioStreamSynchronized_1826a")
 bus = &"Music"

@@ -1,15 +1,18 @@
 extends Node
 
-@onready var menu_music: AudioStreamPlayer = %MenuMusic
-@onready var gameplay_music: AudioStreamPlayer = %GameplayMusic
-@onready var credits_music: AudioStreamPlayer = %CreditsMusic
+
+
+@onready var menu_music: AudioStreamPlayer = $MenuMusic
+@onready var gameplay_music: AudioStreamPlayer = $GameplayMusic
+@onready var gameplay_music_2: AudioStreamPlayer = $GameplayMusic2
+@onready var credits_music: AudioStreamPlayer = $CreditsMusic
 
 const mute = -60
-const unmute = 10
+const unmute = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	play_music()
+	self.add_to_group("MusicManager")
 	pass # Replace with function body.
 
 
@@ -24,16 +27,18 @@ func _process(delta: float) -> void:
 		is_fading_combat = false
 		tween_combat_out()
 
-func play_music():
-	gameplay_music.play()
-	
+func play_music(musicplayer: AudioStreamPlayer) -> void:
+	music_stop()
+	await get_tree().create_timer(3).timeout
+	musicplayer.play()
+	print("playing:", musicplayer.name)
 
 func music_volume(vol: float) -> void:
 	gameplay_music.stream.set_sync_stream_volume(1, vol)
 
 func tween_combat_in() -> void:
 	var combat_fade_in = create_tween()
-	combat_fade_in.tween_method(Callable(self, "music_volume"), mute, unmute, 1)
+	combat_fade_in.tween_method(Callable(self, "music_volume"), mute, unmute, 2)
 
 func tween_combat_out() -> void:
 	var combat_fade_out = create_tween()
