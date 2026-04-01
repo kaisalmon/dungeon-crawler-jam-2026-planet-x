@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b4dxbdl3jpti5" path="res://components/slope.tscn" id="19_d3xon"]
 [ext_resource type="ArrayMesh" uid="uid://isqj2l2yc773" path="res://meshes/rocket.obj" id="19_huaye"]
 [ext_resource type="Texture2D" uid="uid://cn0lm6k4y07ro" path="res://meshes/rocket.png" id="19_i38dm"]
+[ext_resource type="PackedScene" uid="uid://bjq1qnwhm5lon" path="res://audio/music_manager.tscn" id="20_i38dm"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("2_meyph")
@@ -262,3 +263,5 @@ transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -15, 5, 
 
 [node name="Slope2" parent="." unique_id=1049426675 instance=ExtResource("19_d3xon")]
 transform = Transform3D(-1, 0, 3.1786513e-08, 0, 1, 0, -3.1786513e-08, 0, -1, -11, 3, 7)
+
+[node name="MusicManager" parent="." unique_id=121765092 instance=ExtResource("20_i38dm")]
