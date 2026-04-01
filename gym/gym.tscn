@@ -165,7 +165,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 4, -15)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15, 3, 3.2595775)
 
 [node name="Upgradespot" parent="." unique_id=896239292 instance=ExtResource("15_34s28")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 7, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 7, 13)
 
 [node name="Upgradespot2" parent="." unique_id=569046478 instance=ExtResource("15_34s28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 5)
@@ -185,7 +185,7 @@ paths = [NodePath("Path3D"), NodePath("Path3D2"), NodePath("Path3D3")]
 camera_one = NodePath("Camera3D")
 camera_two = NodePath("Camera3D2")
 focus_markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3")]
-focus_screen_offset = Vector2(2.795, 0)
+focus_screen_offset = Vector2(-150, 0)
 
 [node name="MainMenu" type="CenterContainer" parent="MainMenuWrapper" unique_id=596712567 node_paths=PackedStringArray("main_menu_container", "options_container")]
 anchors_preset = 4
