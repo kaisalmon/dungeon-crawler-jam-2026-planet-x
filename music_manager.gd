@@ -37,7 +37,7 @@ func tween_combat_in() -> void:
 
 func tween_combat_out() -> void:
 	var combat_fade_out = create_tween()
-	combat_fade_out.tween_method(Callable(self, "music_volume"), unmute, mute, 1)
+	combat_fade_out.tween_method(Callable(self, "music_volume"), unmute, mute, 3)
 
 func music_stop():
 	var fadeout = create_tween() #Tween for smooth music fadeouts
