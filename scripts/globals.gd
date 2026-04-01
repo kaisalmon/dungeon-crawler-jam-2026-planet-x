@@ -20,7 +20,7 @@ func _check_proximity_to_enemies() -> void:
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	within_range_of_enemy = false
 	for enemy in enemies:
-		if player.global_transform.origin.distance_to(enemy.global_transform.origin) < 10*player.GRID_SIZE:
+		if player.global_transform.origin.distance_to(enemy.global_transform.origin) < 5*player.GRID_SIZE:
 			within_range_of_enemy = true
 			break
 	if not within_range_of_enemy:
