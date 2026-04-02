@@ -4,6 +4,7 @@ var fovSetting: int = 100
 
 
 var in_combat = false
+var in_lab_environment = false
 var within_range_of_enemy = false
 
 func _ready() -> void:

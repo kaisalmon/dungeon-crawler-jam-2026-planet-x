@@ -1,6 +1,8 @@
 extends DirectionalLight3D
 
-
+func _ready():
+	SunFlare.sun = self
+	
 func _process(_delta):
 	var player = Globals.getPlayer()
 

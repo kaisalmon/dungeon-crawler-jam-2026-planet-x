@@ -1,13 +1,9 @@
 extends Node
-
 # Global script fetching for DirectionalLight3D node, aka the sun screen position and direction
 
 var sun_dot : float = 0.0
 var sun_screen_position : Vector2 = Vector2.ZERO
 var sun : DirectionalLight3D = null
-
-func _ready():
-	sun = get_tree().root.find_children("", "DirectionalLight3D", true, false).pop_front()
 
 func _process(_delta):
 	var camera_node : Camera3D = get_viewport().get_camera_3d()

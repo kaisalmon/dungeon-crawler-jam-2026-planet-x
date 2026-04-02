@@ -71,6 +71,7 @@ void main() {
     flare *= (1.0 - occlusion) * campled_dot;
 
     screen_texture.rgb += screen_texture.rgb * screen_texture.rgb * 2.0 * flare + flare * vec3(1.0, 0.8, 0.0) * 0.05;
-
+    // make screen black to test if this is being executed
+    // screen_texture.rgb = vec3(0.0);
     imageStore(screen_tex, pixel, screen_texture);
 }

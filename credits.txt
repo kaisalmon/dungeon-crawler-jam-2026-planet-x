@@ -1,3 +1,4 @@
 Textures by Jetsan - https://jestan.itch.io/
 https://jayjay99.itch.io/1-bit-portraits
 https://abhishta.itch.io/voidpix-skybox-pack
+https://github.com/gtibo/Godot-4-lens-flare-post-process
