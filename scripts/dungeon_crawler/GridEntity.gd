@@ -49,7 +49,6 @@ func _ready():
 	target_position = snap_to_grid(global_transform.origin)
 	target_rotation = global_transform.basis
 	add_to_group("grid_entities")
-	add_to_group("saveable")
 
 func snap_to_grid(pos: Vector3, snap_y = false) -> Vector3:
 	var snapped_pos = (pos - GRID_OFFSET).snapped(Vector3(GRID_SIZE, GRID_SIZE, GRID_SIZE)) + GRID_OFFSET
@@ -309,59 +308,6 @@ func basis_almost_equal(b1: Basis, b2: Basis) -> bool:
 
 func check_input_queue():
 	pass # override for player input queue
-
-func save():
-	var save_data = {
-		"x": target_position.x,
-		"y": target_position.y,
-		"z": target_position.z,
-		"rotation": {
-			"x": {
-				"x": target_rotation.x.x,
-				"y": target_rotation.x.y,
-				"z": target_rotation.x.z,
-			},
-			"y": {
-				"x": target_rotation.y.x,
-				"y": target_rotation.y.y,
-				"z": target_rotation.y.z,
-			},
-			"z": {
-				"x": target_rotation.z.x,
-				"y": target_rotation.z.y,
-				"z": target_rotation.z.z,
-			},
-		},
-		"gravity": {
-			"x": gravity.x,
-			"y": gravity.y,
-			"z": gravity.z,
-		},
-		"frozen": frozen,
-		"can_move_through_doors": can_move_through_doors,
-		"lock_x": lock_x,
-		"lock_y": lock_y,
-		"lock_z": lock_z,
-	}
-	return save_data
-
-func load(data):
-	target_position = Vector3(data["x"], data["y"], data["z"])
-	target_rotation = Basis(
-		Vector3(data["rotation"]["x"]["x"], data["rotation"]["x"]["y"], data["rotation"]["x"]["z"]),
-		Vector3(data["rotation"]["y"]["x"], data["rotation"]["y"]["y"], data["rotation"]["y"]["z"]),
-		Vector3(data["rotation"]["z"]["x"], data["rotation"]["z"]["y"], data["rotation"]["z"]["z"])
-	)
-	gravity = Vector3(data["gravity"]["x"], data["gravity"]["y"], data["gravity"]["z"])
-	visual_gravity = gravity
-	velocity = Vector3.ZERO
-	global_transform.origin = target_position
-	global_transform.basis = target_rotation
-	frozen = data["frozen"]
-	can_move_through_doors = data["can_move_through_doors"]
-	lock_x = data["lock_x"]
-	lock_y = data["lock_y"]
-	lock_z = data["lock_z"]
 
 
 func teleport_to_position(new_position: Vector3):

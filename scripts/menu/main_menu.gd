@@ -15,7 +15,7 @@ var done: bool = false
 var overlay_target: float = 0.0
 
 
-const SAVE_FILE_PATH = "user://save_game.dat"
+const SAVE_FILE_PATH = "user://autosave.save"
 
 func _ready():
 	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
@@ -62,6 +62,13 @@ func _ready():
 
 
 func _on_new_game_pressed():
+	start_game()
+
+func _on_continue_pressed():
+	Globals.load()
+	start_game()
+
+func start_game():
 	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
 	music_manager.play_music(music_manager.gameplay_music)
 	if done:
@@ -75,20 +82,6 @@ func _on_new_game_pressed():
 	RenderingServer.global_shader_parameter_set("use_camera_as_curve_origin", false)
 	self.get_parent().is_active = false
 	self.get_parent().transition_to_player_camera(player.camera, 0)
-	new_game_pressed.emit()
-
-func _on_continue_pressed():
-	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
-	music_manager.play_music(music_manager.gameplay_music)
-	if done:
-		return
-	done = true
-	var player = Globals.getPlayer()
-	player.in_cutscene = false
-	RenderingServer.global_shader_parameter_set("use_camera_as_curve_origin", false)
-	self.get_parent().is_active = false
-	self.get_parent().transition_to_player_camera(player.camera)
-	continue_pressed.emit()
 
 func _on_settings_pressed():
 	if done:

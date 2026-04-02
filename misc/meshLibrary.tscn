@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://84c0tyb3gtxd" path="res://meshes/Cliff.png" id="16_gsbg6"]
 [ext_resource type="ArrayMesh" uid="uid://exojcewpm01c" path="res://meshes/cliff_corner.obj" id="17_gsbg6"]
 [ext_resource type="ArrayMesh" uid="uid://c62vlsptgxeod" path="res://meshes/cliff_end.obj" id="18_oowpc"]
+[ext_resource type="ArrayMesh" uid="uid://cg5r2ymm1ns1y" path="res://meshes/cyl.obj" id="19_kgc3q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nux8s"]
 render_priority = 0
@@ -214,6 +215,9 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0w6h8"]
+points = PackedVector3Array(-0.9783261, 0.021866228, -0.30554706, 0.9782637, 1.9781147, 0.30554113, 0.94376785, 1.9739476, 0.3652781, -0.9783261, 1.9781338, -0.30554706, 0.3056196, 0.022156553, -0.9782265, 0.30561742, 0.022163438, 0.9782196, -0.73204046, 1.9759184, 0.7320344, -0.30550948, 1.9779646, -0.9783478, 0.9782637, 0.02188525, 0.30554113, 0.73209286, 1.9757915, -0.7319392, -0.73204046, 0.024081621, 0.7320344, 0.30561742, 1.9778366, 0.9782196, 0.9783126, 0.021836327, -0.30555642, -0.7321022, 0.023999257, -0.7320962, -0.30550733, 1.9779578, 0.978341, -0.9782772, 0.021915136, 0.3055318, 0.7320562, 0.0242573, 0.7319026, 0.9783126, 1.9781637, -0.30555642, -0.30550733, 0.022042148, 0.978341, -0.30550948, 0.0220353, -0.9783478, -0.9782772, 1.9780849, 0.3055318, 0.3056196, 1.9778434, -0.9782265, -0.7321022, 1.9760008, -0.7320962, 0.73209286, 0.024208497, -0.7319392, 0.7320562, 1.9757427, 0.7319026)
+
 [node name="MeshLibrary" type="Node3D" unique_id=963283353]
 
 [node name="Dirt" type="MeshInstance3D" parent="." unique_id=1111084179]
@@ -340,3 +344,13 @@ mesh = ExtResource("18_oowpc")
 surface_material_override/0 = SubResource("ShaderMaterial_oowpc")
 surface_material_override/1 = SubResource("ShaderMaterial_oowpc")
 surface_material_override/2 = SubResource("ShaderMaterial_oowpc")
+
+[node name="Cyl" type="MeshInstance3D" parent="." unique_id=554590263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -8)
+mesh = ExtResource("19_kgc3q")
+surface_material_override/0 = SubResource("ShaderMaterial_b6jse")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cyl" unique_id=2044275279]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cyl/StaticBody3D" unique_id=2139820000]
+shape = SubResource("ConvexPolygonShape3D_0w6h8")

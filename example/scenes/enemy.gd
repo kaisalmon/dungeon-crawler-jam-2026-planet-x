@@ -53,9 +53,8 @@ func _process(delta: float) -> void:
 		return
 
 	var player = Globals.getPlayer()
-	var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
 
-	if not player.in_cutscene and has_line_of_sight(player.global_transform.origin) and distance_to_player < GRID_SIZE * 6:
+	if not player.in_cutscene and has_line_of_sight(player.global_transform.origin):
 		state = "attack"
 	else:
 		state = "wander"
@@ -118,6 +117,8 @@ func process_wander(_delta: float) -> void:
 	var forward_position = self.target_position + forward * GRID_SIZE
 	if forward_position.distance_to(starting_position) > max_distance * GRID_SIZE:
 		rotate_chance = 1.0  # Force rotation if we're too far from the starting position
+	if not self.is_valid_move(self.target_position, forward).is_allowed:
+		rotate_chance = 1.0 
 	if randf() < rotate_chance:
 		var rotation_amount = PI / 2
 		if randf() < 0.5:
@@ -133,10 +134,19 @@ func process_attack(_delta: float) -> void:
 	var player = Globals.getPlayer()
 	if player == null:
 		return
+	var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
+
+	if distance_to_player > GRID_SIZE * 6:
+		print("Chasing")
+		enemy_move_sfx.play()
+		var forward = -transform.basis.z.normalized()
+
+		self.try_move_dir(forward)
+		wait_time = 0.3
+		return
 
 	if is_facing(player.target_position):
 		for i in range(shots_per_attack):
-			var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
 			var hit_chance = get_hit_chance(distance_to_player)
 			var deleta_x = abs(player.global_transform.origin.x - self.global_transform.origin.x)
 			var delta_z = abs(player.global_transform.origin.z - self.global_transform.origin.z)

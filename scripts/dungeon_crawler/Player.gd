@@ -49,6 +49,7 @@ var camera: Camera3D
 func _ready():
 	super._ready()
 	add_to_group("player")
+	add_to_group("saveable")
 	self.camera = $Camera3D
 
 func can_move() -> bool:
@@ -164,17 +165,6 @@ func apply_fake_world_rotation(_delta):
 		camera.rotation_degrees.z = 0
 		camera.rotation_degrees.x = 0
 
-
-func save():
-	var json = super.save()
-	json["world_rotation"] = world_rotation
-	json["is_player"] = true
-	return json
-
-func load(json: Dictionary):
-	super.load(json)
-	world_rotation = json["world_rotation"]
-
 func activate():
 	in_cutscene = false
 
@@ -263,3 +253,40 @@ func die():
 
 func _on_static_body_3d_shot() -> void:
 	damage()
+
+func save():
+	var json = {
+		"x": target_position.x,
+		"y": target_position.y,
+		"z": target_position.z,
+		"rotation_x_x": target_rotation.x.x,
+		"rotation_x_y": target_rotation.x.y,
+		"rotation_x_z": target_rotation.x.z,
+		"rotation_y_x": target_rotation.y.x,
+		"rotation_y_y": target_rotation.y.y,
+		"rotation_y_z": target_rotation.y.z,
+		"rotation_z_x": target_rotation.z.x,
+		"rotation_z_y": target_rotation.z.y,
+		"rotation_z_z": target_rotation.z.z,
+		"health": health,
+		"max_health": max_health,
+		"shields": shields,
+		"max_shields": max_shields,
+		"has_gun_upgrade": has_gun_upgrade,
+	}
+	return json
+
+func load(json):
+	target_position = Vector3(json["x"], json["y"], json["z"])
+	target_rotation = Basis(
+		Vector3(json["rotation_x_x"], json["rotation_x_y"], json["rotation_x_z"]),
+		Vector3(json["rotation_y_x"], json["rotation_y_y"], json["rotation_y_z"]),
+		Vector3(json["rotation_z_x"], json["rotation_z_y"], json["rotation_z_z"])
+	)
+	global_transform.origin = target_position
+	global_transform.basis = target_rotation
+	health = json["health"]
+	max_health = json["max_health"]
+	shields = json["shields"]
+	max_shields = json["max_shields"]
+	has_gun_upgrade = json["has_gun_upgrade"]

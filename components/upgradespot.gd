@@ -12,6 +12,7 @@ enum UpgradeType {
 @export var upgrade_type: UpgradeType = UpgradeType.GUN
 func _ready():
 	self.material_override = self.material_override.duplicate()
+	self.add_to_group("saveable")
 
 func _process(delta):
 	t += delta
@@ -35,11 +36,14 @@ func _process(delta):
 	var player = Globals.getPlayer()
 	if player.global_position.distance_to(self.global_position) < player.GRID_SIZE * 0.6:
 		picked_up = true
-		for child in get_children():
-			child.queue_free()
-			# Remove shader_parameter/texture_emission 
-		self.material_override.set("shader_parameter/texture_emission", null)
+		set_visually_picked_up()
 		on_upgrade()
+
+func set_visually_picked_up():
+	for child in get_children():
+		child.queue_free()
+		# Remove shader_parameter/texture_emission 
+	self.material_override.set("shader_parameter/texture_emission", null)
 
 func on_upgrade():
 	var player: Player = Globals.getPlayer()
@@ -62,3 +66,16 @@ func on_upgrade():
 		player.health += 1
 		Globals.say("Health increased!")
 		#SFX (Health Pickup)
+
+func save() -> Dictionary:
+	var json = {
+		"upgrade_type": upgrade_type,
+		"picked_up": picked_up,
+	}
+	return json
+
+func load(json: Dictionary) -> void:
+	upgrade_type = json["upgrade_type"]
+	picked_up = json["picked_up"]
+	if picked_up:
+		set_visually_picked_up()

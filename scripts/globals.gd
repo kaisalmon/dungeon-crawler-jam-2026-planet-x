@@ -20,7 +20,7 @@ func _check_proximity_to_enemies() -> void:
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	within_range_of_enemy = false
 	for enemy in enemies:
-		if player.global_transform.origin.distance_to(enemy.global_transform.origin) < 5*player.GRID_SIZE:
+		if player.global_transform.origin.distance_to(enemy.global_transform.origin) < 8*player.GRID_SIZE:
 			within_range_of_enemy = true
 			break
 	if not within_range_of_enemy:
@@ -60,3 +60,33 @@ func tutorialize(text: String) -> void:
 		return
 	tutorial_strings.append(text)
 	say(text)
+
+func save():
+	var save_data = {}
+	var saveables = get_tree().get_nodes_in_group("saveable")
+	for saveable in saveables:
+		save_data[saveable.get_path()] = saveable.save()
+	var save_name = "autosave"
+	var save_file = FileAccess.open("user://" + save_name + ".save", FileAccess.WRITE)
+	if save_file:
+		var json_string = JSON.stringify(save_data)
+
+		save_file.store_line(json_string)
+		say("Progress saved.")
+	else:
+		say("Error saving progress.")
+
+func load():
+	var save_name = "autosave"
+	var save_file = FileAccess.open("user://" + save_name + ".save", FileAccess.READ)
+	if save_file:
+		var json_string = save_file.get_as_text()
+		var save_data = JSON.parse_string(json_string)
+		for path in save_data.keys():
+			var node = get_node(path)
+			if node and node.has_method("load"):
+				node.load(save_data[path])
+			else:
+				print("No node or load method for path: ", path)
+	else:
+		print("No save file found.")
