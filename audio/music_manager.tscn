@@ -13,6 +13,7 @@ stream_1/stream = ExtResource("3_t7ws8")
 stream_1/volume = -60.0
 
 [node name="MusicManager" type="Node" unique_id=121765092]
+process_mode = 3
 script = ExtResource("1_ip8bo")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=936832842]

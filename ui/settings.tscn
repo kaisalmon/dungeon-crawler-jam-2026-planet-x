@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b67do40sctpcl"]
+
+[ext_resource type="Script" uid="uid://dkthfr6foyebn" path="res://ui/settings.gd" id="1_7kwmf"]
+
+[node name="Settings" type="VBoxContainer" unique_id=150284842]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_7kwmf")

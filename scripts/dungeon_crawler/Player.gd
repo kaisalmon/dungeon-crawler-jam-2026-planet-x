@@ -35,6 +35,7 @@ var has_gun_upgrade = false
 
 @export var equipped_gun_position: Vector3 = Vector3(0,0,0)
 @export var unequipped_gun_position: Vector3 = Vector3(0,0,0)
+@export var settings: VBoxContainer
 
 @onready var player_shoot_sfx: AudioStreamPlayer = %PlayerShootSFX
 @onready var player_move_sfx: AudioStreamPlayer = %PlayerMoveSFX
@@ -55,6 +56,8 @@ func _ready():
 	add_to_group("saveable")
 	self.is_player = true
 	self.camera = $Camera3D
+
+	settings.back_pressed.connect(unpause)
 
 func can_move() -> bool:
 	return (not is_moving) and (not is_turning) and not in_cutscene and not frozen
@@ -118,7 +121,18 @@ func handle_input():
 		queue_input("strafe_right", now)
 	elif Input.is_action_pressed("shoot"):
 		queue_input("shoot", now)
+	
+			
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and not settings.visible:
+		settings.visible = true
+		get_tree().paused = true
+		get_viewport().set_input_as_handled()
+
+func unpause():
+	get_tree().paused = false
+	settings.visible = false
 
 func queue_input(action: String, time: float):
 	if action != "shoot":

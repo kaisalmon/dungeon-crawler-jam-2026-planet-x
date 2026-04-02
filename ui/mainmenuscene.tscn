@@ -4,6 +4,8 @@
 [ext_resource type="Theme" uid="uid://csli33hlsyqxo" path="res://misc/low_res_theme.tres" id="2_2le3p"]
 [ext_resource type="Texture2D" uid="uid://c7xxteht2g6vh" path="res://ui/logo.png" id="2_hutpu"]
 [ext_resource type="Script" uid="uid://6kpbifvenv85" path="res://scripts/menu/main_menu.gd" id="3_hutpu"]
+[ext_resource type="PackedScene" uid="uid://b67do40sctpcl" path="res://ui/settings.tscn" id="5_evvfg"]
+[ext_resource type="Script" uid="uid://dkthfr6foyebn" path="res://ui/settings.gd" id="6_67cvs"]
 
 [sub_resource type="Curve3D" id="Curve3D_ri4m6"]
 bake_interval = 10.0
@@ -38,9 +40,9 @@ offset_bottom = 256.0
 theme = ExtResource("2_2le3p")
 script = ExtResource("3_hutpu")
 main_menu_container = NodePath("VBoxContainer")
-options_container = NodePath("VBoxContainer2")
+options_container = NodePath("Settings")
 
-[node name="TextureRect" type="TextureRect" parent="MainMenu" unique_id=1752604764]
+[node name="Logo" type="TextureRect" parent="MainMenu" unique_id=1752604764]
 layout_mode = 0
 offset_right = 193.0
 offset_bottom = 192.0
@@ -49,16 +51,19 @@ texture = ExtResource("2_hutpu")
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=1564976663]
 layout_mode = 0
 offset_left = 48.0
-offset_top = 112.0
+offset_top = 100.0
 offset_right = 48.0
-offset_bottom = 112.0
+offset_bottom = 100.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenu" unique_id=1170241019]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 128.0
-offset_right = 96.0
-offset_bottom = 128.0
+[node name="Settings" parent="MainMenu" unique_id=150284842 instance=ExtResource("5_evvfg")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -50.0
+script = ExtResource("6_67cvs")
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=581301330]
 unique_name_in_owner = true
@@ -95,3 +100,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 11, 21)
 [node name="Path3D3" type="Path3D" parent="." unique_id=1994011742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 8, 35)
 curve = SubResource("Curve3D_huaye")
+
+[connection signal="back_pressed" from="MainMenu/Settings" to="MainMenu" method="_on_settings_back_pressed"]

@@ -7,6 +7,9 @@ var in_combat = false
 var in_lab_environment = false
 var within_range_of_enemy = false
 
+var music_volume = 1.0 #  Range from 0.0 (mute) to 1.0 (full volume)
+var sfx_volume = 1.0 # Range from 0.0 (mute) to 1.0 (full volume)
+
 func _ready() -> void:
 	var timer = Timer.new()
 	timer.wait_time = 3

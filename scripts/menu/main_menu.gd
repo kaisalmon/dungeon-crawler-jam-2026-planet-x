@@ -87,6 +87,7 @@ func _on_settings_pressed():
 	if done:
 		return
 	main_menu_container.visible = false
+	$Logo.visible = false
 	options_container.visible = true
 	options_container.process_mode = Node.PROCESS_MODE_INHERIT
 
@@ -102,11 +103,10 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 func _go_back_to_main_menu():
-	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
-	music_manager.play_music(music_manager.menu_music)
 	options_container.visible = false
 	options_container.process_mode = Node.PROCESS_MODE_DISABLED
 	main_menu_container.visible = true
+	$Logo.visible = true
 	settings_button.grab_focus()
 	
 
@@ -122,3 +122,7 @@ func _process(delta):
 	var overlay_delta = overlay_target - self.modulate.a
 	%Overlay.modulate.a += sign(overlay_delta) * delta
 	%Overlay.modulate.a = max(0.0, min(1.0, %Overlay.modulate.a))
+
+
+func _on_settings_back_pressed() -> void:
+	_go_back_to_main_menu()
