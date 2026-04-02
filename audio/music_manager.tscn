@@ -4,12 +4,21 @@
 [ext_resource type="AudioStream" uid="uid://btkfsvoubn0oy" path="res://audio/music/Exploration1loop.ogg" id="2_8vo66"]
 [ext_resource type="AudioStream" uid="uid://bvwxw5w66onec" path="res://audio/music/menutest.ogg" id="2_t7ws8"]
 [ext_resource type="AudioStream" uid="uid://c23212tye71uq" path="res://audio/music/Battle1loop.ogg" id="3_t7ws8"]
+[ext_resource type="AudioStream" uid="uid://b2ubsc5bs0rv3" path="res://audio/music/placeholderbattle.ogg" id="4_jh75p"]
+[ext_resource type="AudioStream" uid="uid://4jhbatm2c2nh" path="res://audio/music/placeholdermusic.ogg" id="5_rrdms"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1826a"]
 stream_count = 2
 stream_0/stream = ExtResource("2_8vo66")
 stream_0/volume = 0.0
 stream_1/stream = ExtResource("3_t7ws8")
+stream_1/volume = -60.0
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_wj0wk"]
+stream_count = 2
+stream_0/stream = ExtResource("5_rrdms")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("4_jh75p")
 stream_1/volume = -60.0
 
 [node name="MusicManager" type="Node" unique_id=121765092]
@@ -22,11 +31,11 @@ bus = &"Music"
 
 [node name="GameplayMusic" type="AudioStreamPlayer" parent="." unique_id=851818825]
 stream = SubResource("AudioStreamSynchronized_1826a")
-volume_db = -10.982
+volume_db = -3.505
 bus = &"Music"
 
 [node name="GameplayMusic2" type="AudioStreamPlayer" parent="." unique_id=717458334]
-stream = SubResource("AudioStreamSynchronized_1826a")
+stream = SubResource("AudioStreamSynchronized_wj0wk")
 volume_db = -10.982
 bus = &"Music"
 
