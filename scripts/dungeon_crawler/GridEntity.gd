@@ -41,6 +41,9 @@ var visual_gravity:Vector3 = gravity
 var velocity: Vector3 = Vector3.ZERO
 var fall_height = 0.0
 var bump_at = 0
+var is_player = false
+
+var slime_count = 0	
 
 @onready var player_turn_sfx: AudioStreamPlayer = %PlayerTurnSFX
 @onready var player_move_obstacle: AudioStreamPlayer = %PlayerMoveObstacle

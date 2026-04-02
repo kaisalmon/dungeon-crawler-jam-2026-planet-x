@@ -26,7 +26,7 @@ func _process(_delta):
 		self.modulate = Color(1, 1, 1, 0)
 	else:
 		self.modulate = Color(1, 1, 1, 1)
-	if player.in_cutscene:
+	if player.in_cutscene and player.health > 0:
 		self.modulate = Color(1, 1, 1, 0)
 		
 	

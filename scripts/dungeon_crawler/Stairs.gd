@@ -35,7 +35,6 @@ func on_entity_move_into(entity: GridEntity, _from_position: Vector3, new_pos: V
     entity.target_position = new_pos + Vector3(0, entity.GRID_SIZE / 2, 0)
     entity.is_moving = true
     entity.on_move_success()
-    print("Moving into stairs")
 
     return true
 
@@ -44,13 +43,11 @@ func on_entity_move_ontop(entity: GridEntity, _from_position: Vector3, new_pos: 
     entity.target_position = new_pos - Vector3(0, entity.GRID_SIZE/2, 0)
     entity.is_moving = true
     entity.on_move_success()
-    print("Moving on stairs")
 
     return true
 
 # Called when an entity has moved off of this collision override, if true normal behavior is skipped
 func on_entity_move_off(entity: GridEntity, from_position: Vector3, to_position: Vector3) -> bool:
-    print("Moving off stairs")
     var move_dir = (to_position - from_position).normalized()
     var dot = move_dir.dot(self.global_basis.z)
     if dot > 0.8:

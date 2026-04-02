@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bsho7m25f6ups"]
+
+[ext_resource type="ArrayMesh" uid="uid://dlgq7nisf5qq6" path="res://meshes/cube_short.obj" id="1_k5bqh"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_fjh34"]
+[ext_resource type="Texture2D" uid="uid://benlkf27cg1vx" path="res://textures/SCITX_BIG__01.png" id="3_vyb3f"]
+[ext_resource type="Script" uid="uid://co10yjcw3c10a" path="res://components/slime.gd" id="4_fjh34"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtpqo"]
+render_priority = 0
+shader = ExtResource("2_fjh34")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_vyb3f")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fjh34"]
+points = PackedVector3Array(1, 1.9996084, 1, -1, 0.00039158572, -1, -1, 0.00039158572, 1, -1, 1.9996084, -1, 1, 0.00039158572, -1, -1, 1.9996084, 1, 1, 0.00039158572, 1, 1, 1.9996084, -1)
+
+[node name="Slime" type="MeshInstance3D" unique_id=840055829]
+material_override = SubResource("ShaderMaterial_qtpqo")
+mesh = ExtResource("1_k5bqh")
+script = ExtResource("4_fjh34")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1376530508]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=635746865]
+shape = SubResource("ConvexPolygonShape3D_fjh34")

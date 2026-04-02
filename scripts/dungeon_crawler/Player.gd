@@ -5,6 +5,7 @@ const inputQueueTime: float = 4
 const inputQueueTimeTurn: float =4
 const inputQueueTimeShoot: float = 4
 
+
 @export var height: float = 0.7
 @export var camera_offset: Vector3 = Vector3(0, 0, 0)
 @export var bob_size: float = -0.01
@@ -45,11 +46,14 @@ var has_gun_upgrade = false
 @onready var gun_overheat_sfx: AudioStreamPlayer = %GunOverheatSFX
 var camera: Camera3D
 
+var slime_damage_timer = 0.0
+var slime_offset = Vector3.ZERO
 
 func _ready():
 	super._ready()
 	add_to_group("player")
 	add_to_group("saveable")
+	self.is_player = true
 	self.camera = $Camera3D
 
 func can_move() -> bool:
@@ -72,9 +76,17 @@ func _physics_process(delta):
 			shields += 1
 			shields_recharged_sfx.play()
 			shield_cooldown = 0.5
-
+	
 	if frozen:
 		return
+
+	if slime_count > 0:
+		slime_damage_timer += delta
+		if slime_damage_timer >= 0.2:
+			self.damage(1.5)
+			#SFX(Acid/Slime)
+	else:
+		slime_damage_timer = 0.0
 
 	if boomer_mode:
 		turn_spring_constant = 25
@@ -138,8 +150,11 @@ func execute_input(action: String):
 		"shoot": shoot()
 
 func on_move_success():
-	player_move_sfx.play()
-	pass
+	if self.slime_count > 0:
+		#SFX(Squish/Slime move)
+		pass
+	else:
+		player_move_sfx.play()
 
 func check_input_queue():
 	var now = Time.get_ticks_msec() / 1000.0
@@ -152,6 +167,11 @@ func apply_bobbing(delta):
 	camera.global_position = global_position
 	camera.global_position -= (height + abs(velocity.length()) * bob_size) * visual_gravity
 	camera.position += self.camera_offset # Using local positioning
+	var target_slime_offset = Vector3.ZERO
+	if slime_count > 0:
+		target_slime_offset.y = -1
+	self.slime_offset = self.slime_offset.lerp(target_slime_offset, 0.05)
+	camera.position += self.slime_offset
 	if health <= 0:
 		self.camera_offset += Vector3(0, -0.25, 0) * delta
 
@@ -225,18 +245,18 @@ func shoot():
 		raygun_heat = 100
 		Globals.tutorialize("Raygun overheated!")
 
-func damage(amount: int = 1):
+func damage(iframes: float = 0.8):
 	if invincible:
-		return
-	if iframes > 0:
-		return
+		return false
+	if self.iframes > 0:
+		return false
 	shield_cooldown = 5.0
-	iframes = .8
+	self.iframes = iframes
 	if shields > 0:
 		shield_hit_sfx.play()
 		shields -= 1
-		return
-	health -= amount
+		return true
+	health -= 1
 	if health <= 0:
 		# SFX(Death)
 		die()
@@ -244,6 +264,7 @@ func damage(amount: int = 1):
 		player_hit_sfx.play()
 		# SFX(hurt)
 		pass
+	return true
 
 func die():
 	in_cutscene = true
