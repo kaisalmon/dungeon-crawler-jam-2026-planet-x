@@ -77,7 +77,7 @@ point_count = 3
 [sub_resource type="Curve3D" id="Curve3D_58gk3"]
 bake_interval = 34.61
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, -2, -2, 0, 0, 0, 0, 0, 0, 1, -2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 5, 0, 0, 0, 0, 0, 0, 3, 3, 11),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, -2, 0, 0, 0, 0, 0, 0, 0, 1, -2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 5, 0, 0, 0, 0, 0, 0, 3, 3, 11),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -501,7 +501,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109, -3, -53)
 [node name="MainMenuWrapper" parent="." unique_id=125114820 node_paths=PackedStringArray("paths", "focus_markers") instance=ExtResource("15_hhvxa")]
 paths = [NodePath("RocketPath1"), NodePath("AcidLabPath"), NodePath("CanyonPath1"), NodePath("CeilingPath"), NodePath("SpillPath1")]
 focus_markers = [NodePath("MarkerRocket"), NodePath("MarkerAcidLab"), NodePath("MarkerCanyon"), NodePath("MarkerCeiling"), NodePath("MarkerSpill")]
-travel_duration = 7.0
+travel_duration = 6.0
 
 [node name="MarkerRocket" type="Marker3D" parent="MainMenuWrapper" unique_id=621124876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 8, 3)
@@ -518,11 +518,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 7, -54)
 curve = SubResource("Curve3D_adb74")
 
 [node name="CanyonPath1" type="Path3D" parent="MainMenuWrapper" unique_id=103054614]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 3, -37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 3, -40)
 curve = SubResource("Curve3D_58gk3")
 
 [node name="MarkerCanyon" type="Marker3D" parent="MainMenuWrapper" unique_id=488111589]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, -33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, -1, -15)
 
 [node name="MarkerAcidLab" type="Marker3D" parent="MainMenuWrapper" unique_id=1361384556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.76615, 1, -51.21617)
