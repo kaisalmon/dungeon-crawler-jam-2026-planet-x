@@ -19,6 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var is_fading_combat = false
 var entered_lab = false
+var is_switching_music = false
 
 func _process(delta: float) -> void:
 	if Globals.in_combat and not is_fading_combat:
@@ -30,17 +31,22 @@ func _process(delta: float) -> void:
 	if Globals.in_lab_environment and not entered_lab:
 		entered_lab = true
 		play_music(gameplay_music_2)
-	elif not Globals.in_lab_environment and entered_lab:
+	if not Globals.in_lab_environment and entered_lab:
 		entered_lab = false
 		play_music(gameplay_music)
 	
 
 func play_music(musicplayer: AudioStreamPlayer) -> void:
-	music_stop()
-	await get_tree().create_timer(3).timeout
+	if is_switching_music:
+		return
+	is_switching_music = true
+	await music_stop()
 	musicplayer.volume_linear = 1.0
 	musicplayer.play()
 	print("playing:", musicplayer.name)
+	
+	is_switching_music = false
+	musicplayer.volume_linear = 1.0
 
 func music_volume(vol: float) -> void:
 	if gameplay_music.is_playing():
@@ -54,12 +60,12 @@ func tween_combat_in() -> void:
 
 func tween_combat_out() -> void:
 	var combat_fade_out = create_tween()
-	combat_fade_out.tween_method(Callable(self, "music_volume"), unmute, mute, 3)
+	combat_fade_out.tween_method(Callable(self, "music_volume"), unmute, mute, 2)
 	
 
 func music_stop():
 	var fadeout = create_tween() #Tween for smooth music fadeouts
-	var fadeout_timer = 2.0
+	var fadeout_timer = 1.0
 	if menu_music.is_playing():
 		print("stopping menu music")
 		fadeout.tween_property(menu_music, "volume_linear", 0, fadeout_timer)
@@ -82,3 +88,8 @@ func music_stop():
 		credits_music.stop()		
 	else:
 		print("no music playing")
+
+func reset_state():
+	Globals.in_lab_environment = false
+	is_fading_combat = false
+	entered_lab = false

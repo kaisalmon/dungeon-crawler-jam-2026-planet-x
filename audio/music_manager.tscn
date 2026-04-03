@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://btkfsvoubn0oy" path="res://audio/music/Exploration1loop.ogg" id="2_8vo66"]
 [ext_resource type="AudioStream" uid="uid://bvwxw5w66onec" path="res://audio/music/menutest.ogg" id="2_t7ws8"]
 [ext_resource type="AudioStream" uid="uid://c23212tye71uq" path="res://audio/music/Battle1loop.ogg" id="3_t7ws8"]
-[ext_resource type="AudioStream" uid="uid://b2ubsc5bs0rv3" path="res://audio/music/placeholderbattle.ogg" id="4_jh75p"]
-[ext_resource type="AudioStream" uid="uid://4jhbatm2c2nh" path="res://audio/music/placeholdermusic.ogg" id="5_rrdms"]
+[ext_resource type="AudioStream" uid="uid://c4xokss7t06bv" path="res://audio/music/Exploration2loop.ogg" id="5_rrdms"]
+[ext_resource type="AudioStream" uid="uid://cd86h77eg0e5j" path="res://audio/music/Battle2loop.ogg" id="6_wj0wk"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1826a"]
 stream_count = 2
@@ -18,7 +18,7 @@ stream_1/volume = -60.0
 stream_count = 2
 stream_0/stream = ExtResource("5_rrdms")
 stream_0/volume = 0.0
-stream_1/stream = ExtResource("4_jh75p")
+stream_1/stream = ExtResource("6_wj0wk")
 stream_1/volume = -60.0
 
 [node name="MusicManager" type="Node" unique_id=121765092]
