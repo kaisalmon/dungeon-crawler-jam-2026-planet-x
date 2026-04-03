@@ -21,6 +21,7 @@ func _ready():
 	self.done = false
 	self.overlay_target = 0.0
 	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.reset_state()
 	music_manager.menu_music.play()
 	var player = Globals.getPlayer()
 	player.in_cutscene = true
@@ -105,6 +106,11 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 func _go_back_to_main_menu():
+	Globals.in_combat = false
+	Globals.in_lab_environment = false
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.reset_state()
+	music_manager.play_music(music_manager.menu_music)
 	options_container.visible = false
 	options_container.process_mode = Node.PROCESS_MODE_DISABLED
 	main_menu_container.visible = true
