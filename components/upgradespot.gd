@@ -34,7 +34,7 @@ func _process(delta):
 		return
 
 	var player = Globals.getPlayer()
-	if player.global_position.distance_to(self.global_position) < player.GRID_SIZE * 0.6:
+	if player.global_position.distance_to(self.global_position) < player.GRID_SIZE * 0.6 and self.global_position.y < player.global_position.y:
 		picked_up = true
 		set_visually_picked_up()
 		on_upgrade()
