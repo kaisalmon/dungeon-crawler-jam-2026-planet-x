@@ -22,8 +22,8 @@ var shoot_delay: float = 0.0
 
 var boomer_mode: bool = false
 
-var health = 3
-var max_health = 3
+var health = 2
+var max_health = 2
 var shields = 0
 var max_shields = 0
 var shield_cooldown = 0.0
@@ -218,6 +218,7 @@ func shoot():
 
 	if player_shoot_sfx:
 		player_shoot_sfx.play()
+		$Camera3D/Raygun.position.z += 0.1
 	var particles_nodes = get_node(laser)
 	if particles_nodes:
 		var particles = particles_nodes as GPUParticles3D
@@ -264,7 +265,10 @@ func damage(iframes: float = 0.8):
 		return false
 	if self.iframes > 0:
 		return false
-	shield_cooldown = 5.0
+	if Globals.in_combat:
+		shield_cooldown = 5.0
+	else:
+		shield_cooldown = 2.0
 	self.iframes = iframes
 	if shields > 0:
 		shield_hit_sfx.play()

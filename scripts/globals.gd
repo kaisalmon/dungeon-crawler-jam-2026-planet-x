@@ -9,6 +9,7 @@ var within_range_of_enemy = false
 
 var music_volume = 1.0 #  Range from 0.0 (mute) to 1.0 (full volume)
 var sfx_volume = 1.0 # Range from 0.0 (mute) to 1.0 (full volume)
+var test_start = null
 
 func _ready() -> void:
 	var timer = Timer.new()

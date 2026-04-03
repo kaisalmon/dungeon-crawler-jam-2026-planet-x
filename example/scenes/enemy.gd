@@ -15,6 +15,7 @@ var static_change_cooldown = 0.0
 
 @export var health = 2
 @export var shots_per_attack = 1
+@export var accuaracy_modifier_linear = 0.0
 var iframes = 0.0
 @onready var enemy_shoot_sfx: AudioStreamPlayer3D = %EnemyShootSFX
 @onready var enemy_move_sfx: AudioStreamPlayer3D = %EnemyMoveSFX
@@ -148,13 +149,13 @@ func process_attack(_delta: float) -> void:
 	if is_facing(player.target_position):
 		for i in range(shots_per_attack):
 			var hit_chance = get_hit_chance(distance_to_player)
+			hit_chance += accuaracy_modifier_linear
 			var deleta_x = abs(player.global_transform.origin.x - self.global_transform.origin.x)
 			var delta_z = abs(player.global_transform.origin.z - self.global_transform.origin.z)
 			var different_x = deleta_x > GRID_SIZE * .1
 			var different_z = delta_z > GRID_SIZE * .1
 			if different_x and different_z:
 				await miss(self.global_transform.origin - self.global_basis.z * GRID_SIZE * 5)
-				print("DODGE!")
 			elif randf() < hit_chance:
 				await attack(player)
 			else:
@@ -187,10 +188,10 @@ func miss(target_position: Vector3):
 		Vector3.UP
 	).normalized()
 	miss_direction = miss_direction.rotated(delta.normalized(), PI*2 * randf_range(-1, 1))  # Add some random spread
-	await shoot_at(target_position + miss_direction * GRID_SIZE * .5)
+	await shoot_at(target_position + miss_direction * GRID_SIZE * .5, false)
 		
 
-func shoot_at(target_position: Vector3, on_hit = null):
+func shoot_at(target_position: Vector3, allow_damage = true):
 	enemy_shoot_sfx.play()
 	if Globals.within_range_of_enemy:
 		Globals.in_combat = true
@@ -217,7 +218,7 @@ func shoot_at(target_position: Vector3, on_hit = null):
 
 	var hit_pos = target_position
 	var ragun_col = get_world_3d().direct_space_state.intersect_ray(raygun_ray)
-	if ragun_col and ragun_col.collider:
+	if ragun_col and ragun_col.collider and allow_damage:
 		hit_pos = ragun_col.position
 		var shootable = ragun_col.collider as Shootable
 		if shootable and shootable.has_method("on_shot"):

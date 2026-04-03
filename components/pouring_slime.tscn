@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ddagpkbvi464o"]
+
+[ext_resource type="ArrayMesh" uid="uid://cg5r2ymm1ns1y" path="res://meshes/cyl.obj" id="1_gps4l"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_rfjte"]
+[ext_resource type="Texture2D" uid="uid://bocm8pi7jii6b" path="res://textures/SCITX_BIG__00.png" id="3_0cb1h"]
+[ext_resource type="Script" uid="uid://5b115yysk02x" path="res://components/pouring_slime.gd" id="4_0cb1h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3av7"]
+render_priority = 0
+shader = ExtResource("2_rfjte")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_0cb1h")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, -0.75, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0cb1h"]
+points = PackedVector3Array(1, 2, 0.26781523, 1, 2, -0.26801097, 0.731989, 2, 0.731989, 1, 0, 0.26781523, 1, 0, -0.26801097, 0.731989, 2, -0.73218477, 0.26781523, 2, 1, 0.731989, 0, 0.731989, 0.731989, 0, -0.73218477, 0.26781523, 2, -1, 0.26781523, 0, 1, -0.26801097, 2, 1, 0.26781523, 0, -1, -0.26801097, 2, -1, -0.26801097, 0, 1, -0.73218477, 2, 0.731989, -0.26801097, 0, -1, -0.73218477, 2, -0.73218477, -0.73218477, 0, 0.731989, -1, 2, 0.26781523, -0.73218477, 0, -0.73218477, -1, 2, -0.26801097, -1, 0, 0.26781523, -1, 0, -0.26801097)
+
+[node name="Node3D" type="Node3D" unique_id=1943209037]
+
+[node name="Cyl" type="MeshInstance3D" parent="." unique_id=528557320]
+transform = Transform3D(0.79, 0, 0, 0, 1.33, 0, 0, 0, 0.79, 0, -0.50370383, 0.021258354)
+material_override = SubResource("ShaderMaterial_l3av7")
+mesh = ExtResource("1_gps4l")
+surface_material_override/0 = SubResource("ShaderMaterial_l3av7")
+script = ExtResource("4_0cb1h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cyl" unique_id=760191662]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cyl/StaticBody3D" unique_id=1242424771]
+shape = SubResource("ConvexPolygonShape3D_0cb1h")

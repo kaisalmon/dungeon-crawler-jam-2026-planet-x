@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="PlanetX"
-run/main_scene="uid://dw8f12olvamnp"
+run/main_scene="uid://q0q8p0p55su8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=30
 config/icon="res://icon.svg"
@@ -32,6 +32,10 @@ window/size/viewport_height=960
 window/stretch/mode="viewport"
 window/stretch/scale=5.0
 window/stretch/scale_mode="integer"
+
+[editor]
+
+run/main_run_args="--verbose"
 
 [input]
 

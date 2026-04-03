@@ -18,6 +18,8 @@ var overlay_target: float = 0.0
 const SAVE_FILE_PATH = "user://autosave.save"
 
 func _ready():
+	self.done = false
+	self.overlay_target = 0.0
 	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
 	music_manager.menu_music.play()
 	var player = Globals.getPlayer()
@@ -115,6 +117,8 @@ func _on_quit_pressed():
 
 
 func _process(delta):
+	if not done and Globals.test_start:
+		_on_new_game_pressed()
 	if done:
 		self.modulate.a = lerp(self.modulate.a, 0.0, delta * 3)
 		if self.modulate.a <= 0.01:

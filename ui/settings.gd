@@ -57,7 +57,8 @@ func _on_back_pressed():
 	emit_signal("back_pressed")
 
 func _on_quit_pressed():
-	get_tree().change_scene("res://gym/gym.tscn")
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and in_game_menu:
