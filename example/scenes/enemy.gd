@@ -22,7 +22,9 @@ var iframes = 0.0
 @onready var enemy_hit_sfx: AudioStreamPlayer3D = %EnemyHitSFX
 
 
-var decaying_shot_count = 0 # Decreases over time, increases with each attack. 
+var decaying_shot_count = 0 # Decreases over time, increases with each attack.
+
+signal died
 
 var state = "wander"
 func _ready():
@@ -271,6 +273,7 @@ func _on_static_body_3d_shot() -> void:
 	static_change_cooldown = 0.05
 	if health <= 0:
 		enemy_hit_sfx.play()
+		died.emit()
 		self.queue_free()
 		var shard: DeadEnemy = dead_scene.instantiate()
 		get_parent().add_child(shard)

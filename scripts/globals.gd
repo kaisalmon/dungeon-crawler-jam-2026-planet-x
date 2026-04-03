@@ -11,6 +11,8 @@ var music_volume = 1.0 #  Range from 0.0 (mute) to 1.0 (full volume)
 var sfx_volume = 1.0 # Range from 0.0 (mute) to 1.0 (full volume)
 var test_start = null
 
+var _player = null
+
 func _ready() -> void:
 	var timer = Timer.new()
 	timer.wait_time = 3
@@ -52,7 +54,11 @@ func easeInOutCubic(x: float) -> float:
 		return 1 - pow(-2 * x + 2, 3) / 2
 
 func getPlayer() -> Player:
-	return get_tree().get_first_node_in_group("player")
+	if _player and is_instance_valid(_player):
+		return _player
+	else:
+		_player = get_tree().get_first_node_in_group("player")
+		return _player
 
 
 var queue: Array = []

@@ -2,6 +2,8 @@ extends CollisionOverride
 
 # Called by GridEntity when a collision with this Mesh's CollisionShape blocks normal movement
 func can_entity_move_into(_entity: GridEntity, from_position: Vector3, to_position: Vector3) -> bool:
+    if not _entity.is_player:
+        return false
     var move_dir = (to_position - from_position).normalized()
     var dot = move_dir.dot(self.global_basis.z)
     if dot > 0.8:
@@ -12,6 +14,8 @@ func can_entity_move_into(_entity: GridEntity, from_position: Vector3, to_positi
 
 
 func can_entity_move_ontop(_entity: GridEntity, _position: Vector3) -> bool:
+    if not _entity.is_player:
+        return false
     var move_dir = (_position - _entity.global_transform.origin).normalized()
     var dot = move_dir.dot(self.global_basis.z)
     if dot > 0.8:
@@ -21,6 +25,8 @@ func can_entity_move_ontop(_entity: GridEntity, _position: Vector3) -> bool:
     return false
 
 func can_entity_move_off(_entity: GridEntity, from_position: Vector3, to_position: Vector3, original_result: bool) -> bool:
+    if not original_result:
+        return false
     var move_dir = (to_position - from_position).normalized()
     var dot = move_dir.dot(self.global_basis.z)
     if dot > 0.8:

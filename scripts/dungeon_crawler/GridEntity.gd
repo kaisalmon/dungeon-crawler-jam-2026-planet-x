@@ -43,7 +43,9 @@ var fall_height = 0.0
 var bump_at = 0
 var is_player = false
 
-var slime_count = 0	
+var slime_count = 0
+
+static var _claimed_positions: Dictionary = {}
 
 @onready var player_turn_sfx: AudioStreamPlayer = %PlayerTurnSFX
 @onready var player_move_obstacle: AudioStreamPlayer = %PlayerMoveObstacle
@@ -52,6 +54,12 @@ func _ready():
 	target_position = snap_to_grid(global_transform.origin)
 	target_rotation = global_transform.basis
 	add_to_group("grid_entities")
+	_claimed_positions[snap_to_grid(target_position, true)] = self
+
+func _exit_tree():
+	var key = snap_to_grid(target_position, true)
+	if _claimed_positions.get(key) == self:
+		_claimed_positions.erase(key)
 
 func snap_to_grid(pos: Vector3, snap_y = false) -> Vector3:
 	var snapped_pos = (pos - GRID_OFFSET).snapped(Vector3(GRID_SIZE, GRID_SIZE, GRID_SIZE)) + GRID_OFFSET
@@ -63,7 +71,7 @@ func snap_to_grid(pos: Vector3, snap_y = false) -> Vector3:
 func _physics_process(delta):
 	if frozen:
 		return
-	var player = get_tree().get_first_node_in_group("player")
+	var player = Globals.getPlayer()
 	if not player:
 		return
 	var player_distance = (player.global_transform.origin - global_transform.origin).length()
@@ -104,13 +112,9 @@ func is_valid_move(from_pos: Vector3, dir: Vector3) -> MoveResult:
 			current_ground_override = current_ground_collider.get_parent()
 
 	# Prevent moving into a tile another GridEntity is targeting
-	for other in get_tree().get_nodes_in_group("grid_entities"):
-		if other == self or other.frozen:
-			continue
-		if other is GridEntity:
-			if snap_to_grid(other.target_position, true) == snap_to_grid(new_pos, true):
-				original_move_allowed = false
-				break
+	var occupant = _claimed_positions.get(snap_to_grid(new_pos, true))
+	if occupant != null and occupant != self and not occupant.frozen:
+		original_move_allowed = false
 
 	if new_pos.distance_to(from_pos) < 0.1:
 		original_move_allowed = false
@@ -209,7 +213,11 @@ func try_move_dir(dir: Vector3):
 			var skip_normal = await move_result.ground_override.on_entity_move_ontop(self, target_position, new_pos)
 			if skip_normal:
 				return
+		var old_key = snap_to_grid(target_position, true)
+		if _claimed_positions.get(old_key) == self:
+			_claimed_positions.erase(old_key)
 		target_position = new_pos
+		_claimed_positions[snap_to_grid(target_position, true)] = self
 		is_moving = true
 		on_move_success()
 	else:
@@ -310,6 +318,10 @@ func check_input_queue():
 
 
 func teleport_to_position(new_position: Vector3):
+	var old_key = snap_to_grid(target_position, true)
+	if _claimed_positions.get(old_key) == self:
+		_claimed_positions.erase(old_key)
 	new_position = snap_to_grid(new_position)
 	global_transform.origin = new_position
 	target_position = new_position
+	_claimed_positions[snap_to_grid(target_position, true)] = self
