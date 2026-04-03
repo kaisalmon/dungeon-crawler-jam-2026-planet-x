@@ -14,6 +14,7 @@ func _process(_delta):
    
 	while hearts.size() > player.max_health:
 		var heart = hearts.pop_back()
+		
 		heart.queue_free()
 
 	for i in range(player.max_health):

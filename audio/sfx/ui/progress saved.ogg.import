@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bu2o63vnjdtiw"
+path="res://.godot/imported/progress saved.ogg-8706e3a0db14c1b9c95da9f67216297e.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/ui/progress saved.ogg"
+dest_files=["res://.godot/imported/progress saved.ogg-8706e3a0db14c1b9c95da9f67216297e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

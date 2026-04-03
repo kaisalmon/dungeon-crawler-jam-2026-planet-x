@@ -66,4 +66,3 @@ func on_entity_move_off(entity: GridEntity, from_position: Vector3, to_position:
     entity.is_moving = true
     entity.on_move_success()
     return true
-
