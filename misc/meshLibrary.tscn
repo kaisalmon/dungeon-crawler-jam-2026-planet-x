@@ -241,8 +241,8 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_es10p"]
-points = PackedVector3Array(-0.13719848, 0.019611761, -0.89671546, 0.58726335, 0.009598741, 0.795447, -0.6362519, 0.015755447, 0.6495166, -0.45190352, 1.4007457, -0.20291334, 0.6646576, 0.6787329, -0.44620782, 0.9025648, 0.003291967, -0.18326981, 0.00050002337, 1.4584079, -0.53293633, -0.2882484, 1.4584079, 0.39090368, -0.80803174, 0.6787329, -0.27309558, 0.6594488, 1.2572267, -0.12506226, -0.89048034, 0.011984114, -0.2374036, 0.57799685, 0.3611249, 0.76626766, 0.13836423, 0.018904181, -0.89739704, -0.5769968, 0.6787329, 0.564016, -0.4613889, 0.3611249, 0.7085061, 0.14487423, 0.6787329, -0.8217442, -0.10741478, 0.87025064, -0.74503344, 0.47718707, 1.2687416, 0.4339298, 0.82309955, 0.0228019, -0.399239, 0.00050002337, 1.4584079, 0.044334352, -0.5480496, 0.6787329, -0.5039694, -0.47288957, 0.011736117, 0.7371817, 0.028702267, 2.220446e-16, -0.80674344, -0.87713224, 0.022620892, -0.31689668, -0.80803174, 0.6787329, -0.21533401, -0.4570665, 1.408492, -0.096889146, 0.8018477, 0.57010037, -0.15322076, 0.6069441, 0.33229077, 0.7085061, 0.028440485, 0.0067016897, 0.742809, -0.6347103, 0.6787329, 0.39090368, -0.10977884, 0.12887338, -0.89815813, 0.52028334, 0.3611249, 0.76626766)
+[sub_resource type="BoxShape3D" id="BoxShape3D_nnox6"]
+size = Vector3(1.8193917, 3, 1.7219774)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dhkw"]
 resource_name = "m_35b00b90-5568-3af2-5e4e-6613baab3a79"
@@ -299,8 +299,8 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ede0p"]
-points = PackedVector3Array(0.62196153, 1.233254, -0.625, -0.7734052, 1.500566, 0.011622667, 0.896393, 0.008777808, -0.5180351, -0.803932, 0.011042618, 0.625, 0.625, 1.1197389, 0.61878884, 0.8647661, 0.010899336, 0.625, -0.8148043, 0.0016712858, -0.76025957, -0.625554, 1.1217269, 0.62223, -0.5605362, 1.3772317, -0.625, 0.6512543, 1.3793609, 0.011622667, 0.6512543, 0.47010058, -0.8368626, -0.0155873895, -0.014867961, 0.8303365, 0.89379394, 0.5913056, 0.6483249, 0.89379394, 0.5913056, -0.6550202, 0.6512543, 0.5307773, 0.83016735, -0.9251586, 0.318483, -0.04876594, -0.7734052, 0.5913056, -0.89775866, 0.625, 0.0178004, -0.8020815, 0.10264435, 1.4060258, -0.625, 0.10249029, 1.23181, 0.6134597, 0.98447776, 0.00894862, -0.07761115, -0.0155873895, 0.47010058, 0.8303365, -0.8616858, 0.4503581, -0.7795383, -0.0155873895, 1.4701536, 0.011622667, 0.89379394, 0.71251065, -0.04876594, 0.625, 0.0178004, 0.79275644, -0.0420747, 1.438961, -0.599234, 0.1341734, -1.110223e-16, -0.79143435, -0.622256, 1.3809569, -0.59917074, 0.5906669, 1.409625, 0.011622667, -0.37949187, 1.500566, 0.011622667, 0.85278225, 0.021598348, -0.625)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xifa7"]
+size = Vector3(1.909992, 4, 1.6950825)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xifa7"]
 render_priority = 0
@@ -498,20 +498,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -3)
 mesh = ExtResource("20_5brgt")
 surface_material_override/0 = SubResource("ShaderMaterial_0yvhn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Rock1" unique_id=1503245401]
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock1" unique_id=285262504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005013943, 0.71875, -0.06199926)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock1/StaticBody3D" unique_id=980716713]
-shape = SubResource("ConvexPolygonShape3D_es10p")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock1/StaticBody3D" unique_id=169007446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78125, 0)
+shape = SubResource("BoxShape3D_nnox6")
 
 [node name="Rock2" type="MeshInstance3D" parent="." unique_id=627012584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -12)
 mesh = SubResource("ArrayMesh_0yvhn")
 surface_material_override/0 = SubResource("ShaderMaterial_nnox6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Rock2" unique_id=1646812065]
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock2" unique_id=2138718207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04500395, 0.75, -0.035041273)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock2/StaticBody3D" unique_id=74718455]
-shape = SubResource("ConvexPolygonShape3D_ede0p")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock2/StaticBody3D" unique_id=1667454748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_xifa7")
 
 [node name="LabWall2" type="MeshInstance3D" parent="." unique_id=1829315674]
 transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.6748033, 0, 1.1784649)

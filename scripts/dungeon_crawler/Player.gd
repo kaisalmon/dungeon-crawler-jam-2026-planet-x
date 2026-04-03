@@ -125,9 +125,13 @@ func handle_input():
 			
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and not settings.visible:
+	if event.is_action_pressed("ui_cancel") and not settings.visible and not in_cutscene:
 		settings.visible = true
 		get_tree().paused = true
+		for child in settings.get_children():
+			if child is Control and child.focus_mode != Control.FOCUS_NONE:
+				child.grab_focus()
+				break
 		get_viewport().set_input_as_handled()
 
 func unpause():

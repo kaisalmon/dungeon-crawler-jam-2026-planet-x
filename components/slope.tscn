@@ -23,8 +23,8 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d3xon"]
-points = PackedVector3Array(1.0158731, 1.9204298, -0.8569689, -1.0158731, -0.015475273, -1.0158731, -1.0158731, -0.015475273, 1.0158731, -1.0158731, 2.0154753, -1.0158731, 1, 0.00039158572, -1, 1.0158731, -0.015475273, 1.0158731, 1, 1.9996084, -1, -1.0158731, 0.04795462, 1.0158731, -1.0158731, 2.0154753, -0.9522318, 1.0158731, 0.04795462, 1.0158731, 1.0158731, 2.0154753, -0.9522318, -1.0158731, 1.9204298, -0.8569689)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v7onw"]
+points = PackedVector3Array(1, 2, -1, 1, 0, 1, 1, 0, -1, -1, 2, -1, -1, 0, 1, -1, 0, -1)
 
 [node name="Slope" type="MeshInstance3D" unique_id=1849978066]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
@@ -32,7 +32,7 @@ material_override = SubResource("ShaderMaterial_adjvr")
 mesh = ExtResource("3_v67if")
 script = ExtResource("4_8pfry")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=729342176]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=963968487]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=419082473]
-shape = SubResource("ConvexPolygonShape3D_d3xon")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=230938495]
+shape = SubResource("ConvexPolygonShape3D_v7onw")

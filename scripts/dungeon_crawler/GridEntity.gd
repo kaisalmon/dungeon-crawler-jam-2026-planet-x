@@ -93,8 +93,7 @@ func is_valid_move(from_pos: Vector3, dir: Vector3) -> MoveResult:
 	current_ground_ray.from = from_pos
 	current_ground_ray.to = from_pos + gravity * GRID_SIZE * 1.1
 	current_ground_ray.exclude = [self]
-	if can_move_through_doors:
-		current_ground_ray.set_collision_mask(1)
+	current_ground_ray.set_collision_mask(1)
 
 	var current_ground_collision = get_world_3d().direct_space_state.intersect_ray(current_ground_ray)
 	if not current_ground_collision.is_empty():
@@ -121,8 +120,7 @@ func is_valid_move(from_pos: Vector3, dir: Vector3) -> MoveResult:
 		ray_params.from = from_pos
 		ray_params.to = new_pos
 		ray_params.exclude = [self]
-		if can_move_through_doors:
-			ray_params.set_collision_mask(1)
+		ray_params.set_collision_mask(1)
 
 		var collision = get_world_3d().direct_space_state.intersect_ray(ray_params)
 
@@ -149,8 +147,7 @@ func is_valid_move(from_pos: Vector3, dir: Vector3) -> MoveResult:
 		ground_ray_params.from = new_pos
 		ground_ray_params.to = new_pos + gravity * GRID_SIZE * 1
 		ground_ray_params.exclude = [self]
-		if can_move_through_doors:
-			ground_ray_params.set_collision_mask(1)
+		ground_ray_params.set_collision_mask(1)
 
 		var ground_collision = get_world_3d().direct_space_state.intersect_ray(ground_ray_params)
 		var has_ground = not ground_collision.is_empty()
@@ -189,8 +186,7 @@ func try_move_dir(dir: Vector3):
 		current_ground_ray.from = target_position
 		current_ground_ray.to = target_position + gravity * GRID_SIZE * 1.1
 		current_ground_ray.exclude = [self]
-		if can_move_through_doors:
-			current_ground_ray.set_collision_mask(1)
+		current_ground_ray.set_collision_mask(1)
 
 		var current_ground_collision = get_world_3d().direct_space_state.intersect_ray(current_ground_ray)
 		if not current_ground_collision.is_empty():
