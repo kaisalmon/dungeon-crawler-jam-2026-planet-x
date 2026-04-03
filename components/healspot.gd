@@ -3,6 +3,8 @@ extends MeshInstance3D
 var cooldown = 0.0
 var save_cooldown = 0.0
 
+@onready var progress_save: AudioStreamPlayer = $ProgressSave
+
 func _process(delta):
 	cooldown = max(0.0, cooldown - delta)
 	var player = Globals.getPlayer()
@@ -16,6 +18,7 @@ func _process(delta):
 					cooldown = 1.0
 					# sfx(heal)
 				if save_cooldown <= 0.0:
+					progress_save.play()
 					Globals.save()
 					save_cooldown = 10.0
 	else:

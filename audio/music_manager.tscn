@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0byh2gnjccpq" path="res://music_manager.gd" id="1_ip8bo"]
 [ext_resource type="AudioStream" uid="uid://btkfsvoubn0oy" path="res://audio/music/Exploration1loop.ogg" id="2_8vo66"]
-[ext_resource type="AudioStream" uid="uid://bvwxw5w66onec" path="res://audio/music/menutest.ogg" id="2_t7ws8"]
+[ext_resource type="AudioStream" uid="uid://dpngx12vtglqp" path="res://audio/music/mainmenu.ogg" id="2_rrdms"]
 [ext_resource type="AudioStream" uid="uid://c23212tye71uq" path="res://audio/music/Battle1loop.ogg" id="3_t7ws8"]
 [ext_resource type="AudioStream" uid="uid://c4xokss7t06bv" path="res://audio/music/Exploration2loop.ogg" id="5_rrdms"]
 [ext_resource type="AudioStream" uid="uid://cd86h77eg0e5j" path="res://audio/music/Battle2loop.ogg" id="6_wj0wk"]
@@ -26,7 +26,7 @@ process_mode = 3
 script = ExtResource("1_ip8bo")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=936832842]
-stream = ExtResource("2_t7ws8")
+stream = ExtResource("2_rrdms")
 bus = &"Music"
 
 [node name="GameplayMusic" type="AudioStreamPlayer" parent="." unique_id=851818825]

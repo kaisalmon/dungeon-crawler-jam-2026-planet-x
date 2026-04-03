@@ -14,6 +14,8 @@ var quit_button: Button
 var done: bool = false
 var overlay_target: float = 0.0
 
+@onready var button_click_sfx: AudioStreamPlayer = $ButtonClickSFX
+
 
 const SAVE_FILE_PATH = "user://autosave.save"
 
@@ -65,9 +67,11 @@ func _ready():
 
 
 func _on_new_game_pressed():
+	button_click_sfx.play()
 	start_game()
 
 func _on_continue_pressed():
+	button_click_sfx.play()
 	Globals.load()
 	start_game()
 
@@ -87,6 +91,7 @@ func start_game():
 	self.get_parent().transition_to_player_camera(player.camera, 0)
 
 func _on_settings_pressed():
+	button_click_sfx.play()
 	if done:
 		return
 	main_menu_container.visible = false
@@ -106,11 +111,6 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 func _go_back_to_main_menu():
-	Globals.in_combat = false
-	Globals.in_lab_environment = false
-	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
-	music_manager.reset_state()
-	music_manager.play_music(music_manager.menu_music)
 	options_container.visible = false
 	options_container.process_mode = Node.PROCESS_MODE_DISABLED
 	main_menu_container.visible = true
@@ -119,6 +119,7 @@ func _go_back_to_main_menu():
 	
 
 func _on_quit_pressed():
+	button_click_sfx.play()
 	get_tree().quit()
 
 
@@ -135,4 +136,5 @@ func _process(delta):
 
 
 func _on_settings_back_pressed() -> void:
+	button_click_sfx.play()
 	_go_back_to_main_menu()

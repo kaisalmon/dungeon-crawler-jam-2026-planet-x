@@ -45,6 +45,7 @@ var has_gun_upgrade = false
 @onready var shield_hit_sfx: AudioStreamPlayer = %ShieldHitSFX
 @onready var gun_click_sfx: AudioStreamPlayer = %GunClickSFX
 @onready var gun_overheat_sfx: AudioStreamPlayer = %GunOverheatSFX
+@onready var player_death_sfx: AudioStreamPlayer = %PlayerDeathSFX
 var camera: Camera3D
 
 var slime_damage_timer = 0.0
@@ -289,9 +290,11 @@ func damage(iframes: float = 0.8):
 	return true
 
 func die():
+	player_death_sfx.play()
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.music_stop()
 	in_cutscene = true
 	await get_tree().create_timer(1.0).timeout
-	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
 	music_manager.reset_state()
 	music_manager.play_music(music_manager.menu_music)
 	get_tree().reload_current_scene()

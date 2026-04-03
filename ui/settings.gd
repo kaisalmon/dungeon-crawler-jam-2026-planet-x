@@ -8,6 +8,7 @@ var music_volume_button: Button
 var sfx_volume_button: Button
 var back_button: Button
 var quit_button: Button
+@onready var button_click_sfx: AudioStreamPlayer = $"../ButtonClickSFX"
 
 func _ready():
 	self.visible = false
@@ -44,6 +45,7 @@ func _on_music_volume_pressed():
 		
 	var bus = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(bus, linear_to_db(Globals.music_volume))
+	button_click_sfx.play()
 	
 func _on_sfx_volume_pressed():
 	Globals.sfx_volume -= 0.25
@@ -52,6 +54,7 @@ func _on_sfx_volume_pressed():
 
 	var bus = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_db(bus, linear_to_db(Globals.sfx_volume))
+	button_click_sfx.play()
 
 func _on_back_pressed():
 	emit_signal("back_pressed")

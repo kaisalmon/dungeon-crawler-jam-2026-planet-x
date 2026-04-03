@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c7xxteht2g6vh" path="res://ui/logo.png" id="2_hutpu"]
 [ext_resource type="Script" uid="uid://6kpbifvenv85" path="res://scripts/menu/main_menu.gd" id="3_hutpu"]
 [ext_resource type="PackedScene" uid="uid://b67do40sctpcl" path="res://ui/settings.tscn" id="5_evvfg"]
+[ext_resource type="AudioStream" uid="uid://dbjmsrk8xm4eg" path="res://audio/sfx/ui/ui click.ogg" id="6_evvfg"]
 
 [node name="MainMenuWrapper" type="Node3D" unique_id=125114820 node_paths=PackedStringArray("camera_one", "camera_two")]
 script = ExtResource("1_2uuln")
@@ -44,6 +45,10 @@ anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -50.0
+
+[node name="ButtonClickSFX" type="AudioStreamPlayer" parent="MainMenu" unique_id=1974326086]
+stream = ExtResource("6_evvfg")
+bus = &"SFX"
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=581301330]
 unique_name_in_owner = true
