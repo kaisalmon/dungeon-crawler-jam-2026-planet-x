@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://b7vejhlddsb2g" path="res://meshes/Rock2.png" id="22_ede0p"]
 [ext_resource type="Texture2D" uid="uid://dpisqvytvpiu0" path="res://textures/SCITX_BIG__59.png" id="23_0yvhn"]
 [ext_resource type="Texture2D" uid="uid://bw3lm0a8jhi4" path="res://textures/SCITX__70.png" id="24_nnox6"]
+[ext_resource type="ArrayMesh" uid="uid://4xcc0u0vcrlf" path="res://meshes/thin_wall.obj" id="25_xifa7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nux8s"]
 render_priority = 0
@@ -356,6 +357,9 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hf43"]
+size = Vector3(2, 2, 0.0625)
+
 [node name="MeshLibrary" type="Node3D" unique_id=963283353]
 
 [node name="Dirt" type="MeshInstance3D" parent="." unique_id=1111084179]
@@ -547,3 +551,14 @@ surface_material_override/0 = SubResource("ShaderMaterial_ophsj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LabFloor2/StaticBody3D" unique_id=1898620573]
 transform = Transform3D(0.9999972, 0.00031041913, 0.0023579693, 0.00031041913, 0.96592873, -0.25880834, -0.002357969, 0.2588083, 0.9659258, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_uj6vj")
+
+[node name="Window" type="MeshInstance3D" parent="." unique_id=1881052607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -7)
+mesh = ExtResource("25_xifa7")
+surface_material_override/0 = SubResource("ShaderMaterial_e6ku6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Window" unique_id=805348345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.96875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Window/StaticBody3D" unique_id=687981174]
+shape = SubResource("BoxShape3D_0hf43")

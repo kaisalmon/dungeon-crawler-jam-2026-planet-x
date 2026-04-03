@@ -27,7 +27,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4s3o"]
 render_priority = 4
 albedo_texture = ExtResource("3_kuobi")
-metallic_specular = 1.0
+metallic_specular = 0.0
 roughness = 0.0
 texture_filter = 0
 use_z_clip_scale = true

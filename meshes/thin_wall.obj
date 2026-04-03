@@ -1,0 +1,25 @@
+# Made in Blockbench 5.1.1
+mtllib thin_wall.mtl
+
+o mesh
+v 1 2 1
+v 1 2 0.9375
+v 1 0 1
+v 1 0 0.9375
+v -1 2 1
+v -1 2 0.9375
+v -1 0 1
+v -1 0 0.9375
+vt 1 0
+vt 1 1
+vt 0 1
+vt 0 0
+vt 1 1
+vt 0 1
+vt 0 0
+vt 1 0
+vn 0 0 1
+vn 0 0 -1
+usemtl m_58f27340-034e-ea3c-3696-ddb82f5f2692
+f 3/1/1 1/2/1 5/3/1 7/4/1
+f 6/5/2 2/6/2 4/7/2 8/8/2
