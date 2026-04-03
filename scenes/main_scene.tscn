@@ -127,10 +127,6 @@ data = {
 script = ExtResource("12_6u1mn")
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="Slope2" parent="World" unique_id=1216455647 instance=ExtResource("16_3otxl")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 5, 3, -17)
-skeleton = NodePath("../GridMap")
-
 [node name="Upgradespot" parent="World" unique_id=896239292 instance=ExtResource("14_7hwl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, -3)
 
@@ -141,7 +137,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 23, 
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 25, -1, -15)
 
 [node name="TestStart" type="Marker3D" parent="World" unique_id=784810729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 2, -31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, -14)
 visible = false
 gizmo_extents = 1.0
 script = ExtResource("12_si52b")
@@ -413,3 +409,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 0, -29)
 
 [node name="Enemy6" parent="." unique_id=697581019 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 0, -41)
+
+[node name="Slope" parent="." unique_id=1673521478 instance=ExtResource("16_3otxl")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 5, 3, -17)
