@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bjdbunan62jx4" path="res://meshes/raygun.obj" id="2_1kub6"]
 [ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="3_kuobi"]
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="4_0lm1f"]
+[ext_resource type="Texture2D" uid="uid://bdsaodiexd6iw" path="res://textures/spark.png" id="5_p3qei"]
 [ext_resource type="Script" uid="uid://dpkqwsbo3bcn5" path="res://components/player_ui.gd" id="6_couud"]
 [ext_resource type="Texture2D" uid="uid://dhyyl0r2g63m" path="res://ui/ui_top.png" id="6_pir3r"]
 [ext_resource type="PackedScene" uid="uid://cns1id5yggv2l" path="res://ui/heart.tscn" id="7_0lm1f"]
@@ -36,14 +37,11 @@ z_clip_scale = 0.01
 use_fov_override = true
 fov_override = 80.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4psk5"]
-load_path = "res://.godot/imported/blurred_circle.png-c68db9095193df3ee5463d298e4a94ca.s3tc.ctex"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4s3o"]
 render_priority = 0
 shader = ExtResource("4_0lm1f")
 shader_parameter/albedo = Color(0.8627451, 0.21568628, 0.07450981, 1)
-shader_parameter/texture_albedo = SubResource("CompressedTexture2D_4psk5")
+shader_parameter/texture_albedo = ExtResource("5_p3qei")
 shader_parameter/albedo_texture_size = Vector2i(256, 256)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
@@ -69,6 +67,8 @@ curve = SubResource("Curve_m5cn7")
 emission_shape_offset = Vector3(0, 0, 1)
 emission_shape = 3
 emission_box_extents = Vector3(0.02, 0.02, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
 spread = 180.0
 initial_velocity_max = 0.29999998
 gravity = Vector3(0, 0, 0)
