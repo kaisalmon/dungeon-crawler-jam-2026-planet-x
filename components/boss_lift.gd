@@ -32,6 +32,7 @@ func on_entity_move_into(entity: GridEntity, _from_position: Vector3, new_pos: V
 func on_entity_move_ontop(entity: GridEntity, _from_position: Vector3, new_pos: Vector3) -> bool:
 	if activated:
 		return false
+	activated = true
 	entity.target_position = new_pos
 	entity.is_moving = true
 	entity.on_move_success()
