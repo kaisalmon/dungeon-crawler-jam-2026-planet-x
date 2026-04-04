@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c23212tye71uq" path="res://audio/music/Battle1loop.ogg" id="3_t7ws8"]
 [ext_resource type="AudioStream" uid="uid://c4xokss7t06bv" path="res://audio/music/Exploration2loop.ogg" id="5_rrdms"]
 [ext_resource type="AudioStream" uid="uid://cd86h77eg0e5j" path="res://audio/music/Battle2loop.ogg" id="6_wj0wk"]
+[ext_resource type="AudioStream" uid="uid://bhwqfu1x1nau0" path="res://audio/music/credits.ogg" id="7_wj0wk"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1826a"]
 stream_count = 2
@@ -40,5 +41,5 @@ volume_db = -10.982
 bus = &"Music"
 
 [node name="CreditsMusic" type="AudioStreamPlayer" parent="." unique_id=492567593]
-stream = SubResource("AudioStreamSynchronized_1826a")
+stream = ExtResource("7_wj0wk")
 bus = &"Music"

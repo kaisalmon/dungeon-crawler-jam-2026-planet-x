@@ -16,6 +16,8 @@ func _ready() -> void:
 
 func start() -> void:
 	await get_tree().process_frame
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	music_manager.play_music(music_manager.credits_music)
 	self.visible = true
 	Globals.getPlayer().has_gun_upgrade = false
 	position.y = get_viewport_rect().size.y
