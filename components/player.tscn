@@ -161,13 +161,13 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_n35xl")
 draw_pass_1 = SubResource("QuadMesh_cgus4")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1606381836]
+[node name="StaticBody3DPlayer" type="StaticBody3D" parent="." unique_id=1606381836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02319336, 0.11437988, 0)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("8_couud")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=152312094]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3DPlayer" unique_id=152312094]
 shape = SubResource("BoxShape3D_pir3r")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1726065683]
@@ -286,4 +286,4 @@ offset_bottom = 4.5
 theme = ExtResource("12_ntxa4")
 in_game_menu = true
 
-[connection signal="shot" from="StaticBody3D" to="." method="_on_static_body_3d_shot"]
+[connection signal="shot" from="StaticBody3DPlayer" to="." method="_on_static_body_3d_shot"]

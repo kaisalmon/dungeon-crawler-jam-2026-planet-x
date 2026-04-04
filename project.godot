@@ -33,10 +33,6 @@ window/stretch/mode="viewport"
 window/stretch/scale=5.0
 window/stretch/scale_mode="integer"
 
-[editor]
-
-run/main_run_args="--verbose"
-
 [input]
 
 ui_accept={

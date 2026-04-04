@@ -72,7 +72,7 @@ metadata/_custom_type_script = "uid://vi3k65tpcilq"
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_34s28")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iav3h"]
-size = Vector3(14, 17, 26)
+size = Vector3(14, 17, 23)
 
 [sub_resource type="Curve3D" id="Curve3D_c1pb6"]
 bake_interval = 32.72
@@ -267,6 +267,7 @@ shadow_blur = 0.057
 script = ExtResource("5_vlcp3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/Sun" unique_id=1757684265]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 light_energy = 0.3
 
@@ -572,16 +573,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, -1, -75)
 [node name="Slime52" parent="World/Slimes" unique_id=475181555 instance=ExtResource("9_jhdc2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, -1, -75)
 
+[node name="SpotLight3D2" type="SpotLight3D" parent="World" unique_id=1651304652]
+transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, -1, 0, 1, -2.9802322e-08, 72, -11.58819, -59.340744)
+light_color = Color(0.28608736, 0.5909611, 0.34282658, 1)
+light_energy = 2.333
+spot_range = 20.0
+spot_attenuation = 0.0
+spot_angle = 23.172895
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="World" unique_id=2090494293]
+transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, -1, 0, 1, -2.9802322e-08, 65, -11.58819, -66.340744)
+light_color = Color(0.28608736, 0.5909611, 0.34282658, 1)
+light_energy = 2.333
+spot_range = 20.0
+spot_attenuation = 0.0
+spot_angle = 23.172895
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="World" unique_id=1431886263]
+transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, -1, 0, 1, -2.9802322e-08, 59, -11.58819, -76.340744)
+light_color = Color(0.28608736, 0.5909611, 0.34282658, 1)
+light_energy = 2.333
+spot_range = 20.0
+spot_attenuation = 0.0
+spot_angle = 23.172895
+
+[node name="DarkAmbienceArea" type="Area3D" parent="World" unique_id=504327067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 1, -79)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("17_womr8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/DarkAmbienceArea" unique_id=1442216935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 9)
+shape = SubResource("BoxShape3D_iav3h")
+
 [node name="Upgradespot3" parent="World" unique_id=1003156005 instance=ExtResource("14_7hwl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 1, -79)
 upgrade_type = 2
-
-[node name="DarkAmbienceArea" type="Area3D" parent="World/Upgradespot3" unique_id=504327067]
-script = ExtResource("17_womr8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Upgradespot3/DarkAmbienceArea" unique_id=1442216935]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 10.5)
-shape = SubResource("BoxShape3D_iav3h")
 
 [node name="PouringSlime" parent="World" unique_id=1943209037 instance=ExtResource("16_bcnxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, 1, -45)
@@ -1029,6 +1057,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 90, 3.6, -47.6)
 mesh = ExtResource("32_lhwp2")
 surface_material_override/0 = SubResource("ShaderMaterial_womr8")
 
-[connection signal="body_entered" from="World/Upgradespot3/DarkAmbienceArea" to="World/Upgradespot3/DarkAmbienceArea" method="_on_body_entered"]
-[connection signal="body_exited" from="World/Upgradespot3/DarkAmbienceArea" to="World/Upgradespot3/DarkAmbienceArea" method="_on_body_exited"]
+[connection signal="body_entered" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_entered"]
+[connection signal="body_exited" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_exited"]
 [connection signal="died" from="Boss" to="." method="_on_boss_died"]
