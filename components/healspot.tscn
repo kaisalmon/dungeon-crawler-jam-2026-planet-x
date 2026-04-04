@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://em7xje7gr7wk" path="res://meshes/healthpad-emission.png" id="4_2bipq"]
 [ext_resource type="Script" uid="uid://bg34buwtyadup" path="res://components/healspot.gd" id="4_7wdat"]
 [ext_resource type="AudioStream" uid="uid://bu2o63vnjdtiw" path="res://audio/sfx/ui/progress saved.ogg" id="6_1w6lx"]
+[ext_resource type="AudioStream" uid="uid://3lcri1oenyw" path="res://audio/sfx/player/health_increase.ogg" id="7_uqp2m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6m6oy"]
 render_priority = 0
@@ -34,3 +35,8 @@ script = ExtResource("4_7wdat")
 
 [node name="ProgressSave" type="AudioStreamPlayer" parent="." unique_id=886504278]
 stream = ExtResource("6_1w6lx")
+bus = &"SFX"
+
+[node name="HealthIncrease" type="AudioStreamPlayer" parent="." unique_id=284004512]
+stream = ExtResource("7_uqp2m")
+bus = &"SFX"
