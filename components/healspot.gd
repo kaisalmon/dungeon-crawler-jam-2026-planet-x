@@ -4,6 +4,7 @@ var cooldown = 0.0
 var save_cooldown = 0.0
 
 @onready var progress_save: AudioStreamPlayer = $ProgressSave
+@onready var health_increase: AudioStreamPlayer = $HealthIncrease
 
 func _process(delta):
 	cooldown = max(0.0, cooldown - delta)
@@ -16,7 +17,7 @@ func _process(delta):
 				if player.health < player.max_health:
 					player.health += 1
 					cooldown = 1.0
-					# sfx(heal)
+					health_increase.play()
 				if save_cooldown <= 0.0:
 					progress_save.play()
 					Globals.save()
