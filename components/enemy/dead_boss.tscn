@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bogbhsrukr3dm" path="res://audio/sfx/enemy/enemy_death.ogg" id="12_6nxb3"]
 [ext_resource type="AudioStream" uid="uid://kslvnggkul67" path="res://audio/sfx/enemy/enemy_death_bounce_early.ogg" id="13_dp4od"]
 [ext_resource type="AudioStream" uid="uid://dlh5j88jxu8g1" path="res://audio/sfx/enemy/bounce late.ogg" id="14_38qb3"]
+[ext_resource type="ArrayMesh" uid="uid://curlsfa7t5t8w" path="res://meshes/enemy_shoulder_alt.obj" id="15_xdq70"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sfawe"]
 render_priority = 0
@@ -228,5 +229,37 @@ max_polyphony = 6
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_hesrl")
 max_distance = 9.0
+
+[node name="RigidBody3D6" type="RigidBody3D" parent="." unique_id=1019923536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7238029, 0, 0)
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_xdq70")
+
+[node name="EnemyShoulder" type="MeshInstance3D" parent="RigidBody3D6" unique_id=719438643]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.4038212, -0.7094897, 0)
+mesh = ExtResource("15_xdq70")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mwda6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D6" unique_id=549580879]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0)
+shape = SubResource("ConvexPolygonShape3D_skknk")
+
+[node name="RigidBody3D7" type="RigidBody3D" parent="." unique_id=430112607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8492948, 0, 0)
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("2_xdq70")
+
+[node name="EnemyGun" type="MeshInstance3D" parent="RigidBody3D7" unique_id=760329331]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0.04307723)
+mesh = ExtResource("9_kdtwh")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mwda6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D7" unique_id=1623281715]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.7094897, 0.04307723)
+shape = SubResource("ConvexPolygonShape3D_xofla")
 
 [connection signal="body_entered" from="HeadRigidBody" to="." method="_on_head_rigid_body_body_entered"]

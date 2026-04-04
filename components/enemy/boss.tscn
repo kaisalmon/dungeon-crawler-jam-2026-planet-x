@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="12_rbk54"]
 [ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="13_ssi56"]
 [ext_resource type="Texture2D" uid="uid://lqc2xac54cfg" path="res://components/enemy/face2.png" id="14_7hi3u"]
+[ext_resource type="ArrayMesh" uid="uid://curlsfa7t5t8w" path="res://meshes/enemy_shoulder_alt.obj" id="14_yfgeb"]
 [ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="15_xnu2p"]
 [ext_resource type="AudioStream" uid="uid://gcm17ue6qb0p" path="res://audio/sfx/enemy/enemy_move.ogg" id="16_orlm7"]
 [ext_resource type="AudioStream" uid="uid://b3jks170p8itx" path="res://audio/sfx/enemy/enemyhit_sfx.ogg" id="17_d6f1s"]
@@ -241,6 +242,8 @@ stream_0/stream = ExtResource("17_d6f1s")
 script = ExtResource("1_7hi3u")
 gun = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser")
 laserParticles = NodePath("EnemyTorso/EnemyHead/EnemyShoulder/Laser/LaserParticle")
+altGun = NodePath("EnemyTorso/EnemyHead/EnemyShoulder2/Laser")
+altLaserParticles = NodePath("EnemyTorso/EnemyHead/EnemyShoulder2/Laser/LaserParticle")
 dead_scene = ExtResource("2_yfgeb")
 staticTexture = ExtResource("3_flhq0")
 face = NodePath("EnemyTorso/EnemyHead/Face")
@@ -259,13 +262,14 @@ surface_material_override/0 = SubResource("ShaderMaterial_mnj32")
 script = ExtResource("8_jmpop")
 
 [node name="EnemyHead" type="MeshInstance3D" parent="EnemyTorso" unique_id=997777983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13112718, 0)
 mesh = ExtResource("9_uk8fc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_k5xtd")
 script = ExtResource("8_jmpop")
-metadata/_edit_group_ = true
 
 [node name="EnemyShoulder" type="MeshInstance3D" parent="EnemyTorso/EnemyHead" unique_id=614474720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17782326)
 mesh = ExtResource("10_4fp2s")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_fmrsn")
@@ -282,6 +286,34 @@ skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_gqfes")
 
 [node name="LaserParticle" type="GPUParticles3D" parent="EnemyTorso/EnemyHead/EnemyShoulder/Laser" unique_id=661985874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5367217)
+material_override = SubResource("ShaderMaterial_7u6xr")
+emitting = false
+amount = 300
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_hx76c")
+draw_pass_1 = SubResource("QuadMesh_4dqw5")
+
+[node name="EnemyShoulder2" type="MeshInstance3D" parent="EnemyTorso/EnemyHead" unique_id=1836614928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010041523, 0.0360626, 0.17782326)
+mesh = ExtResource("14_yfgeb")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_fmrsn")
+script = ExtResource("8_jmpop")
+
+[node name="Laser" type="Node3D" parent="EnemyTorso/EnemyHead/EnemyShoulder2" unique_id=509269840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7387681, 0.8620764, 0.017685652)
+script = ExtResource("8_jmpop")
+
+[node name="EnemyGun" type="MeshInstance3D" parent="EnemyTorso/EnemyHead/EnemyShoulder2/Laser" unique_id=1192722444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69917464, -0.86207634, 0.025391579)
+mesh = ExtResource("11_ob53f")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_gqfes")
+
+[node name="LaserParticle" type="GPUParticles3D" parent="EnemyTorso/EnemyHead/EnemyShoulder2/Laser" unique_id=1228925581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5367217)
 material_override = SubResource("ShaderMaterial_7u6xr")
 emitting = false

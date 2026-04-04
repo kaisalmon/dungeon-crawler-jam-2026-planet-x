@@ -6,6 +6,10 @@ var max_distance = 5.0
 
 @export var gun: NodePath
 @export var laserParticles: NodePath
+
+@export var altGun: NodePath
+@export var altLaserParticles: NodePath
+
 @export var dead_scene: PackedScene
 @export var staticTexture: Texture2D
 var faceTexture: Texture2D
@@ -198,16 +202,16 @@ func is_facing(point: Vector3, origin = self.target_position) -> bool:
 func attack(player: Player):
 	await shoot_at(player.global_transform.origin, player.damage)
 
-func miss(target_position: Vector3):
-	var delta = target_position - self.global_transform.origin
+func miss(shoot_at_position: Vector3):
+	var delta = shoot_at_position - self.global_transform.origin
 	var miss_direction = delta.cross(
 		Vector3.UP
 	).normalized()
 	miss_direction = miss_direction.rotated(delta.normalized(), PI*2 * randf_range(-1, 1))  # Add some random spread
-	await shoot_at(target_position + miss_direction * GRID_SIZE * .5, false)
+	await shoot_at(shoot_at_position + miss_direction * GRID_SIZE * .5, false)
 		
 
-func shoot_at(target_position: Vector3, allow_damage = true):
+func shoot_at(shoot_at_position: Vector3, allow_damage = true):
 	enemy_shoot_sfx.play()
 	if Globals.within_range_of_enemy:
 		Globals.in_combat = true
@@ -215,8 +219,8 @@ func shoot_at(target_position: Vector3, allow_damage = true):
 	decaying_shot_count += 1
 
 	var gun_node: EnemySpring = get_node(gun)
-	target_position += Vector3(0, 0.25, 0)
-	var looking_at_player_from_gun_node = (target_position - gun_node.global_transform.origin).normalized()
+	shoot_at_position += Vector3(0, 0.25, 0)
+	var looking_at_player_from_gun_node = (shoot_at_position - gun_node.global_transform.origin).normalized()
 	var target_gun_rotation = Basis.looking_at(looking_at_player_from_gun_node, Vector3.UP).get_rotation_quaternion()
 	gun_node.rotation_override = target_gun_rotation
 	gun_node.override_rotation = true
@@ -228,11 +232,11 @@ func shoot_at(target_position: Vector3, allow_damage = true):
 	
 	var raygun_ray = PhysicsRayQueryParameters3D.new()
 	raygun_ray.from = gun_node.global_transform.origin
-	raygun_ray.to = target_position
+	raygun_ray.to = shoot_at_position
 	raygun_ray.exclude = [self, $StaticBody3D]
 	
 
-	var hit_pos = target_position
+	var hit_pos = shoot_at_position
 	var ragun_col = get_world_3d().direct_space_state.intersect_ray(raygun_ray)
 	if ragun_col and ragun_col.collider and allow_damage:
 		hit_pos = ragun_col.position
@@ -245,6 +249,16 @@ func shoot_at(target_position: Vector3, allow_damage = true):
 	process_material.emission_shape_scale = Vector3(0.05, 0.05, length)
 	process_material.emission_shape_offset = Vector3(0, 0, -length)
 	laser_particles_node.amount = int(length * 100)
+
+	if not altGun.is_empty():
+		var temp = gun
+		gun = altGun
+		altGun = temp
+		var tempParticles = laserParticles
+		laserParticles = altLaserParticles
+		altLaserParticles = tempParticles
+
+	
 	await get_tree().create_timer(.1).timeout
 	gun_node.override_rotation = false
 
@@ -277,8 +291,6 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 
 	return false
 		
-
-
 
 func _on_static_body_3d_shot() -> void:
 	health -= 1

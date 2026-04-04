@@ -59,7 +59,7 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.057377055, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_7u6xr"]
+[sub_resource type="CurveTexture" id="CurveTexture_welq4"]
 curve = SubResource("Curve_4dqw5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hx76c"]
@@ -71,7 +71,7 @@ initial_velocity_max = 0.29999998
 gravity = Vector3(0, 0, 0)
 scale_min = 0.29999998
 scale_max = 0.29999998
-scale_curve = SubResource("CurveTexture_7u6xr")
+scale_curve = SubResource("CurveTexture_welq4")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4dqw5"]
 
@@ -103,7 +103,7 @@ packet_data = Array[Array]([[PackedByteArray("AXZvcmJpcwAAAAACgLsAAAAAAABtoAcAAA
 granule_positions = PackedInt64Array(0, 0, 2624, 6336, 10432, 14528, 18624, 22720, 26816, 31936, 37056, 42176, 47296, 52416, 57536, 62656, 68800, 74944, 81088, 87232, 93376, 99520, 105664, 111808, 117952, 120000)
 sampling_rate = 48000.0
 
-[sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_003yv"]
+[sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_meajw"]
 packet_sequence = SubResource("OggPacketSequence_o5cm1")
 tags = {
 "encoder": "REAPER"
@@ -112,7 +112,7 @@ tags = {
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n46sw"]
 random_pitch = 1.0646161
 streams_count = 1
-stream_0/stream = SubResource("AudioStreamOggVorbis_003yv")
+stream_0/stream = SubResource("AudioStreamOggVorbis_meajw")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g68rj"]
 random_pitch = 1.0741906

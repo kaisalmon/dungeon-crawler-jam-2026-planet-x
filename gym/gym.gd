@@ -11,7 +11,7 @@ func _process(_delta):
 func _on_boss_died() -> void:
 	Globals.say("The master-AI has been defeated!")
 	Globals.say("Captain Raygun has once again saved the day!")
-	await get_tree().create_timer(6.0).timeout
+	await get_tree().create_timer(7.0).timeout
 	# TODO roll credits
 	# For now, just reload the scene
 	get_tree().reload_current_scene()
