@@ -48,12 +48,22 @@ func on_entity_move_ontop(entity: GridEntity, _from_position: Vector3, new_pos: 
 	tween.tween_property(entity, "global_position", entity.target_position + drop, DROP_DURATION)\
 		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 
-	Globals.say("The master AI... he must be defeated!")
-	
-	await tween.finished
-	entity.target_position = new_pos + drop
-	player.in_cutscene = false
-	entity.frozen = false
+	if player.has_gun_upgrade:
+		Globals.say("The master AI... he must be defeated!")
+		await tween.finished
+		entity.target_position = new_pos + drop
+		player.in_cutscene = false
+		entity.frozen = false
+		%Boss.frozen = false
+	else:
+		await get_tree().create_timer(2.0).timeout
+		Globals.say("\"Captain Raygun.\"")
+		Globals.say("\"You have come before the master-AI unarmed?\"")
+		Globals.say("\"You've chosen to reject your humanity...\"")
+		Globals.say("\"...and join me?\"")
+		Globals.say("\"...Good.\"")
+		await get_tree().create_timer(11.0).timeout
+		Globals.end_game("unarmed")
 	return true
 
 # Called when an entity has moved off of this collision override, if true normal behavior is skipped

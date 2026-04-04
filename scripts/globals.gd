@@ -101,3 +101,6 @@ func load():
 				print("No node or load method for path: ", path)
 	else:
 		print("No save file found.")
+
+func end_game(mode: String):
+	get_tree().reload_current_scene()

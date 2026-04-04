@@ -20,10 +20,12 @@ var static_change_cooldown = 0.0
 @export var health = 2
 @export var shots_per_attack = 1
 @export var accuaracy_modifier_linear = 0.0
+@export var do_not_shoot_unarmed_player = false
 var iframes = 0.0
 @onready var enemy_shoot_sfx: AudioStreamPlayer3D = %EnemyShootSFX
 @onready var enemy_move_sfx: AudioStreamPlayer3D = %EnemyMoveSFX
 @onready var enemy_hit_sfx: AudioStreamPlayer3D = %EnemyHitSFX
+
 
 
 var decaying_shot_count = 0 # Decreases over time, increases with each attack.
@@ -75,7 +77,7 @@ func _process(delta: float) -> void:
 		wait_time -= delta
 		return
 
-	if not player.in_cutscene and has_line_of_sight(player.global_transform.origin):
+	if not player.in_cutscene and has_line_of_sight(player.global_transform.origin) and (not do_not_shoot_unarmed_player or player.has_gun_upgrade):
 		state = "attack"
 	else:
 		state = "wander"
@@ -296,17 +298,19 @@ func _on_static_body_3d_shot() -> void:
 	health -= 1
 	iframes = 0.8
 	static_change_cooldown = 0.05
+	enemy_hit_sfx.play()
 	if health <= 0:
-		enemy_hit_sfx.play()
-		died.emit()
-		self.queue_free()
-		var shard: DeadEnemy = dead_scene.instantiate()
-		get_parent().add_child(shard)
-		shard.global_transform = self.global_transform
-		shard.knockback((Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized(), -4)
+		die()
 	else:
 		var headNode: EnemySpring = $EnemyTorso/EnemyHead
 		var knockbackDir = (Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized()
 		headNode.knockback(knockbackDir, -65)
 		self.velocity += knockbackDir * -15
-		enemy_hit_sfx.play()
+
+func die():
+	died.emit()
+	self.queue_free()
+	var shard: DeadEnemy = dead_scene.instantiate()
+	get_parent().add_child(shard)
+	shard.global_transform = self.global_transform
+	shard.knockback((Globals.getPlayer().global_transform.origin - self.global_transform.origin).normalized(), -4)

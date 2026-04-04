@@ -9,9 +9,13 @@ func _process(_delta):
 
 
 func _on_boss_died() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if is_instance_valid(enemy) and enemy.health > 0:
+			enemy.health = 0
+			enemy.die()
 	Globals.say("The master-AI has been defeated!")
 	Globals.say("Captain Raygun has once again saved the day!")
 	await get_tree().create_timer(7.0).timeout
 	# TODO roll credits
 	# For now, just reload the scene
-	get_tree().reload_current_scene()
+	Globals.end_game("standard")
