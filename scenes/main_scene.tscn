@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://sqsh8gcqyd56" path="res://textures/SCITX__25.png" id="33_l40q6"]
 [ext_resource type="PackedScene" uid="uid://cowcfejhd2qd" path="res://components/computer.tscn" id="34_l40q6"]
 [ext_resource type="Texture2D" uid="uid://dc1lroe1tlkci" path="res://textures/UBTEX_57.png" id="35_iav3h"]
+[ext_resource type="ArrayMesh" uid="uid://dys1su7nhy2hp" path="res://meshes/platform.obj" id="37_onjth"]
+[ext_resource type="Script" uid="uid://i0rswinao76e" path="res://components/boss_lift.gd" id="38_xa0eo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("3_05bf5")
@@ -246,6 +248,72 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xa0eo"]
+load_path = "res://.godot/imported/SCITX__19.png-8d325f4a47cfa0691405231e8aa9554e.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mjum"]
+render_priority = 0
+shader = ExtResource("19_xdqt8")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_xa0eo")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p27gv"]
+load_path = "res://.godot/imported/SCITX__19.png-8d325f4a47cfa0691405231e8aa9554e.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cn4eu"]
+render_priority = 0
+shader = ExtResource("19_xdqt8")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_p27gv")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0wyf6"]
+load_path = "res://.godot/imported/SCITX__19.png-8d325f4a47cfa0691405231e8aa9554e.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp01v"]
+render_priority = 0
+shader = ExtResource("19_xdqt8")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_0wyf6")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onjth"]
+size = Vector3(2, 0.31251, 2)
+
 [node name="Gym" type="Node3D" unique_id=1184156799]
 script = ExtResource("1_j3p88")
 
@@ -359,7 +427,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 23, 
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 25, -1, -15)
 
 [node name="TestStart" type="Marker3D" parent="World" unique_id=784810729]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 129, -4, -10)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 127, 0, -13)
 gizmo_extents = 1.0
 script = ExtResource("12_si52b")
 invincible = true
@@ -1035,6 +1103,20 @@ surface_material_override/0 = SubResource("ShaderMaterial_womr8")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 90, 3.6, -47.6)
 mesh = ExtResource("32_lhwp2")
 surface_material_override/0 = SubResource("ShaderMaterial_womr8")
+
+[node name="Platform" type="MeshInstance3D" parent="." unique_id=571350252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, -3, -13)
+mesh = ExtResource("37_onjth")
+surface_material_override/0 = SubResource("ShaderMaterial_3mjum")
+surface_material_override/1 = SubResource("ShaderMaterial_cn4eu")
+surface_material_override/2 = SubResource("ShaderMaterial_xp01v")
+script = ExtResource("38_xa0eo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform" unique_id=1405566248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.031255, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/StaticBody3D" unique_id=1203655384]
+shape = SubResource("BoxShape3D_onjth")
 
 [connection signal="body_entered" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_entered"]
 [connection signal="body_exited" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_exited"]

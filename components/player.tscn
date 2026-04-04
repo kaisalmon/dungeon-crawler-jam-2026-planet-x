@@ -143,7 +143,7 @@ transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0
 fov = 100.0
 
 [node name="Raygun" type="MeshInstance3D" parent="Camera3D" unique_id=2101920254]
-transform = Transform3D(0.10000002, 0, 0, 0, 0.09999999, 0, 0, 0, 0.099999964, 0.13005018, -0.22791135, -0.19763565)
+transform = Transform3D(-0.0965926, 0, -0.025881907, 0, 0.09999998, 0, 0.02588192, 0, -0.096592546, 0.13005017, -0.22791135, -0.21394455)
 cast_shadow = 0
 mesh = ExtResource("2_1kub6")
 skeleton = NodePath("../..")
