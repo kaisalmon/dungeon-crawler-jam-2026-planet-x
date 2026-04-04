@@ -45,7 +45,8 @@ func _on_music_volume_pressed():
 		
 	var bus = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(bus, linear_to_db(Globals.music_volume))
-	button_click_sfx.play()
+	if button_click_sfx:
+		button_click_sfx.play()
 	
 func _on_sfx_volume_pressed():
 	Globals.sfx_volume -= 0.25
@@ -54,7 +55,8 @@ func _on_sfx_volume_pressed():
 
 	var bus = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_db(bus, linear_to_db(Globals.sfx_volume))
-	button_click_sfx.play()
+	if button_click_sfx:
+		button_click_sfx.play()
 
 func _on_back_pressed():
 	emit_signal("back_pressed")

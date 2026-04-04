@@ -12,6 +12,7 @@ var max_distance = 5.0
 
 @export var dead_scene: PackedScene
 @export var staticTexture: Texture2D
+@export var face_texture: Texture2D
 var faceTexture: Texture2D
 @export var face: MeshInstance3D
 
@@ -48,7 +49,11 @@ func _ready():
 	var laser_particles_node: GPUParticles3D = get_node(laserParticles)
 	laser_particles_node.process_material = laser_particles_node.process_material.duplicate()
 	face.material_override = face.material_override.duplicate()
-	faceTexture = face.material_override.get_shader_parameter("texture_albedo")
+	if face_texture:
+		faceTexture = face_texture
+		face.material_override.set("shader_parameter/texture_albedo", face_texture)
+	else:
+		faceTexture = face.material_override.get_shader_parameter("texture_albedo")
 
 func _process(delta: float) -> void:
 	var player = Globals.getPlayer()

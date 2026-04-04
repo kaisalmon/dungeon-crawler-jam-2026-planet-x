@@ -15,20 +15,29 @@
 [ext_resource type="Script" uid="uid://dhljmbem5oi2o" path="res://components/test_start.gd" id="12_si52b"]
 [ext_resource type="PackedScene" uid="uid://bqliev4xmebk3" path="res://components/healspot.tscn" id="13_nbudi"]
 [ext_resource type="PackedScene" uid="uid://c1crf3w25xfnb" path="res://components/upgradespot.tscn" id="14_7hwl0"]
+[ext_resource type="Texture2D" uid="uid://7ymvtchstsoo" path="res://components/enemy/face5.png" id="14_8dxha"]
 [ext_resource type="PackedScene" uid="uid://drh41d0k0lftg" path="res://ui/mainmenuscene.tscn" id="15_hhvxa"]
 [ext_resource type="PackedScene" uid="uid://b4dxbdl3jpti5" path="res://components/slope.tscn" id="16_3otxl"]
 [ext_resource type="PackedScene" uid="uid://ddagpkbvi464o" path="res://components/pouring_slime.tscn" id="16_bcnxi"]
+[ext_resource type="Texture2D" uid="uid://cv6gmn0grnlqy" path="res://components/enemy/face14.png" id="17_j4epa"]
 [ext_resource type="Script" uid="uid://c4r7twvokh8ur" path="res://scripts/dark_ambience_area.gd" id="17_womr8"]
 [ext_resource type="PackedScene" uid="uid://dy666teivc3b" path="res://components/environment_changer.tscn" id="18_adb74"]
+[ext_resource type="Texture2D" uid="uid://cetfsfuoirtev" path="res://components/enemy/face10.png" id="18_ruju6"]
+[ext_resource type="Texture2D" uid="uid://y5cu2p3855ao" path="res://components/enemy/face9.png" id="19_5nybl"]
 [ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="19_xdqt8"]
 [ext_resource type="Texture2D" uid="uid://cygxhrmlrkjd1" path="res://textures/UBTEX_28.png" id="20_adb74"]
+[ext_resource type="Texture2D" uid="uid://dpec7l0waro0v" path="res://components/enemy/face1.png" id="20_cq0lk"]
 [ext_resource type="ArrayMesh" uid="uid://jqxvx13o3vhx" path="res://meshes/stairs.obj" id="21_58gk3"]
 [ext_resource type="Texture2D" uid="uid://c1wvicjq0o2tr" path="res://textures/SCITX__05.png" id="22_3mjum"]
 [ext_resource type="PackedScene" uid="uid://b0pek1qypx8hk" path="res://components/enemy/boss.tscn" id="23_58gk3"]
 [ext_resource type="Texture2D" uid="uid://htet0b7xp7bj" path="res://textures/decal_tire_tracks.png" id="24_kkokr"]
+[ext_resource type="Texture2D" uid="uid://clp1qmkq8pcfb" path="res://components/enemy/face4.png" id="24_p27gv"]
 [ext_resource type="ArrayMesh" uid="uid://xm1pxudfrtyv" path="res://meshes/enemies/enemy_head.obj" id="24_pgk25"]
+[ext_resource type="Texture2D" uid="uid://cdaw5dgyyylcg" path="res://components/enemy/face3.png" id="25_0wyf6"]
 [ext_resource type="Texture2D" uid="uid://ca6xwm48soqdt" path="res://meshes/enemies/enemy.png" id="25_kkokr"]
 [ext_resource type="Texture2D" uid="uid://dpdp25msv8k85" path="res://components/enemy/smashedFace.png" id="26_lhwp2"]
+[ext_resource type="Texture2D" uid="uid://ctrp3rg657gt7" path="res://components/enemy/face7.png" id="26_xp01v"]
+[ext_resource type="Texture2D" uid="uid://knw5jimtnp4v" path="res://components/enemy/face8.png" id="27_j2yw6"]
 [ext_resource type="Texture2D" uid="uid://btv8ydr6iscnh" path="res://textures/UBTEX_50.png" id="27_l40q6"]
 [ext_resource type="ArrayMesh" uid="uid://dvpuff8fxty0j" path="res://meshes/enemies/enemy_gun.obj" id="29_womr8"]
 [ext_resource type="ArrayMesh" uid="uid://np4qlyftt8gr" path="res://meshes/enemies/enemy_shoulder.obj" id="30_onjth"]
@@ -36,9 +45,12 @@
 [ext_resource type="ArrayMesh" uid="uid://ecrm5v8qy8f5" path="res://meshes/cube.obj" id="32_lhwp2"]
 [ext_resource type="Texture2D" uid="uid://sqsh8gcqyd56" path="res://textures/SCITX__25.png" id="33_l40q6"]
 [ext_resource type="PackedScene" uid="uid://cowcfejhd2qd" path="res://components/computer.tscn" id="34_l40q6"]
+[ext_resource type="Texture2D" uid="uid://kl8obfe7j3dl" path="res://components/enemy/face11.png" id="35_8pjrr"]
 [ext_resource type="Texture2D" uid="uid://dc1lroe1tlkci" path="res://textures/UBTEX_57.png" id="35_iav3h"]
+[ext_resource type="Texture2D" uid="uid://hqbl8gaubr7j" path="res://components/enemy/face12.png" id="36_0xxsb"]
 [ext_resource type="ArrayMesh" uid="uid://dys1su7nhy2hp" path="res://meshes/platform.obj" id="37_onjth"]
 [ext_resource type="Script" uid="uid://i0rswinao76e" path="res://components/boss_lift.gd" id="38_xa0eo"]
+[ext_resource type="Texture2D" uid="uid://bj54uaf2pjibt" path="res://components/enemy/face13.png" id="51_j4epa"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("3_05bf5")
@@ -402,30 +414,39 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Enemy" parent="World/GridMap" unique_id=172750197 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94, 0, -89)
+face_texture = ExtResource("14_8dxha")
 
 [node name="Enemy2" parent="World/GridMap" unique_id=17074539 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94, 0, -89)
+face_texture = ExtResource("24_p27gv")
 
 [node name="Enemy3" parent="World/GridMap" unique_id=1169030631 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, -85)
+face_texture = ExtResource("25_0wyf6")
 
 [node name="Enemy4" parent="World/GridMap" unique_id=230184122 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, -85)
+face_texture = ExtResource("17_j4epa")
 
 [node name="Enemy5" parent="World/GridMap" unique_id=1669605707 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(0.99998975, -0.0017187274, -0.004191069, 0.0017408815, 0.9999845, 0.0052855806, 0.004181915, -0.0052928263, 0.99997723, 109, 0, -78)
+face_texture = ExtResource("18_ruju6")
 
 [node name="Enemy6" parent="World/GridMap" unique_id=1587018748 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(0.9999994, 0.00040378937, 0.000975559, -0.00040259186, 0.99999917, -0.0012330272, -0.00097605377, 0.0012326356, 0.99999875, 113, 0, -73)
+face_texture = ExtResource("19_5nybl")
 
 [node name="Enemy7" parent="World/GridMap" unique_id=1103884397 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(0.99998975, -0.0017187274, -0.004191069, 0.0017408815, 0.9999845, 0.0052855806, 0.004181915, -0.0052928263, 0.99997723, 94, 0, -65)
+face_texture = ExtResource("20_cq0lk")
 
 [node name="Enemy8" parent="World/GridMap" unique_id=180442354 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(0.9999994, 0.00040378937, 0.000975559, -0.00040259186, 0.99999917, -0.0012330272, -0.00097605377, 0.0012326356, 0.99999875, 100, 0, -67)
+face_texture = ExtResource("26_xp01v")
 
 [node name="Enemy9" parent="World/GridMap" unique_id=1503176727 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(0.99998975, -0.0017187274, -0.004191069, 0.0017408815, 0.9999845, 0.0052855806, 0.004181915, -0.0052928263, 0.99997723, 95, 0, -69)
+face_texture = ExtResource("17_j4epa")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="World/GridMap" unique_id=417326409]
 transform = Transform3D(0.8179507, 0.028848765, -0.5745646, 0.52084625, 0.38696298, 0.76090664, 0.24428643, -0.92164385, 0.3014909, 114.49015, 14.581485, 6.754834)
@@ -701,12 +722,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, 1, -45)
 
 [node name="Enemy" parent="World" unique_id=1700120725 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 2, -52)
+face_texture = ExtResource("14_8dxha")
 
 [node name="Enemy2" parent="World" unique_id=312861575 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 2, -52)
 
 [node name="Enemy3" parent="World" unique_id=1726956183 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 2, -46)
+face_texture = ExtResource("27_j2yw6")
 
 [node name="EnvironmentChanger" parent="World" unique_id=620604552 instance=ExtResource("18_adb74")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, -1, -75)
@@ -816,6 +839,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 
 
 [node name="Enemy" parent="." unique_id=287313556 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 4, -11)
+face_texture = ExtResource("24_p27gv")
 accuaracy_modifier_linear = -0.5
 
 [node name="Upgradespot" parent="." unique_id=1237185075 instance=ExtResource("14_7hwl0")]
@@ -827,18 +851,23 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25, 
 
 [node name="Enemy2" parent="." unique_id=965290169 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -11)
+face_texture = ExtResource("25_0wyf6")
 
 [node name="Enemy3" parent="." unique_id=1639489575 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -16)
+face_texture = ExtResource("26_xp01v")
 
 [node name="Enemy4" parent="." unique_id=1720928877 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, -37)
+face_texture = ExtResource("27_j2yw6")
 
 [node name="Enemy5" parent="." unique_id=1829901547 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 0, -29)
+face_texture = ExtResource("19_5nybl")
 
 [node name="Enemy6" parent="." unique_id=697581019 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 0, -41)
+face_texture = ExtResource("18_ruju6")
 
 [node name="Slope" parent="." unique_id=1673521478 instance=ExtResource("16_3otxl")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 5, 3, -17)
@@ -904,24 +933,31 @@ upgrade_type = 2
 
 [node name="Enemy8" parent="." unique_id=61852538 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119, 0, -37)
+face_texture = ExtResource("35_8pjrr")
 
 [node name="Enemy9" parent="." unique_id=2113298715 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119, 0, -31)
+face_texture = ExtResource("36_0xxsb")
 
 [node name="Enemy10" parent="." unique_id=1954179610 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107, 0, -23)
+face_texture = ExtResource("17_j4epa")
 
 [node name="Enemy11" parent="." unique_id=495849337 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111, 0, -23)
+face_texture = ExtResource("20_cq0lk")
 
 [node name="Enemy12" parent="." unique_id=130883373 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109, 0, -23)
+face_texture = ExtResource("25_0wyf6")
 
 [node name="Enemy13" parent="." unique_id=479873286 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113, 0, -23)
+face_texture = ExtResource("24_p27gv")
 
 [node name="Enemy14" parent="." unique_id=87466583 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 0, -23)
+face_texture = ExtResource("14_8dxha")
 
 [node name="Boss" parent="." unique_id=248452724 instance=ExtResource("23_58gk3")]
 unique_name_in_owner = true
@@ -1429,16 +1465,19 @@ skeleton = NodePath("../..")
 
 [node name="BossMinion" parent="." unique_id=492908593 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 4, -8)
+face_texture = ExtResource("51_j4epa")
 do_not_shoot_unarmed_player = true
 frozen = true
 
 [node name="BossMinion2" parent="." unique_id=747600775 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 4, -19)
+face_texture = ExtResource("51_j4epa")
 do_not_shoot_unarmed_player = true
 frozen = true
 
 [node name="BossMinion3" parent="." unique_id=156023118 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 4, -13)
+face_texture = ExtResource("51_j4epa")
 do_not_shoot_unarmed_player = true
 frozen = true
 
