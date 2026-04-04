@@ -10,6 +10,7 @@ var new_game_button: Button
 var continue_button: Button
 var settings_button: Button
 var quit_button: Button
+var credits_button: Button
 
 var done: bool = false
 var overlay_target: float = 0.0
@@ -42,6 +43,11 @@ func _ready():
 	settings_button.text = "Settings"
 	main_menu_container.add_child(settings_button)
 
+	
+	credits_button = Button.new()
+	credits_button.text = "Credits"
+	main_menu_container.add_child(credits_button)
+
 	if FileAccess.file_exists(SAVE_FILE_PATH):
 		continue_button.disabled = false
 		continue_button.focus_mode = Control.FOCUS_ALL
@@ -59,6 +65,7 @@ func _ready():
 	new_game_button.pressed.connect(_on_new_game_pressed)
 	continue_button.pressed.connect(_on_continue_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
+	credits_button.pressed.connect(_on_credits_pressed)
 	if quit_button:
 		quit_button.pressed.connect(_on_quit_pressed)
 
@@ -108,6 +115,16 @@ func _on_settings_pressed():
 		if child is Control and child.focus_mode != Control.FOCUS_NONE:
 			child.grab_focus()
 			break
+
+func _on_credits_pressed():
+	button_click_sfx.play()
+	if done:
+		return
+	self.get_parent().is_active = false
+	main_menu_container.visible = false
+	$Logo.visible = false
+	Analytics.track("credits_viewed")
+	Globals.end_game("credits")
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel") and options_container.visible:

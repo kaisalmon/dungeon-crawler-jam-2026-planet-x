@@ -26,6 +26,8 @@ func _on_body_exited(body: Node3D) -> void:
 	active = false
 
 func _process(delta: float) -> void:
+	if Globals.is_game_over:
+		return
 	transition = move_toward(transition, 1.0 if active else 0.0, delta)
 	var world_environment = get_world_3d().environment
 	world_environment.ambient_light_color = ambient_color.lerp(ambient_color * 0.4, transition)

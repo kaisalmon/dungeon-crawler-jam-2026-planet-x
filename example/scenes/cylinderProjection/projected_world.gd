@@ -9,17 +9,13 @@ var sky_basis: Basis = Basis.IDENTITY
 
 var grid_spacing: float = 90
 
-func _process(_delta):
-	var player = Globals.getPlayer()
-	RenderingServer.global_shader_parameter_set("planet_radius", 30.0)
-	RenderingServer.global_shader_parameter_set("curve_origin", player.global_position)
-	
-	update_sky()
+func _process(delta):
+	update_sky(delta)
 	update_celestial_bodies()
 
 
 
-func update_sky():
+func update_sky(delta: float) -> void:
 	grid_spacing = 120
 	var player = Globals.getPlayer()
 	if not player:
@@ -32,11 +28,13 @@ func update_sky():
 		return
 
 	# Calculate movement delta
-	var delta = player_pos - last_player_pos
+	var player_delta = player_pos - last_player_pos
+	if Globals.is_game_over:
+		player_delta = Vector3.FORWARD * 3 * delta
 	last_player_pos = player_pos
 
-	var lat_step = delta.z / (3 * grid_spacing) * TAU
-	var lon_step = delta.x / (3 * grid_spacing) * TAU
+	var lat_step = player_delta.z / (3 * grid_spacing) * TAU
+	var lon_step = player_delta.x / (3 * grid_spacing) * TAU
 
 	# Accumulate rotations onto sky_basis
 	if abs(lat_step) > 0.0001:

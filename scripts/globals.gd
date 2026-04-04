@@ -23,6 +23,7 @@ func save_endings() -> void:
 var in_combat = false
 var in_lab_environment = false
 var within_range_of_enemy = false
+var is_game_over = false
 
 var music_volume = 1.0 #  Range from 0.0 (mute) to 1.0 (full volume)
 var sfx_volume = 1.0 # Range from 0.0 (mute) to 1.0 (full volume)
@@ -128,4 +129,34 @@ func end_game(mode: String):
 	Analytics.track("ending_reached", {
 		"ending": mode,
 	})
-	get_tree().reload_current_scene()
+
+	# Put player in cutscene mode
+	var player = getPlayer()
+	player.in_cutscene = true
+	is_game_over = true
+
+
+	# Fade to black
+	var overlay = get_tree().root.find_child("Overlay", true, false)
+	if overlay:
+		var tween = create_tween()
+		tween.tween_property(overlay, "modulate:a", 1.0, 1.5)
+		await tween.finished
+
+	# Reset skybox rotation (inc. celestial bodies)
+	var world = get_tree().root.find_child("World", true, false)
+	if world:
+		world.sky_basis = Basis.IDENTITY
+		world.last_player_pos = Vector3.ZERO
+
+	# Switch camera to CreditsCamera
+	var credits_camera = get_tree().root.find_child("CreditsCamera", true, false)
+	if credits_camera:
+		credits_camera.current = true
+		RenderingServer.global_shader_parameter_set("use_camera_as_curve_origin", true)
+
+	# Start credits scroll
+	var credits = get_tree().root.find_child("Credits", true, false)
+	if credits:
+		credits.start()
+
