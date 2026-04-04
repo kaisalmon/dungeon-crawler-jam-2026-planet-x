@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bfitylvpxpiab"
+path="res://.godot/imported/acid ambience.ogg-256338b8433487a72a3d562a7e9e62c3.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/acid ambience.ogg"
+dest_files=["res://.godot/imported/acid ambience.ogg-256338b8433487a72a3d562a7e9e62c3.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

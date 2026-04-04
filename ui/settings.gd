@@ -6,6 +6,7 @@ signal back_pressed
 
 var music_volume_button: Button
 var sfx_volume_button: Button
+var ambience_volume_button: Button
 var back_button: Button
 var quit_button: Button
 @onready var button_click_sfx: AudioStreamPlayer = $"../ButtonClickSFX"
@@ -21,6 +22,11 @@ func _ready():
 	sfx_volume_button.text = ""
 	self.add_child(sfx_volume_button)
 	sfx_volume_button.pressed.connect(_on_sfx_volume_pressed)
+	
+	ambience_volume_button = Button.new()
+	ambience_volume_button.text = ""
+	self.add_child(ambience_volume_button)
+	ambience_volume_button.pressed.connect(_on_ambience_volume_pressed)
 
 	if in_game_menu:
 		back_button = Button.new()
@@ -58,6 +64,16 @@ func _on_sfx_volume_pressed():
 	if button_click_sfx:
 		button_click_sfx.play()
 
+func _on_ambience_volume_pressed():
+	Globals.ambience_volume -= 0.25
+	if Globals.ambience_volume < 0.0:
+		Globals.ambience_volume = 1.0
+		
+	var bus = AudioServer.get_bus_index("Ambience")
+	AudioServer.set_bus_volume_db(bus, linear_to_db(Globals.ambience_volume))
+	if button_click_sfx:
+		button_click_sfx.play()
+
 func _on_back_pressed():
 	emit_signal("back_pressed")
 
@@ -74,3 +90,4 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(_delta):
 	music_volume_button.text = "Music Volume: " + str(int(Globals.music_volume * 100)) + "%"
 	sfx_volume_button.text = "SFX Volume: " + str(int(Globals.sfx_volume * 100)) + "%"
+	ambience_volume_button.text = "Ambience Volume: " + str(int(Globals.ambience_volume * 100)) + "%"
