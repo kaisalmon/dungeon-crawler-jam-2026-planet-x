@@ -46,6 +46,7 @@ var has_gun_upgrade = false
 @onready var gun_click_sfx: AudioStreamPlayer = %GunClickSFX
 @onready var gun_overheat_sfx: AudioStreamPlayer = %GunOverheatSFX
 @onready var player_death_sfx: AudioStreamPlayer = %PlayerDeathSFX
+@onready var slime_damage_sfx: AudioStreamPlayer = %SlimeDamageSFX
 var camera: Camera3D
 
 var slime_damage_timer = 0.0
@@ -87,7 +88,8 @@ func _physics_process(delta):
 	if slime_count > 0:
 		slime_damage_timer += delta
 		if slime_damage_timer >= 0.2:
-			self.damage(1.5)
+			if self.damage(1.5):
+				slime_damage_sfx.play()
 			#SFX(Acid/Slime)
 	else:
 		slime_damage_timer = 0.0

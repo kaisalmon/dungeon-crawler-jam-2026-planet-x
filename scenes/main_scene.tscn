@@ -51,6 +51,8 @@
 [ext_resource type="ArrayMesh" uid="uid://dys1su7nhy2hp" path="res://meshes/platform.obj" id="37_onjth"]
 [ext_resource type="Script" uid="uid://i0rswinao76e" path="res://components/boss_lift.gd" id="38_xa0eo"]
 [ext_resource type="Texture2D" uid="uid://bj54uaf2pjibt" path="res://components/enemy/face13.png" id="51_j4epa"]
+[ext_resource type="AudioStream" uid="uid://bfitylvpxpiab" path="res://audio/sfx/acid ambience.ogg" id="52_ruju6"]
+[ext_resource type="AudioStream" uid="uid://bxqitxbuepttr" path="res://audio/sfx/ambience.ogg" id="53_5nybl"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("3_05bf5")
@@ -688,7 +690,7 @@ spot_attenuation = 0.0
 spot_angle = 23.172895
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="World" unique_id=2090494293]
-transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, -1, 0, 1, -2.9802322e-08, 65, -11.58819, -66.340744)
+transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, -1, 0, 1, -2.9802322e-08, 65.037704, -11.447301, -66.340744)
 light_color = Color(0.28608736, 0.5909611, 0.34282658, 1)
 light_energy = 2.333
 spot_range = 20.0
@@ -1480,6 +1482,170 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 4, -13)
 face_texture = ExtResource("51_j4epa")
 do_not_shoot_unarmed_player = true
 frozen = true
+
+[node name="Ambiences" type="Node3D" parent="." unique_id=968548712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.68578, 0.8738663, -45.152706)
+
+[node name="SlimeAmbience" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=213719812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.112289, 0, 5.1275063)
+stream = ExtResource("52_ruju6")
+volume_db = -17.33
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience2" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1784890273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.244553, -2.1707046, -8.165253)
+stream = ExtResource("52_ruju6")
+volume_db = -17.33
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience3" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1527184062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.673714, -2.1707046, -8.165253)
+stream = ExtResource("52_ruju6")
+volume_db = -31.622
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience4" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1619398658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.988518, -2.0021322, -3.8733826)
+stream = ExtResource("52_ruju6")
+volume_db = -31.622
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience5" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1330244615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.040909, -2.0021322, 0.929924)
+stream = ExtResource("52_ruju6")
+volume_db = -31.622
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience6" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1743985700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.43302, -3.130386, 31.899895)
+stream = ExtResource("52_ruju6")
+volume_db = 0.796
+autoplay = true
+max_distance = 24.28
+bus = &"Ambience"
+
+[node name="SlimeAmbience7" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=699495263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.027473, -2.0021322, 3.9595947)
+stream = ExtResource("52_ruju6")
+volume_db = -31.622
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience8" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1818204506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6750946, -2.0021322, 1.9819298)
+stream = ExtResource("52_ruju6")
+volume_db = -31.622
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience9" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=2115502762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.982048, -2.5123615, -8.165253)
+stream = ExtResource("52_ruju6")
+volume_db = -17.33
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience10" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1159542189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.297539, 0, -4.9525948)
+stream = ExtResource("52_ruju6")
+volume_db = -17.33
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience11" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=798585307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.464249, 0.14088917, -10.527214)
+stream = ExtResource("52_ruju6")
+volume_db = -17.33
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience12" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1980389106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.602196, 0.14088917, -15.415188)
+stream = ExtResource("52_ruju6")
+volume_db = -26.393
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience13" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1015516977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.175018, 0.14088917, -17.9202)
+stream = ExtResource("52_ruju6")
+volume_db = -26.393
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience14" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1553887381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.879333, 0.14088917, -20.98254)
+stream = ExtResource("52_ruju6")
+volume_db = -26.393
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience15" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1802683336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.05223, 0.14088917, -25.466427)
+stream = ExtResource("52_ruju6")
+volume_db = -26.393
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience16" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1362358272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.523228, 0.14088917, -28.437931)
+stream = ExtResource("52_ruju6")
+volume_db = -26.393
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience17" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=967996176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9251404, 0, 6.1510506)
+stream = ExtResource("52_ruju6")
+volume_db = -17.33
+autoplay = true
+max_distance = 15.36
+bus = &"Ambience"
+
+[node name="SlimeAmbience18" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1873752566]
+stream = ExtResource("52_ruju6")
+volume_db = -6.524
+autoplay = true
+max_distance = 167.06
+bus = &"Ambience"
+
+[node name="GlobalAmbience1" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=359428454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100.72563)
+stream = ExtResource("53_5nybl")
+autoplay = true
+bus = &"SFX"
+
+[node name="GlobalAmbience2" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1773751376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.95014, 0, 101.870056)
+stream = ExtResource("53_5nybl")
+autoplay = true
+bus = &"SFX"
+
+[node name="GlobalAmbience3" type="AudioStreamPlayer3D" parent="Ambiences" unique_id=1179677329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.057205, 0, 46.915627)
+stream = ExtResource("53_5nybl")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="body_entered" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_entered"]
 [connection signal="body_exited" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_exited"]
