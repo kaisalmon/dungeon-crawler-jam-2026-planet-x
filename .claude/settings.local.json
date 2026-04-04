@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep:*)",
+      "Bash(wc -l /c/Users/kaisa/OneDrive/Documents/planet-x/scripts/dungeon_crawler/*.gd)"
+    ]
+  }
+}

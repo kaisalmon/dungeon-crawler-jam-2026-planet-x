@@ -446,6 +446,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 25, 
 
 [node name="TestStart" type="Marker3D" parent="World" unique_id=784810729]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 127, 0, -13)
+visible = false
 gizmo_extents = 1.0
 script = ExtResource("12_si52b")
 health = 5

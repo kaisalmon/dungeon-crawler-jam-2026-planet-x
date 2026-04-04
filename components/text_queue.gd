@@ -9,7 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var queue = Globals.queue
 	timer -= delta
-	var DURATION = 2.0
+	var DURATION = 3.5
 	var FADE_DURATION = 0.3
 	if timer <= 0.0 and queue.size() > 0:
 		self.text = queue.pop_front() if queue.size() > 0 else ""

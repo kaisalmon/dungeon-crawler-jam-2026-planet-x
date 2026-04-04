@@ -2,6 +2,23 @@ extends Node
 
 var fovSetting: int = 100
 
+const ENDINGS_FILE_PATH = "user://endings.save"
+const ALL_ENDINGS = ["standard", "unarmed"]
+var discovered_endings: Dictionary = {}
+
+func load_endings() -> void:
+	if FileAccess.file_exists(ENDINGS_FILE_PATH):
+		var file = FileAccess.open(ENDINGS_FILE_PATH, FileAccess.READ)
+		if file:
+			var data = JSON.parse_string(file.get_as_text())
+			if data is Dictionary:
+				discovered_endings = data
+
+func save_endings() -> void:
+	var file = FileAccess.open(ENDINGS_FILE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_line(JSON.stringify(discovered_endings))
+
 
 var in_combat = false
 var in_lab_environment = false
@@ -14,6 +31,7 @@ var test_start = null
 var _player = null
 
 func _ready() -> void:
+	load_endings()
 	var timer = Timer.new()
 	timer.wait_time = 3
 	timer.one_shot = false
@@ -103,4 +121,7 @@ func load():
 		print("No save file found.")
 
 func end_game(mode: String):
+	if mode in ALL_ENDINGS and not discovered_endings.has(mode):
+		discovered_endings[mode] = true
+		save_endings()
 	get_tree().reload_current_scene()
