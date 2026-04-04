@@ -295,6 +295,13 @@ func die():
 	music_manager.music_stop()
 	in_cutscene = true
 	await get_tree().create_timer(1.0).timeout
+	Analytics.track("player_died", {
+		"health": health,
+		"max_health": max_health,
+		"shields": shields,
+		"max_shields": max_shields,
+		"has_gun_upgrade": has_gun_upgrade,
+	})
 	music_manager.reset_state()
 	music_manager.play_music(music_manager.menu_music)
 	get_tree().reload_current_scene()

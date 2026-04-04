@@ -309,6 +309,10 @@ func _on_static_body_3d_shot() -> void:
 
 func die():
 	died.emit()
+	Analytics.track("enemy_killed", {
+		"enemy_id": str(get_path()),
+		"health_remaining": health,
+	})
 	self.queue_free()
 	var shard: DeadEnemy = dead_scene.instantiate()
 	get_parent().add_child(shard)

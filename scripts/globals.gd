@@ -124,4 +124,7 @@ func end_game(mode: String):
 	if mode in ALL_ENDINGS and not discovered_endings.has(mode):
 		discovered_endings[mode] = true
 		save_endings()
+	Analytics.track("ending_reached", {
+		"ending": mode,
+	})
 	get_tree().reload_current_scene()

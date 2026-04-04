@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
+Analytics="*res://scripts/analytics.gd"
 SunFlare="*res://example/lens_flare/lens_flare.gd"
 
 [display]

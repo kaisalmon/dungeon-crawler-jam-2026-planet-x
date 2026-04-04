@@ -46,6 +46,11 @@ func set_visually_picked_up():
 	self.material_override.set("shader_parameter/texture_emission", null)
 
 func on_upgrade():
+	var upgrade_names = {UpgradeType.GUN: "GUN", UpgradeType.SHIELD: "SHIELD", UpgradeType.HEALTH: "HEALTH"}
+	Analytics.track("powerup_picked_up", {
+		"upgrade_type": upgrade_names[upgrade_type],
+		"pickup_id": str(get_path()),
+	})
 	var player: Player = Globals.getPlayer()
 	if upgrade_type == UpgradeType.GUN:
 		player.has_gun_upgrade = true

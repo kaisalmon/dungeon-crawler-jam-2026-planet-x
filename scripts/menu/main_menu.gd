@@ -68,11 +68,15 @@ func _ready():
 
 func _on_new_game_pressed():
 	button_click_sfx.play()
+	Analytics.begin_session()
+	Analytics.track("new_game_started")
 	start_game()
 
 func _on_continue_pressed():
 	button_click_sfx.play()
 	Globals.load()
+	Analytics.begin_session()
+	Analytics.track("game_continued")
 	start_game()
 
 func start_game():
