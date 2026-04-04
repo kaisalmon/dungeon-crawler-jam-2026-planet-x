@@ -337,12 +337,12 @@ transform = Transform3D(0.9999994, 0.00040378937, 0.000975559, -0.00040259186, 0
 transform = Transform3D(0.99998975, -0.0017187274, -0.004191069, 0.0017408815, 0.9999845, 0.0052855806, 0.004181915, -0.0052928263, 0.99997723, 95, 0, -69)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="World/GridMap" unique_id=417326409]
-transform = Transform3D(0.8179508, -0.036519613, -0.5741282, 0.4833591, 0.58480483, 0.6514347, 0.31196284, -0.81035155, 0.49599364, 120.16125, 9.519888, 8.701803)
+transform = Transform3D(0.8179507, 0.028848765, -0.5745646, 0.52084625, 0.38696298, 0.76090664, 0.24428643, -0.92164385, 0.3014909, 114.49015, 14.581485, 6.754834)
 light_color = Color(0.69803923, 0.3882353, 0.6784314, 1)
 light_energy = 100.0
 shadow_enabled = true
-spot_range = 20.502409
-spot_angle = 40.719727
+spot_range = 90.89471
+spot_angle = 35.208424
 
 [node name="Upgradespot" parent="World" unique_id=896239292 instance=ExtResource("14_7hwl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, -3)
@@ -355,6 +355,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 25, 
 
 [node name="TestStart" type="Marker3D" parent="World" unique_id=784810729]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 119, 0, 1)
+visible = false
 gizmo_extents = 1.0
 script = ExtResource("12_si52b")
 invincible = true
