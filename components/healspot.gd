@@ -21,6 +21,6 @@ func _process(delta):
 				if save_cooldown <= 0.0:
 					progress_save.play()
 					Globals.save()
-					save_cooldown = 10.0
+					save_cooldown = 3.0
 	else:
 		cooldown = 0.5

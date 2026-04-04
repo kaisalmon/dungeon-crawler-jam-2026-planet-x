@@ -66,7 +66,7 @@ void main() {
     uv *= 3.0 - intensity * 1;
     uv.x *= size.x / size.y;
     uv += 0.5;
-    flare += texture(lens_flare_tex, uv).r * intensity * (1.0 - screen_texture.a);
+    flare += texture(lens_flare_tex, uv).r * intensity * max(0.0, 1.0 - screen_texture.a);
 
     flare *= (1.0 - occlusion) * campled_dot;
 

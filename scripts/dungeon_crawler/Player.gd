@@ -22,8 +22,8 @@ var shoot_delay: float = 0.0
 
 var boomer_mode: bool = false
 
-var health = 2
-var max_health = 2
+var health = 1
+var max_health = 1
 var shields = 0
 var max_shields = 0
 var shield_cooldown = 0.0

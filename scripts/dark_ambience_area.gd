@@ -4,10 +4,12 @@ var active = false
 var ambient_color
 var transition = 0.0
 var directional_light_strength
+var sun_strength
 
 func _ready():
 	ambient_color = get_world_3d().environment.ambient_light_color
 	directional_light_strength = %DirectionalLight3D.light_energy
+	sun_strength = %Sun.light_energy
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
 
@@ -26,7 +28,10 @@ func _on_body_exited(body: Node3D) -> void:
 func _process(delta: float) -> void:
 	transition = move_toward(transition, 1.0 if active else 0.0, delta)
 	var world_environment = get_world_3d().environment
-	world_environment.ambient_light_color = ambient_color.lerp(ambient_color * 0.2, transition)
+	world_environment.ambient_light_color = ambient_color.lerp(ambient_color * 0.4, transition)
 
 	var global_directional_light = %DirectionalLight3D
 	global_directional_light.light_energy = directional_light_strength * (1.0 - transition)
+
+	var sun = %Sun
+	sun.light_energy = sun_strength * (1.0 - transition)
