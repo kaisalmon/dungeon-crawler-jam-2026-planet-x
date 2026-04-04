@@ -342,6 +342,7 @@ func save():
 		"shields": shields,
 		"max_shields": max_shields,
 		"has_gun_upgrade": has_gun_upgrade,
+		"in_lab": Globals.in_lab_environment,
 	}
 	return json
 
@@ -359,3 +360,4 @@ func load(json):
 	shields = json["shields"]
 	max_shields = json["max_shields"]
 	has_gun_upgrade = json["has_gun_upgrade"]
+	Globals.in_lab_environment = json.get("in_lab", false)
