@@ -51,6 +51,8 @@
 [ext_resource type="ArrayMesh" uid="uid://dys1su7nhy2hp" path="res://meshes/platform.obj" id="37_onjth"]
 [ext_resource type="Script" uid="uid://i0rswinao76e" path="res://components/boss_lift.gd" id="38_xa0eo"]
 [ext_resource type="Texture2D" uid="uid://bj54uaf2pjibt" path="res://components/enemy/face13.png" id="51_j4epa"]
+[ext_resource type="PackedScene" uid="uid://dvr3di6soxtn" path="res://scenes/laser_hit.tscn" id="52_5nybl"]
+[ext_resource type="PackedScene" uid="uid://bhr7ot5xp5hwx" path="res://components/enemy/dead_boss.tscn" id="53_cq0lk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("3_05bf5")
@@ -1475,11 +1477,17 @@ face_texture = ExtResource("51_j4epa")
 do_not_shoot_unarmed_player = true
 frozen = true
 
+[node name="LaserHit" parent="." unique_id=350269572 instance=ExtResource("52_5nybl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 4, 5.242382)
+
 [node name="BossMinion3" parent="." unique_id=156023118 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 4, -13)
 face_texture = ExtResource("51_j4epa")
 do_not_shoot_unarmed_player = true
 frozen = true
+
+[node name="DeadEnemy2" parent="." unique_id=939722864 instance=ExtResource("53_cq0lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.328899, -2.4269538, 44.9184)
 
 [connection signal="body_entered" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_entered"]
 [connection signal="body_exited" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_exited"]

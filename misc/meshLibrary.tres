@@ -115,7 +115,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_k0rcm"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_nrq7e"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("//8AAP////8AAP//AAAAAP//zMz/////AADMzAAA//8zM///AAD//2ZmVR0AAAAAmZlVHf//AAD/////zMz//wAAAAD/////AAD/////AACZmVUd//8AAMzM////////ZmZVHQAAAAAAAP//MzP//wAAMzMAAAAA//8zM///AAD//wAA/////wAAAAAAAP//AAAyiwAA/1fq/zKL6v//V////xf//6n6FAD/FxQAqfoUAP//FABVHf//VR3///////9VHTMzVVXMzAAAzMxVVczMqqrMzFVVMzMAAAAAVR0zM1VVMzOqqv//zMwAAMzM////TxQA/0///1SlFABUpRQAVVX//1VV//9VHf//VVXMzFUdzMwAAJmZAABmZgAAzMyqqv//qqozM1UdAABVVQAAqqoAADMz//8zM///ZmYAAGZm//+ZmQAAmZn//1VVAABVHQAAVVX//6qqAACqqv//VR3//1VVAABVHQAAVVX//6qqAACqqjMzVR0AAFUdAABVVQAAqqozMwAAMzOqqmZmAACZmQAAzMxVHf//VR3//1VV//+qqv///08UAP9PFACqqv//qqoUAFVV//9VVQ=="),
@@ -142,7 +142,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_yt7he"]
+[sub_resource type="ImageTexture" id="ImageTexture_uj6vj"]
 image = SubResource("Image_k0rcm")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kue6h"]
@@ -166,7 +166,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_jxfuk"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yt7he"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "format": 34896613377,
@@ -180,7 +180,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_tcdao"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_jxfuk"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -195,7 +195,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_uj6vj"]
 data = {
@@ -206,7 +206,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_0d2xc"]
+[sub_resource type="ImageTexture" id="ImageTexture_gte4h"]
 image = SubResource("Image_uj6vj")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uj6vj"]
@@ -244,7 +244,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_f5vu4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0d2xc"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 0.0625, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA//8="),
@@ -270,7 +270,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_1agb7"]
+[sub_resource type="ImageTexture" id="ImageTexture_j70e8"]
 image = SubResource("Image_yt7he")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6ku6"]
@@ -308,7 +308,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_jhsct"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_1agb7"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1.3125, 2, 2.4375, 0.5625),
 "attribute_data": PackedByteArray("/yn/C/81/wv/Kf8Z/zX/GTJ5/1f/hf9XMnn/Xf+F/13/hf9TMnn/U2Vs/11lbP9XmV//XZlf/1dlbP9TzFL/XZlf/1PMUv9X/0X/Xf9F/1fMUv9TmV//T8xS/0+Zid6JmYmJlcx83onMfImVZZaJlWWW3okyo4mVMqPeif+T/2H/h/9h/5P/U/+H/1P/k/99/4f/ff+T/2//h/9v/6H/Yf+V/2H/of9T/5X/U/+h/33/lf99/6H/b/+V/2//P1VC/z//TTMzVUIzM/9NzDpqPcw8qjb/P6o2MzFqPcw86i3/P/8qMzPqL2YmVUJmJv9NmSlqPzMz/yqZKeovMzNVH/8/VR9mJlUfZib/KpkpqjZmJqo2MyNVITMjlRYzIRUoZiaqE5kZlRSZGf8umRkVKJkZqjaZGVVCzAz/Lv8PFSjMDKo2AAD/LgAAqjbMDFVCAABVQswMVR//D1UfzAyqEf8PlRYAAFUfAACqEwAA/wcAAP8DzAz/A8wM/weZGaoRmRn/B2Ym/wdmJv8DmRn/AzMz/wMzM/8HMzMAAGYmAAD/jb80/43/K5mXvzSZl/8rZYT/K5mXfz1lhL80/41/PWWEfz0zAKpPMwD/Rf8Kqk//DP9F/wpUWzMAVFvMGVRbzBmqT2WEv0hlhP8//42/SP+N/z//jX9RZYR/UZmXf1GZl79ImZf/P/+j/1f/o/9L/6//V/+v/0uZid6JmYn/f2WW3olllv9//6P/Zf+j/1n/r/9l/6//Wf8fv7z/H3/F/x2/vP8df8WZE/8B/wn/AZkTAAD/CQAAZgD/AWYCAAArB/8pKwf/If8J/ymVCP8j/7e/VP+3/0v/ub9W/7n/S/8T/yH/Hf8h/xP/I/8d/yP/H/+z/x+/vP8d/7P/Hb+8/0v/K/9B/yv/S/8p/0FpK/+N/6f/jb+w/4n/qf+Jv7D/jX+5/4l/uf8ZhkeZI4ZH/xn/S5kj/0uZODC5mTiWr5k8MLmZPJaxmTiWrwM5/6X7PMexZT0wqMOCf7nDgr+wO4d/t1aGv7DDgr+ww4L/p8OGv7DDhv+nZhCGR/8ZhkdmEIZL/xmGS2XA/5WYs/+VZcD/kzLN/5Myzf+VmLP/k8ym/5XMpv+T/2X/R/9j/1H/Yf9F/2H/Uf8z/2//Mf9l/zX/b/81/2P/vf97/7H/e/+9/3f/sf93/zf/b/83/2P/Of9v/zn/Y/8VAAD/IQAA/xX/Af8h/wH/bf83/3n/N/9t/zn/ef85/yP/s/8j/7//If+z/yH/v/87qgv/O1UX/zeqC/83VRf/NwAA/zv/Acyh/wP/lv8DzKEAAP+UAAAyiP8DMogAAP9z/5P/c/+H/3f/k/93/4eZVv9fZmX/X5lW/2NmY/9j/wv/v+QMo7X/D/+//w//s/+9/13/sf9d/73/Wf+x/1n/n/+n/5+ps/+b/6f/m6m3/xP/Gf8f/xn/E/8f/x//H/+hqbP/of+n/6Wpt/+l/6f/rf+p/7n/qf+t/63/uf+t/0H/Rf9P/0X/Qf9J/0//Sf9t/zH/e/8x/23/Nf97/zX/R/99/1X/ff9H/4H/Vf+B/1H/Sf9f/0n/Uf9N/1//Tf9f/0X/Uf9F/1H/q/9f/6v/Uf+v/1//r/8NIgH/DcwMAAAAAAAAzAz/DUQC/w3uDQAAAAAAAMwMAAAAAP8NZgcAAMwM/w0QD/8NiAT/DTMUAAAAAAAAzAz/DaoF/w1VEQAAAAAAAMwM/w2qCwAA/wX/DQAAAAAAAP8NzAwAAMwM/w0AAAAAIgH/DcwMAADuDf8NAAAAAEQCAABmA/8NAAAAABAP/w3MDP8NzAwAADMQ/w0AAAAAiAQAAKoF/w0AAAAAVRH/DcwM/w3/BQAAqgv/DQAAAAAAAA=="),
@@ -334,8 +334,11 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_1w1vc"]
+[sub_resource type="ImageTexture" id="ImageTexture_g5nfc"]
 image = SubResource("Image_jxfuk")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_co1uj"]
+points = PackedVector3Array(-1, 0, -1.1875123, -0.20007831, 0, -1.2500061, -1, 0, -0.75, -1, 1.458062, -1.3125, 1, 0, -1.2500061, 0.1998825, 0.66663814, -1.3125, 1, 0, -0.75, -1, 2.1874511, -0.75, -1, 1.8228759, -1.3125, 0.5998434, 0.66663814, -1.3125, 1, 1.0934869, -1.3125, 1, 2.3124754, -0.75, -0.6000391, 2.4375, -0.75, -1, 2.1874511, -1.1875123, -0.6000391, 2.1249387, -1.3125, 1, 1.458062, -1.3125, 1, 2.3124754, -1.1875123, -0.20007831, 2.4375, -0.75, -0.6000391, 2.4375, -1.1875123, -0.20007831, 2.1249387, -1.3125, -0.20007831, 2.4375, -1.1875123)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ixryn"]
 _surfaces = [{
@@ -361,7 +364,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_h04u0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_1w1vc"]
 _surfaces = [{
 "aabb": AABB(-1.3125, 0, -0.9375, 0.5625, 2.4375, 2),
 "attribute_data": PackedByteArray("/yn/C/81/wv/Kf8Z/zX/GTJ5/1f/hf9XMnn/Xf+F/13/hf9TMnn/U2Vs/11lbP9XmV//XZlf/1dlbP9TzFL/XZlf/1PMUv9X/0X/Xf9F/1fMUv9TmV//T8xS/0+Zid6JmYmJlcx83onMfImVZZaJlWWW3okyo4mVMqPeif+T/2H/h/9h/5P/U/+H/1P/k/99/4f/ff+T/2//h/9v/6H/Yf+V/2H/of9T/5X/U/+h/33/lf99/6H/b/+V/2//P1VC/z//TTMzVUIzM/9NzDpqPcw8qjb/P6o2MzFqPcw86i3/P/8qMzPqL2YmVUJmJv9NmSlqPzMz/yqZKeovMzNVH/8/VR9mJlUfZib/KpkpqjZmJqo2MyNVITMjlRYzIRUoZiaqE5kZlRSZGf8umRkVKJkZqjaZGVVCzAz/Lv8PFSjMDKo2AAD/LgAAqjbMDFVCAABVQswMVR//D1UfzAyqEf8PlRYAAFUfAACqEwAA/wcAAP8DzAz/A8wM/weZGaoRmRn/B2Ym/wdmJv8DmRn/AzMz/wMzM/8HMzMAAGYmAAD/jb80/43/K5mXvzSZl/8rZYT/K5mXfz1lhL80/41/PWWEfz0zAKpPMwD/Rf8Kqk//DP9F/wpUWzMAVFvMGVRbzBmqT2WEv0hlhP8//42/SP+N/z//jX9RZYR/UZmXf1GZl79ImZf/P/+j/1f/o/9L/6//V/+v/0uZid6JmYn/f2WW3olllv9//6P/Zf+j/1n/r/9l/6//Wf8fv7z/H3/F/x2/vP8df8WZE/8B/wn/AZkTAAD/CQAAZgD/AWYCAAArB/8pKwf/If8J/ymVCP8j/7e/VP+3/0v/ub9W/7n/S/8T/yH/Hf8h/xP/I/8d/yP/H/+z/x+/vP8d/7P/Hb+8/0v/K/9B/yv/S/8p/0FpK/+N/6f/jb+w/4n/qf+Jv7D/jX+5/4l/uf8ZhkeZI4ZH/xn/S5kj/0uZODC5mTiWr5k8MLmZPJaxmTiWrwM5/6X7PMexZT0wqMOCf7nDgr+wO4d/t1aGv7DDgr+ww4L/p8OGv7DDhv+nZhCGR/8ZhkdmEIZL/xmGS2XA/5WYs/+VZcD/kzLN/5Myzf+VmLP/k8ym/5XMpv+T/2X/R/9j/1H/Yf9F/2H/Uf8z/2//Mf9l/zX/b/81/2P/vf97/7H/e/+9/3f/sf93/zf/b/83/2P/Of9v/zn/Y/8VAAD/IQAA/xX/Af8h/wH/bf83/3n/N/9t/zn/ef85/yP/s/8j/7//If+z/yH/v/87qgv/O1UX/zeqC/83VRf/NwAA/zv/Acyh/wP/lv8DzKEAAP+UAAAyiP8DMogAAP9z/5P/c/+H/3f/k/93/4eZVv9fZmX/X5lW/2NmY/9j/wv/v+QMo7X/D/+//w//s/+9/13/sf9d/73/Wf+x/1n/n/+n/5+ps/+b/6f/m6m3/xP/Gf8f/xn/E/8f/x//H/+hqbP/of+n/6Wpt/+l/6f/rf+p/7n/qf+t/63/uf+t/0H/Rf9P/0X/Qf9J/0//Sf9t/zH/e/8x/23/Nf97/zX/R/99/1X/ff9H/4H/Vf+B/1H/Sf9f/0n/Uf9N/1//Tf9f/0X/Uf9F/1H/q/9f/6v/Uf+v/1//r/8NIgH/DcwMAAAAAAAAzAz/DUQC/w3uDQAAAAAAAMwMAAAAAP8NZgcAAMwM/w0QD/8NiAT/DTMUAAAAAAAAzAz/DaoF/w1VEQAAAAAAAMwM/w2qCwAA/wX/DQAAAAAAAP8NzAwAAMwM/w0AAAAAIgH/DcwMAADuDf8NAAAAAEQCAABmA/8NAAAAABAP/w3MDP8NzAwAADMQ/w0AAAAAiAQAAKoF/w0AAAAAVRH/DcwM/w3/BQAAqgv/DQAAAAAAAA=="),
@@ -399,8 +402,11 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_rjeew"]
+[sub_resource type="ImageTexture" id="ImageTexture_pgxjl"]
 image = SubResource("Image_tcdao")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ud1mm"]
+points = PackedVector3Array(-0.75022024, 2.1874511, 1.0625, 0.99977374, 2.3124754, -0.7501346, -0.75022024, 2.4375, 0.66240454, -1.187549, 2.1874511, 1.0625, -0.75022024, 0, 1.0625, 0.99977374, 2.3124754, -1.187659, -0.20016396, 2.4375, -0.7501346, 0.99977374, 0, -0.7501346, -1.187549, 2.4375, 0.66240454, -1.3125, 2.1249387, 0.66240454, -1.3125, 1.8228759, 1.0625, -1.187549, 0, 1.0625, -0.20016396, 2.1249387, -1.3125, -0.20016396, 2.4375, -1.187659, 0.99977374, 1.458062, -1.3125, 0.99977374, 0, -1.2501957, -1.187549, 2.4375, 0.26230907, -1.3125, 2.1249387, 0.26230907, -1.3125, 1.458062, 1.0625, -1.2500244, 0, 0.26230907, -0.60014313, 2.1249387, -1.3125, -0.60014313, 2.4375, -1.187659, 0.99977374, 1.0934869, -1.3125, -0.20016396, 0, -1.2501957, 0.5997945, 0.66663814, -1.3125, -1.187549, 2.3124754, -0.9375123, -1.3125, 1.458062, -0.9375123, -1.3125, 0.66663814, -0.13755393, -1.2500244, 0, -0.9375123, -1.0001223, 2.1874511, -1.187659, -1.0001223, 1.8228759, -1.3125, -1.0001223, 0, -1.187659, -1.0001223, 1.458062, -1.3125, 0.19981527, 0.66663814, -1.3125, -1.3125, 1.0934869, -0.9375123, -1.3125, 0.66663814, -0.5376493)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6lw28"]
 _surfaces = [{
@@ -436,7 +442,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3yadh"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rjeew"]
 _surfaces = [{
 "aabb": AABB(-1.3125, 0, -0.9375, 0.5625, 2.4375, 2),
 "attribute_data": PackedByteArray("/yn/C/81/wv/Kf8Z/zX/GTJ5/1f/hf9XMnn/Xf+F/13/hf9TMnn/U2Vs/11lbP9XmV//XZlf/1dlbP9TzFL/XZlf/1PMUv9X/0X/Xf9F/1fMUv9TmV//T8xS/0+Zid6JmYmJlcx83onMfImVZZaJlWWW3okyo4mVMqPeif+T/2H/h/9h/5P/U/+H/1P/k/99/4f/ff+T/2//h/9v/6H/Yf+V/2H/of9T/5X/U/+h/33/lf99/6H/b/+V/2//P1VC/z//TTMzVUIzM/9NzDpqPcw8qjb/P6o2MzFqPcw86i3/P/8qMzPqL2YmVUJmJv9NmSlqPzMz/yqZKeovMzNVH/8/VR9mJlUfZib/KpkpqjZmJqo2MyNVITMjlRYzIRUoZiaqE5kZlRSZGf8umRkVKJkZqjaZGVVCzAz/Lv8PFSjMDKo2AAD/LgAAqjbMDFVCAABVQswMVR//D1UfzAyqEf8PlRYAAFUfAACqEwAA/wcAAP8DzAz/A8wM/weZGaoRmRn/B2Ym/wdmJv8DmRn/AzMz/wMzM/8HMzMAAGYmAAD/jb80/43/K5mXvzSZl/8rZYT/K5mXfz1lhL80/41/PWWEfz0zAKpPMwD/Rf8Kqk//DP9F/wpUWzMAVFvMGVRbzBmqT2WEv0hlhP8//42/SP+N/z//jX9RZYR/UZmXf1GZl79ImZf/P/+j/1f/o/9L/6//V/+v/0uZid6JmYn/f2WW3olllv9//6P/Zf+j/1n/r/9l/6//Wf8fv7z/H3/F/x2/vP8df8WZE/8B/wn/AZkTAAD/CQAAZgD/AWYCAAArB/8pKwf/If8J/ymVCP8j/7e/VP+3/0v/ub9W/7n/S/8T/yH/Hf8h/xP/I/8d/yP/H/+z/x+/vP8d/7P/Hb+8/0v/K/9B/yv/S/8p/0FpK/+N/6f/jb+w/4n/qf+Jv7D/jX+5/4l/uf8ZhkeZI4ZH/xn/S5kj/0uZODC5mTiWr5k8MLmZPJaxmTiWrwM5/6X7PMexZT0wqMOCf7nDgr+wO4d/t1aGv7DDgr+ww4L/p8OGv7DDhv+nZhCGR/8ZhkdmEIZL/xmGS2XA/5WYs/+VZcD/kzLN/5Myzf+VmLP/k8ym/5XMpv+T/2X/R/9j/1H/Yf9F/2H/Uf8z/2//Mf9l/zX/b/81/2P/vf97/7H/e/+9/3f/sf93/zf/b/83/2P/Of9v/zn/Y/8VAAD/IQAA/xX/Af8h/wH/bf83/3n/N/9t/zn/ef85/yP/s/8j/7//If+z/yH/v/87qgv/O1UX/zeqC/83VRf/NwAA/zv/Acyh/wP/lv8DzKEAAP+UAAAyiP8DMogAAP9z/5P/c/+H/3f/k/93/4eZVv9fZmX/X5lW/2NmY/9j/wv/v+QMo7X/D/+//w//s/+9/13/sf9d/73/Wf+x/1n/n/+n/5+ps/+b/6f/m6m3/xP/Gf8f/xn/E/8f/x//H/+hqbP/of+n/6Wpt/+l/6f/rf+p/7n/qf+t/63/uf+t/0H/Rf9P/0X/Qf9J/0//Sf9t/zH/e/8x/23/Nf97/zX/R/99/1X/ff9H/4H/Vf+B/1H/Sf9f/0n/Uf9N/1//Tf9f/0X/Uf9F/1H/q/9f/6v/Uf+v/1//r/8NIgH/DcwMAAAAAAAAzAz/DUQC/w3uDQAAAAAAAMwMAAAAAP8NZgcAAMwM/w0QD/8NiAT/DTMUAAAAAAAAzAz/DaoF/w1VEQAAAAAAAMwM/w2qCwAA/wX/DQAAAAAAAP8NzAwAAMwM/w0AAAAAIgH/DcwMAADuDf8NAAAAAEQCAABmA/8NAAAAABAP/w3MDP8NzAwAADMQ/w0AAAAAiAQAAKoF/w0AAAAAVRH/DcwM/w3/BQAAqgv/DQAAAAAAAA=="),
@@ -486,8 +492,11 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_vnpy6"]
+[sub_resource type="ImageTexture" id="ImageTexture_es10p"]
 image = SubResource("Image_gte4h")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fpo52"]
+points = PackedVector3Array(1.3123286, 2.4375, -0.13755393, 1.3123286, 2.3124754, 1.0625, 1.4374998, 2.1249387, -0.13755393, 1.3123286, 2.4375, -0.5376493, -0.7501713, 2.4375, 0.66240454, 1.4374998, 1.458062, 1.0625, 0.874902, 2.3124754, 1.0625, 1.4374998, 2.1249387, -0.5376493, 1.3123286, 2.1874511, -0.9375123, 0.999804, 2.3124754, -1.187659, -0.20022523, 2.4375, -1.187659, -1.1875979, 2.4375, 0.66240454, 1.4374998, 1.0934869, 1.0625, -1.1875979, 2.1874511, 1.0625, 1.4374998, 1.8228759, -0.9375123, 0.999804, 1.458062, -1.3125, -0.20022523, 2.1249387, -1.3125, -0.600235, 2.4375, -1.187659, -1.1875979, 2.4375, 0.26230907, -1.3125, 2.1249387, 0.66240454, 1.3747797, 0, 1.0625, 1.4374998, 0.66663814, 0.66240454, -1.3125, 1.8228759, 1.0625, 1.4374998, 1.458062, -0.9375123, 0.999804, 1.0934869, -1.3125, -0.600235, 2.1249387, -1.3125, -1.0002447, 2.1874511, -1.187659, -1.1875979, 2.3124754, -0.9375123, -1.3125, 2.1249387, 0.26230907, 1.3747797, 0, -0.13755393, -1.1875979, 0, 1.0625, 1.4374998, 0.66663814, 0.26230907, -1.3125, 1.458062, 1.0625, 1.3123286, 0, -0.9375123, 0.999804, 0, -1.2501957, 0.5997944, 0.66663814, -1.3125, -1.0002447, 1.8228759, -1.3125, -1.3125, 1.458062, -0.9375123, -1.250049, 0, 0.26230907, -1.3125, 0.66663814, -0.13755393, -0.20022523, 0, -1.2501957, 0.19978452, 0.66663814, -1.3125, -1.0002447, 1.458062, -1.3125, -1.3125, 1.0934869, -0.9375123, -1.250049, 0, -0.9375123, -1.3125, 0.66663814, -0.5376493, -1.0002447, 0, -1.187659)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b6jse"]
 render_priority = 0
@@ -522,7 +531,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_en4en"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_vnpy6"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("//8AADAA//8wAAAA/////12i///SXf//XaIAANJdAADSXf//XaL//9JdAABdogAA//8AADAA//8wAAAA/////9Jd///SXQAAXaIAAF2i//9dov//0l3//12iAADSXQAAdiIAAF2i//9dogAAud2y3f//s10wAEuidiJMIv//S6IwALNddiIAAF2i//9dogAAud1MIheA/3///7NddiJMIrndst0wAEuidiKy3XYi//8XgP9///9LonYist253UwiMACzXdJd//92Iv//0l0AAHYiAADSXf//0l0AALnd//9dov//ud0AAF2iAAC53f//ud0AAHYi///SXf//diL//9JdAAB2IgAA0l3//9JdAAC53f//XaL//7ndAABdogAAud3//7ndAAA="),
@@ -549,7 +558,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_k00ax"]
+[sub_resource type="ImageTexture" id="ImageTexture_3aw23"]
 image = SubResource("Image_0d2xc")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0w6h8"]
@@ -588,7 +597,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_v0osq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_k00ax"]
 _surfaces = [{
 "aabb": AABB(-0.90919447, 0, -0.92298794, 1.8193917, 1.4375, 1.7219774),
 "attribute_data": PackedByteArray("D05vAZdVkDb5L+VRk16dM4E1l1kfW0I+uRhXCqQXOgRsAX05vw9lB28qmVmHbccwz3QAAMCSCACZmalCxGSjQjNn1C+jOL+XKC8ltLMW851cByaxsxYygx8Ppn5YC8xciTVEgCozuF90CdKeAADOnnKQZXbYrsxs+Z/MljKzxpZykMxswIzSlsycxCxBoK4CBMPMLDK+SAwyvq4CET2N15czJrtoTFnEaEyYqddQW2vLVLlK8IKPegF9mUndTq17T0c0auJM/ot0Q4SMRmzMjEqCjYxlhuSuHVY+gCFs/39PUuSuZYbVaJqJZkZutatGgLrTaAAAZbZmJmW2AAD/v2Ym/7/sfAXV4He/tFqBMrNlhv/UVZ1rMSPJ/y8Jnv46JsQvOKnS2EMmxDA4w8vXSZi5zJwy08ycmLllpjLTZaZltv+P/8//j2W2mZn/z5mZfFnztCdhMONwUvzCqlcy4/9Pa7Yyc760723z1LlpMrN1ZO7UWLTMnBi4vL7mjdCcmYm4vr3szGyg7qt/v7nNbcS3MH9euTKD6+u7hUa3P4nl6vSLZgYtAGYGrBEAAAAANwBvELZo/w+Zaf8lAWDFEgFg/iXMDJlJzAwyUwAAmUkAADJTk1kAAMxsAABVWcwMjmzMDDhHVwr5L1cqNFBkB5pFQgRbCpA2Kh07RO4Vi0n0b4QgLJaHIIQvwJQJJiaxyxR6XqWfZXbYrmV2/z9fskGgSAxtd1treXO5SlBs/5xYhMGcv4sBrTi2Aa30b4Qg4pfHMCyWhyDXUFtraHmte213W2sAiKdW97foVhdnTMOQcNnEZnrixOCDVcNVRYV63U6te9dQW2sjyf8vDVUX04pentHsW4PB9oA9anlzuUptd1xrrAX6fB8Ppn7LFHpehC/AlAkmJrHWAhGNrAX6fEoMvI4fD6Z+aHmte213XGv2gD1qQaBIDDK+SAyln8xspZ9ldtiuZXZykGV297foVgCIp1ZQbP+cWITBnFps5K6KXp7RDVUX0zi2Aa2/iwGt4INVw2Z64sRKDLyO1QIRjeKXxzCHbccwGWurQr/j4W255TF/v+PgbbnlMX/rwS6GW8BcjBlrq0KHbccw68EuhlvAXIxQbP+cSFQ9nUZszIxBVgqN+Z/MlqWfZXZabOSuUGz/nEhUPZ1BVgqNRmzMjHBS/MLsW4PB"),
@@ -615,7 +624,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_4co8h"]
+[sub_resource type="ImageTexture" id="ImageTexture_x6mek"]
 image = SubResource("Image_f5vu4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnox6"]
@@ -654,7 +663,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_b6im0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4co8h"]
 _surfaces = [{
 "aabb": AABB(-0.90999204, 0, -0.88258255, 1.909992, 1.5, 1.6950825),
 "attribute_data": PackedByteArray("yyGS0DEBN88BQk2zXgLjsgFCo88AAGZmMyP/bwAAMoMzIzKDOfn/H5e4/x+RswAAOfkAAORoZmazQMqJSz9mZuRozFzkiMxc5IhmZhtCL62APeuJ6D5QrRecZYaxlWZm5IhlprGVZabkiP+vmZH/P/9n/z+ZkTMjmXEzI/9nzCyYsWYGmXFmBpixMyNqpMy8lOtltq/qMtNqpDLTw7X/L2XWZjZl1jJTIZUyUyGVmSnDtTMjzLyZWcyczHzMnP9fy9zMfMvcmVnMvDJTMp5PiDXezHz+5DGHN57MfP9vZgb/b8wcZmYAAGZmzBw0jjDQZZaV88yMlfOcj2WmZZaVs8xEGfbMRP+vzGTotsxk8Pc+i2XG0mdlxl+L/6/zZ/+v/n8y48x8y8wygzLjMoNlxsWRmUlZbplJpJH/P9NnLUDMfHjQNXdl5tt018jbdEPmzKxmVmZmzFxmZv9PzKzMXAAAZYb/HzKDAADMnP8fzJyY2Zi5mZmYuZjZ/4+ZmWWWKCBlpgAAZaZ6IMydowDMnMw8zGzMPDKDMzNmZjMzMoMzM/+fMzNlhsw8/5/MPDKDmTFmZpkxqqfMJKqnzCRmZjKjmLkyo2XWZZaYuWWWZdZmZjLjZmZlxjJzMuMyc2XGByLMrDnZ/x852QAA5GhlhuVIZYblSGZm5UhlpuRoZaaAZZeu5Ihlhplx/z+ZkQAA1cfMvNXHMtPDtTJTzLxldsvc/1+YuWWWmNlllpi5mLmYucyMmZnMnDW+zHyawTKH/4+V08O1MlPDtf8vIZX/L8xEh9bMZIfWByLMrMshktDMjMxczIwyU9XHMtPVx8y8msEyhzW+zXzMZIfWzESH1jnZAAA52f8fmTEIh8wkCIeZMQiHzCQIhw=="),
@@ -681,7 +690,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_nqqdw"]
+[sub_resource type="ImageTexture" id="ImageTexture_opkwg"]
 image = SubResource("Image_j70e8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xifa7"]
@@ -705,7 +714,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ugcvp"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_nqqdw"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -720,7 +729,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_1agb7"]
 data = {
@@ -731,7 +740,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_op1oh"]
+[sub_resource type="ImageTexture" id="ImageTexture_nncfa"]
 image = SubResource("Image_1agb7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0hf43"]
@@ -752,7 +761,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xo7c7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_op1oh"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("//8AADAA//8wAAAA/////12i///SXf//XaIAANJdAADSXf//XaL//9JdAABdogAA//8AADAA//8wAAAA/////9Jd///SXQAAXaIAAF2i//9dov//0l3//12iAADSXQAAdiIAAF2i//9dogAAud2y3f//s10wAEuidiJMIv//S6IwALNddiIAAF2i//9dogAAud1MIheA/3///7NddiJMIrndst0wAEuidiKy3XYi//8XgP9///9LonYist253UwiMACzXdJd//92Iv//0l0AAHYiAADSXf//0l0AALnd//9dov//ud0AAF2iAAC53f//ud0AAHYi///SXf//diL//9JdAAB2IgAA0l3//9JdAAC53f//XaL//7ndAABdogAAud3//7ndAAA="),
@@ -779,7 +788,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_qukyu"]
+[sub_resource type="ImageTexture" id="ImageTexture_nm5en"]
 image = SubResource("Image_jhsct")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k2584"]
@@ -824,7 +833,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ophsj"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_qukyu"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("//8AAP////8AAP////8AAP////8AAAAAAAD//wAA//8AAAAA/////w=="),
@@ -862,7 +871,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_iby3b"]
+[sub_resource type="ImageTexture" id="ImageTexture_rsb0x"]
 image = SubResource("Image_g5nfc")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bqjni"]
@@ -886,7 +895,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_w7uk8"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_iby3b"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -901,7 +910,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_1w1vc"]
 data = {
@@ -912,7 +921,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_pv4ee"]
+[sub_resource type="ImageTexture" id="ImageTexture_yy1u7"]
 image = SubResource("Image_1w1vc")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_aog6q"]
@@ -929,7 +938,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yy4wi"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pv4ee"]
 _surfaces = [{
 "aabb": AABB(-1, 0, 0.9375, 2, 2, 0.0625),
 "attribute_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD//wAAAAD///////8="),
@@ -955,7 +964,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_cr3x5"]
+[sub_resource type="ImageTexture" id="ImageTexture_txyih"]
 image = SubResource("Image_h04u0")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hf43"]
@@ -979,7 +988,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3d2mf"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_cr3x5"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -994,7 +1003,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_pgxjl"]
 data = {
@@ -1005,10 +1014,10 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_w0mke"]
+[sub_resource type="ImageTexture" id="ImageTexture_6goah"]
 image = SubResource("Image_pgxjl")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7k505"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_w0mke"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("//8AADAA//8wAAAA/////12i///SXf//XaIAANJdAADSXf//XaL//9JdAABdogAA//8AADAA//8wAAAA/////9Jd///SXQAAXaIAAF2i//9dov//0l3//12iAADSXQAAdiIAAF2i//9dogAAud2y3f//s10wAEuidiJMIv//S6IwALNddiIAAF2i//9dogAAud1MIheA/3///7NddiJMIrndst0wAEuidiKy3XYi//8XgP9///9LonYist253UwiMACzXdJd//92Iv//0l0AAHYiAADSXf//0l0AALnd//9dov//ud0AAF2iAAC53f//ud0AAHYi///SXf//diL//9JdAAB2IgAA0l3//9JdAAC53f//XaL//7ndAABdogAAud3//7ndAAA="),
@@ -1035,7 +1044,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_u11a0"]
+[sub_resource type="ImageTexture" id="ImageTexture_oafb3"]
 image = SubResource("Image_rjeew")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nux8s"]
@@ -1056,7 +1065,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ii6tg"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_u11a0"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -1071,7 +1080,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_3yadh"]
 data = {
@@ -1082,7 +1091,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_sqxl0"]
+[sub_resource type="ImageTexture" id="ImageTexture_emycw"]
 image = SubResource("Image_3yadh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpo52"]
@@ -1165,7 +1174,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7c006"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_sqxl0"]
 _surfaces = [{
 "aabb": AABB(-1, 2, -1, 2, 1e-05, 2),
 "attribute_data": PackedByteArray("AAAAAP//AAAAAP///////w=="),
@@ -1227,7 +1236,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_fride"]
+[sub_resource type="ImageTexture" id="ImageTexture_31stm"]
 image = SubResource("Image_es10p")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m61sa"]
@@ -1248,7 +1257,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_pb2pa"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_fride"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -1263,7 +1272,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_vnpy6"]
 data = {
@@ -1274,7 +1283,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_p1d4e"]
+[sub_resource type="ImageTexture" id="ImageTexture_rjfs2"]
 image = SubResource("Image_vnpy6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5qad"]
@@ -1295,7 +1304,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vyg7h"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p1d4e"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -1310,7 +1319,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_en4en"]
 data = {
@@ -1321,7 +1330,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_4d6gu"]
+[sub_resource type="ImageTexture" id="ImageTexture_7l8ap"]
 image = SubResource("Image_en4en")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fcrg"]
@@ -1342,7 +1351,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_mv17e"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4d6gu"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 2, 2),
 "attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP///////wAA/////wAAAAAAAP//AAD/////AAAAAAAA/////wAA/////wAAAAAAAP//"),
@@ -1357,7 +1366,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD//wAA////////AAD//wAA//////////////////////////8AgP//AAD//wCAAAD/////AIAAAAAA//8AgAAA//////+/AAAAAP///78AAP//AAD/vwAAAAAAAP+///8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//////AAD/v///AAAAAP+//////////7///wAA////vwAA//8AAP//AAAAAAAA////////AAD/////AAAAAP///3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_jxfuk")
+shadow_mesh = SubResource("ArrayMesh_yt7he")
 
 [sub_resource type="Image" id="Image_3aw23"]
 data = {
@@ -1368,7 +1377,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_cwjhs"]
+[sub_resource type="ImageTexture" id="ImageTexture_t4v3k"]
 image = SubResource("Image_3aw23")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qqtxg"]
@@ -1405,7 +1414,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ie5so"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_cwjhs"]
 _surfaces = [{
 "aabb": AABB(-1, 1.875, -1, 2, 0.3125, 2),
 "attribute_data": PackedByteArray("/3//////////f/8T////E/////////8T/3////9//xM="),
@@ -1455,7 +1464,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_340ht"]
+[sub_resource type="ImageTexture" id="ImageTexture_gcca2"]
 image = SubResource("Image_k00ax")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3ccd"]
@@ -1471,45 +1480,45 @@ item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 item/0/navigation_layers = 1
 item/0/preview = SubResource("ImageTexture_j762u")
 item/1/name = "Archway"
-item/1/mesh = SubResource("ArrayMesh_k0rcm")
+item/1/mesh = SubResource("ArrayMesh_nrq7e")
 item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/mesh_cast_shadow = 1
 item/1/shapes = [SubResource("ConcavePolygonShape3D_kue6h"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/navigation_layers = 1
-item/1/preview = SubResource("ImageTexture_yt7he")
+item/1/preview = SubResource("ImageTexture_uj6vj")
 item/2/name = "Roof"
-item/2/mesh = SubResource("ArrayMesh_ophsj")
+item/2/mesh = SubResource("ArrayMesh_qukyu")
 item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/2/mesh_cast_shadow = 1
 item/2/shapes = [SubResource("ConvexPolygonShape3D_bqjni"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/2/navigation_layers = 1
-item/2/preview = SubResource("ImageTexture_iby3b")
+item/2/preview = SubResource("ImageTexture_rsb0x")
 item/3/name = "Dirt"
-item/3/mesh = SubResource("ArrayMesh_ii6tg")
+item/3/mesh = SubResource("ArrayMesh_u11a0")
 item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/mesh_cast_shadow = 1
 item/3/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/navigation_layers = 1
-item/3/preview = SubResource("ImageTexture_sqxl0")
+item/3/preview = SubResource("ImageTexture_emycw")
 item/4/name = "LabWall"
-item/4/mesh = SubResource("ArrayMesh_7c006")
+item/4/mesh = SubResource("ArrayMesh_sqxl0")
 item/4/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/4/mesh_cast_shadow = 1
 item/4/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/4/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/4/navigation_layers = 1
-item/4/preview = SubResource("ImageTexture_fride")
+item/4/preview = SubResource("ImageTexture_31stm")
 item/5/name = "LabFloor"
-item/5/mesh = SubResource("ArrayMesh_pb2pa")
+item/5/mesh = SubResource("ArrayMesh_fride")
 item/5/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/5/mesh_cast_shadow = 1
 item/5/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(0.9999972, 0.00031041913, 0.0023579693, 0.00031041913, 0.96592873, -0.25880834, -0.002357969, 0.2588083, 0.9659258, 0, 0, 0)]
 item/5/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/5/navigation_layers = 1
-item/5/preview = SubResource("ImageTexture_p1d4e")
+item/5/preview = SubResource("ImageTexture_rjfs2")
 item/6/name = ""
 item/6/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/6/mesh_cast_shadow = 1
@@ -1517,138 +1526,138 @@ item/6/shapes = []
 item/6/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/6/navigation_layers = 1
 item/7/name = "Dirt__20"
-item/7/mesh = SubResource("ArrayMesh_vyg7h")
+item/7/mesh = SubResource("ArrayMesh_p1d4e")
 item/7/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/7/mesh_cast_shadow = 1
 item/7/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/7/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/7/navigation_layers = 1
-item/7/preview = SubResource("ImageTexture_4d6gu")
+item/7/preview = SubResource("ImageTexture_7l8ap")
 item/8/name = "Dirt__5"
-item/8/mesh = SubResource("ArrayMesh_mv17e")
+item/8/mesh = SubResource("ArrayMesh_4d6gu")
 item/8/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/8/mesh_cast_shadow = 1
 item/8/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/8/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/8/navigation_layers = 1
-item/8/preview = SubResource("ImageTexture_cwjhs")
+item/8/preview = SubResource("ImageTexture_t4v3k")
 item/9/name = "Platform"
-item/9/mesh = SubResource("ArrayMesh_ie5so")
+item/9/mesh = SubResource("ArrayMesh_cwjhs")
 item/9/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/9/mesh_cast_shadow = 1
 item/9/shapes = [SubResource("BoxShape3D_a3ccd"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0350075, 0)]
 item/9/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/9/navigation_layers = 1
-item/9/preview = SubResource("ImageTexture_340ht")
+item/9/preview = SubResource("ImageTexture_gcca2")
 item/10/name = "LabWall3"
-item/10/mesh = SubResource("ArrayMesh_tcdao")
+item/10/mesh = SubResource("ArrayMesh_jxfuk")
 item/10/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/10/mesh_cast_shadow = 1
 item/10/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/10/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/10/navigation_layers = 1
-item/10/preview = SubResource("ImageTexture_0d2xc")
+item/10/preview = SubResource("ImageTexture_gte4h")
 item/11/name = "CeilingWindows"
-item/11/mesh = SubResource("ArrayMesh_f5vu4")
+item/11/mesh = SubResource("ArrayMesh_0d2xc")
 item/11/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/11/mesh_cast_shadow = 1
 item/11/shapes = [SubResource("BoxShape3D_e6ku6"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)]
 item/11/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/11/navigation_layers = 1
-item/11/preview = SubResource("ImageTexture_1agb7")
+item/11/preview = SubResource("ImageTexture_j70e8")
 item/12/name = "Cliff"
-item/12/mesh = SubResource("ArrayMesh_jhsct")
+item/12/mesh = SubResource("ArrayMesh_1agb7")
 item/12/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/12/mesh_cast_shadow = 1
-item/12/shapes = []
+item/12/shapes = [SubResource("ConvexPolygonShape3D_co1uj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/12/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/12/navigation_layers = 1
-item/12/preview = SubResource("ImageTexture_1w1vc")
+item/12/preview = SubResource("ImageTexture_g5nfc")
 item/13/name = "CliffCorner"
-item/13/mesh = SubResource("ArrayMesh_h04u0")
+item/13/mesh = SubResource("ArrayMesh_1w1vc")
 item/13/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/13/mesh_cast_shadow = 1
-item/13/shapes = []
+item/13/shapes = [SubResource("ConvexPolygonShape3D_ud1mm"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/13/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/13/navigation_layers = 1
-item/13/preview = SubResource("ImageTexture_rjeew")
+item/13/preview = SubResource("ImageTexture_pgxjl")
 item/14/name = "CliffEnd"
-item/14/mesh = SubResource("ArrayMesh_3yadh")
+item/14/mesh = SubResource("ArrayMesh_rjeew")
 item/14/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/14/mesh_cast_shadow = 1
-item/14/shapes = []
+item/14/shapes = [SubResource("ConvexPolygonShape3D_fpo52"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/14/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/14/navigation_layers = 1
-item/14/preview = SubResource("ImageTexture_vnpy6")
+item/14/preview = SubResource("ImageTexture_es10p")
 item/15/name = "Cyl"
-item/15/mesh = SubResource("ArrayMesh_en4en")
+item/15/mesh = SubResource("ArrayMesh_vnpy6")
 item/15/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/15/mesh_cast_shadow = 1
 item/15/shapes = [SubResource("ConvexPolygonShape3D_0w6h8"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/15/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/15/navigation_layers = 1
-item/15/preview = SubResource("ImageTexture_k00ax")
+item/15/preview = SubResource("ImageTexture_3aw23")
 item/16/name = "Rock1"
-item/16/mesh = SubResource("ArrayMesh_v0osq")
+item/16/mesh = SubResource("ArrayMesh_k00ax")
 item/16/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/16/mesh_cast_shadow = 1
 item/16/shapes = [SubResource("BoxShape3D_nnox6"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005013943, 1.5, -0.06199926)]
 item/16/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/16/navigation_layers = 1
-item/16/preview = SubResource("ImageTexture_4co8h")
+item/16/preview = SubResource("ImageTexture_x6mek")
 item/17/name = "Rock2"
-item/17/mesh = SubResource("ArrayMesh_b6im0")
+item/17/mesh = SubResource("ArrayMesh_4co8h")
 item/17/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/17/mesh_cast_shadow = 1
 item/17/shapes = [SubResource("BoxShape3D_xifa7"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04500395, 2, -0.035041273)]
 item/17/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/17/navigation_layers = 1
-item/17/preview = SubResource("ImageTexture_nqqdw")
+item/17/preview = SubResource("ImageTexture_opkwg")
 item/18/name = "LabWall2"
-item/18/mesh = SubResource("ArrayMesh_ugcvp")
+item/18/mesh = SubResource("ArrayMesh_nqqdw")
 item/18/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/18/mesh_cast_shadow = 1
 item/18/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/18/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/18/navigation_layers = 1
-item/18/preview = SubResource("ImageTexture_op1oh")
+item/18/preview = SubResource("ImageTexture_nncfa")
 item/19/name = "Cyl2"
-item/19/mesh = SubResource("ArrayMesh_xo7c7")
+item/19/mesh = SubResource("ArrayMesh_op1oh")
 item/19/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/19/mesh_cast_shadow = 1
 item/19/shapes = [SubResource("ConvexPolygonShape3D_0w6h8"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/19/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/19/navigation_layers = 1
-item/19/preview = SubResource("ImageTexture_qukyu")
+item/19/preview = SubResource("ImageTexture_nm5en")
 item/20/name = "LabFloor2"
-item/20/mesh = SubResource("ArrayMesh_w7uk8")
+item/20/mesh = SubResource("ArrayMesh_iby3b")
 item/20/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/20/mesh_cast_shadow = 1
 item/20/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(0.9999972, 0.00031041913, 0.0023579693, 0.00031041913, 0.96592873, -0.25880834, -0.002357969, 0.2588083, 0.9659258, 0, 0, 0)]
 item/20/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/20/navigation_layers = 1
-item/20/preview = SubResource("ImageTexture_pv4ee")
+item/20/preview = SubResource("ImageTexture_yy1u7")
 item/21/name = "Window"
-item/21/mesh = SubResource("ArrayMesh_yy4wi")
+item/21/mesh = SubResource("ArrayMesh_pv4ee")
 item/21/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/21/mesh_cast_shadow = 1
 item/21/shapes = [SubResource("BoxShape3D_0hf43"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.96875)]
 item/21/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/21/navigation_layers = 1
-item/21/preview = SubResource("ImageTexture_cr3x5")
+item/21/preview = SubResource("ImageTexture_txyih")
 item/22/name = "LabWall4"
-item/22/mesh = SubResource("ArrayMesh_3d2mf")
+item/22/mesh = SubResource("ArrayMesh_cr3x5")
 item/22/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/22/mesh_cast_shadow = 1
 item/22/shapes = [SubResource("ConvexPolygonShape3D_uj6vj"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/22/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/22/navigation_layers = 1
-item/22/preview = SubResource("ImageTexture_w0mke")
+item/22/preview = SubResource("ImageTexture_6goah")
 item/23/name = "Cyl3"
-item/23/mesh = SubResource("ArrayMesh_7k505")
+item/23/mesh = SubResource("ArrayMesh_w0mke")
 item/23/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/23/mesh_cast_shadow = 1
 item/23/shapes = [SubResource("ConvexPolygonShape3D_0w6h8"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/23/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/23/navigation_layers = 1
-item/23/preview = SubResource("ImageTexture_u11a0")
+item/23/preview = SubResource("ImageTexture_oafb3")

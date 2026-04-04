@@ -11,6 +11,7 @@ const inputQueueTimeShoot: float = 4
 @export var bob_size: float = -0.01
 @export var laser: NodePath
 @export var invincible: bool = false
+@export var laser_explosion: PackedScene
 
 var last_input: String = ""
 var last_input_time: float = -1.0
@@ -239,6 +240,14 @@ func shoot():
 
 		var hit_pos = target
 		var ragun_col = get_world_3d().direct_space_state.intersect_ray(raygun_ray)
+		if ragun_col and ragun_col.position:
+			hit_pos = ragun_col.position
+			var explosion = laser_explosion.instantiate() as GPUParticles3D
+			explosion.emitting = true
+			explosion.global_position = hit_pos
+			explosion.finished.connect(explosion.queue_free)
+			get_parent().add_child(explosion)
+
 		if ragun_col and ragun_col.collider:
 			hit_pos = ragun_col.position
 			var shootable = ragun_col.collider as Shootable

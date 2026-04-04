@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dvr3di6soxtn"]
+
+[ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="1_fbvpr"]
+[ext_resource type="Texture2D" uid="uid://bdsaodiexd6iw" path="res://textures/spark.png" id="2_cjwk2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_as8s3"]
+render_priority = 0
+shader = ExtResource("1_fbvpr")
+shader_parameter/albedo = Color(0.8627451, 0.21568628, 0.07450981, 1)
+shader_parameter/texture_albedo = ExtResource("2_cjwk2")
+shader_parameter/albedo_texture_size = Vector2i(256, 256)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_jvs61"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.01988636, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ogpb"]
+curve = SubResource("Curve_jvs61")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pyema"]
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_0ogpb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rdnac"]
+
+[node name="LaserHit" type="GPUParticles3D" unique_id=350269572]
+material_override = SubResource("ShaderMaterial_as8s3")
+emitting = false
+amount = 20
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pyema")
+draw_pass_1 = SubResource("QuadMesh_rdnac")

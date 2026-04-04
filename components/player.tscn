@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqycrtgsm83gq" path="res://scripts/dungeon_crawler/Player.gd" id="1_5odhx"]
 [ext_resource type="ArrayMesh" uid="uid://bjdbunan62jx4" path="res://meshes/raygun.obj" id="2_1kub6"]
+[ext_resource type="PackedScene" uid="uid://dvr3di6soxtn" path="res://scenes/laser_hit.tscn" id="2_alqpi"]
 [ext_resource type="Texture2D" uid="uid://bpgv13j7r2nly" path="res://meshes/raygun.png" id="3_kuobi"]
 [ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="4_0lm1f"]
 [ext_resource type="Texture2D" uid="uid://bdsaodiexd6iw" path="res://textures/spark.png" id="5_p3qei"]
@@ -133,6 +134,7 @@ script = ExtResource("1_5odhx")
 height = 0.2
 camera_offset = Vector3(0, 0, -0.235)
 laser = NodePath("Camera3D/Raygun/LaserParticle")
+laser_explosion = ExtResource("2_alqpi")
 equipped_gun_position = Vector3(0.13005018, -0.22791135, -0.19763565)
 unequipped_gun_position = Vector3(0.13, -2, -0.198)
 settings = NodePath("Settings")
