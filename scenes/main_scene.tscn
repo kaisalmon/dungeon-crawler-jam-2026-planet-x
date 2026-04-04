@@ -1130,13 +1130,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 90, 3.6, -47.6)
 mesh = ExtResource("32_lhwp2")
 surface_material_override/0 = SubResource("ShaderMaterial_womr8")
 
-[node name="Lift" type="MeshInstance3D" parent="." unique_id=571350252]
+[node name="Lift" type="MeshInstance3D" parent="." unique_id=571350252 node_paths=PackedStringArray("boss_and_minions")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, -3, -13)
 mesh = ExtResource("37_onjth")
 surface_material_override/0 = SubResource("ShaderMaterial_3mjum")
 surface_material_override/1 = SubResource("ShaderMaterial_cn4eu")
 surface_material_override/2 = SubResource("ShaderMaterial_xp01v")
 script = ExtResource("38_xa0eo")
+boss_and_minions = [NodePath("../BossMinion"), NodePath("../BossMinion2"), NodePath("../BossMinion3"), NodePath("../Boss")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Lift" unique_id=1405566248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.031255, 0)
@@ -1426,17 +1427,20 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147, -4, -19)
 skeleton = NodePath("../..")
 
-[node name="Enemy7" parent="." unique_id=492908593 instance=ExtResource("12_2uq5g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 4, -9)
+[node name="BossMinion" parent="." unique_id=492908593 instance=ExtResource("12_2uq5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 4, -8)
 do_not_shoot_unarmed_player = true
+frozen = true
 
-[node name="Enemy15" parent="." unique_id=747600775 instance=ExtResource("12_2uq5g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 4, -18)
+[node name="BossMinion2" parent="." unique_id=747600775 instance=ExtResource("12_2uq5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 4, -19)
 do_not_shoot_unarmed_player = true
+frozen = true
 
-[node name="Enemy16" parent="." unique_id=156023118 instance=ExtResource("12_2uq5g")]
+[node name="BossMinion3" parent="." unique_id=156023118 instance=ExtResource("12_2uq5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 4, -13)
 do_not_shoot_unarmed_player = true
+frozen = true
 
 [connection signal="body_entered" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_entered"]
 [connection signal="body_exited" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_exited"]

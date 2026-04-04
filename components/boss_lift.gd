@@ -8,6 +8,8 @@ const RISE_DURATION = 1.2
 var activated = false
 var original_position: Vector3
 
+@export var boss_and_minions: Array[GridEntity] = []
+
 func _ready():
 	original_position = global_position
 
@@ -21,7 +23,7 @@ func can_entity_move_ontop(_entity: GridEntity, _position: Vector3) -> bool:
 	return true
 
 func can_entity_move_off(_entity: GridEntity, from_position: Vector3, to_position: Vector3, original_result: bool) -> bool:
-	return true
+	return original_result
 
 
 # Called when an entity has moved into this collision override, if true normal behavior is skipped
@@ -54,7 +56,8 @@ func on_entity_move_ontop(entity: GridEntity, _from_position: Vector3, new_pos: 
 		entity.target_position = new_pos + drop
 		player.in_cutscene = false
 		entity.frozen = false
-		%Boss.frozen = false
+		for minion in boss_and_minions:
+			minion.frozen = false
 	else:
 		await get_tree().create_timer(2.0).timeout
 		Globals.say("\"Captain Raygun.\"")

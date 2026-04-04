@@ -113,7 +113,7 @@ func is_valid_move(from_pos: Vector3, dir: Vector3) -> MoveResult:
 
 	# Prevent moving into a tile another GridEntity is targeting
 	var occupant = _claimed_positions.get(snap_to_grid(new_pos, true))
-	if occupant != null and occupant != self and not occupant.frozen:
+	if occupant != null and occupant != self:
 		original_move_allowed = false
 
 	if new_pos.distance_to(from_pos) < 0.1:
