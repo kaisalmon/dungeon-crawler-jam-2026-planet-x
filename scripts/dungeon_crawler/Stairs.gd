@@ -25,8 +25,6 @@ func can_entity_move_ontop(_entity: GridEntity, _position: Vector3) -> bool:
     return false
 
 func can_entity_move_off(_entity: GridEntity, from_position: Vector3, to_position: Vector3, original_result: bool) -> bool:
-    if not original_result:
-        return false
     var move_dir = (to_position - from_position).normalized()
     var dot = move_dir.dot(self.global_basis.z)
     if dot > 0.8:
