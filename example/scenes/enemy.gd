@@ -27,6 +27,14 @@ var decaying_shot_count = 0 # Decreases over time, increases with each attack.
 signal died
 
 var state = "wander"
+var sleeping = false
+
+func _set_sleeping(value: bool) -> void:
+	if sleeping == value:
+		return
+	sleeping = value
+	$EnemyTorso.process_mode = Node.PROCESS_MODE_DISABLED if value else Node.PROCESS_MODE_INHERIT
+
 func _ready():
 	super._ready()
 	add_to_group("enemies")
@@ -37,6 +45,14 @@ func _ready():
 	faceTexture = face.material_override.get_shader_parameter("texture_albedo")
 
 func _process(delta: float) -> void:
+	var player = Globals.getPlayer()
+	var distance_to_player = self.global_transform.origin.distance_to(player.global_transform.origin)
+
+	if distance_to_player > GRID_SIZE * 12:
+		_set_sleeping(true)
+		return
+	_set_sleeping(false)
+
 	decaying_shot_count = max(0, decaying_shot_count - delta * 0.3)
 	self.iframes = max(0, self.iframes - delta)
 
@@ -54,8 +70,6 @@ func _process(delta: float) -> void:
 	if wait_time > 0:
 		wait_time -= delta
 		return
-
-	var player = Globals.getPlayer()
 
 	if not player.in_cutscene and has_line_of_sight(player.global_transform.origin):
 		state = "attack"
@@ -105,7 +119,7 @@ func process_wander(_delta: float) -> void:
 		for dir in directions:
 			var check_position = self.target_position + dir * GRID_SIZE
 			var move_validity: MoveResult = self.is_valid_move(check_position, dir)
-			if has_line_of_sight(player.target_position, check_position) and move_validity.is_allowed:
+			if move_validity.is_allowed and has_line_of_sight(player.target_position, check_position):
 				if not is_facing(player.target_position, check_position):
 					rotate_towards(player.target_position, check_position)
 					wait_time = 0.1
@@ -251,7 +265,6 @@ func has_line_of_sight(target_position: Vector3, origin = self.global_transform.
 		return false
 	
 	var raygun_ray = PhysicsRayQueryParameters3D.new()
-	var gun_node: EnemySpring = get_node(gun)
 	raygun_ray.from = origin
 	raygun_ray.to = target_position
 	raygun_ray.exclude = [self, $StaticBody3D]

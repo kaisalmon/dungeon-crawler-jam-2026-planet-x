@@ -7,10 +7,13 @@
 [ext_resource type="ArrayMesh" uid="uid://ilshf3sbhyxp" path="res://meshes/archway.obj" id="4_j8dtv"]
 [ext_resource type="ArrayMesh" uid="uid://cyhe6hc6vd3in" path="res://example/meshes/Roof.obj" id="5_wmyn7"]
 [ext_resource type="Texture2D" uid="uid://dokgcv6wlgolw" path="res://example/images/FNTSY_TX__56.png" id="6_nb25n"]
+[ext_resource type="ArrayMesh" uid="uid://c0jxosb5pgrpd" path="res://meshes/cube_3_sided.obj" id="8_g2gwk"]
 [ext_resource type="Texture2D" uid="uid://dgecv3myple83" path="res://textures/SCITX__73.png" id="8_nux8s"]
 [ext_resource type="Texture2D" uid="uid://cygxhrmlrkjd1" path="res://textures/UBTEX_28.png" id="9_b6jse"]
+[ext_resource type="Texture2D" uid="uid://d1slwildq20w7" path="res://meshes/SCITX__43.png" id="9_co1uj"]
 [ext_resource type="Texture2D" uid="uid://4m7paxq7y1hv" path="res://textures/UBTEX_45_10.png" id="10_ulswi"]
 [ext_resource type="Texture2D" uid="uid://bkcgjp47f5w5n" path="res://textures/UBTEX_45_5.png" id="11_a3ccd"]
+[ext_resource type="Texture2D" uid="uid://qb8jixcvuogf" path="res://meshes/SCITX__71.png" id="11_ud1mm"]
 [ext_resource type="ArrayMesh" uid="uid://dys1su7nhy2hp" path="res://meshes/platform.obj" id="12_a3ccd"]
 [ext_resource type="Texture2D" uid="uid://rqvwwexgh07e" path="res://textures/SCITX__07.png" id="13_w5qad"]
 [ext_resource type="ArrayMesh" uid="uid://dl0rniwrwyv1q" path="res://meshes/flat_tile_2_sided.obj" id="14_3fcrg"]
@@ -25,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dpisqvytvpiu0" path="res://textures/SCITX_BIG__59.png" id="23_0yvhn"]
 [ext_resource type="Texture2D" uid="uid://bw3lm0a8jhi4" path="res://textures/SCITX__70.png" id="24_nnox6"]
 [ext_resource type="ArrayMesh" uid="uid://4xcc0u0vcrlf" path="res://meshes/thin_wall.obj" id="25_xifa7"]
+[ext_resource type="Texture2D" uid="uid://dngrdlujayc3b" path="res://textures/SCITX_BIG__59_v.png" id="29_co1uj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nux8s"]
 render_priority = 0
@@ -89,11 +93,47 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bqjni"]
 points = PackedVector3Array(0.999902, 2, -1, 0.999902, -0.0001957789, 1, 1.125, -0.125, 1, 1.125, 1.8749877, -1, -1.0001223, 2, -1, -1.0001223, -0.0001957789, 1, -1.125, -0.125, 1, 0.999902, -0.0001957789, -1, -1.125, 1.8749877, -1, -1.0001223, -0.0001957789, -1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpo52"]
+render_priority = 0
+shader = ExtResource("2_iqqq3")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("9_co1uj")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b6jse"]
 render_priority = 0
 shader = ExtResource("2_iqqq3")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("8_nux8s")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42dil"]
+render_priority = 0
+shader = ExtResource("2_iqqq3")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("11_ud1mm")
 shader_parameter/albedo_texture_size = Vector2i(32, 32)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 0.0
@@ -360,6 +400,24 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hf43"]
 size = Vector3(2, 2, 0.0625)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ud1mm"]
+render_priority = 0
+shader = ExtResource("2_iqqq3")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("29_co1uj")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
 [node name="MeshLibrary" type="Node3D" unique_id=963283353]
 
 [node name="Dirt" type="MeshInstance3D" parent="." unique_id=1111084179]
@@ -394,9 +452,12 @@ surface_material_override/1 = SubResource("ShaderMaterial_k2584")
 shape = SubResource("ConvexPolygonShape3D_bqjni")
 
 [node name="LabWall" type="MeshInstance3D" parent="." unique_id=914546396]
-transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.6748033, 2, -0.8215351)
-mesh = ExtResource("1_k2584")
-surface_material_override/0 = SubResource("ShaderMaterial_b6jse")
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, -0.32519674, 2, 3.178465)
+mesh = ExtResource("8_g2gwk")
+surface_material_override/0 = SubResource("ShaderMaterial_fpo52")
+surface_material_override/1 = SubResource("ShaderMaterial_b6jse")
+surface_material_override/2 = SubResource("ShaderMaterial_42dil")
+surface_material_override/3 = SubResource("ShaderMaterial_b6jse")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="LabWall" unique_id=1719535577]
 
@@ -449,7 +510,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19125247, 0)
 shape = SubResource("BoxShape3D_a3ccd")
 
 [node name="LabWall3" type="MeshInstance3D" parent="." unique_id=1016751540]
-transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.6748033, 4, -0.8215351)
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 1.6748033, 2, -0.8215351)
 mesh = ExtResource("1_k2584")
 surface_material_override/0 = SubResource("ShaderMaterial_e6ku6")
 
@@ -562,3 +623,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.96875)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Window/StaticBody3D" unique_id=687981174]
 shape = SubResource("BoxShape3D_0hf43")
+
+[node name="LabWall4" type="MeshInstance3D" parent="." unique_id=967913173]
+transform = Transform3D(0.9999585, 0.009110493, 0, -0.009110493, 0.9999585, 0, 0, 0, 1, 17.674803, 0, 7.178465)
+mesh = ExtResource("1_k2584")
+surface_material_override/0 = SubResource("ShaderMaterial_ud1mm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LabWall4" unique_id=614847058]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LabWall4/StaticBody3D" unique_id=1724366040]
+shape = SubResource("ConvexPolygonShape3D_uj6vj")
+
+[node name="Cyl3" type="MeshInstance3D" parent="." unique_id=1107094735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 7)
+mesh = ExtResource("19_kgc3q")
+surface_material_override/0 = SubResource("ShaderMaterial_ud1mm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cyl3" unique_id=1462060871]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cyl3/StaticBody3D" unique_id=2061813319]
+shape = SubResource("ConvexPolygonShape3D_0w6h8")

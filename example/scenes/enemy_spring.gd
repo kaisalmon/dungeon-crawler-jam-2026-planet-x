@@ -22,7 +22,13 @@ func _process(delta: float) -> void:
 	var target_velocity = position_diff * k
 	velocity = velocity.lerp(target_velocity, 0.1)
 	velocity *= damping
+	var MAX_VEL = 30.0
+	if velocity.length() > MAX_VEL:
+		velocity = velocity.normalized() * MAX_VEL
 	self.global_transform.origin += velocity * delta
+	var MAX_DIST = 1.0
+	if position_diff.length() > MAX_DIST:
+		self.global_transform.origin = target_position - position_diff.normalized() * MAX_DIST
 
 	k = 50.0
 	damping = 0.4

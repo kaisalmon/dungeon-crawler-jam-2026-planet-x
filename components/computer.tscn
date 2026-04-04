@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cowcfejhd2qd"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpox34wmacwan" path="res://meshes/cube_with_front.obj" id="1_1qo8x"]
+[ext_resource type="Shader" uid="uid://b34f3n20mqu3i" path="res://example/scenes/cylinderProjection/cylProj.gdshader" id="2_7l8lm"]
+[ext_resource type="Texture2D" uid="uid://c5j36kyi1g6am" path="res://meshes/SCITX__19.png" id="3_kkkex"]
+[ext_resource type="Texture2D" uid="uid://841c0g0q42ug" path="res://meshes/SCITX__20.png" id="4_ao8v5"]
+[ext_resource type="Texture2D" uid="uid://c88am1wroh0mi" path="res://meshes/SCITX__20_emm.png" id="5_cqlj3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mjum"]
+render_priority = 0
+shader = ExtResource("2_7l8lm")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_kkkex")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p27gv"]
+render_priority = 0
+shader = ExtResource("2_7l8lm")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_ao8v5")
+shader_parameter/albedo_texture_size = Vector2i(32, 32)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_emission = ExtResource("5_cqlj3")
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/no_shading = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntyye"]
+size = Vector3(2, 2, 2.00001)
+
+[node name="Computer" type="MeshInstance3D" unique_id=1329297795]
+transform = Transform3D(0.45033318, 0, -0.26, 0, 0.52, 0, 0.26, 0, 0.45033318, 0, 0, 0)
+mesh = ExtResource("1_1qo8x")
+surface_material_override/0 = SubResource("ShaderMaterial_3mjum")
+surface_material_override/1 = SubResource("ShaderMaterial_p27gv")
+surface_material_override/2 = SubResource("ShaderMaterial_3mjum")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2042424309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.00679e-06)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=533046468]
+shape = SubResource("BoxShape3D_ntyye")

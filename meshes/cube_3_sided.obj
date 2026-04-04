@@ -1,0 +1,52 @@
+# Made in Blockbench 5.1.1
+mtllib cube_3_sided.mtl
+
+o Cube.001
+v 1 2 -1
+v -1 2 -1
+v -1 2 1
+v 1 2 1
+v 1 0 1
+v -1 0 1
+v -1 0 -1
+v 1 0 -1
+vt 1 1
+vt 0 1
+vt 0 0
+vt 1 0
+vt 1 0
+vt 1 1
+vt 0 1
+vt 0 0
+vt 1 0
+vt 1 1
+vt 0 1
+vt 0 0
+vt 0 0
+vt 1 0
+vt 1 1
+vt 0 1
+vt 1 0
+vt 1 1
+vt 0 1
+vt 0 0
+vt 1 0
+vt 1 1
+vt 0 1
+vt 0 0
+vn 0 1 0
+vn 0 0 1
+vn -1 0 0
+vn 0 -1 0
+vn 1 0 0
+vn 0 0 -1
+usemtl m_75873bbf-eb0c-1f7b-995f-bf705c76a11c
+f 1/1/1 2/2/1 3/3/1 4/4/1
+usemtl m_3828711f-c72a-5d0e-fca8-80e1f18c6a3f
+f 5/5/2 4/6/2 3/7/2 6/8/2
+f 6/9/3 3/10/3 2/11/3 7/12/3
+usemtl m_0d5dd526-4abc-819a-47ce-e1ce4ec757b2
+f 7/13/4 8/14/4 5/15/4 6/16/4
+usemtl m_3828711f-c72a-5d0e-fca8-80e1f18c6a3f
+f 8/17/5 1/18/5 4/19/5 5/20/5
+f 7/21/6 2/22/6 1/23/6 8/24/6
