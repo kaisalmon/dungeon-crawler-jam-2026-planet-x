@@ -19,6 +19,9 @@ config/version="0.1.0"
 run/main_scene="uid://q0q8p0p55su8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=30
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/use_filter=false
+boot_splash/image="uid://bdw58pff2oo8w"
 config/icon="uid://cxya4r3jk3vq0"
 
 [autoload]
