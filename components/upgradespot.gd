@@ -2,6 +2,9 @@ extends MeshInstance3D
 
 var t = 0.0
 var picked_up = false
+@onready var health_increase_sfx: AudioStreamPlayer = $HealthIncreaseSFX
+@onready var upgrade_pickup_sfx: AudioStreamPlayer = $UpgradePickupSFX
+@onready var gun_pickup_sfx: AudioStreamPlayer = $GunPickupSFX
 
 enum UpgradeType {
 	GUN,
@@ -57,6 +60,7 @@ func on_upgrade():
 	if upgrade_type == UpgradeType.GUN:
 		player.has_gun_upgrade = true
 		Globals.say("Trusty Raygun Mk. II acquired!")
+		gun_pickup_sfx.play()
 		#SFX (Gun Pickup)
 	if upgrade_type == UpgradeType.SHIELD:
 		player.max_shields += 1
@@ -67,12 +71,12 @@ func on_upgrade():
 			Globals.say("after not taking damage for a few seconds")
 		else:
 			Globals.say("Shield Generator upgraded!")
-		#SFX (Shield Pickup)
+		upgrade_pickup_sfx.play()
 	if upgrade_type == UpgradeType.HEALTH:
 		player.max_health += 1
 		player.health += 1
 		Globals.say("Health increased!")
-		#SFX (Health Pickup)
+		health_increase_sfx.play()
 
 func save() -> Dictionary:
 	var json = {

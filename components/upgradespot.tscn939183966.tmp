@@ -145,6 +145,7 @@ material_override = SubResource("ShaderMaterial_m3jde")
 mesh = ExtResource("1_o5bpw")
 surface_material_override/0 = SubResource("ShaderMaterial_m3jde")
 script = ExtResource("5_6tym6")
+upgrade_type = null
 
 [node name="Gun" type="MeshInstance3D" parent="." unique_id=1086077415]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 0.772, 0)
@@ -188,13 +189,10 @@ draw_pass_1 = SubResource("QuadMesh_1psas")
 
 [node name="HealthIncreaseSFX" type="AudioStreamPlayer" parent="." unique_id=836101910]
 stream = ExtResource("14_655n8")
-bus = &"SFX"
 
 [node name="UpgradePickupSFX" type="AudioStreamPlayer" parent="." unique_id=964547001]
 stream = ExtResource("15_454qh")
 volume_db = -3.705
-bus = &"SFX"
 
 [node name="GunPickupSFX" type="AudioStreamPlayer" parent="." unique_id=1089263451]
 stream = ExtResource("16_1psas")
-bus = &"SFX"

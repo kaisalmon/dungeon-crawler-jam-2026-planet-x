@@ -188,13 +188,10 @@ draw_pass_1 = SubResource("QuadMesh_1psas")
 
 [node name="HealthIncreaseSFX" type="AudioStreamPlayer" parent="." unique_id=836101910]
 stream = ExtResource("14_655n8")
-bus = &"SFX"
 
 [node name="UpgradePickupSFX" type="AudioStreamPlayer" parent="." unique_id=964547001]
 stream = ExtResource("15_454qh")
 volume_db = -3.705
-bus = &"SFX"
 
 [node name="GunPickupSFX" type="AudioStreamPlayer" parent="." unique_id=1089263451]
 stream = ExtResource("16_1psas")
-bus = &"SFX"
