@@ -81,10 +81,20 @@ func getPlayer() -> Player:
 		return _player
 
 
+const SayToken = preload("res://scripts/say_token.gd")
+
 var queue: Array = []
 var tutorial_strings: Array = []
+
 func say(text: String) -> void:
-	queue.append(text)
+	var token := SayToken.new()
+	queue.append({"text": text, "centered": false, "token": token})
+	await token.done
+
+func say_centered(text: String) -> void:
+	var token := SayToken.new()
+	queue.append({"text": text, "centered": true, "token": token})
+	await token.done
 
 func tutorialize(text: String) -> void:
 	if text in tutorial_strings:

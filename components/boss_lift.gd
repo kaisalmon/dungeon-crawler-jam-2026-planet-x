@@ -51,7 +51,7 @@ func on_entity_move_ontop(entity: GridEntity, _from_position: Vector3, new_pos: 
 		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 
 	if player.has_gun_upgrade:
-		Globals.say("The master AI... he must be defeated!")
+		Globals.say("The master AI... it must be defeated!")
 		await tween.finished
 		entity.target_position = new_pos + drop
 		player.in_cutscene = false

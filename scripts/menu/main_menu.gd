@@ -14,11 +14,13 @@ var credits_button: Button
 
 var done: bool = false
 var overlay_target: float = 0.0
+var _intro_playing: bool = false
 
 @onready var button_click_sfx: AudioStreamPlayer = $ButtonClickSFX
 
 
 const SAVE_FILE_PATH = "user://autosave.save"
+const PREFS_FILE_PATH = "user://preferences.save"
 
 func _ready():
 	self.done = false
@@ -73,11 +75,75 @@ func _ready():
 	options_container.process_mode = Node.PROCESS_MODE_DISABLED
 
 
+func has_seen_intro() -> bool:
+	return false # TODO: remove for release
+	if not FileAccess.file_exists(PREFS_FILE_PATH):
+		return false
+	var file = FileAccess.open(PREFS_FILE_PATH, FileAccess.READ)
+	if not file:
+		return false
+	var data = JSON.parse_string(file.get_as_text())
+	if data is Dictionary:
+		return data.get("intro_seen", false)
+	return false
+
+func mark_intro_seen() -> void:
+	var data: Dictionary = {}
+	if FileAccess.file_exists(PREFS_FILE_PATH):
+		var read_file = FileAccess.open(PREFS_FILE_PATH, FileAccess.READ)
+		if read_file:
+			var parsed = JSON.parse_string(read_file.get_as_text())
+			if parsed is Dictionary:
+				data = parsed
+	data["intro_seen"] = true
+	var write_file = FileAccess.open(PREFS_FILE_PATH, FileAccess.WRITE)
+	if write_file:
+		write_file.store_line(JSON.stringify(data))
+
+func _play_intro() -> void:
+	main_menu_container.visible = false
+	$Logo.visible = false
+	overlay_target = 1.0
+
+	# Fade out menu music
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	await music_manager.music_stop()
+
+	await Globals.say_centered(
+"In 2056 scientists discovered a habitable sub-moon
+orbiting Saturn's largest moon, Titan. Officially
+designated Saturn VI-A, it was quickly nicknamed...")
+	await Globals.say_centered(
+"Planet X.")
+	await Globals.say_centered(
+"And so, by 2094 the North Atlantic Federation,
+emboldened by recent advances in robotics,
+established a small permanent colony on Planet X.")
+	await Globals.say_centered(
+"It took less than 3 years for the AI to have
+replaced every task needed to keep the colony
+running.  Once the Master AI had fully replaced
+the human colonists...")
+	await Globals.say_centered(
+"It had them all killed. ")
+	await Globals.say_centered(
+"The year is 2101, and Captain Raygun has arrived
+on Planet X.  His mission is simple.")
+	await Globals.say_centered(
+"Find the Master AI and destroy it.")
+	mark_intro_seen()
+
 func _on_new_game_pressed():
+	if done or _intro_playing:
+		return
 	button_click_sfx.play()
 	Analytics.begin_session()
 	Analytics.track("new_game_started")
 	Globals.in_lab_environment = false # Ensure this is reset when starting a new game from the main menu
+	if not has_seen_intro():
+		_intro_playing = true
+		await _play_intro()
+		_intro_playing = false
 	start_game()
 
 func _on_continue_pressed():
@@ -148,12 +214,12 @@ func _on_quit_pressed():
 func _process(delta):
 	if not done and Globals.test_start:
 		_on_new_game_pressed()
-	if done:
+	if done and not _intro_playing:
 		self.modulate.a = lerp(self.modulate.a, 0.0, delta * 3)
 		if self.modulate.a <= 0.01:
 			self.visible = false
 	if not Globals.is_game_over:
-		var overlay_delta = overlay_target - self.modulate.a
+		var overlay_delta = overlay_target - %Overlay.modulate.a
 		%Overlay.modulate.a += sign(overlay_delta) * delta
 		%Overlay.modulate.a = max(0.0, min(1.0, %Overlay.modulate.a))
 
