@@ -226,6 +226,7 @@ bus = &"SFX"
 [node name="PlayerMoveObstacle" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=1469573662]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_1wqow")
+volume_db = 6.204
 bus = &"SFX"
 
 [node name="PlayerShootSFX" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=2096024466]
@@ -236,6 +237,7 @@ bus = &"SFX"
 [node name="GunOnlineSFX" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=512463351]
 unique_name_in_owner = true
 stream = ExtResource("16_6qb5m")
+volume_db = 2.266
 bus = &"SFX"
 
 [node name="ShieldsRechargedSFX" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=707555149]
@@ -258,16 +260,19 @@ bus = &"SFX"
 [node name="GunOverheatSFX" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=827492096]
 unique_name_in_owner = true
 stream = ExtResource("20_t8b0b")
+volume_db = 1.359
 bus = &"SFX"
 
 [node name="PlayerDeathSFX" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=378614432]
 unique_name_in_owner = true
 stream = ExtResource("23_8pb0k")
+volume_db = 5.665
 bus = &"SFX"
 
 [node name="SlimeDamageSFX" type="AudioStreamPlayer" parent="AudioStreamPlayers" unique_id=440745881]
 unique_name_in_owner = true
 stream = ExtResource("25_alqpi")
+volume_db = 4.532
 bus = &"SFX"
 
 [node name="Settings" parent="." unique_id=150284842 instance=ExtResource("11_hoi4b")]

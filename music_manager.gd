@@ -8,7 +8,7 @@ extends Node
 @onready var credits_music: AudioStreamPlayer = $CreditsMusic
 
 const mute = -60
-const unmute = 0
+const unmute = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,12 +41,12 @@ func play_music(musicplayer: AudioStreamPlayer) -> void:
 		return
 	is_switching_music = true
 	await music_stop()
-	musicplayer.volume_linear = 1.0
+	musicplayer.volume_linear = 0.9
 	musicplayer.play()
 	print("playing:", musicplayer.name)
 	
 	is_switching_music = false
-	musicplayer.volume_linear = 1.0
+	musicplayer.volume_linear = 0.9
 
 func music_volume(vol: float) -> void:
 	if gameplay_music.is_playing():
@@ -56,11 +56,11 @@ func music_volume(vol: float) -> void:
 
 func tween_combat_in() -> void:
 	var combat_fade_in = create_tween()
-	combat_fade_in.tween_method(Callable(self, "music_volume"), mute, unmute, 2)
+	combat_fade_in.tween_method(Callable(self, "music_volume"), mute, unmute, 3)
 
 func tween_combat_out() -> void:
 	var combat_fade_out = create_tween()
-	combat_fade_out.tween_method(Callable(self, "music_volume"), unmute, mute, 2)
+	combat_fade_out.tween_method(Callable(self, "music_volume"), unmute, mute, 6)
 	
 
 func music_stop():

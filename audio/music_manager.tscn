@@ -32,12 +32,11 @@ bus = &"Music"
 
 [node name="GameplayMusic" type="AudioStreamPlayer" parent="." unique_id=851818825]
 stream = SubResource("AudioStreamSynchronized_1826a")
-volume_db = -3.505
+volume_db = -9.623
 bus = &"Music"
 
 [node name="GameplayMusic2" type="AudioStreamPlayer" parent="." unique_id=717458334]
 stream = SubResource("AudioStreamSynchronized_wj0wk")
-volume_db = -10.982
 bus = &"Music"
 
 [node name="CreditsMusic" type="AudioStreamPlayer" parent="." unique_id=492567593]

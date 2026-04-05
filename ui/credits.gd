@@ -56,6 +56,8 @@ func _finish() -> void:
 		tween.tween_property(overlay, "modulate:a", 1.0, 1.5)
 		await tween.finished
 	Engine.time_scale = 1.0
+	var music_manager = get_tree().get_nodes_in_group("MusicManager")[0]
+	await music_manager.play_music(music_manager.credits_music)
 	if _world_env and _world_env.environment:
 		_world_env.environment.ambient_light_energy = _ambient_initial
 	Globals.is_game_over = false
