@@ -76,7 +76,6 @@ func _ready():
 
 
 func has_seen_intro() -> bool:
-	return false # TODO: remove for release
 	if not FileAccess.file_exists(PREFS_FILE_PATH):
 		return false
 	var file = FileAccess.open(PREFS_FILE_PATH, FileAccess.READ)
