@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b0ges3p0ot5my" path="res://meshes/health_pickup.png" id="9_4h35j"]
 [ext_resource type="Texture2D" uid="uid://ciil60tyfpcwb" path="res://meshes/shieldpickup.png" id="9_pbmyw"]
 [ext_resource type="ArrayMesh" uid="uid://bgsxbw40nq6xh" path="res://meshes/healthpickup.obj" id="10_3wlvf"]
+[ext_resource type="Shader" uid="uid://ce3nuhan42mmg" path="res://materials/particle_proj.gdshader" id="12_pbmyw"]
+[ext_resource type="Texture2D" uid="uid://5vwgshg0dd60" path="res://textures/blurred_circle.png" id="13_4wa4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m3jde"]
 render_priority = 0
@@ -89,6 +91,52 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jlg5"]
+render_priority = 0
+shader = ExtResource("12_pbmyw")
+shader_parameter/albedo = Color(0.99734443, 0.75871533, 0.46907288, 1)
+shader_parameter/texture_albedo = ExtResource("13_4wa4t")
+shader_parameter/albedo_texture_size = Vector2i(256, 256)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_2jlg5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49857548, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_454qh"]
+curve = SubResource("Curve_2jlg5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_655n8"]
+lifetime_randomness = 1.0
+emission_shape_offset = Vector3(0, 0.35, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 0.8
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_454qh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1psas"]
+
 [node name="Upgradespot" type="MeshInstance3D" unique_id=896239292]
 material_override = SubResource("ShaderMaterial_m3jde")
 mesh = ExtResource("1_o5bpw")
@@ -123,3 +171,14 @@ cast_shadow = 0
 mesh = ExtResource("10_3wlvf")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_56p1b")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=947229633]
+material_override = SubResource("ShaderMaterial_2jlg5")
+emitting = false
+amount = 100
+lifetime = 3.0
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.3
+process_material = SubResource("ParticleProcessMaterial_655n8")
+draw_pass_1 = SubResource("QuadMesh_1psas")

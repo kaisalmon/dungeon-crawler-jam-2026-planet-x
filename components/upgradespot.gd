@@ -39,11 +39,12 @@ func _process(delta):
 		picked_up = true
 		set_visually_picked_up()
 		on_upgrade()
+		$GPUParticles3D.emitting = true
 
 func set_visually_picked_up():
 	for child in get_children():
-		child.queue_free()
-		# Remove shader_parameter/texture_emission 
+		if child is MeshInstance3D or child is SpotLight3D:
+			child.queue_free()
 	self.material_override.set("shader_parameter/texture_emission", null)
 
 func on_upgrade():
