@@ -312,6 +312,9 @@ func die():
 		"shields": shields,
 		"max_shields": max_shields,
 		"has_gun_upgrade": has_gun_upgrade,
+		"x": global_position.x,
+		"y": global_position.y,
+		"z": global_position.z,
 	})
 	music_manager.reset_state()
 	music_manager.play_music(music_manager.menu_music)
