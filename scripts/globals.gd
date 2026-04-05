@@ -164,4 +164,3 @@ func end_game(mode: String):
 	var credits = get_tree().root.find_child("Credits", true, false)
 	if credits:
 		credits.start()
-
