@@ -34,6 +34,8 @@ func _session_seconds() -> int:
 	return int(Time.get_unix_time_from_system() - session_start)
 
 func track(event: String, properties: Dictionary = {}) -> void:
+	if not Globals.user_tracking:
+		return
 	var props = {
 		"$lib": "godot-planetx",
 		"session_seconds": _session_seconds(),

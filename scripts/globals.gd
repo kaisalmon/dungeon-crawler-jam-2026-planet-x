@@ -28,11 +28,47 @@ var is_game_over = false
 var music_volume = 1.0 #  Range from 0.0 (mute) to 1.0 (full volume)
 var sfx_volume = 1.0 # Range from 0.0 (mute) to 1.0 (full volume)
 var ambience_volume = 1.0 #  Range from 0.0 (mute) to 1.0 (full volume)
+var user_tracking = true
 var test_start = null
+
+const PREFERENCES_FILE_PATH = "user://preferences.save"
+
+func save_preferences() -> void:
+	var file = FileAccess.open(PREFERENCES_FILE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_line(JSON.stringify({
+			"music_volume": music_volume,
+			"sfx_volume": sfx_volume,
+			"ambience_volume": ambience_volume,
+			"user_tracking": user_tracking,
+		}))
+
+func load_preferences() -> void:
+	if not FileAccess.file_exists(PREFERENCES_FILE_PATH):
+		return
+	var file = FileAccess.open(PREFERENCES_FILE_PATH, FileAccess.READ)
+	if file:
+		var data = JSON.parse_string(file.get_as_text())
+		if data is Dictionary:
+			if data.has("music_volume"):
+				music_volume = float(data["music_volume"])
+			if data.has("sfx_volume"):
+				sfx_volume = float(data["sfx_volume"])
+			if data.has("ambience_volume"):
+				ambience_volume = float(data["ambience_volume"])
+			if data.has("user_tracking"):
+				user_tracking = bool(data["user_tracking"])
+
+func _apply_audio_volumes() -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_volume))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfx_volume))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Ambience"), linear_to_db(ambience_volume))
 
 var _player = null
 
 func _ready() -> void:
+	load_preferences()
+	_apply_audio_volumes()
 	load_endings()
 	var timer = Timer.new()
 	timer.wait_time = 3
