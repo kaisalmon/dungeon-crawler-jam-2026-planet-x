@@ -56,4 +56,5 @@ func _finish() -> void:
 	Engine.time_scale = 1.0
 	if _world_env and _world_env.environment:
 		_world_env.environment.ambient_light_energy = _ambient_initial
+	Globals.is_game_over = false
 	get_tree().reload_current_scene()

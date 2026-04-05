@@ -15,7 +15,7 @@ func _on_boss_died() -> void:
 			enemy.die()
 	Globals.say("The master-AI has been defeated!")
 	Globals.say("Captain Raygun has once again saved the day!")
-	await get_tree().create_timer(7.0).timeout
+	await get_tree().create_timer(8.0).timeout
 	# TODO roll credits
 	# For now, just reload the scene
 	Globals.end_game("standard")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mdtpu3803qpm" path="res://gym/gym.gd" id="1_j3p88"]
 [ext_resource type="PackedScene" uid="uid://bjq1qnwhm5lon" path="res://audio/music_manager.tscn" id="2_a3ew2"]
 [ext_resource type="Texture2D" uid="uid://dke0m6d5y8ys4" path="res://textures/VoidPix-FreePack/ablaze/panorama.png" id="3_05bf5"]
+[ext_resource type="Script" uid="uid://b556lb1c1yb4s" path="res://components/text_queue.gd" id="3_77ff8"]
 [ext_resource type="Script" uid="uid://vi3k65tpcilq" path="res://example/lens_flare/lens_flare_post_process.gd" id="4_vqlr7"]
 [ext_resource type="Script" uid="uid://2l4jo033f3d6" path="res://example/scenes/cylinderProjection/sun.gd" id="5_vlcp3"]
 [ext_resource type="Script" uid="uid://dl7avq7lsd8rh" path="res://example/scenes/cylinderProjection/projected_world.gd" id="6_h72sf"]
@@ -363,6 +364,21 @@ size = Vector3(2, 0.31251, 2)
 [node name="Gym" type="Node3D" unique_id=1184156799]
 script = ExtResource("1_j3p88")
 
+[node name="TextQueue" type="Label" parent="." unique_id=991192353]
+z_index = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("57_0xxsb")
+text = "Fish"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_77ff8")
+
 [node name="MusicManager" parent="." unique_id=121765092 instance=ExtResource("2_a3ew2")]
 
 [node name="Player" parent="." unique_id=1136786299 instance=ExtResource("11_lqfno")]
@@ -485,6 +501,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 127,
 visible = false
 gizmo_extents = 1.0
 script = ExtResource("12_si52b")
+invincible = true
 health = 5
 shields = 2
 

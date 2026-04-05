@@ -6,6 +6,8 @@ var lifetime: float = 2.5
 @onready var bounce_early_sfx: AudioStreamPlayer3D = %BounceEarlySFX
 @onready var bounce_late_sfx: AudioStreamPlayer3D = %BounceLateSFX
 
+var sound_cooldown = 0.0
+
 func _ready():
 	# Add random velocity and angular velocity to the shard for a more dynamic effect
 	self.linear_velocity += Vector3(randf_range(-2, 2), randf_range(1, 3), randf_range(-2, 2))
@@ -13,6 +15,7 @@ func _ready():
 	lifetime += randf_range(-1, 1) * .4  # Add some random variation to lifetime
 
 func _process(delta):
+	sound_cooldown -= delta
 	lifetime -= delta
 	if lifetime <= 0:
 		queue_free()
@@ -21,8 +24,11 @@ func _process(delta):
 		child.scale = Vector3(scale, scale, scale)
 
 func _integrate_forces(state):
+	if sound_cooldown > 0:
+		return
 	# Check if we have contacts
 	if state.get_contact_count() > 0 and lifetime > 1.0:
+		sound_cooldown = 0.5
 		# Get the impulse of the first contact point
 		var impulse = state.get_contact_impulse(0)
 		var force = impulse / state.step # Estimate force

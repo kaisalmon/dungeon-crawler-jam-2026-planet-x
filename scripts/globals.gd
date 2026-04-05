@@ -126,6 +126,7 @@ func end_game(mode: String):
 	if mode in ALL_ENDINGS and not discovered_endings.has(mode):
 		discovered_endings[mode] = true
 		save_endings()
+	
 	Analytics.track("ending_reached", {
 		"ending": mode,
 	})
@@ -142,6 +143,10 @@ func end_game(mode: String):
 		var tween = create_tween()
 		tween.tween_property(overlay, "modulate:a", 1.0, 1.5)
 		await tween.finished
+
+	if mode in ALL_ENDINGS:
+		say("Discovered " + str(discovered_endings.size()) + "/" + str(ALL_ENDINGS.size()) + " endings")
+		await get_tree().create_timer(4.0).timeout
 
 	# Reset skybox rotation (inc. celestial bodies)
 	var world = get_tree().root.find_child("World", true, false)

@@ -77,6 +77,7 @@ func _on_new_game_pressed():
 	button_click_sfx.play()
 	Analytics.begin_session()
 	Analytics.track("new_game_started")
+	Globals.in_lab_environment = false # Ensure this is reset when starting a new game from the main menu
 	start_game()
 
 func _on_continue_pressed():
@@ -151,9 +152,10 @@ func _process(delta):
 		self.modulate.a = lerp(self.modulate.a, 0.0, delta * 3)
 		if self.modulate.a <= 0.01:
 			self.visible = false
-	var overlay_delta = overlay_target - self.modulate.a
-	%Overlay.modulate.a += sign(overlay_delta) * delta
-	%Overlay.modulate.a = max(0.0, min(1.0, %Overlay.modulate.a))
+	if not Globals.is_game_over:
+		var overlay_delta = overlay_target - self.modulate.a
+		%Overlay.modulate.a += sign(overlay_delta) * delta
+		%Overlay.modulate.a = max(0.0, min(1.0, %Overlay.modulate.a))
 
 
 func _on_settings_back_pressed() -> void:

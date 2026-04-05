@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cns1id5yggv2l" path="res://ui/heart.tscn" id="7_0lm1f"]
 [ext_resource type="Script" uid="uid://jcxrs13k0txx" path="res://scripts/shootable.gd" id="8_couud"]
 [ext_resource type="Texture2D" uid="uid://1k255juljylc" path="res://ui/heatbar.png" id="9_pir3r"]
-[ext_resource type="Script" uid="uid://b556lb1c1yb4s" path="res://components/text_queue.gd" id="10_6esqw"]
 [ext_resource type="Texture2D" uid="uid://87gfwxnoya6c" path="res://ui/ui_bottom.png" id="10_mm1xv"]
 [ext_resource type="Script" uid="uid://fmn2hcwbj3f5" path="res://components/ray_gun_ui.gd" id="10_qe8hj"]
 [ext_resource type="PackedScene" uid="uid://b67do40sctpcl" path="res://ui/settings.tscn" id="11_hoi4b"]
@@ -182,20 +181,6 @@ offset_bottom = 128.0
 texture = ExtResource("6_pir3r")
 script = ExtResource("6_couud")
 heart_scene = ExtResource("7_0lm1f")
-
-[node name="TextQueue" type="Label" parent="." unique_id=155397625]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -83.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("12_ntxa4")
-text = "Fish"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("10_6esqw")
 
 [node name="RayGunUI" type="TextureRect" parent="." unique_id=432038947]
 anchors_preset = 2
