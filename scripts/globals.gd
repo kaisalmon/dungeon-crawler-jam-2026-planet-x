@@ -145,6 +145,14 @@ func end_game(mode: String):
 		await tween.finished
 
 	if mode in ALL_ENDINGS:
+		var upgrades = get_tree().get_nodes_in_group("upgrades")
+		var collected = 0
+		for upgrade in upgrades:
+			if upgrade.picked_up:
+				collected += 1
+		say("Found " + str(collected) + "/" + str(upgrades.size()) + " upgrades")
+		await get_tree().create_timer(4.0).timeout
+		
 		say("Discovered " + str(discovered_endings.size()) + "/" + str(ALL_ENDINGS.size()) + " endings")
 		await get_tree().create_timer(4.0).timeout
 

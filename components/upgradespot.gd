@@ -13,6 +13,7 @@ enum UpgradeType {
 func _ready():
 	self.material_override = self.material_override.duplicate()
 	self.add_to_group("saveable")
+	self.add_to_group("upgrades")
 
 func _process(delta):
 	t += delta

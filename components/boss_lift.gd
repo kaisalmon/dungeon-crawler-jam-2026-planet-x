@@ -72,3 +72,14 @@ func on_entity_move_ontop(entity: GridEntity, _from_position: Vector3, new_pos: 
 # Called when an entity has moved off of this collision override, if true normal behavior is skipped
 func on_entity_move_off(entity: GridEntity, from_position: Vector3, to_position: Vector3) -> bool:
 	return false
+
+
+func _on_boss_died() -> void:
+	for minion in boss_and_minions:
+		if is_instance_valid(minion) and minion.health > 0:
+			minion.health = 0
+			minion.die()
+	Globals.say("The master-AI has been defeated!")
+	Globals.say("Captain Raygun has once again saved the day!")
+	await get_tree().create_timer(8.0).timeout
+	Globals.end_game("standard")

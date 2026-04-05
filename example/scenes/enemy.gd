@@ -304,7 +304,8 @@ func _on_static_body_3d_shot() -> void:
 	iframes = 0.8
 	static_change_cooldown = 0.05
 	enemy_hit_sfx.play()
-	if health <= 0:
+	var player = Globals.getPlayer()
+	if health <= 0 or player.invincible:
 		die()
 	else:
 		var headNode: EnemySpring = $EnemyTorso/EnemyHead
@@ -313,6 +314,7 @@ func _on_static_body_3d_shot() -> void:
 		self.velocity += knockbackDir * -15
 
 func die():
+	health = 0
 	died.emit()
 	Analytics.track("enemy_killed", {
 		"enemy_id": str(get_path()),

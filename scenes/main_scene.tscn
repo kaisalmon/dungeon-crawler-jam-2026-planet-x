@@ -1784,4 +1784,4 @@ horizontal_alignment = 1
 
 [connection signal="body_entered" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_entered"]
 [connection signal="body_exited" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_exited"]
-[connection signal="died" from="Boss" to="." method="_on_boss_died"]
+[connection signal="died" from="Boss" to="Lift" method="_on_boss_died"]
