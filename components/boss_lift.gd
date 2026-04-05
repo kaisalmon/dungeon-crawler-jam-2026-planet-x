@@ -65,7 +65,7 @@ func on_entity_move_ontop(entity: GridEntity, _from_position: Vector3, new_pos: 
 		Globals.say("\"You've chosen to reject your humanity...\"")
 		Globals.say("\"...and join me?\"")
 		Globals.say("\"...Good.\"")
-		await get_tree().create_timer(11.0*1.75).timeout
+		await get_tree().create_timer(11.0*1.75-6.0).timeout
 		Globals.end_game("unarmed")
 	return true
 

@@ -160,11 +160,9 @@ func end_game(mode: String):
 		for upgrade in upgrades:
 			if upgrade.picked_up:
 				collected += 1
-		say("Found " + str(collected) + "/" + str(upgrades.size()) + " upgrades")
-		await get_tree().create_timer(4.0).timeout
+		await say("Found " + str(collected) + "/" + str(upgrades.size()) + " upgrades")
 		
-		say("Discovered " + str(discovered_endings.size()) + "/" + str(ALL_ENDINGS.size()) + " endings")
-		await get_tree().create_timer(4.0).timeout
+		await say("Discovered " + str(discovered_endings.size()) + "/" + str(ALL_ENDINGS.size()) + " endings")
 
 	# Reset skybox rotation (inc. celestial bodies)
 	var world = get_tree().root.find_child("World", true, false)
