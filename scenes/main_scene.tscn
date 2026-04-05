@@ -1008,8 +1008,8 @@ frozen = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 121, -1, 3)
 
 [node name="TireTracks" type="Decal" parent="." unique_id=2132902988]
-transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 51, -0.82771635, -8.999989)
-size = Vector3(6, 6, 6)
+transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, 51, -0.99702257, -8.999989)
+size = Vector3(6, 0.1, 6)
 texture_albedo = ExtResource("24_kkokr")
 
 [node name="DeadEnemy" type="Node3D" parent="." unique_id=221934547]
@@ -1083,8 +1083,8 @@ shape = SubResource("ConvexPolygonShape3D_02d50")
 debug_color = Color(0.12488248, 0.020118823, 0.08786041, 0.41960785)
 
 [node name="TireTracks2" type="Decal" parent="." unique_id=813981838]
-transform = Transform3D(-4.371139e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.371139e-08, 54, -0.82771635, -38.99999)
-size = Vector3(6, 6, 6)
+transform = Transform3D(-4.371139e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.371139e-08, 54, -1.0273242, -38.99999)
+size = Vector3(6, 0.1, 6)
 texture_albedo = ExtResource("24_kkokr")
 
 [node name="Crate" type="MeshInstance3D" parent="." unique_id=1798644904]
