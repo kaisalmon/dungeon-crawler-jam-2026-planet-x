@@ -40,6 +40,10 @@ func _process(delta: float) -> void:
 	var prev_timer = timer
 	timer -= delta
 	var FADE_DURATION = 0.3
+	var skip = Input.is_action_just_pressed("shoot") 
+	if skip and _current_item.has("token") and timer < duration - FADE_DURATION and timer > FADE_DURATION:
+		_current_item["token"].done.emit()
+		timer = FADE_DURATION
 
 	if prev_timer > 0.0 and timer <= 0.0:
 		if _current_item.has("token"):
@@ -49,8 +53,8 @@ func _process(delta: float) -> void:
 	if timer <= 0.0 and queue.size() > 0:
 		_current_item = queue.pop_front()
 		self.text = _current_item["text"]
-		_set_centered_layout(_current_item.get("centered", false))
 		duration = _duration_for(self.text)
+		_set_centered_layout(_current_item.get("centered", false))
 		timer = duration
 
 	var alpha = 1.0
