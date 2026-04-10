@@ -318,7 +318,13 @@ func die():
 	died.emit()
 	Analytics.track("enemy_killed", {
 		"enemy_id": str(get_path()),
-		"health_remaining": health,
+		"player_health": Globals.getPlayer().health,
+		"player_shields": Globals.getPlayer().shields,
+		"player_max_health": Globals.getPlayer().max_health,
+		"player_max_shields": Globals.getPlayer().max_shields,
+		"player_x": Globals.getPlayer().global_position.x,
+		"player_y": Globals.getPlayer().global_position.y,
+		"player_z": Globals.getPlayer().global_position.z,
 	})
 	self.queue_free()
 	var shard: DeadEnemy = dead_scene.instantiate()

@@ -22,6 +22,15 @@ func _process(delta):
 				if save_cooldown <= 0.0:
 					progress_save.play()
 					Globals.save()
+					
+					Analytics.track("progress_saved",{
+						"x": player.global_position.x,
+						"y": player.global_position.y,
+						"z": player.global_position.z,
+						"max_health": player.max_health,
+						"max_shields": player.max_shields,
+						"id": str(get_path()),
+					})
 					save_cooldown = 10.0
 	else:
 		cooldown = 0.5
