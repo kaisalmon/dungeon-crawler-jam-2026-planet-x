@@ -8,6 +8,7 @@ var save_cooldown = 0.0
 
 func _process(delta):
 	cooldown = max(0.0, cooldown - delta)
+	save_cooldown = max(0.0, save_cooldown - delta)
 	var player = Globals.getPlayer()
 	if player.global_position.distance_to(self.global_position) < player.GRID_SIZE * .55:
 		if cooldown <= 0.0:
@@ -21,6 +22,6 @@ func _process(delta):
 				if save_cooldown <= 0.0:
 					progress_save.play()
 					Globals.save()
-					save_cooldown = 3.0
+					save_cooldown = 10.0
 	else:
 		cooldown = 0.5
