@@ -139,7 +139,7 @@ func _on_new_game_pressed():
 	Analytics.begin_session()
 	Analytics.track("new_game_started")
 	Globals.in_lab_environment = false # Ensure this is reset when starting a new game from the main menu
-	var FORCE_INTRO = true
+	var FORCE_INTRO = false
 	if not has_seen_intro() or FORCE_INTRO:
 		_intro_playing = true
 		await _play_intro()

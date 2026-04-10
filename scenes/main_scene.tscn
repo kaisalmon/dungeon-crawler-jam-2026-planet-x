@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://cxya4r3jk3vq0" path="res://ui/logocropped.png" id="56_8pjrr"]
 [ext_resource type="Theme" uid="uid://csli33hlsyqxo" path="res://misc/low_res_theme.tres" id="57_0xxsb"]
 [ext_resource type="Script" uid="uid://byri8hyje6fr8" path="res://ui/credits.gd" id="58_credits"]
+[ext_resource type="Script" uid="uid://b6pq86rjeinv5" path="res://components/powerup_warning_shape.gd" id="60_wacd7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r0b76"]
 panorama = ExtResource("3_05bf5")
@@ -361,6 +362,9 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 [sub_resource type="BoxShape3D" id="BoxShape3D_onjth"]
 size = Vector3(2, 0.31251, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_77ff8"]
+size = Vector3(1, 3, 3)
+
 [node name="Gym" type="Node3D" unique_id=1184156799]
 script = ExtResource("1_j3p88")
 
@@ -497,13 +501,13 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 23, 
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 25, -1, -15)
 
 [node name="TestStart" type="Marker3D" parent="World" unique_id=784810729]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 76, 0, -75)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 123, 0, -12)
 visible = false
 gizmo_extents = 1.0
 script = ExtResource("12_si52b")
 invincible = true
-health = 5
-shields = 2
+health = 1
+shields = 0
 
 [node name="Upgradespot2" parent="World" unique_id=534355089 instance=ExtResource("14_7hwl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, -1, -63)
@@ -1799,6 +1803,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Crate6/StaticBody3D" unique_id=987916278]
 shape = SubResource("BoxShape3D_womr8")
+
+[node name="PowerupWarningShape" type="Area3D" parent="." unique_id=1254078194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 0, -13)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("60_wacd7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerupWarningShape" unique_id=1389671269]
+shape = SubResource("BoxShape3D_77ff8")
 
 [connection signal="body_entered" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_entered"]
 [connection signal="body_exited" from="World/DarkAmbienceArea" to="World/DarkAmbienceArea" method="_on_body_exited"]
